@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C397AD6F46B32DA8EA2E0BB /* Pods_pianoLearningApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */; };
+		FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2AF1372158D61000A0A554 /* checkBox.swift */; };
+		FC2AF13A2158DF8A00A0A554 /* PrivacyPolicyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2AF1392158DF8A00A0A554 /* PrivacyPolicyView.xib */; };
+		FC2C07D82160C954006FA78C /* score2.json in Resources */ = {isa = PBXBuildFile; fileRef = FC2C07D72160C954006FA78C /* score2.json */; };
+		FC2C07DA2161917D006FA78C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2C07D92161917D006FA78C /* LoginVC.swift */; };
+		FC3BABF02142C93800E64A67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3BABEF2142C93800E64A67 /* AppDelegate.swift */; };
+		FC3BABF22142C93800E64A67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3BABF12142C93800E64A67 /* ViewController.swift */; };
+		FC3BABF52142C93800E64A67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC3BABF32142C93800E64A67 /* Main.storyboard */; };
+		FC3BABF72142C93800E64A67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC3BABF62142C93800E64A67 /* Assets.xcassets */; };
+		FC3BABFA2142C93800E64A67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC3BABF82142C93800E64A67 /* LaunchScreen.storyboard */; };
+		FC57C1D0214E44AF00EEDEDE /* MusicNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC57C1CF214E44AF00EEDEDE /* MusicNoteView.swift */; };
+		FC57C1D2214E44EA00EEDEDE /* MusicNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC57C1D1214E44EA00EEDEDE /* MusicNoteView.xib */; };
+		FC57C1D6214FFD5200EEDEDE /* NoteScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC57C1D5214FFD5200EEDEDE /* NoteScrollView.swift */; };
+		FC7AECC42145786900BC0412 /* musicNotePlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */; };
+		FC7AECC721457A2000BC0412 /* MusicScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AECC521457A2000BC0412 /* MusicScoreView.swift */; };
+		FC7AECC821457A2000BC0412 /* score1.json in Resources */ = {isa = PBXBuildFile; fileRef = FC7AECC621457A2000BC0412 /* score1.json */; };
+		FC7AECCA21457E4500BC0412 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AECC921457E4500BC0412 /* iOSDevCenters+GIF.swift */; };
+		FC7AECCD21457E6C00BC0412 /* playing.gif in Resources */ = {isa = PBXBuildFile; fileRef = FC7AECCB21457E6B00BC0412 /* playing.gif */; };
+		FC7AECCE21457E6C00BC0412 /* recording.gif in Resources */ = {isa = PBXBuildFile; fileRef = FC7AECCC21457E6C00BC0412 /* recording.gif */; };
+		FC7DE1952147FEAD0069DD5D /* midiListenerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DE1942147FEAD0069DD5D /* midiListenerVC.swift */; };
+		FC8388F2214AACC900FAAA36 /* PianoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8388F1214AACC900FAAA36 /* PianoView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pianoLearningApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27CA68979E9E8C91D53D71CB /* Pods-pianoLearningApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.release.xcconfig"; sourceTree = "<group>"; };
+		BCD70C9019CB00D8DC940E1E /* Pods-pianoLearningApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.debug.xcconfig"; sourceTree = "<group>"; };
+		FC2AF1372158D61000A0A554 /* checkBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkBox.swift; sourceTree = "<group>"; };
+		FC2AF1392158DF8A00A0A554 /* PrivacyPolicyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivacyPolicyView.xib; sourceTree = "<group>"; };
+		FC2C07D72160C954006FA78C /* score2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = score2.json; sourceTree = "<group>"; };
+		FC2C07D92161917D006FA78C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		FC3BABEC2142C93800E64A67 /* pianoLearningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pianoLearningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC3BABEF2142C93800E64A67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FC3BABF12142C93800E64A67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FC3BABF42142C93800E64A67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FC3BABF62142C93800E64A67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC3BABF92142C93800E64A67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FC3BABFB2142C93800E64A67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC57C1CF214E44AF00EEDEDE /* MusicNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicNoteView.swift; sourceTree = "<group>"; };
+		FC57C1D1214E44EA00EEDEDE /* MusicNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicNoteView.xib; sourceTree = "<group>"; };
+		FC57C1D5214FFD5200EEDEDE /* NoteScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteScrollView.swift; sourceTree = "<group>"; };
+		FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = musicNotePlayVC.swift; sourceTree = "<group>"; };
+		FC7AECC521457A2000BC0412 /* MusicScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicScoreView.swift; sourceTree = "<group>"; };
+		FC7AECC621457A2000BC0412 /* score1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = score1.json; sourceTree = "<group>"; };
+		FC7AECC921457E4500BC0412 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
+		FC7AECCB21457E6B00BC0412 /* playing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = playing.gif; sourceTree = "<group>"; };
+		FC7AECCC21457E6C00BC0412 /* recording.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = recording.gif; sourceTree = "<group>"; };
+		FC7DE1942147FEAD0069DD5D /* midiListenerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = midiListenerVC.swift; sourceTree = "<group>"; };
+		FC8388F1214AACC900FAAA36 /* PianoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC3BABE92142C93700E64A67 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C397AD6F46B32DA8EA2E0BB /* Pods_pianoLearningApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D132B8D60F169C3032CB405 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		70444C663759487654F87B4B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BCD70C9019CB00D8DC940E1E /* Pods-pianoLearningApp.debug.xcconfig */,
+				27CA68979E9E8C91D53D71CB /* Pods-pianoLearningApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FC3BABE32142C93700E64A67 = {
+			isa = PBXGroup;
+			children = (
+				FC3BABEE2142C93800E64A67 /* pianoLearningApp */,
+				FC3BABED2142C93800E64A67 /* Products */,
+				70444C663759487654F87B4B /* Pods */,
+				2D132B8D60F169C3032CB405 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FC3BABED2142C93800E64A67 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC3BABEC2142C93800E64A67 /* pianoLearningApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC3BABEE2142C93800E64A67 /* pianoLearningApp */ = {
+			isa = PBXGroup;
+			children = (
+				FC3BABEF2142C93800E64A67 /* AppDelegate.swift */,
+				FC3BABF12142C93800E64A67 /* ViewController.swift */,
+				FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */,
+				FC7AECC521457A2000BC0412 /* MusicScoreView.swift */,
+				FC57C1D5214FFD5200EEDEDE /* NoteScrollView.swift */,
+				FC7AECC621457A2000BC0412 /* score1.json */,
+				FC2C07D72160C954006FA78C /* score2.json */,
+				FC3BABF32142C93800E64A67 /* Main.storyboard */,
+				FC2AF1392158DF8A00A0A554 /* PrivacyPolicyView.xib */,
+				FC2AF1372158D61000A0A554 /* checkBox.swift */,
+				FC8388F1214AACC900FAAA36 /* PianoView.swift */,
+				FC3BABF62142C93800E64A67 /* Assets.xcassets */,
+				FC3BABF82142C93800E64A67 /* LaunchScreen.storyboard */,
+				FC3BABFB2142C93800E64A67 /* Info.plist */,
+				FC7AECC921457E4500BC0412 /* iOSDevCenters+GIF.swift */,
+				FC7AECCB21457E6B00BC0412 /* playing.gif */,
+				FC7AECCC21457E6C00BC0412 /* recording.gif */,
+				FC7DE1942147FEAD0069DD5D /* midiListenerVC.swift */,
+				FC57C1CF214E44AF00EEDEDE /* MusicNoteView.swift */,
+				FC57C1D1214E44EA00EEDEDE /* MusicNoteView.xib */,
+				FC2C07D92161917D006FA78C /* LoginVC.swift */,
+			);
+			path = pianoLearningApp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC3BABEB2142C93700E64A67 /* pianoLearningApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC3BABFE2142C93800E64A67 /* Build configuration list for PBXNativeTarget "pianoLearningApp" */;
+			buildPhases = (
+				B9C3F62CB35F80584CFEEB28 /* [CP] Check Pods Manifest.lock */,
+				FC3BABE82142C93700E64A67 /* Sources */,
+				FC3BABE92142C93700E64A67 /* Frameworks */,
+				FC3BABEA2142C93700E64A67 /* Resources */,
+				5C7B13ECF7FAFFB3D62A0297 /* [CP] Embed Pods Frameworks */,
+				47A2BA63D4ACAF65E3AD817F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pianoLearningApp;
+			productName = pianoLearningApp;
+			productReference = FC3BABEC2142C93800E64A67 /* pianoLearningApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC3BABE42142C93700E64A67 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = ENYUHUANG;
+				TargetAttributes = {
+					FC3BABEB2142C93700E64A67 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FC3BABE72142C93700E64A67 /* Build configuration list for PBXProject "pianoLearningApp" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FC3BABE32142C93700E64A67;
+			productRefGroup = FC3BABED2142C93800E64A67 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC3BABEB2142C93700E64A67 /* pianoLearningApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC3BABEA2142C93700E64A67 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC7AECC821457A2000BC0412 /* score1.json in Resources */,
+				FC2AF13A2158DF8A00A0A554 /* PrivacyPolicyView.xib in Resources */,
+				FC2C07D82160C954006FA78C /* score2.json in Resources */,
+				FC3BABFA2142C93800E64A67 /* LaunchScreen.storyboard in Resources */,
+				FC57C1D2214E44EA00EEDEDE /* MusicNoteView.xib in Resources */,
+				FC3BABF72142C93800E64A67 /* Assets.xcassets in Resources */,
+				FC7AECCD21457E6C00BC0412 /* playing.gif in Resources */,
+				FC7AECCE21457E6C00BC0412 /* recording.gif in Resources */,
+				FC3BABF52142C93800E64A67 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		47A2BA63D4ACAF65E3AD817F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C7B13ECF7FAFFB3D62A0297 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/LSFloatingActionMenu/LSFloatingActionMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/MusicTheorySwift/MusicTheorySwift.framework",
+				"${BUILT_PRODUCTS_DIR}/PianoView/PianoView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LSFloatingActionMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MusicTheorySwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PianoView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9C3F62CB35F80584CFEEB28 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-pianoLearningApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC3BABE82142C93700E64A67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC2C07DA2161917D006FA78C /* LoginVC.swift in Sources */,
+				FC57C1D0214E44AF00EEDEDE /* MusicNoteView.swift in Sources */,
+				FC3BABF22142C93800E64A67 /* ViewController.swift in Sources */,
+				FC7AECCA21457E4500BC0412 /* iOSDevCenters+GIF.swift in Sources */,
+				FC57C1D6214FFD5200EEDEDE /* NoteScrollView.swift in Sources */,
+				FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */,
+				FC7AECC42145786900BC0412 /* musicNotePlayVC.swift in Sources */,
+				FC8388F2214AACC900FAAA36 /* PianoView.swift in Sources */,
+				FC3BABF02142C93800E64A67 /* AppDelegate.swift in Sources */,
+				FC7AECC721457A2000BC0412 /* MusicScoreView.swift in Sources */,
+				FC7DE1952147FEAD0069DD5D /* midiListenerVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FC3BABF32142C93800E64A67 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC3BABF42142C93800E64A67 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FC3BABF82142C93800E64A67 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC3BABF92142C93800E64A67 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FC3BABFC2142C93800E64A67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		FC3BABFD2142C93800E64A67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FC3BABFF2142C93800E64A67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCD70C9019CB00D8DC940E1E /* Pods-pianoLearningApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 284Y9W6F8Y;
+				INFOPLIST_FILE = pianoLearningApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = enyu.pianoLearningApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		FC3BAC002142C93800E64A67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27CA68979E9E8C91D53D71CB /* Pods-pianoLearningApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 284Y9W6F8Y;
+				INFOPLIST_FILE = pianoLearningApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = enyu.pianoLearningApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC3BABE72142C93700E64A67 /* Build configuration list for PBXProject "pianoLearningApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC3BABFC2142C93800E64A67 /* Debug */,
+				FC3BABFD2142C93800E64A67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC3BABFE2142C93800E64A67 /* Build configuration list for PBXNativeTarget "pianoLearningApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC3BABFF2142C93800E64A67 /* Debug */,
+				FC3BAC002142C93800E64A67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC3BABE42142C93700E64A67 /* Project object */;
+}

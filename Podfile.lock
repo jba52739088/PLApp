@@ -1,0 +1,23 @@
+PODS:
+  - AudioKit (4.3):
+    - AudioKit/UI (= 4.3)
+  - AudioKit/UI (4.3)
+  - LSFloatingActionMenu (1.0.0)
+  - MusicTheorySwift (0.0.6)
+  - PianoView (0.0.1):
+    - MusicTheorySwift
+
+DEPENDENCIES:
+  - AudioKit
+  - LSFloatingActionMenu (~> 1.0.0)
+  - PianoView
+
+SPEC CHECKSUMS:
+  AudioKit: 95bd2427c1afa7954d71b0c6195a09b87b7448bc
+  LSFloatingActionMenu: dc2d6449e817cb2eb3c3a9a751bd49c3aae416b2
+  MusicTheorySwift: d32649331298fc5a8ebd3d48802219ebe01932b9
+  PianoView: f234ac44b5cdd043a0e140cbbf84a95e4660865b
+
+PODFILE CHECKSUM: 244a2470b37ebfe910eae7b3216b3d528951b850
+
+COCOAPODS: 1.4.0
