@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="xGp-qW-Tct" customClass="VolumeView" customModule="pianoLearningApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="819" height="445"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音量设定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EG-xY-e6I">
+                    <rect key="frame" x="345" y="61" width="129.5" height="38.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cTN-k9-wOS">
+                    <rect key="frame" x="225" y="345" width="369" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accoutns_volume_l" translatesAutoresizingMaskIntoConstraints="NO" id="CBM-RJ-SRW">
+                            <rect key="frame" x="0.0" y="7" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="CBM-RJ-SRW" secondAttribute="height" multiplier="1:1" id="utD-KP-c2W"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accoutns_volume_r" translatesAutoresizingMaskIntoConstraints="NO" id="hah-Lv-N5g">
+                            <rect key="frame" x="111" y="7" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="hah-Lv-N5g" secondAttribute="height" multiplier="1:1" id="3xN-a8-QBn"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accoutns_volume_bgm" translatesAutoresizingMaskIntoConstraints="NO" id="CTE-5a-giO">
+                            <rect key="frame" x="222" y="7" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="CTE-5a-giO" secondAttribute="height" multiplier="1:1" id="U6J-kV-JMG"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accoutns_volume_tempo" translatesAutoresizingMaskIntoConstraints="NO" id="DRG-yE-JcA">
+                            <rect key="frame" x="333" y="7" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="DRG-yE-JcA" secondAttribute="height" multiplier="1:1" id="taf-Hp-jqV"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="CTE-5a-giO" firstAttribute="width" secondItem="CTE-5a-giO" secondAttribute="height" multiplier="1:1" id="7qm-T7-W4x"/>
+                        <constraint firstItem="CBM-RJ-SRW" firstAttribute="width" secondItem="CBM-RJ-SRW" secondAttribute="height" multiplier="1:1" id="AN2-h7-eFd"/>
+                        <constraint firstItem="CBM-RJ-SRW" firstAttribute="width" secondItem="CBM-RJ-SRW" secondAttribute="height" multiplier="1:1" id="FVH-p6-0u7"/>
+                        <constraint firstItem="CTE-5a-giO" firstAttribute="width" secondItem="CTE-5a-giO" secondAttribute="height" multiplier="1:1" id="Gkd-eI-G1h"/>
+                        <constraint firstAttribute="height" constant="50" id="Y8y-9p-B1w"/>
+                        <constraint firstItem="hah-Lv-N5g" firstAttribute="width" secondItem="hah-Lv-N5g" secondAttribute="height" multiplier="1:1" id="vIP-rj-esC"/>
+                        <constraint firstItem="CTE-5a-giO" firstAttribute="width" secondItem="CTE-5a-giO" secondAttribute="height" multiplier="1:1" id="xGL-cY-aci"/>
+                    </constraints>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdd-mM-pGk">
+                    <rect key="frame" x="337" y="124.5" width="34.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlY-6w-gUj">
+                    <rect key="frame" x="226" y="124.5" width="34.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OrQ-Nm-lII">
+                    <rect key="frame" x="447.5" y="124.5" width="34.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRN-l9-TN5">
+                    <rect key="frame" x="558.5" y="124.5" width="34.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="JA8-z0-YKh" customClass="CustomvVolumeSlider" customModule="pianoLearningApp" customModuleProvider="target">
+                    <rect key="frame" x="161" y="165" width="164" height="161"/>
+                    <color key="tintColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="JA8-z0-YKh" secondAttribute="height" multiplier="1:1" id="8UT-Vd-X1i"/>
+                    </constraints>
+                    <color key="minimumTrackTintColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="SlidVolumeLeft:" destination="xGp-qW-Tct" eventType="valueChanged" id="9k1-tb-auT"/>
+                    </connections>
+                </slider>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="rb0-XF-fOX" customClass="CustomvVolumeSlider" customModule="pianoLearningApp" customModuleProvider="target">
+                    <rect key="frame" x="272" y="165" width="164" height="161"/>
+                    <color key="tintColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="minimumTrackTintColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="SlidVolumeRight:" destination="xGp-qW-Tct" eventType="valueChanged" id="iAR-5y-EeH"/>
+                    </connections>
+                </slider>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vQt-ps-9yf" customClass="CustomvVolumeSlider" customModule="pianoLearningApp" customModuleProvider="target">
+                    <rect key="frame" x="383" y="165" width="164" height="161"/>
+                    <color key="tintColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="minimumTrackTintColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="SlidVolumeBMG:" destination="xGp-qW-Tct" eventType="valueChanged" id="z0D-FS-JBv"/>
+                    </connections>
+                </slider>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="QhN-eD-VrJ" customClass="CustomvVolumeSlider" customModule="pianoLearningApp" customModuleProvider="target">
+                    <rect key="frame" x="494" y="165" width="164" height="161"/>
+                    <color key="tintColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="minimumTrackTintColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="SlidVolumeTempo:" destination="xGp-qW-Tct" eventType="valueChanged" id="rWg-s7-oPg"/>
+                    </connections>
+                </slider>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="rb0-XF-fOX" firstAttribute="width" secondItem="JA8-z0-YKh" secondAttribute="width" id="04n-AM-hjo"/>
+                <constraint firstItem="QhN-eD-VrJ" firstAttribute="centerY" secondItem="JA8-z0-YKh" secondAttribute="centerY" id="0Z3-uk-bjJ"/>
+                <constraint firstItem="6EG-xY-e6I" firstAttribute="top" secondItem="t48-SM-5zY" secondAttribute="top" constant="61" id="2JR-k9-ySb"/>
+                <constraint firstItem="JA8-z0-YKh" firstAttribute="top" secondItem="xlY-6w-gUj" secondAttribute="bottom" constant="20" id="3q8-u6-Nul"/>
+                <constraint firstItem="JA8-z0-YKh" firstAttribute="centerX" secondItem="CBM-RJ-SRW" secondAttribute="centerX" id="7Mc-Hz-gkh"/>
+                <constraint firstItem="pdd-mM-pGk" firstAttribute="centerX" secondItem="hah-Lv-N5g" secondAttribute="centerX" id="8YG-ol-C7D"/>
+                <constraint firstItem="6EG-xY-e6I" firstAttribute="centerX" secondItem="xGp-qW-Tct" secondAttribute="centerX" id="EW4-zj-B5F"/>
+                <constraint firstItem="xlY-6w-gUj" firstAttribute="centerX" secondItem="CBM-RJ-SRW" secondAttribute="centerX" id="ElR-Rb-H3v"/>
+                <constraint firstItem="pdd-mM-pGk" firstAttribute="top" secondItem="6EG-xY-e6I" secondAttribute="bottom" constant="25" id="Guv-3Y-z7M"/>
+                <constraint firstItem="OrQ-Nm-lII" firstAttribute="centerX" secondItem="CTE-5a-giO" secondAttribute="centerX" id="OFI-oQ-ZtN"/>
+                <constraint firstItem="vQt-ps-9yf" firstAttribute="centerX" secondItem="CTE-5a-giO" secondAttribute="centerX" id="OkZ-UH-cfa"/>
+                <constraint firstItem="xlY-6w-gUj" firstAttribute="centerY" secondItem="pdd-mM-pGk" secondAttribute="centerY" id="QgJ-iP-sOC"/>
+                <constraint firstItem="QhN-eD-VrJ" firstAttribute="centerX" secondItem="DRG-yE-JcA" secondAttribute="centerX" id="T5C-XS-DWO"/>
+                <constraint firstItem="yRN-l9-TN5" firstAttribute="centerX" secondItem="DRG-yE-JcA" secondAttribute="centerX" id="TcH-Hg-9EV"/>
+                <constraint firstItem="rb0-XF-fOX" firstAttribute="centerX" secondItem="hah-Lv-N5g" secondAttribute="centerX" id="Win-qh-lcb"/>
+                <constraint firstItem="cTN-k9-wOS" firstAttribute="top" secondItem="JA8-z0-YKh" secondAttribute="bottom" constant="20" id="Yza-H2-ubx"/>
+                <constraint firstItem="t48-SM-5zY" firstAttribute="bottom" secondItem="cTN-k9-wOS" secondAttribute="bottom" constant="50" id="ZQL-op-hk8"/>
+                <constraint firstItem="vQt-ps-9yf" firstAttribute="height" secondItem="JA8-z0-YKh" secondAttribute="height" id="c0r-Hi-SuE"/>
+                <constraint firstItem="rb0-XF-fOX" firstAttribute="height" secondItem="JA8-z0-YKh" secondAttribute="height" id="eAR-KM-Q8n"/>
+                <constraint firstItem="vQt-ps-9yf" firstAttribute="centerY" secondItem="JA8-z0-YKh" secondAttribute="centerY" id="eXe-tb-RD4"/>
+                <constraint firstItem="vQt-ps-9yf" firstAttribute="width" secondItem="JA8-z0-YKh" secondAttribute="width" id="hij-pV-SNs"/>
+                <constraint firstItem="yRN-l9-TN5" firstAttribute="centerY" secondItem="pdd-mM-pGk" secondAttribute="centerY" id="kiB-OP-XW8"/>
+                <constraint firstItem="OrQ-Nm-lII" firstAttribute="centerY" secondItem="pdd-mM-pGk" secondAttribute="centerY" id="kj9-Yz-4bf"/>
+                <constraint firstItem="rb0-XF-fOX" firstAttribute="centerY" secondItem="JA8-z0-YKh" secondAttribute="centerY" id="oja-RT-qqa"/>
+                <constraint firstItem="QhN-eD-VrJ" firstAttribute="width" secondItem="JA8-z0-YKh" secondAttribute="width" id="pg0-Og-n8b"/>
+                <constraint firstItem="QhN-eD-VrJ" firstAttribute="height" secondItem="JA8-z0-YKh" secondAttribute="height" id="rum-Le-foD"/>
+                <constraint firstItem="cTN-k9-wOS" firstAttribute="width" secondItem="xGp-qW-Tct" secondAttribute="width" multiplier="0.45" id="sjJ-Jg-MVK"/>
+                <constraint firstItem="cTN-k9-wOS" firstAttribute="centerX" secondItem="xGp-qW-Tct" secondAttribute="centerX" id="zDX-tM-UM5"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="t48-SM-5zY"/>
+            <connections>
+                <outlet property="title" destination="6EG-xY-e6I" id="llA-RJ-EIj"/>
+                <outlet property="volumeBMGImage" destination="CTE-5a-giO" id="Thw-cT-1NV"/>
+                <outlet property="volumeBMGLabel" destination="OrQ-Nm-lII" id="3uM-RF-wAQ"/>
+                <outlet property="volumeBMGSlider" destination="vQt-ps-9yf" id="mJN-az-zB7"/>
+                <outlet property="volumeLeftImage" destination="CBM-RJ-SRW" id="ilY-VZ-e5b"/>
+                <outlet property="volumeLeftLabel" destination="xlY-6w-gUj" id="VZL-mK-zFa"/>
+                <outlet property="volumeLeftSlider" destination="JA8-z0-YKh" id="w3X-Gx-bSB"/>
+                <outlet property="volumeRightImage" destination="hah-Lv-N5g" id="ebk-hv-ZEY"/>
+                <outlet property="volumeRightLabel" destination="pdd-mM-pGk" id="OM2-ws-aud"/>
+                <outlet property="volumeRightSlider" destination="rb0-XF-fOX" id="Q2t-9B-8rL"/>
+                <outlet property="volumeTempoImage" destination="DRG-yE-JcA" id="Q35-7G-9wC"/>
+                <outlet property="volumeTempoLabel" destination="yRN-l9-TN5" id="yZa-DF-mfW"/>
+                <outlet property="volumeTempoSlider" destination="QhN-eD-VrJ" id="Sv6-2U-IS5"/>
+            </connections>
+            <point key="canvasLocation" x="48.799999999999997" y="47.226386806596707"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="accoutns_volume_bgm" width="36" height="36"/>
+        <image name="accoutns_volume_l" width="36" height="36"/>
+        <image name="accoutns_volume_r" width="36" height="36"/>
+        <image name="accoutns_volume_tempo" width="36" height="36"/>
+    </resources>
+</document>

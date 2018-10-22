@@ -1,10 +1,12 @@
 PODS:
-  - AudioKit (4.3):
-    - AudioKit/UI (= 4.3)
-  - AudioKit/UI (4.3)
+  - AudioKit (4.4.0):
+    - AudioKit/Core (= 4.4.0)
+    - AudioKit/UI (= 4.4.0)
+  - AudioKit/Core (4.4.0)
+  - AudioKit/UI (4.4.0)
   - LSFloatingActionMenu (1.0.0)
-  - MusicTheorySwift (0.0.6)
-  - PianoView (0.0.1):
+  - MusicTheorySwift (1.1.0)
+  - PianoView (0.0.3):
     - MusicTheorySwift
 
 DEPENDENCIES:
@@ -13,10 +15,10 @@ DEPENDENCIES:
   - PianoView
 
 SPEC CHECKSUMS:
-  AudioKit: 95bd2427c1afa7954d71b0c6195a09b87b7448bc
+  AudioKit: 79c2b23cd00beb656938aa0b81b614391f17eaa3
   LSFloatingActionMenu: dc2d6449e817cb2eb3c3a9a751bd49c3aae416b2
-  MusicTheorySwift: d32649331298fc5a8ebd3d48802219ebe01932b9
-  PianoView: f234ac44b5cdd043a0e140cbbf84a95e4660865b
+  MusicTheorySwift: 555d61fc174c36c7cb1a41cf20b54628ba6b3e32
+  PianoView: df6fffb38f3866ef3c80bbf3c58eaf24cc9b2164
 
 PODFILE CHECKSUM: 244a2470b37ebfe910eae7b3216b3d528951b850
 

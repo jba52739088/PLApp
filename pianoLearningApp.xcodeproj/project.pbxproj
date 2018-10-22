@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5C397AD6F46B32DA8EA2E0BB /* Pods_pianoLearningApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */; };
 		FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2AF1372158D61000A0A554 /* checkBox.swift */; };
-		FC2AF13A2158DF8A00A0A554 /* PrivacyPolicyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2AF1392158DF8A00A0A554 /* PrivacyPolicyView.xib */; };
+		FC2AF13A2158DF8A00A0A554 /* ContractView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2AF1392158DF8A00A0A554 /* ContractView.xib */; };
 		FC2C07D82160C954006FA78C /* score2.json in Resources */ = {isa = PBXBuildFile; fileRef = FC2C07D72160C954006FA78C /* score2.json */; };
 		FC2C07DA2161917D006FA78C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2C07D92161917D006FA78C /* LoginVC.swift */; };
 		FC3BABF02142C93800E64A67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3BABEF2142C93800E64A67 /* AppDelegate.swift */; };
@@ -27,7 +27,41 @@
 		FC7AECCD21457E6C00BC0412 /* playing.gif in Resources */ = {isa = PBXBuildFile; fileRef = FC7AECCB21457E6B00BC0412 /* playing.gif */; };
 		FC7AECCE21457E6C00BC0412 /* recording.gif in Resources */ = {isa = PBXBuildFile; fileRef = FC7AECCC21457E6C00BC0412 /* recording.gif */; };
 		FC7DE1952147FEAD0069DD5D /* midiListenerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DE1942147FEAD0069DD5D /* midiListenerVC.swift */; };
+		FC80D5922174EF1000CA8DA0 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC80D5912174EF1000CA8DA0 /* FeedbackView.swift */; };
+		FC80D5942174EFE700CA8DA0 /* VolumeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC80D5932174EFE600CA8DA0 /* VolumeView.xib */; };
+		FC80D5962174F76C00CA8DA0 /* VolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC80D5952174F76C00CA8DA0 /* VolumeView.swift */; };
+		FC8192BC21740BBD0076E137 /* ModifyPwdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8192BB21740BBD0076E137 /* ModifyPwdView.xib */; };
+		FC8192BE2174D90B0076E137 /* ModifyPwdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8192BD2174D90B0076E137 /* ModifyPwdView.swift */; };
+		FC8192C02174D9B80076E137 /* AddPhoto.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8192BF2174D9B80076E137 /* AddPhoto.xib */; };
+		FC8192C22174DDF60076E137 /* AddPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8192C12174DDF60076E137 /* AddPhoto.swift */; };
+		FC8192C42174DF250076E137 /* QAView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8192C32174DF250076E137 /* QAView.xib */; };
+		FC8192C62174E06A0076E137 /* QAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8192C52174E06A0076E137 /* QAView.swift */; };
+		FC8192C82174E10C0076E137 /* LanguageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8192C72174E10C0076E137 /* LanguageView.xib */; };
+		FC8192CA2174E1F50076E137 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8192C92174E1F50076E137 /* LanguageView.swift */; };
+		FC8192CC2174E2450076E137 /* FeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8192CB2174E2450076E137 /* FeedbackView.xib */; };
 		FC8388F2214AACC900FAAA36 /* PianoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8388F1214AACC900FAAA36 /* PianoView.swift */; };
+		FC96E82A216272C200D77780 /* RegisterStep1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E829216272C200D77780 /* RegisterStep1VC.swift */; };
+		FC96E83021628BA000D77780 /* ContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E82F21628B9F00D77780 /* ContractView.swift */; };
+		FC96E832216293DC00D77780 /* RegisterStep2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC96E831216293DC00D77780 /* RegisterStep2View.xib */; };
+		FC96E8342162943B00D77780 /* RegisterStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E8332162943B00D77780 /* RegisterStep2View.swift */; };
+		FC96E836216393C300D77780 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E835216393C300D77780 /* AlertView.swift */; };
+		FC96E838216393D900D77780 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC96E837216393D900D77780 /* AlertView.xib */; };
+		FC96E83A2163AFF800D77780 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E8392163AFF800D77780 /* CustomSlider.swift */; };
+		FC96E83E2163D47A00D77780 /* AccountManagingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E83D2163D47A00D77780 /* AccountManagingButton.swift */; };
+		FC96E8402163D48900D77780 /* AccountManagingButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC96E83F2163D48900D77780 /* AccountManagingButton.xib */; };
+		FCB8C8762171F69600898059 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8C8752171F69600898059 /* AccountVC.swift */; };
+		FCB8C8782171FB3100898059 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8C8772171FB3100898059 /* UserView.swift */; };
+		FCB8C87A2171FB4700898059 /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB8C8792171FB4700898059 /* UserView.xib */; };
+		FCD5033A217CE1C800D4A52E /* BookCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD50339217CE1C800D4A52E /* BookCardView.xib */; };
+		FCD5033C217CE23D00D4A52E /* BookCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD5033B217CE23D00D4A52E /* BookCardView.swift */; };
+		FCE4F9D6217C2966005CC423 /* praticeRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE4F9D4217C2966005CC423 /* praticeRecordCell.swift */; };
+		FCE4F9D7217C2966005CC423 /* praticeRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCE4F9D5217C2966005CC423 /* praticeRecordCell.xib */; };
+		FCE4F9DA217C39CC005CC423 /* HighScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE4F9D8217C39CC005CC423 /* HighScoreCell.swift */; };
+		FCE4F9DB217C39CC005CC423 /* HighScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCE4F9D9217C39CC005CC423 /* HighScoreCell.xib */; };
+		FCE4F9DD217C3DA6005CC423 /* GradesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE4F9DC217C3DA6005CC423 /* GradesVC.swift */; };
+		FCE4F9DF217C3DBF005CC423 /* GradesLeftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE4F9DE217C3DBF005CC423 /* GradesLeftVC.swift */; };
+		FCE4F9E1217C3DCC005CC423 /* GradesRightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE4F9E0217C3DCC005CC423 /* GradesRightVC.swift */; };
+		FCEA81CC216DE99D004D6FF3 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +69,7 @@
 		27CA68979E9E8C91D53D71CB /* Pods-pianoLearningApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.release.xcconfig"; sourceTree = "<group>"; };
 		BCD70C9019CB00D8DC940E1E /* Pods-pianoLearningApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FC2AF1372158D61000A0A554 /* checkBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkBox.swift; sourceTree = "<group>"; };
-		FC2AF1392158DF8A00A0A554 /* PrivacyPolicyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivacyPolicyView.xib; sourceTree = "<group>"; };
+		FC2AF1392158DF8A00A0A554 /* ContractView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractView.xib; sourceTree = "<group>"; };
 		FC2C07D72160C954006FA78C /* score2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = score2.json; sourceTree = "<group>"; };
 		FC2C07D92161917D006FA78C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		FC3BABEC2142C93800E64A67 /* pianoLearningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pianoLearningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +89,41 @@
 		FC7AECCB21457E6B00BC0412 /* playing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = playing.gif; sourceTree = "<group>"; };
 		FC7AECCC21457E6C00BC0412 /* recording.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = recording.gif; sourceTree = "<group>"; };
 		FC7DE1942147FEAD0069DD5D /* midiListenerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = midiListenerVC.swift; sourceTree = "<group>"; };
+		FC80D5912174EF1000CA8DA0 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		FC80D5932174EFE600CA8DA0 /* VolumeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VolumeView.xib; sourceTree = "<group>"; };
+		FC80D5952174F76C00CA8DA0 /* VolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeView.swift; sourceTree = "<group>"; };
+		FC8192BB21740BBD0076E137 /* ModifyPwdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModifyPwdView.xib; sourceTree = "<group>"; };
+		FC8192BD2174D90B0076E137 /* ModifyPwdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPwdView.swift; sourceTree = "<group>"; };
+		FC8192BF2174D9B80076E137 /* AddPhoto.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhoto.xib; sourceTree = "<group>"; };
+		FC8192C12174DDF60076E137 /* AddPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhoto.swift; sourceTree = "<group>"; };
+		FC8192C32174DF250076E137 /* QAView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QAView.xib; sourceTree = "<group>"; };
+		FC8192C52174E06A0076E137 /* QAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAView.swift; sourceTree = "<group>"; };
+		FC8192C72174E10C0076E137 /* LanguageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageView.xib; sourceTree = "<group>"; };
+		FC8192C92174E1F50076E137 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
+		FC8192CB2174E2450076E137 /* FeedbackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackView.xib; sourceTree = "<group>"; };
 		FC8388F1214AACC900FAAA36 /* PianoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoView.swift; sourceTree = "<group>"; };
+		FC96E829216272C200D77780 /* RegisterStep1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStep1VC.swift; sourceTree = "<group>"; };
+		FC96E82F21628B9F00D77780 /* ContractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractView.swift; sourceTree = "<group>"; };
+		FC96E831216293DC00D77780 /* RegisterStep2View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterStep2View.xib; sourceTree = "<group>"; };
+		FC96E8332162943B00D77780 /* RegisterStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStep2View.swift; sourceTree = "<group>"; };
+		FC96E835216393C300D77780 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		FC96E837216393D900D77780 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		FC96E8392163AFF800D77780 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		FC96E83D2163D47A00D77780 /* AccountManagingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManagingButton.swift; sourceTree = "<group>"; };
+		FC96E83F2163D48900D77780 /* AccountManagingButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountManagingButton.xib; sourceTree = "<group>"; };
+		FCB8C8752171F69600898059 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		FCB8C8772171FB3100898059 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		FCB8C8792171FB4700898059 /* UserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
+		FCD50339217CE1C800D4A52E /* BookCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCardView.xib; sourceTree = "<group>"; };
+		FCD5033B217CE23D00D4A52E /* BookCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCardView.swift; sourceTree = "<group>"; };
+		FCE4F9D4217C2966005CC423 /* praticeRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = praticeRecordCell.swift; sourceTree = "<group>"; };
+		FCE4F9D5217C2966005CC423 /* praticeRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = praticeRecordCell.xib; sourceTree = "<group>"; };
+		FCE4F9D8217C39CC005CC423 /* HighScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreCell.swift; sourceTree = "<group>"; };
+		FCE4F9D9217C39CC005CC423 /* HighScoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighScoreCell.xib; sourceTree = "<group>"; };
+		FCE4F9DC217C3DA6005CC423 /* GradesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesVC.swift; sourceTree = "<group>"; };
+		FCE4F9DE217C3DBF005CC423 /* GradesLeftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesLeftVC.swift; sourceTree = "<group>"; };
+		FCE4F9E0217C3DCC005CC423 /* GradesRightVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesRightVC.swift; sourceTree = "<group>"; };
+		FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				FC3BABEE2142C93800E64A67 /* pianoLearningApp */,
-				FC3BABED2142C93800E64A67 /* Products */,
 				70444C663759487654F87B4B /* Pods */,
 				2D132B8D60F169C3032CB405 /* Frameworks */,
 			);
@@ -103,20 +170,25 @@
 				FC3BABEC2142C93800E64A67 /* pianoLearningApp.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		FC3BABEE2142C93800E64A67 /* pianoLearningApp */ = {
 			isa = PBXGroup;
 			children = (
 				FC3BABEF2142C93800E64A67 /* AppDelegate.swift */,
-				FC3BABF12142C93800E64A67 /* ViewController.swift */,
+				FC2C07D92161917D006FA78C /* LoginVC.swift */,
+				FC96E829216272C200D77780 /* RegisterStep1VC.swift */,
+				FC96E8332162943B00D77780 /* RegisterStep2View.swift */,
+				FC96E831216293DC00D77780 /* RegisterStep2View.xib */,
+				FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */,
 				FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */,
+				FC3BABF12142C93800E64A67 /* ViewController.swift */,
 				FC7AECC521457A2000BC0412 /* MusicScoreView.swift */,
 				FC57C1D5214FFD5200EEDEDE /* NoteScrollView.swift */,
 				FC7AECC621457A2000BC0412 /* score1.json */,
 				FC2C07D72160C954006FA78C /* score2.json */,
 				FC3BABF32142C93800E64A67 /* Main.storyboard */,
-				FC2AF1392158DF8A00A0A554 /* PrivacyPolicyView.xib */,
 				FC2AF1372158D61000A0A554 /* checkBox.swift */,
 				FC8388F1214AACC900FAAA36 /* PianoView.swift */,
 				FC3BABF62142C93800E64A67 /* Assets.xcassets */,
@@ -128,9 +200,64 @@
 				FC7DE1942147FEAD0069DD5D /* midiListenerVC.swift */,
 				FC57C1CF214E44AF00EEDEDE /* MusicNoteView.swift */,
 				FC57C1D1214E44EA00EEDEDE /* MusicNoteView.xib */,
-				FC2C07D92161917D006FA78C /* LoginVC.swift */,
+				FC96E82F21628B9F00D77780 /* ContractView.swift */,
+				FC2AF1392158DF8A00A0A554 /* ContractView.xib */,
+				FC96E835216393C300D77780 /* AlertView.swift */,
+				FC96E837216393D900D77780 /* AlertView.xib */,
+				FC96E8392163AFF800D77780 /* CustomSlider.swift */,
+				FCD50339217CE1C800D4A52E /* BookCardView.xib */,
+				FCD5033B217CE23D00D4A52E /* BookCardView.swift */,
+				FCE4F9E2217C4C58005CC423 /* GradesPage */,
+				FCD50338217C9B0C00D4A52E /* AccountPage */,
+				FC3BABED2142C93800E64A67 /* Products */,
 			);
 			path = pianoLearningApp;
+			sourceTree = "<group>";
+		};
+		FCD50338217C9B0C00D4A52E /* AccountPage */ = {
+			isa = PBXGroup;
+			children = (
+				FCB8C8752171F69600898059 /* AccountVC.swift */,
+				FCE4F9D3217C276F005CC423 /* AccountPageView */,
+			);
+			name = AccountPage;
+			sourceTree = "<group>";
+		};
+		FCE4F9D3217C276F005CC423 /* AccountPageView */ = {
+			isa = PBXGroup;
+			children = (
+				FC96E83D2163D47A00D77780 /* AccountManagingButton.swift */,
+				FC96E83F2163D48900D77780 /* AccountManagingButton.xib */,
+				FCB8C8772171FB3100898059 /* UserView.swift */,
+				FCB8C8792171FB4700898059 /* UserView.xib */,
+				FC8192BD2174D90B0076E137 /* ModifyPwdView.swift */,
+				FC8192BB21740BBD0076E137 /* ModifyPwdView.xib */,
+				FC8192C12174DDF60076E137 /* AddPhoto.swift */,
+				FC8192BF2174D9B80076E137 /* AddPhoto.xib */,
+				FC8192C52174E06A0076E137 /* QAView.swift */,
+				FC8192C32174DF250076E137 /* QAView.xib */,
+				FC8192C92174E1F50076E137 /* LanguageView.swift */,
+				FC8192C72174E10C0076E137 /* LanguageView.xib */,
+				FC80D5912174EF1000CA8DA0 /* FeedbackView.swift */,
+				FC8192CB2174E2450076E137 /* FeedbackView.xib */,
+				FC80D5952174F76C00CA8DA0 /* VolumeView.swift */,
+				FC80D5932174EFE600CA8DA0 /* VolumeView.xib */,
+			);
+			name = AccountPageView;
+			sourceTree = "<group>";
+		};
+		FCE4F9E2217C4C58005CC423 /* GradesPage */ = {
+			isa = PBXGroup;
+			children = (
+				FCE4F9DC217C3DA6005CC423 /* GradesVC.swift */,
+				FCE4F9E0217C3DCC005CC423 /* GradesRightVC.swift */,
+				FCE4F9DE217C3DBF005CC423 /* GradesLeftVC.swift */,
+				FCE4F9D4217C2966005CC423 /* praticeRecordCell.swift */,
+				FCE4F9D5217C2966005CC423 /* praticeRecordCell.xib */,
+				FCE4F9D8217C39CC005CC423 /* HighScoreCell.swift */,
+				FCE4F9D9217C39CC005CC423 /* HighScoreCell.xib */,
+			);
+			name = GradesPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,14 +323,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC7AECC821457A2000BC0412 /* score1.json in Resources */,
-				FC2AF13A2158DF8A00A0A554 /* PrivacyPolicyView.xib in Resources */,
+				FCD5033A217CE1C800D4A52E /* BookCardView.xib in Resources */,
+				FC8192CC2174E2450076E137 /* FeedbackView.xib in Resources */,
+				FCE4F9DB217C39CC005CC423 /* HighScoreCell.xib in Resources */,
+				FC96E8402163D48900D77780 /* AccountManagingButton.xib in Resources */,
+				FC2AF13A2158DF8A00A0A554 /* ContractView.xib in Resources */,
 				FC2C07D82160C954006FA78C /* score2.json in Resources */,
 				FC3BABFA2142C93800E64A67 /* LaunchScreen.storyboard in Resources */,
+				FC96E832216293DC00D77780 /* RegisterStep2View.xib in Resources */,
+				FC8192C02174D9B80076E137 /* AddPhoto.xib in Resources */,
 				FC57C1D2214E44EA00EEDEDE /* MusicNoteView.xib in Resources */,
+				FCE4F9D7217C2966005CC423 /* praticeRecordCell.xib in Resources */,
+				FC8192C42174DF250076E137 /* QAView.xib in Resources */,
+				FCB8C87A2171FB4700898059 /* UserView.xib in Resources */,
 				FC3BABF72142C93800E64A67 /* Assets.xcassets in Resources */,
 				FC7AECCD21457E6C00BC0412 /* playing.gif in Resources */,
 				FC7AECCE21457E6C00BC0412 /* recording.gif in Resources */,
+				FC8192C82174E10C0076E137 /* LanguageView.xib in Resources */,
 				FC3BABF52142C93800E64A67 /* Main.storyboard in Resources */,
+				FC80D5942174EFE700CA8DA0 /* VolumeView.xib in Resources */,
+				FC8192BC21740BBD0076E137 /* ModifyPwdView.xib in Resources */,
+				FC96E838216393D900D77780 /* AlertView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,12 +372,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp-frameworks.sh",
+				"${PODS_ROOT}/AudioKit/iOS/AudioKitUI.framework",
 				"${BUILT_PRODUCTS_DIR}/LSFloatingActionMenu/LSFloatingActionMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/MusicTheorySwift/MusicTheorySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PianoView/PianoView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AudioKitUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LSFloatingActionMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MusicTheorySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PianoView.framework",
@@ -272,17 +414,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCE4F9DD217C3DA6005CC423 /* GradesVC.swift in Sources */,
+				FC96E83021628BA000D77780 /* ContractView.swift in Sources */,
 				FC2C07DA2161917D006FA78C /* LoginVC.swift in Sources */,
+				FC8192C62174E06A0076E137 /* QAView.swift in Sources */,
+				FC96E8342162943B00D77780 /* RegisterStep2View.swift in Sources */,
+				FC8192CA2174E1F50076E137 /* LanguageView.swift in Sources */,
 				FC57C1D0214E44AF00EEDEDE /* MusicNoteView.swift in Sources */,
+				FCEA81CC216DE99D004D6FF3 /* TabBarVC.swift in Sources */,
+				FCE4F9E1217C3DCC005CC423 /* GradesRightVC.swift in Sources */,
 				FC3BABF22142C93800E64A67 /* ViewController.swift in Sources */,
+				FC96E836216393C300D77780 /* AlertView.swift in Sources */,
+				FCB8C8782171FB3100898059 /* UserView.swift in Sources */,
 				FC7AECCA21457E4500BC0412 /* iOSDevCenters+GIF.swift in Sources */,
+				FCD5033C217CE23D00D4A52E /* BookCardView.swift in Sources */,
 				FC57C1D6214FFD5200EEDEDE /* NoteScrollView.swift in Sources */,
+				FCB8C8762171F69600898059 /* AccountVC.swift in Sources */,
+				FCE4F9D6217C2966005CC423 /* praticeRecordCell.swift in Sources */,
+				FCE4F9DF217C3DBF005CC423 /* GradesLeftVC.swift in Sources */,
+				FCE4F9DA217C39CC005CC423 /* HighScoreCell.swift in Sources */,
 				FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */,
+				FC8192C22174DDF60076E137 /* AddPhoto.swift in Sources */,
 				FC7AECC42145786900BC0412 /* musicNotePlayVC.swift in Sources */,
+				FC80D5922174EF1000CA8DA0 /* FeedbackView.swift in Sources */,
 				FC8388F2214AACC900FAAA36 /* PianoView.swift in Sources */,
+				FC96E83A2163AFF800D77780 /* CustomSlider.swift in Sources */,
 				FC3BABF02142C93800E64A67 /* AppDelegate.swift in Sources */,
 				FC7AECC721457A2000BC0412 /* MusicScoreView.swift in Sources */,
+				FC8192BE2174D90B0076E137 /* ModifyPwdView.swift in Sources */,
+				FC80D5962174F76C00CA8DA0 /* VolumeView.swift in Sources */,
 				FC7DE1952147FEAD0069DD5D /* midiListenerVC.swift in Sources */,
+				FC96E82A216272C200D77780 /* RegisterStep1VC.swift in Sources */,
+				FC96E83E2163D47A00D77780 /* AccountManagingButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

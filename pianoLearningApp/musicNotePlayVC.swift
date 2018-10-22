@@ -14,16 +14,6 @@ import AudioKit
 
 class musicNotePlayVC: UIViewController {
     
-    
-    @IBOutlet weak var main_nav_player_Btn: UIButton!
-    @IBOutlet weak var main_nav_player_Bottom: UIView!
-    @IBOutlet weak var main_nav_sheets_Btn: UIButton!
-    @IBOutlet weak var main_nav_sheets_Bottom: UIView!
-    @IBOutlet weak var main_nav_grades_Btn: UIButton!
-    @IBOutlet weak var main_nav_grades_Bottom: UIView!
-    @IBOutlet weak var main_nav_account_Btn: UIButton!
-    @IBOutlet weak var main_nav_account_Bottom: UIView!
-    @IBOutlet weak var musicTitleLabel: UILabel!
     @IBOutlet weak var main_slower_Btn: UIButton!
     @IBOutlet weak var main_playstart_Btn: UIButton!
     @IBOutlet weak var main_faster_Btn: UIButton!
@@ -70,15 +60,12 @@ class musicNotePlayVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
         setPianoView()
-        
-        
-        
+      
         let imageGif = UIImage.gifImageWithName("playing")
         main_playstart_Btn.setImage(imageGif, for: .normal)
         
-        setPlayerView()
         setSubNavMenu()
         
         
@@ -112,37 +99,11 @@ class musicNotePlayVC: UIViewController {
             object: nil)
     }
     
-    func setPlayerView() {
-        main_nav_player_Bottom.isHidden = false
-        main_nav_sheets_Bottom.isHidden = true
-        main_nav_grades_Bottom.isHidden = true
-        main_nav_account_Bottom.isHidden = true
-    }
-    
-    func setSheetsView() {
-        main_nav_player_Bottom.isHidden = true
-        main_nav_sheets_Bottom.isHidden = false
-        main_nav_grades_Bottom.isHidden = true
-        main_nav_account_Bottom.isHidden = true
-    }
-    
-    func setGradesView() {
-        main_nav_player_Bottom.isHidden = true
-        main_nav_sheets_Bottom.isHidden = true
-        main_nav_grades_Bottom.isHidden = false
-        main_nav_account_Bottom.isHidden = true
-    }
-    
-    func setAccountView() {
-        main_nav_player_Bottom.isHidden = true
-        main_nav_sheets_Bottom.isHidden = true
-        main_nav_grades_Bottom.isHidden = true
-        main_nav_account_Bottom.isHidden = false
-    }
     
     func setPianoView() {
-        pianoBackground = CustomPianoView(frame: CGRect(x: 0, y: self.view.frame.height * 0.785, width: self.view.frame.width, height: self.view.frame.height * 0.215))
+        pianoBackground = CustomPianoView(frame: CGRect(x: 0, y: self.musicNoteView.frame.maxY - 185, width: self.view.frame.width, height: 185))
         self.view.insertSubview(pianoBackground, belowSubview: musicNoteView)
+//        self.view.addSubview(pianoBackground)
     }
     
     func setSubNavMenu() {
@@ -169,7 +130,7 @@ class musicNotePlayVC: UIViewController {
             self.actionMenu.isHidden = true
         })
         self.actionMenu.itemSpacing = 12
-        self.actionMenu.startPoint = CGPoint(x: main_sub_nav_open_Btn.center.x - main_sub_nav_open_Btn.frame.width - 12, y:  self.main_sub_nav_open_Btn.center.y)
+        self.actionMenu.startPoint = CGPoint(x: main_sub_nav_open_Btn.center.x - main_sub_nav_open_Btn.frame.width - 12, y:  self.main_sub_nav_open_Btn.center.y - 20)
         self.actionMenu.rotateStartMenu = true
         self.view.addSubview(self.actionMenu)
     }
@@ -181,8 +142,6 @@ class musicNotePlayVC: UIViewController {
     }
 
     @IBAction func onClick_main_nav_player_Btn(_ sender: Any) {
-        
-        setPlayerView()
         
         //MARK: - TEMP
         
@@ -249,9 +208,9 @@ class musicNotePlayVC: UIViewController {
     @IBAction func onClick_main_slower_Btn(_ sender: Any) {
         
         DispatchQueue.main.async {
-            let note1 = Note(midiNote: 60)
+            let note1 = Pitch(midiNote: 60)
             self.pianoBackground.pianoView.highlightNote(note: note1)
-            let note2 = Note(midiNote: 62)
+            let note2 = Pitch(midiNote: 62)
             self.pianoBackground.pianoView.selectNote(note: note2)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                 self.pianoBackground.pianoView.unhighlightNote(note: note1)
@@ -264,9 +223,9 @@ class musicNotePlayVC: UIViewController {
     @IBAction func onClick_main_faster_Btn(_ sender: Any) {
         
         DispatchQueue.main.async {
-            let note1 = Note(midiNote: 61)
+            let note1 = Pitch(midiNote: 61)
             self.pianoBackground.pianoView.highlightNote(note: note1)
-            let note2 = Note(midiNote: 63)
+            let note2 = Pitch(midiNote: 63)
             self.pianoBackground.pianoView.selectNote(note: note2)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                 self.pianoBackground.pianoView.unhighlightNote(note: note1)
@@ -274,18 +233,6 @@ class musicNotePlayVC: UIViewController {
             })
         }
         
-    }
-    
-    @IBAction func onClick_main_nav_sheets_Btn(_ sender: Any) {
-        setSheetsView()
-    }
-    
-    @IBAction func onClick_main_nav_grades_Btn(_ sender: Any) {
-        setGradesView()
-    }
-    
-    @IBAction func onClick_main_nav_account_Btn(_ sender: Any) {
-        setAccountView()
     }
 
     @IBAction func onClick_main_playstart_Btn(_ sender: Any) {
@@ -314,19 +261,18 @@ class musicNotePlayVC: UIViewController {
     
     
     @IBAction func onClick_main_keyboard_Btn(_ sender: Any) {
-        let pianoHeight = self.view.frame.height * 0.215
         if !pianoIsVisible {
             pianoIsVisible = true
             self.musicNoteView.layoutIfNeeded()
-            self.musicNoteViewBottom.constant = pianoHeight
+            self.musicNoteViewBottom.constant = 165
             UIView.animate(withDuration: 0.3, animations: {
                 self.musicNoteView.layoutIfNeeded()
             })
         }else {
             pianoIsVisible = false
             self.musicNoteView.layoutIfNeeded()
-            self.musicNoteViewBottom.constant -= pianoHeight
-            self.musicNoteView.frame.size.height += pianoHeight
+            self.musicNoteViewBottom.constant -= 165
+            self.musicNoteView.frame.size.height += 165
             UIView.animate(withDuration: 0.3, animations: {
                 self.musicNoteView.layoutIfNeeded()
             })
@@ -337,7 +283,7 @@ class musicNotePlayVC: UIViewController {
     var muneIsOpen = false
     
     @IBAction func onClick_main_sub_nav_open_Btn(_ sender: UIButton) {
-        self.actionMenu.startPoint = CGPoint(x: self.main_sub_nav_open_Btn.center.x - self.main_sub_nav_open_Btn.frame.width - 12, y:  self.main_sub_nav_open_Btn.center.y)
+        self.actionMenu.startPoint = CGPoint(x: self.main_sub_nav_open_Btn.center.x - self.main_sub_nav_open_Btn.frame.width - 12, y:  self.main_sub_nav_open_Btn.center.y - 20)
         if !muneIsOpen{
             self.actionMenu.isHidden = false
             self.actionMenu.open()
@@ -363,7 +309,7 @@ class musicNotePlayVC: UIViewController {
         }
         if let (tone,note) = notification.object as? (Int,Float) {
             print("Got it => \(tone + 53) : \(note)")
-            let note = Note(midiNote: tone + 53)
+            let note = Pitch(midiNote: tone + 53)
             self.pianoBackground.pianoView.selectNote(note: note)
             ii += 1
             
@@ -376,7 +322,7 @@ extension musicNotePlayVC: AKMIDIListener {
         DispatchQueue.main.async {
 //            self.value1.text = "Key: " + String(noteNumber) + "; " +
 //                "Speed: " + String(velocity)
-            let note = Note(midiNote: Int(noteNumber))
+            let note = Pitch(midiNote: Int(noteNumber))
             self.pianoBackground.pianoView.highlightNote(note: note)
         }
         
@@ -386,7 +332,7 @@ extension musicNotePlayVC: AKMIDIListener {
         DispatchQueue.main.async {
             //            self.value1.text = "Key: " + String(noteNumber) + "; " +
             //                "Speed: " + String(velocity)
-            let note = Note(midiNote: Int(noteNumber))
+            let note = Pitch(midiNote: Int(noteNumber))
             self.pianoBackground.pianoView.unhighlightNote(note: note)
         }
     }
