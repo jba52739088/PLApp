@@ -21,7 +21,9 @@ class LoginVC: UIViewController {
     var pwdAlertView: PwdAlertView!
     var alertView: AlertView!
     var AutoLoginTime : Timer?
+    var loginSucceed = false
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let btnAttributes : [NSAttributedStringKey: Any] = [
         NSAttributedStringKey.font : UIFont.systemFont(ofSize: 20),
         NSAttributedStringKey.foregroundColor : UIColor(red: 121/255, green: 85/255, blue: 72/255, alpha: 1),
@@ -34,6 +36,7 @@ class LoginVC: UIViewController {
 //        passwordField.text = "test1"
         
         initView()
+        showLoadingView()
     }
 
 
@@ -49,6 +52,7 @@ class LoginVC: UIViewController {
                     UserDefaults.standard.set(acc, forKey: PIANO_ACCOUNT)
                     UserDefaults.standard.set(pwd, forKey: PIANO_PASSWORD)
                     UserDefaults.standard.synchronize()
+                    self?.configMyUser(data: data!)
                     if let mainVC = self?.storyboard?.instantiateViewController(withIdentifier: "TabBarVC") as? TabBarVC {
                         self?.present(mainVC, animated: true, completion: nil)
                     }
@@ -77,10 +81,18 @@ class LoginVC: UIViewController {
     }
     
     func showLoadingView() {
-        loadingView = Bundle.main.loadNibNamed("loadingView", owner: self, options: nil)?.first as? LoadingView
+        loadingView = Bundle.main.loadNibNamed("LoadingView", owner: self, options: nil)?.first as? LoadingView
         loadingView.frame = self.view.frame
         self.view.addSubview(loadingView)
         if AutoLoginTime == nil {
+            if UserDefaultsKeys.ACCOUNT != ""{
+                APIManager.shared.login(account: UserDefaultsKeys.ACCOUNT, password: UserDefaultsKeys.PASSWORD) {  [weak self] (status, data)  in
+                    if status {
+                        self?.loginSucceed = true
+                        self?.configMyUser(data: data!)
+                    }
+                }
+            }
             AutoLoginTime =  Timer.scheduledTimer(timeInterval: TimeInterval(3), target: self, selector: #selector(removeLoadingView), userInfo: nil, repeats: true)
         }
     }
@@ -120,6 +132,26 @@ class LoginVC: UIViewController {
         if AutoLoginTime != nil {
             AutoLoginTime?.invalidate()
             AutoLoginTime = nil
+        }
+        if loginSucceed {
+            if let mainVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarVC") as? TabBarVC {
+                self.present(mainVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func configMyUser(data: [String : AnyObject]) {
+        if let id = data["id"] as? Int,
+            let name = data["name"] as? String,
+            let account = data["account"] as? String,
+            let passwd = data["passwd"] as? String,
+            let birth = data["birth"] as? String,
+            let mobile = data["mobile"] as? String,
+            let addr = data["addr"] as? String {
+            My = User(id: id, name: name, account: account, passwd: passwd, birth: birth, mobile: mobile, addr: addr)
+            print("config My data succeed")
+        }else {
+            print("user data error")
         }
     }
 }

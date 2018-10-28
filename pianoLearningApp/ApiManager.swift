@@ -89,8 +89,8 @@ class APIManager {
     }
     
     /// 更新会员资料
-    func update(name: String, account: String, password: String?, birth: String, mobile: String, address: String, id: String, completionHandler: @escaping (_ status: Bool) -> Void){
-        let parameters = ["cmd": "update", "account": account, "passwd": password ?? "", "name": name, "birth": birth, "mobile": mobile, "addr": address, "id": id] as [String : Any]
+    func update(name: String, account: String, password: String, birth: String, mobile: String, address: String, id: Int, completionHandler: @escaping (_ status: Bool) -> Void){
+        let parameters = ["cmd": "update", "account": account, "passwd": password, "name": name, "birth": birth, "mobile": mobile, "addr": address, "id": id] as [String : Any]
         Alamofire.request(URL_MEMBER, method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
             .responseJSON { response in
                 if let JSON = response.result.value as? [String:AnyObject] {

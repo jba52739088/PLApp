@@ -15,6 +15,7 @@
 		FC05D2002184049300FF2D98 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC05D1FF2184049300FF2D98 /* LoadingView.xib */; };
 		FC05D202218405CA00FF2D98 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D201218405CA00FF2D98 /* LoadingView.swift */; };
 		FC05D204218406A800FF2D98 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D203218406A800FF2D98 /* UserDefaultsKey.swift */; };
+		FC05D2072186043500FF2D98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D2062186043500FF2D98 /* User.swift */; };
 		FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2AF1372158D61000A0A554 /* checkBox.swift */; };
 		FC2AF13A2158DF8A00A0A554 /* ContractView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2AF1392158DF8A00A0A554 /* ContractView.xib */; };
 		FC2C07D82160C954006FA78C /* score2.json in Resources */ = {isa = PBXBuildFile; fileRef = FC2C07D72160C954006FA78C /* score2.json */; };
@@ -83,6 +84,7 @@
 		FC05D1FF2184049300FF2D98 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		FC05D201218405CA00FF2D98 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FC05D203218406A800FF2D98 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		FC05D2062186043500FF2D98 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FC2AF1372158D61000A0A554 /* checkBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkBox.swift; sourceTree = "<group>"; };
 		FC2AF1392158DF8A00A0A554 /* ContractView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractView.xib; sourceTree = "<group>"; };
 		FC2C07D72160C954006FA78C /* score2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = score2.json; sourceTree = "<group>"; };
@@ -181,6 +183,14 @@
 			name = Helper;
 			sourceTree = "<group>";
 		};
+		FC05D205218603E100FF2D98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC05D2062186043500FF2D98 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		FC3BABE32142C93700E64A67 = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +248,7 @@
 				FC96E8392163AFF800D77780 /* CustomSlider.swift */,
 				FCD50339217CE1C800D4A52E /* BookCardView.xib */,
 				FCD5033B217CE23D00D4A52E /* BookCardView.swift */,
+				FC05D205218603E100FF2D98 /* Model */,
 				FC05D1F6218207F600FF2D98 /* Helper */,
 				FCE4F9E2217C4C58005CC423 /* GradesPage */,
 				FCD50338217C9B0C00D4A52E /* AccountPage */,
@@ -478,6 +489,7 @@
 				FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */,
 				FC8192C22174DDF60076E137 /* AddPhoto.swift in Sources */,
 				FC7AECC42145786900BC0412 /* musicNotePlayVC.swift in Sources */,
+				FC05D2072186043500FF2D98 /* User.swift in Sources */,
 				FC80D5922174EF1000CA8DA0 /* FeedbackView.swift in Sources */,
 				FC05D1FD21837F0900FF2D98 /* PwdAlertView.swift in Sources */,
 				FC05D1F82182083000FF2D98 /* API_Url.swift in Sources */,

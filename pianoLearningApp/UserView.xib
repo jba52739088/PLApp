@@ -23,12 +23,6 @@
                         <constraint firstAttribute="width" constant="110" id="FIN-uR-nt0"/>
                     </constraints>
                 </imageView>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="eason0941@gmail.com" textAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="p1x-so-iJQ">
-                    <rect key="frame" x="318" y="161" width="183" height="21"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvq-8T-Txh">
                     <rect key="frame" x="362" y="380" width="95" height="25"/>
                     <constraints>
@@ -39,9 +33,12 @@
                     <state key="normal" title="     修改資料" backgroundImage="accout_info_edit_buton">
                         <color key="titleColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="doModify:" destination="iN0-l3-epB" eventType="touchUpInside" id="mvu-pQ-WYX"/>
+                    </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hmV-TR-SLI">
-                    <rect key="frame" x="304.5" y="212" width="504.5" height="138"/>
+                    <rect key="frame" x="304.5" y="210" width="504.5" height="140"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1997/1/1" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vgv-cE-6WB">
                             <rect key="frame" x="0.0" y="0.0" width="504.5" height="28"/>
@@ -50,19 +47,20 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+86-32823289374" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DGS-F9-UWY">
-                            <rect key="frame" x="0.0" y="55" width="504.5" height="28"/>
+                            <rect key="frame" x="0.0" y="56" width="504.5" height="28"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="中國上海市浦東新區 郵政編碼：201203" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pzU-t4-3QQ">
-                            <rect key="frame" x="0.0" y="110" width="504.5" height="28"/>
+                            <rect key="frame" x="0.0" y="112" width="504.5" height="28"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="height" constant="140" id="7uc-CV-BSO"/>
                         <constraint firstItem="pzU-t4-3QQ" firstAttribute="width" secondItem="vgv-cE-6WB" secondAttribute="width" id="ENs-hH-TsQ"/>
                         <constraint firstItem="vgv-cE-6WB" firstAttribute="width" secondItem="hmV-TR-SLI" secondAttribute="width" id="MHR-sN-Sa6"/>
                         <constraint firstItem="pzU-t4-3QQ" firstAttribute="height" secondItem="vgv-cE-6WB" secondAttribute="height" id="Qg9-bp-lBJ"/>
@@ -71,7 +69,7 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hom-Vd-vBd">
-                    <rect key="frame" x="252.5" y="212" width="40" height="138"/>
+                    <rect key="frame" x="252.5" y="210" width="40" height="140"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_info_birth" translatesAutoresizingMaskIntoConstraints="NO" id="PqX-JX-fey">
                             <rect key="frame" x="6" y="0.0" width="28" height="28"/>
@@ -79,14 +77,14 @@
                                 <constraint firstAttribute="width" secondItem="PqX-JX-fey" secondAttribute="height" multiplier="1:1" id="wt9-AW-gBT"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_info_phone" translatesAutoresizingMaskIntoConstraints="NO" id="z4C-Je-xb0">
-                            <rect key="frame" x="4" y="51" width="32" height="32"/>
+                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_info_phone" translatesAutoresizingMaskIntoConstraints="NO" id="z4C-Je-xb0">
+                            <rect key="frame" x="4" y="52" width="32" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="z4C-Je-xb0" secondAttribute="height" multiplier="1:1" id="4Is-VR-pmS"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_info_address" translatesAutoresizingMaskIntoConstraints="NO" id="swJ-bF-enk">
-                            <rect key="frame" x="4" y="106" width="32" height="32"/>
+                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_info_address" translatesAutoresizingMaskIntoConstraints="NO" id="swJ-bF-enk">
+                            <rect key="frame" x="4" y="108" width="32" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="swJ-bF-enk" secondAttribute="height" multiplier="1:1" id="O0U-aD-fPR"/>
                             </constraints>
@@ -99,10 +97,16 @@
                         <constraint firstItem="PqX-JX-fey" firstAttribute="width" secondItem="PqX-JX-fey" secondAttribute="height" multiplier="1:1" id="maR-3P-xLI"/>
                     </constraints>
                 </stackView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="eason0941@gmail.com" textAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="p1x-so-iJQ">
+                    <rect key="frame" x="318" y="161" width="183" height="19"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tvq-8T-Txh" secondAttribute="bottom" constant="40" id="7mc-m8-Ieu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tvq-8T-Txh" secondAttribute="bottom" constant="40" id="7mc-m8-Ieu"/>
                 <constraint firstItem="Y8y-CY-2K3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.44" id="Hbr-Of-fc0"/>
                 <constraint firstAttribute="trailing" secondItem="hmV-TR-SLI" secondAttribute="trailing" constant="10" id="OPB-bD-JVk"/>
                 <constraint firstItem="p1x-so-iJQ" firstAttribute="centerX" secondItem="Y8y-CY-2K3" secondAttribute="centerX" id="Uee-Rs-JKm"/>
@@ -119,6 +123,17 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="accountTextField" destination="p1x-so-iJQ" id="ZGC-XM-U47"/>
+                <outlet property="addressTextField" destination="pzU-t4-3QQ" id="LK6-da-sS6"/>
+                <outlet property="birthTextField" destination="vgv-cE-6WB" id="sGg-p9-2mN"/>
+                <outlet property="modifyButton" destination="tvq-8T-Txh" id="Bjr-Ge-IRJ"/>
+                <outlet property="phoneTextField" destination="DGS-F9-UWY" id="TLU-Oi-66o"/>
+                <outlet property="userPhoto" destination="Y8y-CY-2K3" id="oVW-tP-Zpb"/>
+                <outletCollection property="iconSet" destination="PqX-JX-fey" collectionClass="NSMutableArray" id="SvA-hx-b17"/>
+                <outletCollection property="iconSet" destination="z4C-Je-xb0" collectionClass="NSMutableArray" id="Ans-Nm-XyL"/>
+                <outletCollection property="iconSet" destination="swJ-bF-enk" collectionClass="NSMutableArray" id="m5U-79-LK4"/>
+            </connections>
             <point key="canvasLocation" x="138.40000000000001" y="154.72263868065968"/>
         </view>
     </objects>
