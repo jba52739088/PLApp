@@ -12,7 +12,7 @@ import PianoView
 import MusicTheorySwift
 import AudioKit
 
-class musicNotePlayVC: UIViewController {
+class musicNotePlayVC_back: UIViewController {
     
     @IBOutlet weak var main_slower_Btn: UIButton!
     @IBOutlet weak var main_playstart_Btn: UIButton!
@@ -38,14 +38,14 @@ class musicNotePlayVC: UIViewController {
     
     
     
-    var scoreView: MusicScoreView!
-    var scoreView2: MusicScoreView!
+    @IBOutlet weak var scoreView: MusicScoreView!
+    @IBOutlet weak var scoreView2: MusicScoreView!
     
 //    weak var scoreView: MusicScoreView!
     
     
-//    var views:[MusicNoteView] = []
-    var views:[MusicScoreView] = []
+    var views:[MusicNoteView] = []
+//    var views:[MusicScoreView] = []
     
     
     var isPlaying = false
@@ -144,17 +144,12 @@ class musicNotePlayVC: UIViewController {
             let data = try Data(contentsOf: url!)
             let jsonArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! Array<Array<Array<Dictionary<String,String>>>>
             let allSegs = jsonArray.count
+            
             scrollView = NoteScrollView(frame: self.noteBackground.frame)
-            scrollView.delegate = self
-            
-            
-            
-            let scoreView = MusicScoreView(frame: CGRect(x: 0, y: 0, width: self.noteBackground.frame.width, height: self.noteBackground.frame.height / 2))
             scoreView.setConfig(in: 4, n2: 4, n3: 4, n4: 4)
-            views.append(scoreView)
-//            views = self.scrollView.createNoteViews()
-//            self.scrollView.setupNoteScrollView(views: views)
-            
+            views = self.scrollView.createNoteViews()
+            self.scrollView.setupNoteScrollView(views: views)
+            scrollView.delegate = self
 //            self.noteBackground.addSubview(scrollView)
             
             
@@ -290,7 +285,7 @@ class musicNotePlayVC: UIViewController {
     }
 }
 
-extension musicNotePlayVC: AKMIDIListener {
+extension musicNotePlayVC_back: AKMIDIListener {
     func receivedMIDINoteOn(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
         DispatchQueue.main.async {
 //            self.value1.text = "Key: " + String(noteNumber) + "; " +
@@ -311,7 +306,7 @@ extension musicNotePlayVC: AKMIDIListener {
     }
 }
 
-extension musicNotePlayVC: UIScrollViewDelegate {
+extension musicNotePlayVC_back: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x/self.noteBackground.frame.width)

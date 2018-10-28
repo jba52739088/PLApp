@@ -17,11 +17,6 @@ class ContractView: UIView {
     
     weak var registerStep1VC: RegisterStep1VC!
     
-//    class func instantiateFromNib() -> ContractView{
-//        return Bundle.main.loadNibNamed("ContractView", owner: self, options: nil)?.first as! ContractView
-//
-//    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

@@ -46,11 +46,25 @@ class RegisterStep2View: UIView {
     }
     
     @IBAction func tapAgreeBtn(_ sender: Any) {
-        let alertView: AlertView = Bundle.main.loadNibNamed("AlertView", owner: self, options: nil)?.first as! AlertView
-        alertView.frame = self.frame
-        alertView.initAlert(message: "已将确认连结寄到您的箱，\n烦请前往确认，谢谢！")
-        alertView.delegate = self
-        self.addSubview(alertView)
+        if let birth = birthField.text, let addr = adressField.text, let phone = phoneField.text, let acc = registerStep1VC.accountField.text, let pwd = registerStep1VC.passwordField.text{
+            if birth == "" || addr == "" || phone == "" || acc == "" || pwd == ""{
+                self.registerStep1VC.showAlertView(message: "请输入详细资料")
+                return
+            }
+            
+            APIManager.shared.register(name: acc, account: acc, password: pwd, birth: birth, mobile: phone, address: addr) { [weak self] (status) in
+                if status {
+                    let alertView: AlertView = Bundle.main.loadNibNamed("AlertView", owner: self, options: nil)?.first as! AlertView
+                    alertView.frame = self!.frame
+                    alertView.initAlert(message: "已将确认连结寄到您的箱，\n烦请前往确认，谢谢！")
+                    alertView.delegate = self
+                    self!.addSubview(alertView)
+                }else {
+                    self!.registerStep1VC.showAlertView(message: "请输入详细资料")
+                    return
+                }
+            }
+        }
     }
     
     func showDatePickerForDateField() {
@@ -67,7 +81,7 @@ class RegisterStep2View: UIView {
     
     fileprivate func formatDateForDisplay(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy"
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: date)
     }
 

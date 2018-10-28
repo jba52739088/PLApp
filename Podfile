@@ -4,9 +4,11 @@ platform :ios, '9.0'
 target 'pianoLearningApp' do
 use_frameworks!
 
-pod 'AudioKit'
-pod 'LSFloatingActionMenu', '~> 1.0.0'
-pod 'PianoView'
+pod 'AudioKit/Core', '~> 4.4.0', :inhibit_warnings => true
+pod 'LSFloatingActionMenu', '~> 1.0.0', :inhibit_warnings => true
+pod 'PianoView', '~> 0.0.3', :inhibit_warnings => true
+pod 'IQKeyboardManagerSwift', '~> 6.0.4', :inhibit_warnings => true
+pod 'Alamofire', '~> 4.5', :inhibit_warnings => true
 end
 
 post_install do |installer|

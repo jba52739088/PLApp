@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5C397AD6F46B32DA8EA2E0BB /* Pods_pianoLearningApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */; };
+		FC05D1F82182083000FF2D98 /* API_Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D1F72182083000FF2D98 /* API_Url.swift */; };
+		FC05D1FA21820C7F00FF2D98 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D1F921820C7F00FF2D98 /* ApiManager.swift */; };
+		FC05D1FD21837F0900FF2D98 /* PwdAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D1FC21837F0800FF2D98 /* PwdAlertView.swift */; };
+		FC05D1FE2184024100FF2D98 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC05D1FB21837EEC00FF2D98 /* AlertView.xib */; };
+		FC05D2002184049300FF2D98 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC05D1FF2184049300FF2D98 /* LoadingView.xib */; };
+		FC05D202218405CA00FF2D98 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D201218405CA00FF2D98 /* LoadingView.swift */; };
+		FC05D204218406A800FF2D98 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D203218406A800FF2D98 /* UserDefaultsKey.swift */; };
 		FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2AF1372158D61000A0A554 /* checkBox.swift */; };
 		FC2AF13A2158DF8A00A0A554 /* ContractView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2AF1392158DF8A00A0A554 /* ContractView.xib */; };
 		FC2C07D82160C954006FA78C /* score2.json in Resources */ = {isa = PBXBuildFile; fileRef = FC2C07D72160C954006FA78C /* score2.json */; };
@@ -45,10 +52,11 @@
 		FC96E832216293DC00D77780 /* RegisterStep2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC96E831216293DC00D77780 /* RegisterStep2View.xib */; };
 		FC96E8342162943B00D77780 /* RegisterStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E8332162943B00D77780 /* RegisterStep2View.swift */; };
 		FC96E836216393C300D77780 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E835216393C300D77780 /* AlertView.swift */; };
-		FC96E838216393D900D77780 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC96E837216393D900D77780 /* AlertView.xib */; };
+		FC96E838216393D900D77780 /* PwdAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC96E837216393D900D77780 /* PwdAlertView.xib */; };
 		FC96E83A2163AFF800D77780 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E8392163AFF800D77780 /* CustomSlider.swift */; };
 		FC96E83E2163D47A00D77780 /* AccountManagingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E83D2163D47A00D77780 /* AccountManagingButton.swift */; };
 		FC96E8402163D48900D77780 /* AccountManagingButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC96E83F2163D48900D77780 /* AccountManagingButton.xib */; };
+		FC97C7DA2180BC3800981DB6 /* musicNotePlayVC copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC97C7D92180BC3700981DB6 /* musicNotePlayVC copy.swift */; };
 		FCB8C8762171F69600898059 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8C8752171F69600898059 /* AccountVC.swift */; };
 		FCB8C8782171FB3100898059 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8C8772171FB3100898059 /* UserView.swift */; };
 		FCB8C87A2171FB4700898059 /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB8C8792171FB4700898059 /* UserView.xib */; };
@@ -68,6 +76,13 @@
 		0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pianoLearningApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CA68979E9E8C91D53D71CB /* Pods-pianoLearningApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.release.xcconfig"; sourceTree = "<group>"; };
 		BCD70C9019CB00D8DC940E1E /* Pods-pianoLearningApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.debug.xcconfig"; sourceTree = "<group>"; };
+		FC05D1F72182083000FF2D98 /* API_Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Url.swift; sourceTree = "<group>"; };
+		FC05D1F921820C7F00FF2D98 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		FC05D1FB21837EEC00FF2D98 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		FC05D1FC21837F0800FF2D98 /* PwdAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwdAlertView.swift; sourceTree = "<group>"; };
+		FC05D1FF2184049300FF2D98 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		FC05D201218405CA00FF2D98 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		FC05D203218406A800FF2D98 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		FC2AF1372158D61000A0A554 /* checkBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkBox.swift; sourceTree = "<group>"; };
 		FC2AF1392158DF8A00A0A554 /* ContractView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractView.xib; sourceTree = "<group>"; };
 		FC2C07D72160C954006FA78C /* score2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = score2.json; sourceTree = "<group>"; };
@@ -107,10 +122,11 @@
 		FC96E831216293DC00D77780 /* RegisterStep2View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterStep2View.xib; sourceTree = "<group>"; };
 		FC96E8332162943B00D77780 /* RegisterStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStep2View.swift; sourceTree = "<group>"; };
 		FC96E835216393C300D77780 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
-		FC96E837216393D900D77780 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		FC96E837216393D900D77780 /* PwdAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PwdAlertView.xib; sourceTree = "<group>"; };
 		FC96E8392163AFF800D77780 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		FC96E83D2163D47A00D77780 /* AccountManagingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManagingButton.swift; sourceTree = "<group>"; };
 		FC96E83F2163D48900D77780 /* AccountManagingButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountManagingButton.xib; sourceTree = "<group>"; };
+		FC97C7D92180BC3700981DB6 /* musicNotePlayVC copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "musicNotePlayVC copy.swift"; sourceTree = "<group>"; };
 		FCB8C8752171F69600898059 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		FCB8C8772171FB3100898059 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		FCB8C8792171FB4700898059 /* UserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
@@ -155,6 +171,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FC05D1F6218207F600FF2D98 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FC05D1F72182083000FF2D98 /* API_Url.swift */,
+				FC05D1F921820C7F00FF2D98 /* ApiManager.swift */,
+				FC05D203218406A800FF2D98 /* UserDefaultsKey.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		FC3BABE32142C93700E64A67 = {
 			isa = PBXGroup;
 			children = (
@@ -177,12 +203,15 @@
 			isa = PBXGroup;
 			children = (
 				FC3BABEF2142C93800E64A67 /* AppDelegate.swift */,
+				FC05D201218405CA00FF2D98 /* LoadingView.swift */,
+				FC05D1FF2184049300FF2D98 /* LoadingView.xib */,
 				FC2C07D92161917D006FA78C /* LoginVC.swift */,
 				FC96E829216272C200D77780 /* RegisterStep1VC.swift */,
 				FC96E8332162943B00D77780 /* RegisterStep2View.swift */,
 				FC96E831216293DC00D77780 /* RegisterStep2View.xib */,
 				FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */,
 				FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */,
+				FC97C7D92180BC3700981DB6 /* musicNotePlayVC copy.swift */,
 				FC3BABF12142C93800E64A67 /* ViewController.swift */,
 				FC7AECC521457A2000BC0412 /* MusicScoreView.swift */,
 				FC57C1D5214FFD5200EEDEDE /* NoteScrollView.swift */,
@@ -203,10 +232,13 @@
 				FC96E82F21628B9F00D77780 /* ContractView.swift */,
 				FC2AF1392158DF8A00A0A554 /* ContractView.xib */,
 				FC96E835216393C300D77780 /* AlertView.swift */,
-				FC96E837216393D900D77780 /* AlertView.xib */,
+				FC05D1FB21837EEC00FF2D98 /* AlertView.xib */,
+				FC05D1FC21837F0800FF2D98 /* PwdAlertView.swift */,
+				FC96E837216393D900D77780 /* PwdAlertView.xib */,
 				FC96E8392163AFF800D77780 /* CustomSlider.swift */,
 				FCD50339217CE1C800D4A52E /* BookCardView.xib */,
 				FCD5033B217CE23D00D4A52E /* BookCardView.swift */,
+				FC05D1F6218207F600FF2D98 /* Helper */,
 				FCE4F9E2217C4C58005CC423 /* GradesPage */,
 				FCD50338217C9B0C00D4A52E /* AccountPage */,
 				FC3BABED2142C93800E64A67 /* Products */,
@@ -268,11 +300,11 @@
 			buildConfigurationList = FC3BABFE2142C93800E64A67 /* Build configuration list for PBXNativeTarget "pianoLearningApp" */;
 			buildPhases = (
 				B9C3F62CB35F80584CFEEB28 /* [CP] Check Pods Manifest.lock */,
+				FC97C7D82180A9A300981DB6 /* ShellScript */,
 				FC3BABE82142C93700E64A67 /* Sources */,
 				FC3BABE92142C93700E64A67 /* Frameworks */,
 				FC3BABEA2142C93700E64A67 /* Resources */,
 				5C7B13ECF7FAFFB3D62A0297 /* [CP] Embed Pods Frameworks */,
-				47A2BA63D4ACAF65E3AD817F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -331,6 +363,7 @@
 				FC2C07D82160C954006FA78C /* score2.json in Resources */,
 				FC3BABFA2142C93800E64A67 /* LaunchScreen.storyboard in Resources */,
 				FC96E832216293DC00D77780 /* RegisterStep2View.xib in Resources */,
+				FC05D2002184049300FF2D98 /* LoadingView.xib in Resources */,
 				FC8192C02174D9B80076E137 /* AddPhoto.xib in Resources */,
 				FC57C1D2214E44EA00EEDEDE /* MusicNoteView.xib in Resources */,
 				FCE4F9D7217C2966005CC423 /* praticeRecordCell.xib in Resources */,
@@ -343,28 +376,14 @@
 				FC3BABF52142C93800E64A67 /* Main.storyboard in Resources */,
 				FC80D5942174EFE700CA8DA0 /* VolumeView.xib in Resources */,
 				FC8192BC21740BBD0076E137 /* ModifyPwdView.xib in Resources */,
-				FC96E838216393D900D77780 /* AlertView.xib in Resources */,
+				FC05D1FE2184024100FF2D98 /* AlertView.xib in Resources */,
+				FC96E838216393D900D77780 /* PwdAlertView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		47A2BA63D4ACAF65E3AD817F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5C7B13ECF7FAFFB3D62A0297 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,14 +391,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp-frameworks.sh",
-				"${PODS_ROOT}/AudioKit/iOS/AudioKitUI.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/LSFloatingActionMenu/LSFloatingActionMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/MusicTheorySwift/MusicTheorySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PianoView/PianoView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AudioKitUI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LSFloatingActionMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MusicTheorySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PianoView.framework",
@@ -407,6 +428,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FC97C7D82180A9A300981DB6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# $Pods/AudioKit/iOS/AudioKit.framework/fix-framework.sh\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -419,9 +457,11 @@
 				FC2C07DA2161917D006FA78C /* LoginVC.swift in Sources */,
 				FC8192C62174E06A0076E137 /* QAView.swift in Sources */,
 				FC96E8342162943B00D77780 /* RegisterStep2View.swift in Sources */,
+				FC05D202218405CA00FF2D98 /* LoadingView.swift in Sources */,
 				FC8192CA2174E1F50076E137 /* LanguageView.swift in Sources */,
 				FC57C1D0214E44AF00EEDEDE /* MusicNoteView.swift in Sources */,
 				FCEA81CC216DE99D004D6FF3 /* TabBarVC.swift in Sources */,
+				FC97C7DA2180BC3800981DB6 /* musicNotePlayVC copy.swift in Sources */,
 				FCE4F9E1217C3DCC005CC423 /* GradesRightVC.swift in Sources */,
 				FC3BABF22142C93800E64A67 /* ViewController.swift in Sources */,
 				FC96E836216393C300D77780 /* AlertView.swift in Sources */,
@@ -430,6 +470,8 @@
 				FCD5033C217CE23D00D4A52E /* BookCardView.swift in Sources */,
 				FC57C1D6214FFD5200EEDEDE /* NoteScrollView.swift in Sources */,
 				FCB8C8762171F69600898059 /* AccountVC.swift in Sources */,
+				FC05D204218406A800FF2D98 /* UserDefaultsKey.swift in Sources */,
+				FC05D1FA21820C7F00FF2D98 /* ApiManager.swift in Sources */,
 				FCE4F9D6217C2966005CC423 /* praticeRecordCell.swift in Sources */,
 				FCE4F9DF217C3DBF005CC423 /* GradesLeftVC.swift in Sources */,
 				FCE4F9DA217C39CC005CC423 /* HighScoreCell.swift in Sources */,
@@ -437,6 +479,8 @@
 				FC8192C22174DDF60076E137 /* AddPhoto.swift in Sources */,
 				FC7AECC42145786900BC0412 /* musicNotePlayVC.swift in Sources */,
 				FC80D5922174EF1000CA8DA0 /* FeedbackView.swift in Sources */,
+				FC05D1FD21837F0900FF2D98 /* PwdAlertView.swift in Sources */,
+				FC05D1F82182083000FF2D98 /* API_Url.swift in Sources */,
 				FC8388F2214AACC900FAAA36 /* PianoView.swift in Sources */,
 				FC96E83A2163AFF800D77780 /* CustomSlider.swift in Sources */,
 				FC3BABF02142C93800E64A67 /* AppDelegate.swift in Sources */,
