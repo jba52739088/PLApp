@@ -36,7 +36,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0UZ-tU-MgH">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="accounts_password_enterbar" translatesAutoresizingMaskIntoConstraints="NO" id="0UZ-tU-MgH">
                     <rect key="frame" x="119" y="201" width="235" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="235" id="3pw-Df-O2d"/>
@@ -44,15 +44,15 @@
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入旧密码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2Y-kG-1fT">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入新密码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2Y-kG-1fT">
                     <rect key="frame" x="465.5" y="170" width="104" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r4M-h2-pfz">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="accounts_password_enterbar" translatesAutoresizingMaskIntoConstraints="NO" id="r4M-h2-pfz">
                     <rect key="frame" x="465.5" y="201" width="235" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="235" id="D32-OY-f7g"/>
@@ -60,15 +60,15 @@
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入旧密码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNx-FQ-Yun">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确认新密码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNx-FQ-Yun">
                     <rect key="frame" x="465.5" y="237" width="104" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XJZ-uc-FNy">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="accounts_password_enterbar" translatesAutoresizingMaskIntoConstraints="NO" id="XJZ-uc-FNy">
                     <rect key="frame" x="465.5" y="268" width="235" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="2Wu-DH-UR4"/>
@@ -76,29 +76,34 @@
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8g2-LI-HPl">
                     <rect key="frame" x="119" y="239" width="151.5" height="40"/>
-                    <color key="backgroundColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="dHp-64-KHM"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
-                    <state key="normal" title="确认">
+                    <state key="normal" title="确认" backgroundImage="accounts_login_signupbutton">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="ToCheckOldPwd:" destination="iN0-l3-epB" eventType="touchUpInside" id="HIQ-j6-5oG"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qht-Rw-Qta">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qht-Rw-Qta">
                     <rect key="frame" x="465.5" y="355" width="151.5" height="40"/>
-                    <color key="backgroundColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="22u-36-eRx"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
-                    <state key="normal" title="确认">
+                    <state key="normal" title="修改密码" backgroundImage="accounts_login_signupbutton">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="toModifyPassword:" destination="iN0-l3-epB" eventType="touchUpInside" id="DQt-Wf-OU8"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_password_error" translatesAutoresizingMaskIntoConstraints="NO" id="eDO-wi-siJ">
                     <rect key="frame" x="119" y="299" width="32" height="32"/>
@@ -165,10 +170,32 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="checkNewPwdImage" destination="Ljw-eV-RZO" id="2BA-on-9tr"/>
+                <outlet property="checkNewPwdLabel" destination="UX8-3F-NiI" id="wbT-Tr-ENZ"/>
+                <outlet property="modifyBtn" destination="qht-Rw-Qta" id="ZLx-gq-Cb0"/>
+                <outlet property="newPwdTextField" destination="r4M-h2-pfz" id="JI4-7Y-A4Q"/>
+                <outlet property="oldPwdBtn" destination="8g2-LI-HPl" id="kiU-m3-11t"/>
+                <outlet property="oldPwdTextField" destination="0UZ-tU-MgH" id="b39-qB-lLs"/>
+                <outlet property="re_newPwdTextField" destination="XJZ-uc-FNy" id="urF-KV-6ST"/>
+                <outletCollection property="oldPwdIncorrectViews" destination="eDO-wi-siJ" collectionClass="NSMutableArray" id="CTv-wZ-4jv"/>
+                <outletCollection property="oldPwdIncorrectViews" destination="wrZ-QP-2ik" collectionClass="NSMutableArray" id="K90-XC-fvT"/>
+                <outletCollection property="newPwdIncorrectViews" destination="Ljw-eV-RZO" collectionClass="NSMutableArray" id="xyR-9a-80y"/>
+                <outletCollection property="newPwdIncorrectViews" destination="UX8-3F-NiI" collectionClass="NSMutableArray" id="63U-Gd-OLo"/>
+                <outletCollection property="reightSideViews" destination="C2Y-kG-1fT" collectionClass="NSMutableArray" id="hTu-Na-AiH"/>
+                <outletCollection property="reightSideViews" destination="r4M-h2-pfz" collectionClass="NSMutableArray" id="uno-2I-UiO"/>
+                <outletCollection property="reightSideViews" destination="kNx-FQ-Yun" collectionClass="NSMutableArray" id="27G-0p-te4"/>
+                <outletCollection property="reightSideViews" destination="XJZ-uc-FNy" collectionClass="NSMutableArray" id="pgM-Ay-HVd"/>
+                <outletCollection property="reightSideViews" destination="Ljw-eV-RZO" collectionClass="NSMutableArray" id="puv-cZ-Ewd"/>
+                <outletCollection property="reightSideViews" destination="UX8-3F-NiI" collectionClass="NSMutableArray" id="IOL-tL-t9u"/>
+                <outletCollection property="reightSideViews" destination="qht-Rw-Qta" collectionClass="NSMutableArray" id="DfN-Tf-qIz"/>
+            </connections>
             <point key="canvasLocation" x="49" y="48"/>
         </view>
     </objects>
     <resources>
+        <image name="accounts_login_signupbutton" width="315" height="44"/>
+        <image name="accounts_password_enterbar" width="240" height="26"/>
         <image name="accounts_password_error" width="32" height="32"/>
     </resources>
 </document>

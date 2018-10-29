@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class RegisterStep1VC: UIViewController {
     
     @IBOutlet weak var textFieldBackground: UIView!
@@ -20,10 +22,7 @@ class RegisterStep1VC: UIViewController {
     
     var alertView: AlertView!
     
-    let btnAttributes : [NSAttributedStringKey: Any] = [
-        NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12),
-        NSAttributedStringKey.foregroundColor : UIColor(red: 121/255, green: 85/255, blue: 72/255, alpha: 1),
-        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

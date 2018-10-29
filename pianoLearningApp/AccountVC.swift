@@ -10,6 +10,7 @@ import UIKit
 
 protocol AccountPageDelegat {
     func didModifyUserData(birth: String, phone: String, address: String, completionHandler:@escaping (Bool) -> Void)
+    func didModifyPassword(password: String, completionHandler:@escaping (Bool) -> Void)
 }
 
 class AccountVC: UIViewController {
@@ -32,6 +33,7 @@ class AccountVC: UIViewController {
         customviews.append(UserView)
         let ModifyPwdView: ModifyPwdView = Bundle.main.loadNibNamed("ModifyPwdView", owner: self, options: nil)?.first as! ModifyPwdView
         ModifyPwdView.frame = self.contentView.bounds
+        ModifyPwdView.delegate = self
         customviews.append(ModifyPwdView)
         let AddPhoto: AddPhoto = Bundle.main.loadNibNamed("AddPhoto", owner: self, options: nil)?.first as! AddPhoto
         AddPhoto.frame = self.contentView.bounds
@@ -65,6 +67,18 @@ class AccountVC: UIViewController {
 }
 
 extension AccountVC: AccountPageDelegat {
+    
+    func didModifyPassword(password: String, completionHandler: @escaping (Bool) -> Void) {
+        guard let user = My else { return }
+        APIManager.shared.changePwdBy(account: user.account, password: password) { (isSucceed) in
+            if isSucceed {
+                completionHandler(true)
+            }else {
+                completionHandler(false)
+            }
+        }
+    }
+    
     func didModifyUserData(birth: String, phone: String, address: String, completionHandler:@escaping (Bool) -> Void) {
         guard let user = My else { return }
         APIManager.shared.update(name: user.name, account: user.account, password: user.passwd, birth: birth, mobile: phone, address: address, id: user.id) { (isSucceed) in

@@ -130,4 +130,46 @@ class APIManager {
         }
     }
     
+    /// 修改密码
+    func changePwdBy(account: String, password: String, completionHandler: @escaping (_ status: Bool) -> Void){
+        let parameters = ["cmd": "chPasswdByAccount", "account": account, "passwd": password] as [String : Any]
+        Alamofire.request(URL_MEMBER, method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
+            .responseJSON { response in
+                if let JSON = response.result.value as? [String:AnyObject] {
+                    if let result = JSON["result"] as? String{
+                        if result == "0" {
+                            completionHandler(true)
+                        }else {
+                            print("API: chPasswdByAccount failed")
+                            completionHandler(false)
+                        }
+                    }
+                }else {
+                    print("chPasswdByAccount: get JSON error")
+                    completionHandler(false)
+                }
+        }
+    }
+    
+    /// 修改密码
+    func changePwdBy(id: String, password: String, completionHandler: @escaping (_ status: Bool) -> Void){
+        let parameters = ["cmd": "chPasswdById", "id": id, "passwd": password] as [String : Any]
+        Alamofire.request(URL_MEMBER, method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
+            .responseJSON { response in
+                if let JSON = response.result.value as? [String:AnyObject] {
+                    if let result = JSON["result"] as? String{
+                        if result == "0" {
+                            completionHandler(true)
+                        }else {
+                            print("API: chPasswdById failed")
+                            completionHandler(false)
+                        }
+                    }
+                }else {
+                    print("chPasswdById: get JSON error")
+                    completionHandler(false)
+                }
+        }
+    }
+    
 }

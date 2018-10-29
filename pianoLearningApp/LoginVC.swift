@@ -8,6 +8,11 @@
 
 import UIKit
 
+let btnAttributes : [NSAttributedStringKey: Any] = [
+    NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12),
+    NSAttributedStringKey.foregroundColor : UIColor(red: 121/255, green: 85/255, blue: 72/255, alpha: 1),
+    NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue]
+
 class LoginVC: UIViewController {
     
     @IBOutlet weak var textFieldBackground: UIView!
@@ -22,12 +27,7 @@ class LoginVC: UIViewController {
     var alertView: AlertView!
     var AutoLoginTime : Timer?
     var loginSucceed = false
-    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let btnAttributes : [NSAttributedStringKey: Any] = [
-        NSAttributedStringKey.font : UIFont.systemFont(ofSize: 20),
-        NSAttributedStringKey.foregroundColor : UIColor(red: 121/255, green: 85/255, blue: 72/255, alpha: 1),
-        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue]
     
     override func viewDidLoad() {
         super.viewDidLoad()

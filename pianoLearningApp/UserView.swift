@@ -72,7 +72,7 @@ class UserView: UIView {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
         picker.addTarget(self, action: #selector(updateDateField(sender:)), for: .valueChanged)
-        picker.date = NSDate(dateString: birthTextField.text ?? "2018-01-01") as Date
+        picker.date = NSDate(dateString: My?.birth ?? "2018-01-01") as Date
         birthTextField.inputView = picker
     }
     
