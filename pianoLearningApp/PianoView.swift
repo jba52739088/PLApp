@@ -25,7 +25,7 @@ class CustomPianoView: UIView {
     
     func configPianoView(){
         pianoView = PianoView(frame: CGRect(x: 0, y: 8, width: self.frame.width, height: self.frame.height - 8))
-        pianoView.startOctave = 3
+        pianoView.startOctave = 2
         pianoView.keyCount = 52
         pianoView.whiteKeyBackgroundColor = UIColor.white
         pianoView.blackKeyBackgroundColor = UIColor.black
