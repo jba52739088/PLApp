@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="hl2-HX-ulQ" customClass="NoteSelectionListView" customModule="pianoLearningApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="661"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sheets_seperate_books_music" translatesAutoresizingMaskIntoConstraints="NO" id="IGH-2n-xFg">
+                    <rect key="frame" x="100" y="226" width="824" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="vRe-eY-NX5"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWc-jD-ELn">
+                    <rect key="frame" x="457" y="606" width="110" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="1De-K1-HRX"/>
+                        <constraint firstAttribute="height" constant="50" id="nvh-dW-vAb"/>
+                    </constraints>
+                    <state key="normal" image="sheets_books_music_backtotop"/>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="loV-MA-H9b">
+                    <rect key="frame" x="297" y="274" width="430" height="327"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="430" id="HWu-EH-Vy7"/>
+                    </constraints>
+                </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sheets_book" translatesAutoresizingMaskIntoConstraints="NO" id="Zl2-Eq-7FS">
+                    <rect key="frame" x="452" y="68" width="120" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="2Ql-dO-VPK"/>
+                        <constraint firstAttribute="width" constant="120" id="d9r-gw-UGK"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book free" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cF7-3G-Ksu">
+                    <rect key="frame" x="471" y="198" width="82" height="23"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="qWc-jD-ELn" firstAttribute="centerX" secondItem="hl2-HX-ulQ" secondAttribute="centerX" id="5v4-by-2i4"/>
+                <constraint firstItem="loV-MA-H9b" firstAttribute="top" secondItem="IGH-2n-xFg" secondAttribute="bottom" constant="3" id="9SF-62-Ymx"/>
+                <constraint firstAttribute="bottom" secondItem="qWc-jD-ELn" secondAttribute="bottom" constant="5" id="aSD-wU-UIV"/>
+                <constraint firstItem="cF7-3G-Ksu" firstAttribute="centerX" secondItem="Zl2-Eq-7FS" secondAttribute="centerX" id="e55-GG-qbk"/>
+                <constraint firstItem="Zl2-Eq-7FS" firstAttribute="top" secondItem="CUa-rd-8fa" secondAttribute="top" constant="48" id="e9P-Lv-h6h"/>
+                <constraint firstItem="IGH-2n-xFg" firstAttribute="top" secondItem="cF7-3G-Ksu" secondAttribute="bottom" constant="5" id="jhI-0O-2r3"/>
+                <constraint firstItem="IGH-2n-xFg" firstAttribute="leading" secondItem="hl2-HX-ulQ" secondAttribute="leading" constant="100" id="ldh-0u-RxY"/>
+                <constraint firstItem="cF7-3G-Ksu" firstAttribute="top" secondItem="Zl2-Eq-7FS" secondAttribute="bottom" constant="10" id="ngU-rK-8Fe"/>
+                <constraint firstItem="loV-MA-H9b" firstAttribute="centerX" secondItem="hl2-HX-ulQ" secondAttribute="centerX" id="ntd-lc-gba"/>
+                <constraint firstAttribute="trailing" secondItem="IGH-2n-xFg" secondAttribute="trailing" constant="100" id="q4s-Ya-mlD"/>
+                <constraint firstItem="Zl2-Eq-7FS" firstAttribute="centerX" secondItem="hl2-HX-ulQ" secondAttribute="centerX" id="srZ-VD-qn4"/>
+                <constraint firstItem="qWc-jD-ELn" firstAttribute="top" secondItem="loV-MA-H9b" secondAttribute="bottom" constant="5" id="wme-15-I2Z"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="CUa-rd-8fa"/>
+            <connections>
+                <outlet property="imgView" destination="Zl2-Eq-7FS" id="eaD-QL-sht"/>
+                <outlet property="label" destination="cF7-3G-Ksu" id="pJU-1N-dLu"/>
+                <outlet property="tableView" destination="loV-MA-H9b" id="QHj-3v-JQE"/>
+                <outlet property="toTopBtn" destination="qWc-jD-ELn" id="sSx-ly-JO5"/>
+            </connections>
+            <point key="canvasLocation" x="52.799999999999997" y="48.125937031484263"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="sheets_book" width="86" height="122"/>
+        <image name="sheets_books_music_backtotop" width="103" height="37"/>
+        <image name="sheets_seperate_books_music" width="800" height="15"/>
+    </resources>
+</document>

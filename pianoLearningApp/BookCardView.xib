@@ -11,6 +11,10 @@
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookCardView" customModule="pianoLearningApp" customModuleProvider="target">
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="image" keyPath="image" value="sheets_book"/>
+                <userDefinedRuntimeAttribute type="string" keyPath="name" value="Book free"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="imageView" destination="nDR-ts-pjn" id="QDG-K6-qou"/>
                 <outlet property="title" destination="suj-uv-HFD" id="HUi-Jm-FdL"/>
@@ -51,4 +55,7 @@
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
     </objects>
+    <resources>
+        <image name="sheets_book" width="86" height="122"/>
+    </resources>
 </document>

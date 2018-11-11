@@ -1,83 +1,66 @@
 [
- [
-   {
-    "treble": [
-               {
-                "tone":"1",
-                "note":"8"
-               }
-               ],
-    "bass": []
-   },
-   {
-    "treble": [
-             {
-             "tone":"3",
-             "note":"4"
-             }
-             ],
-    "bass": [
-             {
-             "tone":"-10",
-             "note":"4"
-             }
-            ]
-    },
-  {
-  "treble": [
-             {
-             "tone":"3",
-             "note":"4"
-             }
-             ],
-  "bass": [
-           {
-           "tone":"-10",
-           "note":"2"
-           },
-           {
-           "tone":"-11",
-           "note":"2"
-           },
-           ]
-  },
-  {
-  "treble": [
-             {
-             "tone":"3",
-             "note":"4"
-             }
-             ],
-  "bass": [
-           {
-           "tone":"-18",
-           "note":"4"
-           },
-           {
-           "tone":"-17",
-           "note":"4"
-           },
-        ]
-  },
-  ],
- [
-  {
-  "treble": [
-             {
-             "tone":"3",
-             "note":"4"
-             }
-             ],
-  "bass": [
-           {
-           "tone":"-19",
-           "note":"4"
-           },
-        ]
-  },
-
- 
- ],
- [],
- []
- ]
+    [
+        [
+            {"tone":"1","note":"2","dot":"false"},
+        ],
+        [
+            {"tone":"1","note":"4","dot":"false"},
+        ],
+    ],
+    [
+        [
+            {"tone":"2","note":"2","dot":"false"},
+        ],
+        [
+            {"tone":"2","note":"4","dot":"false"},
+        ],
+    ],
+    [
+        [
+            {"tone":"3","note":"4","dot":"false"},
+        ],
+        [
+            {"tone":"5","note":"4","dot":"false"},
+        ],
+        [
+            {"tone":"3","note":"4","dot":"false"},
+        ],
+    ],
+    [
+        [
+            {"tone":"1","note":"2","dot":"false"},
+        ],
+        [
+            {"tone":"-2","note":"4","dot":"false"},
+        ],
+    ],
+    [
+        [
+            {"tone":"1","note":"2","dot":"false"},
+        ],
+        [
+            {"tone":"1","note":"4","dot":"false"},
+        ],
+    ],
+    [
+        [
+            {"tone":"2","note":"2","dot":"false"},
+        ],
+        [
+            {"tone":"2","note":"4","dot":"false"},
+        ],
+    ],
+    [
+        [
+            {"tone":"3","note":"2","dot":"true"},
+        ],
+    ],
+    [
+        [
+            {"tone":"1","note":"2","dot":"false"},
+        ],
+        [
+            {"tone":"-2","note":"4","dot":"false"},
+        ],
+    ],
+]

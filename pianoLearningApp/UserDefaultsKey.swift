@@ -8,8 +8,9 @@
 
 import Foundation
 
-let PIANO_ACCOUNT = "###BBCall_ACCOUNT"
-let PIANO_PASSWORD = "###BBCall_PASSWORD"
+let PIANO_ACCOUNT = "###PIANO_ACCOUNT"
+let PIANO_PASSWORD = "###PIANO_PASSWORD"
+let PIANO_LAST_NOTE_NAME = "###PIANO_LAST_NOTE_NAME"
 
 
 class UserDefaultsKeys: NSObject {
@@ -23,6 +24,12 @@ class UserDefaultsKeys: NSObject {
     static var PASSWORD:String{
         get{
             return UserDefaults.standard.string(forKey: PIANO_PASSWORD) ?? ""
+        }
+    }
+    
+    static var LAST_NOTE_NAME:String{
+        get{
+            return UserDefaults.standard.string(forKey: PIANO_LAST_NOTE_NAME) ?? ""
         }
     }
  

@@ -82,6 +82,27 @@
                                 <action selector="tapAgreeBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="O4o-gG-Bft"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Kr-1c-yat">
+                            <rect key="frame" x="30" y="30" width="60" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Npp-eZ-APF"/>
+                                <constraint firstAttribute="width" constant="60" id="lyp-Ll-0jF"/>
+                            </constraints>
+                            <state key="normal">
+                                <attributedString key="attributedTitle">
+                                    <fragment content="BACK">
+                                        <attributes>
+                                            <color key="NSColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" metaFont="system" size="18"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                            </state>
+                            <connections>
+                                <action selector="tapbackBackBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="YGi-Er-PQF"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -90,6 +111,8 @@
                         <constraint firstItem="CrM-kc-PrT" firstAttribute="centerX" secondItem="L5g-D7-44l" secondAttribute="centerX" id="Zdw-oh-68e"/>
                         <constraint firstItem="alb-zW-1xw" firstAttribute="centerX" secondItem="L5g-D7-44l" secondAttribute="centerX" id="b8N-4W-JOo"/>
                         <constraint firstItem="Crm-4n-tHs" firstAttribute="width" secondItem="CrM-kc-PrT" secondAttribute="width" id="bax-XK-4a0"/>
+                        <constraint firstItem="5Kr-1c-yat" firstAttribute="top" secondItem="6dw-J7-QrW" secondAttribute="top" constant="30" id="d4T-Cl-KsZ"/>
+                        <constraint firstItem="5Kr-1c-yat" firstAttribute="leading" secondItem="6dw-J7-QrW" secondAttribute="leading" constant="30" id="e9x-X4-0lM"/>
                         <constraint firstItem="6dw-J7-QrW" firstAttribute="bottom" secondItem="Crm-4n-tHs" secondAttribute="bottom" constant="305" id="jcl-2R-oTa"/>
                         <constraint firstItem="CrM-kc-PrT" firstAttribute="top" secondItem="alb-zW-1xw" secondAttribute="bottom" constant="85" id="viZ-zu-eg4"/>
                     </constraints>

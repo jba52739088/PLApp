@@ -45,6 +45,10 @@ class RegisterStep2View: UIView {
         showDatePickerForDateField()
     }
     
+    @IBAction func tapbackBackBtn(_ sender: Any) {
+        self.removeFromSuperview()
+    }
+    
     @IBAction func tapAgreeBtn(_ sender: Any) {
         if let birth = birthField.text, let addr = adressField.text, let phone = phoneField.text, let acc = registerStep1VC.accountField.text, let pwd = registerStep1VC.passwordField.text{
             if birth == "" || addr == "" || phone == "" || acc == "" || pwd == ""{

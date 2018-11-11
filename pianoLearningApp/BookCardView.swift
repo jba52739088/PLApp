@@ -18,40 +18,34 @@ class BookCardView: UIView {
     @IBInspectable var image: UIImage?
     @IBInspectable var name: String?
     
+//    func initView(image: UIImage, title: String) {
+//        self.imageView.image = image
+//        self.title.text = title
+//    }
+//
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         imageView.contentMode = .scaleAspectFit
         imageView.image = image
         title.text = name
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
+
+    let nibName = "BookCardView"
+    var contentView: UIView?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
-        fatalError("init(coder:) has not been implemented")
+        
+        guard let view = loadViewFromNib() else { return }
+        view.frame = self.bounds
+        self.addSubview(view)
+        contentView = view
     }
     
-    func setup() {
-        view = loadViewFromNib()
-        view.frame = bounds
-        
-        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth,
-                                 UIViewAutoresizing.flexibleHeight]
-        addSubview(view)
-        
-    }
-    
-    func loadViewFromNib() -> UIView! {
+    func loadViewFromNib() -> UIView? {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        
-        return view
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
     
 }

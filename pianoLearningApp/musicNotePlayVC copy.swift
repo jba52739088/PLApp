@@ -138,34 +138,34 @@ class musicNotePlayVC_back: UIViewController {
 
     func test() {
         
-        // 讀取 JSON 字串資料
-        let url = Bundle.main.url(forResource: "score2", withExtension: "json")
-        do {
-            let data = try Data(contentsOf: url!)
-            let jsonArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! Array<Array<Array<Dictionary<String,String>>>>
-            let allSegs = jsonArray.count
-            
-            scrollView = NoteScrollView(frame: self.noteBackground.frame)
-            scoreView.setConfig(in: 4, n2: 4, n3: 4, n4: 4)
-            views = self.scrollView.createNoteViews()
-            self.scrollView.setupNoteScrollView(views: views)
-            scrollView.delegate = self
-//            self.noteBackground.addSubview(scrollView)
-            
-            
-            var n = scoreView.setScore(in: jsonArray, start:0)
-            
-            if n<allSegs-1 {
-                scoreView.setNextScoreView(in: scoreView2)
-                scoreView2.isHidden = false
-                scoreView2.setConfig(in: 4, n2: 4, n3: 4, n4: 4)
-                scoreView2.setScore(in: jsonArray, start:n+1)
-            }
-            
-            
-        }catch{
-            print(error.localizedDescription)
-        }
+//        // 讀取 JSON 字串資料
+//        let url = Bundle.main.url(forResource: "score2", withExtension: "json")
+//        do {
+//            let data = try Data(contentsOf: url!)
+//            let jsonArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! Array<Array<Array<Dictionary<String,String>>>>
+//            let allSegs = jsonArray.count
+//            
+//            scrollView = NoteScrollView(frame: self.noteBackground.frame)
+//            scoreView.setConfig(in: 4, n2: 4, n3: 4, n4: 4)
+//            views = self.scrollView.createNoteViews()
+//            self.scrollView.setupNoteScrollView(views: views)
+//            scrollView.delegate = self
+////            self.noteBackground.addSubview(scrollView)
+//            
+//            
+//            var n = scoreView.setScore(in: jsonArray, start:0)
+//            
+//            if n<allSegs-1 {
+//                scoreView.setNextScoreView(in: scoreView2)
+//                scoreView2.isHidden = false
+//                scoreView2.setConfig(in: 4, n2: 4, n3: 4, n4: 4)
+//                scoreView2.setScore(in: jsonArray, start:n+1)
+//            }
+//            
+//            
+//        }catch{
+//            print(error.localizedDescription)
+//        }
         
     }
     

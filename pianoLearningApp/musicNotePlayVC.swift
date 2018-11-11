@@ -11,6 +11,7 @@ import LSFloatingActionMenu
 import PianoView
 import MusicTheorySwift
 import AudioKit
+import AVFoundation
 
 class musicNotePlayVC: UIViewController {
     
@@ -35,13 +36,17 @@ class musicNotePlayVC: UIViewController {
     var scrollView: NoteScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    @IBOutlet weak var progressSlider: CustomMainSlider!
+    @IBOutlet weak var bmpSlider: CustomSubSlider!
+    @IBOutlet weak var bmpLabel: UILabel!
     
     
     
-    var scoreView: MusicScoreView!
-    var scoreView2: MusicScoreView!
+    @IBOutlet weak var scoreView: MusicScoreView!
+    @IBOutlet weak var scoreView2: MusicScoreView!
     
 //    weak var scoreView: MusicScoreView!
+    var selectionView: SelectionView!
     
     
 //    var views:[MusicNoteView] = []
@@ -56,6 +61,15 @@ class musicNotePlayVC: UIViewController {
     var i:UInt8 = 36
     let ms = 1000
     
+    // 錄音＆播放
+    var audioPlayer: AVAudioPlayer?
+    var audioRecorder: AVAudioRecorder!
+    // 是否為演奏模式
+    var isJustplay = false
+    // 當前曲目名稱
+    var currentSongName: String?
+    // empty NOTE VIEW
+    var emptyNoteView: UIView!
     
     
     override func viewDidLoad() {
@@ -63,7 +77,8 @@ class musicNotePlayVC: UIViewController {
  
         setPianoView()
       
-        let imageGif = UIImage.gifImageWithName("playing")
+//        let imageGif = UIImage.gifImageWithName("playing")
+        let imageGif = UIImage(named: "main_playstart")
         main_playstart_Btn.setImage(imageGif, for: .normal)
         
         setSubNavMenu()
@@ -91,6 +106,31 @@ class musicNotePlayVC: UIViewController {
             selector: #selector(self.receiveNotification(_:)),
             name: NSNotification.Name(rawValue: "nowNote"),
             object: nil)
+        
+        if UserDefaultsKeys.LAST_NOTE_NAME == "" {
+            emptyNoteView = Bundle.main.loadNibNamed("EmptyNoteView", owner: self, options: nil)?.first as! UIView
+            emptyNoteView.frame = self.noteBackground.bounds
+            self.noteBackground.addSubview(emptyNoteView)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.bmpLabel.text = "\(Int(self.bmpSlider.value)) bmp"
+        if UserDefaultsKeys.LAST_NOTE_NAME != "" {
+            self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME)
+        }
+    }
+    
+    // 左边slider
+    @IBAction func didDragBmpSlider(_ sender: UISlider) {
+        self.bmpLabel.text = "\(Int(sender.value)) bmp"
+    }
+    
+    @IBAction func didFinishDragSlider(_ sender: UISlider) {
+        print(Int(sender.value))
+        self.didFinishPlay()
     }
     
     
@@ -136,97 +176,140 @@ class musicNotePlayVC: UIViewController {
         self.view.bringSubview(toFront: pageControl)
     }
 
-    func test() {
-        
+    
+    var didBegin = false
+    // 寫死兩個sroreView
+    func showScoreView(file: String) {
+        scoreView.setBeat(setBeat: bmpSlider.value / 60)
+        scoreView2.setBeat(setBeat: bmpSlider.value / 60)
         // 讀取 JSON 字串資料
-        let url = Bundle.main.url(forResource: "score2", withExtension: "json")
+        guard let url = Bundle.main.url(forResource: file, withExtension: "json") else { return }
+        self.currentSongName = file
         do {
-            let data = try Data(contentsOf: url!)
+            let data = try Data(contentsOf: url)
             let jsonArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! Array<Array<Array<Dictionary<String,String>>>>
             let allSegs = jsonArray.count
-            scrollView = NoteScrollView(frame: self.noteBackground.frame)
-            scrollView.delegate = self
+//            scoreView = MusicScoreView()
+//            scoreView2 = MusicScoreView()
+            scoreView.setConfig(in: 3, n2: 4, n3: 3, n4: 4)
+//            scoreView.delegate = self
+            //scoreView.setScore(in: jsonArray)
             
-            
-            
-            let scoreView = MusicScoreView(frame: CGRect(x: 0, y: 0, width: self.noteBackground.frame.width, height: self.noteBackground.frame.height / 2))
-            scoreView.setConfig(in: 4, n2: 4, n3: 4, n4: 4)
-            views.append(scoreView)
-//            views = self.scrollView.createNoteViews()
-//            self.scrollView.setupNoteScrollView(views: views)
-            
-//            self.noteBackground.addSubview(scrollView)
-            
-            
-            var n = scoreView.setScore(in: jsonArray, start:0)
+            // 載入樂譜有幾列, 需要幾個 ScoreView
+            let lines = scoreView.getScoreViewCount(in: jsonArray)
+            print("scoreview count = \(lines)")
+            var order = 0
+            var n = scoreView.setScore(in: jsonArray, start:0, order: order)
             
             if n<allSegs-1 {
+                order += 1
                 scoreView.setNextScoreView(in: scoreView2)
                 scoreView2.isHidden = false
-                scoreView2.setConfig(in: 4, n2: 4, n3: 4, n4: 4)
-                scoreView2.setScore(in: jsonArray, start:n+1)
+                scoreView2.setConfig(in: 3, n2: 4, n3: 3, n4: 4)
+                scoreView2.setScore(in: jsonArray, start:n+1, order: order)
+                scoreView2.delegate = self
             }
             
+            didBegin = true
             
         }catch{
             print(error.localizedDescription)
         }
-        
     }
     
     @IBAction func onClick_main_slower_Btn(_ sender: Any) {
-        
-        DispatchQueue.main.async {
-            let note1 = Pitch(midiNote: 60)
-            self.pianoBackground.pianoView.highlightNote(note: note1)
-            let note2 = Pitch(midiNote: 62)
-            self.pianoBackground.pianoView.selectNote(note: note2)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                self.pianoBackground.pianoView.unhighlightNote(note: note1)
-                self.pianoBackground.pianoView.deselectNote(note: note2)
-            })
-        }
+//        if !isPlaying{
+//            scoreView.clearAllNotes()
+//            scoreView2.clearAllNotes()
+//            showScoreView(file: "score1")
+//        }
+//
+//        DispatchQueue.main.async {
+//            let note1 = Pitch(midiNote: 60)
+//            self.pianoBackground.pianoView.highlightNote(note: note1)
+//            let note2 = Pitch(midiNote: 62)
+//            self.pianoBackground.pianoView.selectNote(note: note2)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+//                self.pianoBackground.pianoView.unhighlightNote(note: note1)
+//                self.pianoBackground.pianoView.deselectNote(note: note2)
+//            })
+//        }
         
     }
     
     @IBAction func onClick_main_faster_Btn(_ sender: Any) {
-        
-        DispatchQueue.main.async {
-            let note1 = Pitch(midiNote: 61)
-            self.pianoBackground.pianoView.highlightNote(note: note1)
-            let note2 = Pitch(midiNote: 63)
-            self.pianoBackground.pianoView.selectNote(note: note2)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                self.pianoBackground.pianoView.unhighlightNote(note: note1)
-                self.pianoBackground.pianoView.deselectNote(note: note2)
-            })
-        }
+//        if !isPlaying{
+//            scoreView.clearAllNotes()
+//            scoreView2.clearAllNotes()
+//            showScoreView(file: "score2")
+//        }
+//        DispatchQueue.main.async {
+//            let note1 = Pitch(midiNote: 61)
+//            self.pianoBackground.pianoView.highlightNote(note: note1)
+//            let note2 = Pitch(midiNote: 63)
+//            self.pianoBackground.pianoView.selectNote(note: note2)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+//                self.pianoBackground.pianoView.unhighlightNote(note: note1)
+//                self.pianoBackground.pianoView.deselectNote(note: note2)
+//            })
+//        }
         
     }
-
-    @IBAction func onClick_main_playstart_Btn(_ sender: Any) {
-        if self.scrollView == nil {
-            self.test()
-            return
+    @IBAction func onClick_main_just_play_Btn(_ sender: Any) {
+        if !self.isJustplay {
+            selectionView = Bundle.main.loadNibNamed("SelectionView", owner: self, options: nil)?.first as? SelectionView
+            selectionView.frame = self.musicNoteView.frame
+            selectionView.delegate = self
+            selectionView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+            self.view.addSubview(selectionView)
+        }else {
+            self.audioPlayer?.stop()
+            self.main_justplay_Btn.setImage(UIImage(named: "main_justplay"), for: .normal)
+            self.isJustplay = false
+//            let imageGif = UIImage.gifImageWithName("playing")
+            let imageGif = UIImage(named: "main_playstart")
+            main_playstart_Btn.setImage(imageGif, for: .normal)
         }
         
-        if !isPlaying {
-            let imageGif = UIImage.gifImageWithName("recording")
-            main_playstart_Btn.setImage(imageGif, for: .normal)
-            isPlaying = !isPlaying
-            
-            
-            
-            scoreView.startBar()
+        
+    }
+    
+    
+    @IBAction func onClick_main_playstart_Btn(_ sender: Any) {
+        if self.isJustplay {
+            if !isPlaying {
+//                let imageGif = UIImage.gifImageWithName("recording")
+                let imageGif = UIImage(named: "main_playstart copy")
+                main_playstart_Btn.setImage(imageGif, for: .normal)
+                isPlaying = !isPlaying
+                self.audioPlayer?.play()
+            }else {
+                self.audioPlayer?.pause()
+//                let imageGif = UIImage.gifImageWithName("playing")
+                let imageGif = UIImage(named: "main_playstart")
+                main_playstart_Btn.setImage(imageGif, for: .normal)
+                isPlaying = !isPlaying
+            }
         }else {
-            let imageGif = UIImage.gifImageWithName("playing")
-            main_playstart_Btn.setImage(imageGif, for: .normal)
-            isPlaying = !isPlaying
+            if !self.didBegin {
+                return
+            }
             
-            
-            
-            scoreView.pauseBar()
-            scoreView2.pauseBar()
+            if !isPlaying {
+//                let imageGif = UIImage.gifImageWithName("recording")
+                let imageGif = UIImage(named: "main_playstart copy")
+                main_playstart_Btn.setImage(imageGif, for: .normal)
+                isPlaying = !isPlaying
+                 self.bmpSlider.isUserInteractionEnabled = false
+                scoreView.startBar()
+            }else {
+//                let imageGif = UIImage.gifImageWithName("playing")
+                let imageGif = UIImage(named: "main_playstart")
+                main_playstart_Btn.setImage(imageGif, for: .normal)
+                isPlaying = !isPlaying
+                scoreView.pauseBar()
+                scoreView2.pauseBar()
+            }
         }
     }
     
@@ -234,6 +317,9 @@ class musicNotePlayVC: UIViewController {
     
     
     @IBAction func onClick_main_keyboard_Btn(_ sender: Any) {
+        if isPlaying {
+            self.onClick_main_playstart_Btn(self)
+        }
         if !pianoIsVisible {
             pianoIsVisible = true
             self.musicNoteView.layoutIfNeeded()
@@ -272,19 +358,19 @@ class musicNotePlayVC: UIViewController {
     }
     
     
-    var ii = 0
+//    var ii = 0
     
     // 即時收到目前 bar 的音符音階資料
     @objc func receiveNotification(_ notification: Notification){
-        if ii == 2 {
+//        if ii == 2 {
             self.pianoBackground.pianoView.deselectAll()
-            ii = 0
-        }
+//            ii = 0
+//        }
         if let (tone,note) = notification.object as? (Int,Float) {
-            print("Got it => \(tone + 53) : \(note)")
-            let note = Pitch(midiNote: tone + 53)
+            print("Got it => \(tone) : \(note)")
+            let note = Pitch(midiNote: tone + 59)
             self.pianoBackground.pianoView.selectNote(note: note)
-            ii += 1
+//            ii += 1
             
         }
     }
@@ -319,4 +405,82 @@ extension musicNotePlayVC: UIScrollViewDelegate {
 
     }
 
+}
+
+extension musicNotePlayVC: MusicScoreViewDelegate {
+    func didFinishPlay() {
+        guard let song = self.currentSongName else { return }
+        self.scoreView2.stopBar()
+//        let imageGif = UIImage.gifImageWithName("playing")
+        let imageGif = UIImage(named: "main_playstart")
+        main_playstart_Btn.setImage(imageGif, for: .normal)
+        self.isPlaying = false
+        self.bmpSlider.isUserInteractionEnabled = true
+        self.showScoreView(file: song)
+    }
+}
+
+extension musicNotePlayVC: SelectionViewDelegate {
+    func didTapCancel() {
+        if self.selectionView != nil {
+            self.main_justplay_Btn.setImage(UIImage(named: "main_justplay"), for: .normal)
+            self.isJustplay = false
+            self.selectionView.removeFromSuperview()
+            self.selectionView = nil
+        }
+    }
+    
+    func playTest1() {
+//        showScoreView(file: "score1")
+        do {
+            if let fileURL = Bundle.main.path(forResource: "score1", ofType: "wav") {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileURL))
+                audioPlayer?.numberOfLoops = 0
+//                audioPlayer?.play()
+            } else {
+                print("No file with specified name exists")
+            }
+        } catch let error {
+            print("Can't play the audio file failed with an error \(error.localizedDescription)")
+        }
+        if self.selectionView != nil {
+            self.main_justplay_Btn.setImage(UIImage(named: "main_justplay_speed2"), for: .normal)
+            self.isJustplay = true
+            self.selectionView.removeFromSuperview()
+            self.selectionView = nil
+        }
+    }
+    
+    func playTest2() {
+//        showScoreView(file: "score2")
+        do {
+            if let fileURL = Bundle.main.path(forResource: "score1", ofType: "wav") {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileURL))
+                audioPlayer?.numberOfLoops = 0
+//                audioPlayer?.play()
+            } else {
+                print("No file with specified name exists")
+            }
+        } catch let error {
+            print("Can't play the audio file failed with an error \(error.localizedDescription)")
+        }
+        if self.selectionView != nil {
+            self.main_justplay_Btn.setImage(UIImage(named: "main_justplay_speed2"), for: .normal)
+            self.isJustplay = true
+            self.selectionView.removeFromSuperview()
+            self.selectionView = nil
+        }
+    }
+}
+
+
+// did select Note delegate
+extension musicNotePlayVC: NoteSelectionDelegate {
+    func didSelectNote(name: String) {
+        if self.emptyNoteView != nil {
+            self.emptyNoteView.removeFromSuperview()
+            self.self.emptyNoteView = nil
+        }
+        self.showScoreView(file: name)
+    }
 }

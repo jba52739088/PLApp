@@ -16,22 +16,32 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingView" translatesAutoresizingMaskIntoConstraints="NO" id="oEa-cc-LQZ">
-                    <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainpage_ants" translatesAutoresizingMaskIntoConstraints="NO" id="Nv3-em-5Dy">
+                    <rect key="frame" x="276" y="320" width="472" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="WBg-Uo-ORm"/>
+                        <constraint firstAttribute="width" constant="472" id="b77-nl-5da"/>
+                    </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="努力载入中......" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EM3-60-AcO">
+                    <rect key="frame" x="431.5" y="448" width="161" height="28"/>
+                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="23"/>
+                    <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.97647058819999999" green="0.96470588239999999" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="oEa-cc-LQZ" secondAttribute="bottom" id="Cct-ZM-9Kd"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oEa-cc-LQZ" secondAttribute="trailing" id="XFD-rq-MHP"/>
-                <constraint firstItem="oEa-cc-LQZ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="bdT-CV-i0G"/>
-                <constraint firstItem="oEa-cc-LQZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="boQ-wp-rp2"/>
+                <constraint firstItem="Nv3-em-5Dy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3he-nw-GRx"/>
+                <constraint firstItem="EM3-60-AcO" firstAttribute="centerX" secondItem="Nv3-em-5Dy" secondAttribute="centerX" id="UN1-qM-8Z4"/>
+                <constraint firstItem="Nv3-em-5Dy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Xh6-JQ-LUt"/>
+                <constraint firstItem="EM3-60-AcO" firstAttribute="top" secondItem="Nv3-em-5Dy" secondAttribute="bottom" id="krG-ML-7kQ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="19.921875" y="41.40625"/>
         </view>
     </objects>
     <resources>
-        <image name="loadingView" width="1350" height="1028"/>
+        <image name="mainpage_ants" width="647" height="109"/>
     </resources>
 </document>

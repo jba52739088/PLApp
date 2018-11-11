@@ -29,6 +29,7 @@ class ModifyPwdView: UIView {
         
     }
     
+    
     @IBAction func ToCheckOldPwd(_ sender: Any) {
         oldPwdTextField.resignFirstResponder()
         newPwdTextField.resignFirstResponder()
@@ -60,12 +61,14 @@ class ModifyPwdView: UIView {
                     if isSucceed {
                         self.checkNewPwdLabel.text = "您的密码已更新成功!!!"
                         self.checkNewPwdImage.image = UIImage(named: "accounts_password_finish")
+                        self.re_newPwdTextField.background = UIImage(named: "accounts_password_enterbar")
                         for view in self.newPwdIncorrectViews {
                             view.isHidden = false
                         }
                     }else {
                         self.checkNewPwdLabel.text = "密码不符"
                         self.checkNewPwdImage.image = UIImage(named: "accounts_password_error")
+                        self.re_newPwdTextField.background = UIImage(named: "accounts_password_enterbar_error")
                         for view in self.newPwdIncorrectViews {
                             view.isHidden = false
                         }
@@ -74,6 +77,7 @@ class ModifyPwdView: UIView {
             }else {
                 self.checkNewPwdLabel.text = "密码不符"
                 self.checkNewPwdImage.image = UIImage(named: "accounts_password_error")
+                self.re_newPwdTextField.background = UIImage(named: "accounts_password_enterbar_error")
                 for view in self.newPwdIncorrectViews {
                     view.isHidden = false
                 }
