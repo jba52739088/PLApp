@@ -25,24 +25,31 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IUI-F4-Cmd">
                     <rect key="frame" x="184.5" y="156" width="450" height="133.5"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account_faq_question" translatesAutoresizingMaskIntoConstraints="NO" id="1oj-PH-dZn">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bql-EW-UbJ">
                             <rect key="frame" x="0.0" y="0.0" width="133.5" height="133.5"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="1oj-PH-dZn" secondAttribute="height" multiplier="1:1" id="DEY-8a-e2J"/>
+                                <constraint firstAttribute="width" secondItem="bql-EW-UbJ" secondAttribute="height" multiplier="1:1" id="Xtt-cE-WqI"/>
                             </constraints>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account_faq_guideline" translatesAutoresizingMaskIntoConstraints="NO" id="N7k-RN-FBb">
+                            <state key="normal" image="account_faq_question"/>
+                            <connections>
+                                <action selector="TapQABtn:" destination="O2H-Ok-agi" eventType="touchUpInside" id="igo-BK-qXr"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9b-En-pVd">
                             <rect key="frame" x="316.5" y="0.0" width="133.5" height="133.5"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="N7k-RN-FBb" secondAttribute="height" multiplier="1:1" id="m9t-e6-Qq8"/>
+                                <constraint firstAttribute="width" secondItem="B9b-En-pVd" secondAttribute="height" multiplier="1:1" id="YTU-Km-iqe"/>
                             </constraints>
-                        </imageView>
+                            <state key="normal" image="account_faq_guideline"/>
+                            <connections>
+                                <action selector="tapSupportBtn:" destination="O2H-Ok-agi" eventType="touchUpInside" id="wmH-SK-XH7"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="1oj-PH-dZn" firstAttribute="width" secondItem="1oj-PH-dZn" secondAttribute="height" multiplier="1:1" id="A2n-cK-qso"/>
-                        <constraint firstItem="1oj-PH-dZn" firstAttribute="width" secondItem="1oj-PH-dZn" secondAttribute="height" multiplier="1:1" id="GJK-eH-0C9"/>
-                        <constraint firstItem="1oj-PH-dZn" firstAttribute="height" secondItem="IUI-F4-Cmd" secondAttribute="height" id="jRb-qN-k3Y"/>
-                        <constraint firstItem="N7k-RN-FBb" firstAttribute="height" secondItem="IUI-F4-Cmd" secondAttribute="height" id="xhx-xQ-kNI"/>
+                        <constraint firstItem="bql-EW-UbJ" firstAttribute="height" secondItem="IUI-F4-Cmd" secondAttribute="height" id="NCT-Xz-IKL"/>
+                        <constraint firstItem="B9b-En-pVd" firstAttribute="width" secondItem="B9b-En-pVd" secondAttribute="height" multiplier="1:1" id="aHf-nQ-M3l"/>
+                        <constraint firstItem="B9b-En-pVd" firstAttribute="height" secondItem="IUI-F4-Cmd" secondAttribute="height" id="mav-z3-ro6"/>
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="常见问题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vaa-bc-SAK">
@@ -62,14 +69,14 @@
             <constraints>
                 <constraint firstItem="Vaa-bc-SAK" firstAttribute="top" secondItem="IUI-F4-Cmd" secondAttribute="bottom" constant="20" id="4tQ-Ly-Pbp"/>
                 <constraint firstItem="F2F-Ka-dIf" firstAttribute="centerY" secondItem="Vaa-bc-SAK" secondAttribute="centerY" id="MmI-Ts-kwb"/>
-                <constraint firstItem="F2F-Ka-dIf" firstAttribute="centerX" secondItem="N7k-RN-FBb" secondAttribute="centerX" id="SZ9-G9-kkU"/>
                 <constraint firstItem="IMp-nQ-G6Z" firstAttribute="centerX" secondItem="O2H-Ok-agi" secondAttribute="centerX" id="UPv-eE-5h9"/>
-                <constraint firstItem="Vaa-bc-SAK" firstAttribute="centerX" secondItem="1oj-PH-dZn" secondAttribute="centerX" id="Z1Q-st-bAG"/>
                 <constraint firstItem="IUI-F4-Cmd" firstAttribute="centerX" secondItem="O2H-Ok-agi" secondAttribute="centerX" id="aE6-EP-cL2"/>
                 <constraint firstItem="IUI-F4-Cmd" firstAttribute="height" secondItem="O2H-Ok-agi" secondAttribute="height" multiplier="0.3" id="cg6-pm-wD5"/>
                 <constraint firstItem="IUI-F4-Cmd" firstAttribute="width" secondItem="O2H-Ok-agi" secondAttribute="width" multiplier="0.55" id="eyG-zX-reZ"/>
+                <constraint firstItem="bql-EW-UbJ" firstAttribute="centerX" secondItem="Vaa-bc-SAK" secondAttribute="centerX" id="fS0-ou-s7l"/>
                 <constraint firstItem="IUI-F4-Cmd" firstAttribute="centerY" secondItem="O2H-Ok-agi" secondAttribute="centerY" id="g4g-ch-0RT"/>
                 <constraint firstItem="IMp-nQ-G6Z" firstAttribute="top" secondItem="6Ra-WA-nfY" secondAttribute="top" constant="61" id="hsm-Hc-hxu"/>
+                <constraint firstItem="B9b-En-pVd" firstAttribute="centerX" secondItem="F2F-Ka-dIf" secondAttribute="centerX" id="kLN-8k-rG9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="6Ra-WA-nfY"/>

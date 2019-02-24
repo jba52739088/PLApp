@@ -25,31 +25,62 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Bc-Xo-9Sk">
                     <rect key="frame" x="102.5" y="151.5" width="614" height="142"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_info_boy" translatesAutoresizingMaskIntoConstraints="NO" id="FGY-RY-FyX">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v84-7q-bxv">
                             <rect key="frame" x="0.0" y="0.0" width="142.5" height="142"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="FGY-RY-FyX" secondAttribute="height" multiplier="1:1" id="Ttf-Tn-OoA"/>
+                                <constraint firstAttribute="width" secondItem="v84-7q-bxv" secondAttribute="height" multiplier="1:1" id="gvk-xA-36y"/>
                             </constraints>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_info_girl" translatesAutoresizingMaskIntoConstraints="NO" id="IyT-Ig-oKo">
+                            <state key="normal" backgroundImage="accounts_head_boy"/>
+                            <connections>
+                                <action selector="didSelectImage:" destination="iN0-l3-epB" eventType="touchUpInside" id="HSb-pt-v8a"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiK-qA-Lgz">
                             <rect key="frame" x="236" y="0.0" width="142" height="142"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="IyT-Ig-oKo" secondAttribute="height" multiplier="1:1" id="uOH-hh-P7C"/>
+                                <constraint firstAttribute="width" secondItem="hiK-qA-Lgz" secondAttribute="height" multiplier="1:1" id="hiV-0f-9Tx"/>
                             </constraints>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_head_custom_add" translatesAutoresizingMaskIntoConstraints="NO" id="Ehb-7D-85d">
+                            <state key="normal" backgroundImage="accounts_info_girl"/>
+                            <connections>
+                                <action selector="didSelectImage:" destination="iN0-l3-epB" eventType="touchUpInside" id="iqx-Na-8Dp"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Hf-WT-5je">
                             <rect key="frame" x="471.5" y="0.0" width="142.5" height="142"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_head_custom_add" translatesAutoresizingMaskIntoConstraints="NO" id="Ehb-7D-85d">
+                                    <rect key="frame" x="0.0" y="0.0" width="142.5" height="142"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="Ehb-7D-85d" secondAttribute="height" multiplier="1:1" id="DVn-eK-Xev"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOI-ep-e6F">
+                                    <rect key="frame" x="0.0" y="0.0" width="142.5" height="142"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" backgroundImage="accounts_head_custom"/>
+                                    <connections>
+                                        <action selector="didSelectImage:" destination="iN0-l3-epB" eventType="touchUpInside" id="GYz-hC-kOl"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="Ehb-7D-85d" secondAttribute="height" multiplier="1:1" id="DVn-eK-Xev"/>
+                                <constraint firstItem="Ehb-7D-85d" firstAttribute="top" secondItem="0Hf-WT-5je" secondAttribute="top" id="3IE-rf-x3B"/>
+                                <constraint firstAttribute="width" secondItem="0Hf-WT-5je" secondAttribute="height" multiplier="1:1" id="FMd-6e-GLb"/>
+                                <constraint firstItem="Ehb-7D-85d" firstAttribute="leading" secondItem="0Hf-WT-5je" secondAttribute="leading" id="NM6-er-Pep"/>
+                                <constraint firstAttribute="trailing" secondItem="Ehb-7D-85d" secondAttribute="trailing" id="UZU-iR-1hr"/>
+                                <constraint firstAttribute="trailing" secondItem="JOI-ep-e6F" secondAttribute="trailing" id="cyj-v1-Tvu"/>
+                                <constraint firstItem="JOI-ep-e6F" firstAttribute="leading" secondItem="0Hf-WT-5je" secondAttribute="leading" id="dH0-Du-0Gz"/>
+                                <constraint firstAttribute="bottom" secondItem="JOI-ep-e6F" secondAttribute="bottom" id="mw0-T7-e1E"/>
+                                <constraint firstItem="JOI-ep-e6F" firstAttribute="top" secondItem="0Hf-WT-5je" secondAttribute="top" id="qcF-gd-gpC"/>
+                                <constraint firstAttribute="bottom" secondItem="Ehb-7D-85d" secondAttribute="bottom" id="wcf-pQ-pLj"/>
                             </constraints>
-                        </imageView>
+                        </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="FGY-RY-FyX" firstAttribute="height" secondItem="3Bc-Xo-9Sk" secondAttribute="height" id="3RD-KG-CVc"/>
-                        <constraint firstItem="Ehb-7D-85d" firstAttribute="height" secondItem="3Bc-Xo-9Sk" secondAttribute="height" id="AiA-Rq-gCl"/>
-                        <constraint firstItem="IyT-Ig-oKo" firstAttribute="height" secondItem="3Bc-Xo-9Sk" secondAttribute="height" id="dzQ-fV-cgi"/>
-                        <constraint firstItem="FGY-RY-FyX" firstAttribute="width" secondItem="FGY-RY-FyX" secondAttribute="height" multiplier="1:1" id="g7g-aK-G78"/>
-                        <constraint firstItem="FGY-RY-FyX" firstAttribute="width" secondItem="FGY-RY-FyX" secondAttribute="height" multiplier="1:1" id="k89-Eh-lJO"/>
+                        <constraint firstItem="v84-7q-bxv" firstAttribute="height" secondItem="3Bc-Xo-9Sk" secondAttribute="height" id="OWO-gi-Xyp"/>
+                        <constraint firstItem="hiK-qA-Lgz" firstAttribute="height" secondItem="3Bc-Xo-9Sk" secondAttribute="height" id="b2h-In-nbo"/>
+                        <constraint firstItem="0Hf-WT-5je" firstAttribute="height" secondItem="3Bc-Xo-9Sk" secondAttribute="height" id="nh6-iw-ny8"/>
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小猴子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pti-7H-LXv">
@@ -73,27 +104,34 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="pti-7H-LXv" firstAttribute="centerX" secondItem="FGY-RY-FyX" secondAttribute="centerX" id="ISm-eD-b8A"/>
+                <constraint firstItem="hiK-qA-Lgz" firstAttribute="centerX" secondItem="Alp-c2-AmF" secondAttribute="centerX" id="AEK-QO-7ow"/>
                 <constraint firstItem="Alp-c2-AmF" firstAttribute="centerY" secondItem="pti-7H-LXv" secondAttribute="centerY" id="K0g-8A-Rrl"/>
+                <constraint firstItem="v84-7q-bxv" firstAttribute="centerX" secondItem="pti-7H-LXv" secondAttribute="centerX" id="MtL-cY-B1Y"/>
                 <constraint firstItem="3Bc-Xo-9Sk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SUP-WE-BxR"/>
-                <constraint firstItem="2bD-OG-rRu" firstAttribute="centerX" secondItem="Ehb-7D-85d" secondAttribute="centerX" id="ZlZ-zg-VHC"/>
                 <constraint firstItem="peV-JA-vdd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aJA-TJ-mmz"/>
                 <constraint firstItem="pti-7H-LXv" firstAttribute="top" secondItem="3Bc-Xo-9Sk" secondAttribute="bottom" constant="20" id="dAg-m1-zbn"/>
                 <constraint firstItem="3Bc-Xo-9Sk" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.32" id="eNS-K8-Lec"/>
                 <constraint firstItem="3Bc-Xo-9Sk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ek1-D3-sHt"/>
                 <constraint firstItem="3Bc-Xo-9Sk" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.75" id="hwh-aO-3qz"/>
-                <constraint firstItem="Alp-c2-AmF" firstAttribute="centerX" secondItem="IyT-Ig-oKo" secondAttribute="centerX" id="kAh-X1-M6H"/>
                 <constraint firstItem="2bD-OG-rRu" firstAttribute="centerY" secondItem="Alp-c2-AmF" secondAttribute="centerY" id="kJ5-g6-iew"/>
                 <constraint firstItem="peV-JA-vdd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="61" id="let-lv-mXU"/>
+                <constraint firstItem="0Hf-WT-5je" firstAttribute="centerX" secondItem="2bD-OG-rRu" secondAttribute="centerX" id="pmK-2j-k7h"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="customImgView" destination="Ehb-7D-85d" id="AQ3-jk-dZQ"/>
+                <outletCollection property="buttons" destination="v84-7q-bxv" collectionClass="NSMutableArray" id="7j5-XI-Dxo"/>
+                <outletCollection property="buttons" destination="hiK-qA-Lgz" collectionClass="NSMutableArray" id="eM0-Uh-enF"/>
+                <outletCollection property="buttons" destination="JOI-ep-e6F" collectionClass="NSMutableArray" id="HpW-Yu-QWy"/>
+            </connections>
             <point key="canvasLocation" x="138.40000000000001" y="154.27286356821591"/>
         </view>
     </objects>
     <resources>
+        <image name="accounts_head_boy" width="145" height="145"/>
+        <image name="accounts_head_custom" width="146" height="146"/>
         <image name="accounts_head_custom_add" width="146" height="146"/>
-        <image name="accounts_info_boy" width="106" height="106"/>
         <image name="accounts_info_girl" width="106" height="106"/>
     </resources>
 </document>

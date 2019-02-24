@@ -2,15 +2,15 @@
 //  accountVC.swift
 //  pianoLearningApp
 //
-//  Created by 黃恩祐 on 2018/10/13.
-//  Copyright © 2018年 ENYUHUANG. All rights reserved.
-//
+
 
 import UIKit
 
 protocol AccountPageDelegat {
     func didModifyUserData(birth: String, phone: String, address: String, completionHandler:@escaping (Bool) -> Void)
     func didModifyPassword(password: String, completionHandler:@escaping (Bool) -> Void)
+    func selectImageFromImagePicker()
+    func sendFeedback(message: String, completionHandler:@escaping (Bool) -> Void)
 }
 
 class AccountVC: UIViewController {
@@ -18,6 +18,10 @@ class AccountVC: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var buttonLabels: [UILabel]!
+
+    var AddPhoto: AddPhoto?
+    var FeedbackView: FeedbackView?
+    var imagePicker: UIImagePickerController?
     var customviews: [UIView] = []
     var selectedIndex: Int = 0
 
@@ -35,18 +39,20 @@ class AccountVC: UIViewController {
         ModifyPwdView.frame = self.contentView.bounds
         ModifyPwdView.delegate = self
         customviews.append(ModifyPwdView)
-        let AddPhoto: AddPhoto = Bundle.main.loadNibNamed("AddPhoto", owner: self, options: nil)?.first as! AddPhoto
-        AddPhoto.frame = self.contentView.bounds
-        customviews.append(AddPhoto)
+        AddPhoto = Bundle.main.loadNibNamed("AddPhoto", owner: self, options: nil)?.first as! AddPhoto
+        AddPhoto?.frame = self.contentView.bounds
+        AddPhoto?.delegate = self
+        customviews.append(AddPhoto ?? UIView())
         let QAView: QAView = Bundle.main.loadNibNamed("QAView", owner: self, options: nil)?.first as! QAView
         QAView.frame = self.contentView.bounds
         customviews.append(QAView)
+        FeedbackView = Bundle.main.loadNibNamed("FeedbackView", owner: self, options: nil)?.first as! FeedbackView
+        FeedbackView?.frame = self.contentView.bounds
+        FeedbackView?.delegate = self
+        customviews.append(FeedbackView ?? UIView())
         let LanguageView: LanguageView = Bundle.main.loadNibNamed("LanguageView", owner: self, options: nil)?.first as! LanguageView
         LanguageView.frame = self.contentView.bounds
         customviews.append(LanguageView)
-        let FeedbackView: FeedbackView = Bundle.main.loadNibNamed("FeedbackView", owner: self, options: nil)?.first as! FeedbackView
-        FeedbackView.frame = self.contentView.bounds
-        customviews.append(FeedbackView)
         let VolumeView: VolumeView = Bundle.main.loadNibNamed("VolumeView", owner: self, options: nil)?.first as! VolumeView
         VolumeView.frame = self.contentView.bounds
         customviews.append(VolumeView)
@@ -54,6 +60,14 @@ class AccountVC: UIViewController {
     }
     
     @IBAction func didTapTabBar(_ sender: UIButton) {
+        for btn in self.buttons {
+            btn.alpha = 0.3
+        }
+        for lbs in self.buttonLabels {
+            lbs.alpha = 0.3
+        }
+        sender.alpha = 1
+        self.buttonLabels[sender.tag].alpha = 1
         let previousIndex = selectedIndex
         selectedIndex = sender.tag
         let previousView = customviews[previousIndex]
@@ -61,12 +75,25 @@ class AccountVC: UIViewController {
         let view = customviews[selectedIndex]
         view.frame = contentView.bounds
         contentView.addSubview(view)
-        
     }
     
 }
 
 extension AccountVC: AccountPageDelegat {
+    func sendFeedback(message: String, completionHandler: @escaping (Bool) -> Void) {
+        APIManager.shared.uploadUserfeedBack(content: message) { (isSucceed) in
+            if isSucceed {
+                completionHandler(true)
+            }
+        }
+    }
+    
+    func selectImageFromImagePicker() {
+        self.imagePicker =  UIImagePickerController()
+        self.imagePicker?.delegate = self
+        self.imagePicker?.sourceType = .photoLibrary
+        self.present(self.imagePicker!, animated: true, completion: nil)
+    }
     
     func didModifyPassword(password: String, completionHandler: @escaping (Bool) -> Void) {
         guard let user = My else { return }
@@ -93,4 +120,27 @@ extension AccountVC: AccountPageDelegat {
         }
     }
 
+}
+
+extension AccountVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true)
+        //        self.popWindowsDidRemove()
+        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
+            let image = selectedImage.fixOrientation(){
+            let imageData = UIImageJPEGRepresentation(image, 0.2)
+            APIManager.shared.uploadUserImage(id: "\(My?.id ?? 0)", icon: imageData?.base64EncodedString() ?? "") { (isSucceed) in
+                if isSucceed {
+                    print("!!!!!!")
+                    self.AddPhoto?.customImgView.image = image
+                    self.AddPhoto?.buttons[0].setBackgroundImage(UIImage(named: "accounts_head_boy_unchosen"), for: .normal)
+                    self.AddPhoto?.buttons[1].setBackgroundImage(UIImage(named: "accounts_head_girl_unchosen"), for: .normal)
+                }
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
 }

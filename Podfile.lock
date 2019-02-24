@@ -1,36 +1,44 @@
 PODS:
   - Alamofire (4.7.3)
   - AudioKit/Core (4.4.0)
+  - AVAudioSessionSetCategorySwift (1.0.0)
   - IQKeyboardManagerSwift (6.0.5)
   - LSFloatingActionMenu (1.0.0)
   - MusicTheorySwift (1.1.0)
   - PianoView (0.0.3):
     - MusicTheorySwift
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - AudioKit/Core (~> 4.4.0)
+  - AVAudioSessionSetCategorySwift
   - IQKeyboardManagerSwift (~> 6.0.4)
   - LSFloatingActionMenu (~> 1.0.0)
   - PianoView (~> 0.0.3)
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AudioKit
+    - AVAudioSessionSetCategorySwift
     - IQKeyboardManagerSwift
     - LSFloatingActionMenu
     - MusicTheorySwift
     - PianoView
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AudioKit: 79c2b23cd00beb656938aa0b81b614391f17eaa3
+  AVAudioSessionSetCategorySwift: ec124e48dd653134ac6be1ef12cf9a90a6a32e73
   IQKeyboardManagerSwift: c14eca30f6001457d6ddf25e313f23fb6578c41c
   LSFloatingActionMenu: dc2d6449e817cb2eb3c3a9a751bd49c3aae416b2
   MusicTheorySwift: 555d61fc174c36c7cb1a41cf20b54628ba6b3e32
   PianoView: df6fffb38f3866ef3c80bbf3c58eaf24cc9b2164
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: df29bb6694b397515bf06bc7d6566c48b47cdd53
+PODFILE CHECKSUM: 21b8dcc5f806fd9eedef33245c2195f815a87d45
 
 COCOAPODS: 1.5.3

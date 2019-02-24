@@ -2,9 +2,6 @@
 //  UserView.swift
 //  pianoLearningApp
 //
-//  Created by 黃恩祐 on 2018/10/13.
-//  Copyright © 2018年 ENYUHUANG. All rights reserved.
-//
 
 import UIKit
 
@@ -30,6 +27,11 @@ class UserView: UIView {
         initView()
     }
     
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        initView()
+    }
+    
     @IBAction func doModify(_ sender: UIButton) {
         if isEditing {
             self.delegate?.didModifyUserData(birth: self.birthTextField.text ?? "", phone: self.phoneTextField.text ?? "", address: self.addressTextField.text ?? ""){_ in
@@ -41,6 +43,17 @@ class UserView: UIView {
     }
     
     func initView() {
+        switch UserDefaultsKeys.USER_PHOTO_TAG {
+        case 0:
+            self.userPhoto.image = UIImage(named: "accounts_info_boy")
+        case 1:
+            self.userPhoto.image = UIImage(named: "accounts_head_girl")
+        case 2:
+            self.initUserPhoto()
+        default:
+            self.userPhoto.image = UIImage(named: "accounts_info_boy")
+        }
+        
         for imgView in iconSet {
             imgView.image = UIImage(named: iconNames[imgView.tag])
         }
@@ -55,6 +68,21 @@ class UserView: UIView {
         addressTextField.text = My?.addr
         isEditing = false
         showDatePickerForDateField()
+    }
+    
+    func initUserPhoto() {
+        
+        if let imageData = Data(base64Encoded: My?.image64 ?? ""),
+            let image = UIImage(data: imageData) {
+            self.userPhoto.image = image
+        }else {
+            self.userPhoto.image = UIImage(named: "accounts_info_boy")
+        }
+        self.userPhoto.contentMode = .scaleToFill
+        self.userPhoto.clipsToBounds = true
+        self.userPhoto.layer.cornerRadius = self.userPhoto.frame.width / 2
+        self.userPhoto.layer.masksToBounds = true
+        
     }
     
     func editingView() {
@@ -72,7 +100,7 @@ class UserView: UIView {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
         picker.addTarget(self, action: #selector(updateDateField(sender:)), for: .valueChanged)
-        picker.date = NSDate(dateString: My?.birth ?? "2018-01-01") as Date
+        picker.date = NSDate(dateString: My?.birth ?? "2018/01/01") as Date
         birthTextField.inputView = picker
     }
     
@@ -83,7 +111,7 @@ class UserView: UIView {
     
     fileprivate func formatDateForDisplay(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy/MM/dd"
         return formatter.string(from: date)
     }
     
@@ -94,7 +122,7 @@ extension NSDate
     convenience
     init(dateString:String) {
         let dateStringFormatter = DateFormatter()
-        dateStringFormatter.dateFormat = "yyyy-MM-dd"
+        dateStringFormatter.dateFormat = "yyyy/MM-dd"
         dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
         let d = dateStringFormatter.date(from: dateString)!
         self.init(timeInterval: 0, since: d)

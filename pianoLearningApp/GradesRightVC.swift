@@ -2,9 +2,7 @@
 //  GradesRightVC.swift
 //  pianoLearningApp
 //
-//  Created by 黃恩祐 on 2018/10/21.
-//  Copyright © 2018年 ENYUHUANG. All rights reserved.
-//
+
 
 import UIKit
 
@@ -15,7 +13,15 @@ class GradesRightVC: UIViewController {
     @IBOutlet var titles: [UILabel]!
     @IBOutlet weak var tableView: UITableView!
     
+    
+    var parentVC: GradesVC!
+    var actionAlertView: ActionAlertView!
     var didSelectButton = 0
+    var allScore: [String : Int] = [:]
+    var thisLevel = ""
+    var recentDates = ""
+    var recentPlays = ""
+    var recentScore = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +64,40 @@ class GradesRightVC: UIViewController {
         self.titles[didSelectButton].textColor = UIColor.darkText.withAlphaComponent(1)
     }
     
+    func configViewData() {
+        guard self.parentVC != nil,
+            self.parentVC._allScore != nil,
+            self.parentVC._recentPlays != nil,
+            self.parentVC._recentDates != nil
+            else { return }
+        switch self.parentVC.selectedIndex {
+        case 0:
+            self.thisLevel = "Level I"
+        case 1:
+            self.thisLevel = "Level II"
+        case 2:
+            self.thisLevel = "Level III"
+        case 3:
+            self.thisLevel = "Level IV"
+        case 4:
+            self.thisLevel = "Level V"
+        default:
+            self.thisLevel = "Level I"
+        }
+        self.recentPlays = self.parentVC._recentPlays[self.thisLevel] ?? ""
+        self.allScore = self.parentVC._allScore[self.thisLevel] ?? [:]
+        self.recentScore = self.allScore[self.recentPlays] ?? 0
+        self.recentDates = self.parentVC._recentDates[self.thisLevel] ?? ""
+    }
     
+    func showActionAlertView(songName: String) {
+        actionAlertView = Bundle.main.loadNibNamed("ActionAlertView", owner: self, options: nil)?.first as? ActionAlertView
+        actionAlertView.frame = self.view.frame
+        actionAlertView.delegate = self
+        actionAlertView.initAlert()
+        actionAlertView.secondlabel.text = songName
+        self.view.addSubview(actionAlertView)
+    }
 
 }
 
@@ -78,6 +117,7 @@ extension GradesRightVC:UITableViewDataSource,UITableViewDelegate{
         let cell:praticeRecordCell = tableView.dequeueReusableCell(withIdentifier: "praticeRecordCell", for: indexPath) as! praticeRecordCell
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
+        cell.delegate = self
         return cell
 
     }
@@ -94,4 +134,35 @@ extension GradesRightVC:UITableViewDataSource,UITableViewDelegate{
         headerView.backgroundColor = UIColor.clear
         return headerView
     }
+}
+
+extension GradesRightVC: praticeRecordCellDelegate {
+    func didTapRecordBtn(songName: String?) {
+        //
+    }
+    
+    func didTapDeleteBtn(songName: String?) {
+        guard songName != nil else { return }
+        self.showActionAlertView(songName: songName!)
+    }
+    
+    
+}
+
+extension GradesRightVC: actionAlertViewDelegate {
+    func didTapLeftBtn() {
+        if self.actionAlertView != nil {
+            self.actionAlertView.removeFromSuperview()
+        }
+    }
+    
+    func didTapRightBtn() {
+        if self.actionAlertView != nil {
+            self.actionAlertView.removeFromSuperview()
+        }
+    }
+    
+    
+    
+    
 }

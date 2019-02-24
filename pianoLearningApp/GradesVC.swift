@@ -2,11 +2,9 @@
 //  GradesVC.swift
 //  pianoLearningApp
 //
-//  Created by 黃恩祐 on 2018/10/21.
-//  Copyright © 2018年 ENYUHUANG. All rights reserved.
-//
 
 import UIKit
+import SwiftyJSON
 
 class GradesVC: UIViewController {
 
@@ -16,15 +14,24 @@ class GradesVC: UIViewController {
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var buttonBottomView: [UIView]!
     
-    var gradesLeftViewController: UIViewController!
-    var gradesRightViewController: UIViewController!
+    var gradesLeftViewController: GradesLeftVC!
+    var gradesRightViewController: GradesRightVC!
     var viewControllers: [UIViewController]!
     var selectedIndex: Int = 0
+    
+    var _allScore: [String : [String : Int]]!
+    var _recentDates: [String : String]!
+    var _recentPlays: [String : String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configViewControllers()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getFakeJson()
     }
     
     @IBAction func didTapTabBar(_ sender: UIButton) {
@@ -53,6 +60,23 @@ class GradesVC: UIViewController {
         viewControllers = [gradesLeftViewController, gradesRightViewController]
         buttonBottomView[selectedIndex].isHidden = false
         didTapTabBar(buttons[selectedIndex])
+        gradesLeftViewController.parentVC = self
+        gradesRightViewController.parentVC = self
+    }
+    
+    func getFakeJson() {
+        if let path : String = Bundle.main.path(forResource: "FakeScore", ofType: "json") {
+            let jsonString = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
+           if let json = JSON(parseJSON: jsonString!).dictionaryObject,
+            let allScore = json["allScore"] as? [String : [String : Int]],
+                let recentDates = json["recentDate"] as? [String : String],
+                let recentPlays = json["recentPlay"] as? [String : String] {
+            self._allScore = allScore
+            self._recentDates = recentDates
+            self._recentPlays = recentPlays
+            gradesLeftViewController.configViewData()
+            }
+        }
     }
 
 

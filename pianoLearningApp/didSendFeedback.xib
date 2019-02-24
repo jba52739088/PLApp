@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="0oi-mu-VZn" customClass="didSendFeedback" customModule="pianoLearningApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="819" height="445"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="意见回馈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnO-6L-iaz">
+                    <rect key="frame" x="344.5" y="61" width="130" height="39"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的建议已发送完成!!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaD-w4-C4S">
+                    <rect key="frame" x="326.5" y="280" width="166" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_comments_finish" translatesAutoresizingMaskIntoConstraints="NO" id="gsn-MJ-AhI">
+                    <rect key="frame" x="348" y="140" width="123" height="123"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="gsn-MJ-AhI" secondAttribute="height" multiplier="1:1" id="dBI-Q2-PI4"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0HV-5U-CpU">
+                    <rect key="frame" x="279.5" y="360.5" width="260" height="41"/>
+                    <string key="text">我们会尽快检视并作为改版参考，
+谢谢!</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="0HV-5U-CpU" firstAttribute="centerX" secondItem="NaD-w4-C4S" secondAttribute="centerX" id="3a9-pa-MBt"/>
+                <constraint firstItem="OnO-6L-iaz" firstAttribute="top" secondItem="Ix3-qB-QJV" secondAttribute="top" constant="61" id="GqS-2d-3e3"/>
+                <constraint firstItem="NaD-w4-C4S" firstAttribute="centerX" secondItem="gsn-MJ-AhI" secondAttribute="centerX" id="Jbc-Ty-rW8"/>
+                <constraint firstItem="Ix3-qB-QJV" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0HV-5U-CpU" secondAttribute="bottom" constant="10" id="VUT-XW-a5Q"/>
+                <constraint firstItem="gsn-MJ-AhI" firstAttribute="centerX" secondItem="OnO-6L-iaz" secondAttribute="centerX" id="c8V-Ys-pI5"/>
+                <constraint firstItem="gsn-MJ-AhI" firstAttribute="width" secondItem="0oi-mu-VZn" secondAttribute="width" multiplier="0.15" id="d5d-68-Lfj"/>
+                <constraint firstItem="OnO-6L-iaz" firstAttribute="centerX" secondItem="0oi-mu-VZn" secondAttribute="centerX" id="dws-1o-yJP"/>
+                <constraint firstItem="gsn-MJ-AhI" firstAttribute="top" secondItem="OnO-6L-iaz" secondAttribute="bottom" constant="40" id="fIM-VO-Ryp"/>
+                <constraint firstItem="0HV-5U-CpU" firstAttribute="top" secondItem="NaD-w4-C4S" secondAttribute="bottom" constant="60" id="sE0-Ii-MpW"/>
+                <constraint firstItem="NaD-w4-C4S" firstAttribute="top" secondItem="gsn-MJ-AhI" secondAttribute="bottom" constant="17" id="wgM-ZV-fEd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Ix3-qB-QJV"/>
+            <point key="canvasLocation" x="48.799999999999997" y="47.226386806596707"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="accounts_comments_finish" width="108" height="108"/>
+    </resources>
+</document>

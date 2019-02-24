@@ -2,20 +2,24 @@
 //  QAView.swift
 //  pianoLearningApp
 //
-//  Created by 黃恩祐 on 2018/10/15.
-//  Copyright © 2018年 ENYUHUANG. All rights reserved.
-//
+
 
 import UIKit
 
 class QAView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    @IBAction func TapQABtn(_ sender: Any) {
+        let QuestionView: QuestionView = Bundle.main.loadNibNamed("QuestionView", owner: self, options: nil)?.first as! QuestionView
+        QuestionView.frame = self.bounds
+        self.addSubview(QuestionView)
+        QuestionView.loadData()
     }
-    */
-
+    
+    @IBAction func tapSupportBtn(_ sender: Any) {
+        let UserSupportView: UserSupportView = Bundle.main.loadNibNamed("UserSupportView", owner: self, options: nil)?.first as! UserSupportView
+        UserSupportView.frame = self.bounds
+        self.addSubview(UserSupportView)
+        UserSupportView.loadData()
+    }
 }

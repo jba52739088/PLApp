@@ -2,9 +2,7 @@
 //  ContractView.swift
 //  pianoLearningApp
 //
-//  Created by 黃恩祐 on 2018/10/2.
-//  Copyright © 2018年 ENYUHUANG. All rights reserved.
-//
+
 
 import UIKit
 
@@ -33,6 +31,17 @@ class ContractView: UIView {
         contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
         contentView.clipsToBounds = true
+        
+        if let url = URL(string: "http://114.34.5.111:5880/docs/privacy.txt") {
+            do {
+                let text = try String(contentsOf: url, encoding: .utf8)
+                self.textView.text = text
+            }
+            catch {
+                /* error handling here */
+                
+            }
+        }
     }
     
     @IBAction func tapAgreeBtn(_ sender: Any) {

@@ -2,9 +2,7 @@
 //  LoginVC.swift
 //  pianoLearningApp
 //
-//  Created by 黃恩祐 on 2018/10/1.
-//  Copyright © 2018年 ENYUHUANG. All rights reserved.
-//
+
 
 import UIKit
 
@@ -32,8 +30,8 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        accountField.text = "test2"
-//        passwordField.text = "test1"
+        accountField.text = "test2"
+        passwordField.text = "test1"
         
         initView()
         showLoadingView()
@@ -41,6 +39,9 @@ class LoginVC: UIViewController {
 
 
     @IBAction func tapLogin(_ sender: Any) {
+//        if let mainVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarVC") as? TabBarVC {
+//            self.present(mainVC, animated: true, completion: nil)
+//        }
         if let acc = accountField.text, let pwd = passwordField.text {
             if acc == "" || pwd == "" {
                 self.textFieldBackground.backgroundColor = UIColor.red
@@ -60,12 +61,22 @@ class LoginVC: UIViewController {
                     print("acc || pwd is error")
                     self?.textFieldBackground.backgroundColor = UIColor.red
                     self?.textFieldBackground.layer.borderColor = UIColor.red.cgColor
+                    if data != nil {
+                        self?.showMessageAlert(title: "", message: "\(data)")
+                    }
                 }
             }
         }else {
             self.textFieldBackground.backgroundColor = UIColor.red
             textFieldBackground.layer.borderColor = UIColor.red.cgColor
         }
+    }
+    
+    func showMessageAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func tapForgetBtn(_ sender: Any) {
@@ -147,8 +158,8 @@ class LoginVC: UIViewController {
             let passwd = data["passwd"] as? String,
             let birth = data["birth"] as? String,
             let mobile = data["mobile"] as? String,
-            let addr = data["addr"] as? String {
-            My = User(id: id, name: name, account: account, passwd: passwd, birth: birth, mobile: mobile, addr: addr)
+            let addr = data["addr"] as? String{
+            My = User(id: id, name: name, account: account, passwd: passwd, birth: birth, mobile: mobile, addr: addr, image64: data["icon"] as? String ?? "")
             print("config My data succeed")
         }else {
             print("user data error")
@@ -184,8 +195,6 @@ extension LoginVC: alertViewDelegate {
             self.alertView.removeFromSuperview()
         }
     }
-    
-    
 }
 
 

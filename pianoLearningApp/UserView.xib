@@ -103,6 +103,9 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_head_custom" translatesAutoresizingMaskIntoConstraints="NO" id="b4b-vc-V1E">
+                    <rect key="frame" x="354.5" y="43" width="110" height="110"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -114,10 +117,14 @@
                 <constraint firstItem="Y8y-CY-2K3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yxv-cP-QSv"/>
                 <constraint firstItem="hom-Vd-vBd" firstAttribute="height" secondItem="hmV-TR-SLI" secondAttribute="height" id="Z9p-pR-d0f"/>
                 <constraint firstItem="p1x-so-iJQ" firstAttribute="top" secondItem="Y8y-CY-2K3" secondAttribute="bottom" constant="8" id="ZKo-5j-p4d"/>
+                <constraint firstItem="b4b-vc-V1E" firstAttribute="centerY" secondItem="Y8y-CY-2K3" secondAttribute="centerY" id="c8q-N4-0xg"/>
                 <constraint firstItem="vgv-cE-6WB" firstAttribute="height" secondItem="PqX-JX-fey" secondAttribute="height" id="fjq-nq-0kn"/>
                 <constraint firstItem="hom-Vd-vBd" firstAttribute="top" secondItem="hmV-TR-SLI" secondAttribute="top" id="k9L-I4-aa8"/>
+                <constraint firstItem="b4b-vc-V1E" firstAttribute="centerX" secondItem="Y8y-CY-2K3" secondAttribute="centerX" id="lAi-3B-Z49"/>
+                <constraint firstItem="b4b-vc-V1E" firstAttribute="width" secondItem="Y8y-CY-2K3" secondAttribute="width" id="liu-Y5-iMM"/>
                 <constraint firstItem="tvq-8T-Txh" firstAttribute="top" secondItem="hmV-TR-SLI" secondAttribute="bottom" constant="30" id="rMl-Rp-9U3"/>
                 <constraint firstItem="hmV-TR-SLI" firstAttribute="top" secondItem="p1x-so-iJQ" secondAttribute="bottom" constant="30" id="tSd-ak-7hJ"/>
+                <constraint firstItem="b4b-vc-V1E" firstAttribute="height" secondItem="Y8y-CY-2K3" secondAttribute="height" id="xDw-BM-8f9"/>
                 <constraint firstItem="tvq-8T-Txh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="y31-PH-wrD"/>
                 <constraint firstItem="hmV-TR-SLI" firstAttribute="leading" secondItem="hom-Vd-vBd" secondAttribute="trailing" constant="12" id="ybk-67-DF9"/>
             </constraints>
@@ -139,6 +146,7 @@
     </objects>
     <resources>
         <image name="accounts_head_boy" width="145" height="145"/>
+        <image name="accounts_head_custom" width="146" height="146"/>
         <image name="accounts_info_address" width="32" height="32"/>
         <image name="accounts_info_birth" width="28" height="25"/>
         <image name="accounts_info_phone" width="32" height="32"/>

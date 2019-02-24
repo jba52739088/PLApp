@@ -2,17 +2,22 @@
 //  praticeRecordCell.swift
 //  pianoLearningApp
 //
-//  Created by 黃恩祐 on 2018/10/21.
-//  Copyright © 2018年 ENYUHUANG. All rights reserved.
-//
+
 
 import UIKit
+
+protocol praticeRecordCellDelegate {
+    func didTapRecordBtn(songName: String?)
+    func didTapDeleteBtn(songName: String?)
+}
 
 class praticeRecordCell: UITableViewCell {
     
     @IBOutlet weak var titleBtn: UIButton!
     @IBOutlet weak var recordBtn: UIButton!
     @IBOutlet weak var deleteBtn: UIButton!
+    
+    var delegate: praticeRecordCellDelegate!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,10 +26,10 @@ class praticeRecordCell: UITableViewCell {
     
 
     @IBAction func tapRecordBtn(_ sender: UIButton) {
-        
+        self.delegate.didTapRecordBtn(songName: titleBtn.titleLabel?.text)
     }
     
     @IBAction func tapDeleteBtn(_ sender: UIButton) {
-        
+        self.delegate.didTapDeleteBtn(songName: titleBtn.titleLabel?.text)
     }
 }

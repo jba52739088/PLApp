@@ -1,12 +1,11 @@
 //
-//  LoadingView.swift
+//  didSendFeedback.swift
 //  pianoLearningApp
 //
 
-
 import UIKit
 
-class LoadingView: UIView {
+class didSendFeedback: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.

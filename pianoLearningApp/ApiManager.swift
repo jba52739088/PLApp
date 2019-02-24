@@ -2,9 +2,7 @@
 //  ApiManager.swift
 //  pianoLearningApp
 //
-//  Created by 黃恩祐 on 2018/10/25.
-//  Copyright © 2018年 ENYUHUANG. All rights reserved.
-//
+
 
 import Foundation
 import Alamofire
@@ -28,14 +26,15 @@ class APIManager {
         let parameters = ["cmd": "login", "account": account, "passwd": password] as [String : Any]
         Alamofire.request(URL_MEMBER, method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
             .responseJSON { response in
-                if let JSON = response.result.value as? [String:AnyObject] {
+               if let JSON = response.result.value as? [String:AnyObject] {
                     if let result = JSON["result"] as? String{
                         if result == "0" {
                             let data = JSON["data"] as? [String : AnyObject] ?? [:]
                             completionHandler(true, data)
                         }else {
                             print("API: login error")
-                            completionHandler(false, nil)
+//                            completionHandler(false, nil)
+                            completionHandler(false, JSON)
                         }
                     }
                 }else {
@@ -44,6 +43,7 @@ class APIManager {
                 }
         }
     }
+    
     
     /// 注册
     func register(name: String, account: String, password: String, birth: String, mobile: String, address: String, completionHandler: @escaping (_ status: Bool) -> Void){
@@ -172,4 +172,46 @@ class APIManager {
         }
     }
     
+    /// 上傳頭貼
+    func uploadUserImage(id: String, icon: String, completionHandler: @escaping (_ status: Bool) -> Void){
+        let parameters = ["cmd": "uploadIcon", "id": id, "icon": icon] as [String : Any]
+        Alamofire.request(URL_MEMBER, method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
+            .responseJSON { response in
+                if let JSON = response.result.value as? [String:AnyObject] {
+                    if let result = JSON["result"] as? String{
+                        if result == "0" {
+                            completionHandler(true)
+                        }else {
+                            print("API: uploadUserImage failed")
+                            completionHandler(false)
+                        }
+                    }
+                }else {
+                    print("uploadUserImage: get JSON error")
+                    completionHandler(false)
+                }
+        }
+    }
+    
+    /// 意见回馈
+    func uploadUserfeedBack(content: String, completionHandler: @escaping (_ status: Bool) -> Void){
+        guard  let my = My else { return }
+        let parameters = ["cmd": "new", "id": my.id, "account": my.account, "content": content] as [String : Any]
+        Alamofire.request(URL_FEEDBACK, method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
+            .responseJSON { response in
+                if let JSON = response.result.value as? [String:AnyObject] {
+                    if let result = JSON["result"] as? String{
+                        if result == "0" {
+                            completionHandler(true)
+                        }else {
+                            print("API: uploadUserfeedBack failed")
+                            completionHandler(false)
+                        }
+                    }
+                }else {
+                    print("uploadUserfeedBack: get JSON error")
+                    completionHandler(false)
+                }
+        }
+    }
 }

@@ -2,9 +2,7 @@
 //  User.swift
 //  pianoLearningApp
 //
-//  Created by 黃恩祐 on 2018/10/28.
-//  Copyright © 2018年 ENYUHUANG. All rights reserved.
-//
+
 
 import Foundation
 import UIKit
@@ -20,8 +18,9 @@ class User: NSObject {
     var birth: String
     var mobile: String
     var addr: String
+    var image64: String
     
-    init(id: Int, name: String, account: String, passwd: String, birth: String, mobile: String, addr: String) {
+    init(id: Int, name: String, account: String, passwd: String, birth: String, mobile: String, addr: String, image64: String) {
         self.id = id
         self.name = name
         self.account = account
@@ -29,6 +28,7 @@ class User: NSObject {
         self.birth = birth
         self.mobile = mobile
         self.addr = addr
+        self.image64 = image64
     }
     
     func equals (compareTo:User) -> Bool {
@@ -39,6 +39,7 @@ class User: NSObject {
             && self.birth == compareTo.birth
             && self.mobile == compareTo.mobile
             && self.addr == compareTo.addr
+            && self.image64 == compareTo.image64
         )
     }
 }

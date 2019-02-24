@@ -1,10 +1,3 @@
-//
-//  chekBox.swift
-//  IM_v01
-//
-//  Created by vincent_huang on 2018/3/30.
-//  Copyright © 2018年 vincent_huang. All rights reserved.
-//
 
 import Foundation
 import UIKit

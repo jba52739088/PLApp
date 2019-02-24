@@ -2,9 +2,7 @@
 //  FeedbackView.swift
 //  pianoLearningApp
 //
-//  Created by 黃恩祐 on 2018/10/15.
-//  Copyright © 2018年 ENYUHUANG. All rights reserved.
-//
+
 
 import UIKit
 
@@ -15,21 +13,38 @@ class FeedbackView: UIView {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var label: UILabel!
     
+    var delegate: AccountPageDelegat?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         initView()
     }
     
     func initView() {
-        self.textView.layer.borderWidth = 1
-        self.textView.layer.borderColor = UIColor(red: 121, green: 85, blue: 72, alpha: 1).cgColor
-        self.textView.layer.cornerRadius = 3
+        
+        self.textView.layer.cornerRadius = 5
         self.textView.layer.masksToBounds = true
-        self.button.layer.cornerRadius = 3
+        self.textView.clipsToBounds = true
+        self.button.layer.cornerRadius = 5
         self.button.layer.masksToBounds = true
+        self.textView.layer.borderWidth = 1
+        self.textView.layer.borderColor = UIColor(red: 121/255, green: 85/255, blue: 72/255, alpha: 1).cgColor
     }
     
     @IBAction func sendFeedback(_ sender: Any) {
-        
+        if let text = textView.text, text != "" {
+            self.delegate?.sendFeedback(message: text, completionHandler: { (isSucceed) in
+                if isSucceed {
+                    if let didSendFeedbackView = Bundle.main.loadNibNamed("didSendFeedback", owner: self, options: nil)?.first as? didSendFeedback {
+                        didSendFeedbackView.frame = self.frame
+                        self.textView.text = ""
+                        self.addSubview(didSendFeedbackView)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                            didSendFeedbackView.removeFromSuperview()
+                        })
+                    }
+                }
+            })
+        }
     }
 }
