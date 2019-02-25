@@ -40,8 +40,6 @@
 		FC45128B219075AC0029E32C /* EmptyNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC45128A219075AC0029E32C /* EmptyNoteView.xib */; };
 		FC45128D2190B08B0029E32C /* NoteSelectionListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC45128C2190B08B0029E32C /* NoteSelectionListView.xib */; };
 		FC45128F2190B09B0029E32C /* NoteSelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45128E2190B09B0029E32C /* NoteSelectionListView.swift */; };
-		FC57C1D0214E44AF00EEDEDE /* MusicNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC57C1CF214E44AF00EEDEDE /* MusicNoteView.swift */; };
-		FC57C1D2214E44EA00EEDEDE /* MusicNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC57C1D1214E44EA00EEDEDE /* MusicNoteView.xib */; };
 		FC7AECC42145786900BC0412 /* musicNotePlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */; };
 		FC7AECCA21457E4500BC0412 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AECC921457E4500BC0412 /* iOSDevCenters+GIF.swift */; };
 		FC7AECCD21457E6C00BC0412 /* playing.gif in Resources */ = {isa = PBXBuildFile; fileRef = FC7AECCB21457E6B00BC0412 /* playing.gif */; };
@@ -126,8 +124,6 @@
 		FC45128A219075AC0029E32C /* EmptyNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyNoteView.xib; sourceTree = "<group>"; };
 		FC45128C2190B08B0029E32C /* NoteSelectionListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteSelectionListView.xib; sourceTree = "<group>"; };
 		FC45128E2190B09B0029E32C /* NoteSelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSelectionListView.swift; sourceTree = "<group>"; };
-		FC57C1CF214E44AF00EEDEDE /* MusicNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicNoteView.swift; sourceTree = "<group>"; };
-		FC57C1D1214E44EA00EEDEDE /* MusicNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicNoteView.xib; sourceTree = "<group>"; };
 		FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = musicNotePlayVC.swift; sourceTree = "<group>"; };
 		FC7AECC921457E4500BC0412 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		FC7AECCB21457E6B00BC0412 /* playing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = playing.gif; sourceTree = "<group>"; };
@@ -291,8 +287,6 @@
 				FC7AECCB21457E6B00BC0412 /* playing.gif */,
 				FC7AECCC21457E6C00BC0412 /* recording.gif */,
 				FC7DE1942147FEAD0069DD5D /* midiListenerVC.swift */,
-				FC57C1CF214E44AF00EEDEDE /* MusicNoteView.swift */,
-				FC57C1D1214E44EA00EEDEDE /* MusicNoteView.xib */,
 				FC0950A221981CCB00224EA6 /* View */,
 				FC05D205218603E100FF2D98 /* Model */,
 				FC05D1F6218207F600FF2D98 /* Helper */,
@@ -452,7 +446,6 @@
 				FC05D2002184049300FF2D98 /* LoadingView.xib in Resources */,
 				FC8192C02174D9B80076E137 /* AddPhoto.xib in Resources */,
 				FC7C84792201DFA30081DF45 /* FakeScore.json in Resources */,
-				FC57C1D2214E44EA00EEDEDE /* MusicNoteView.xib in Resources */,
 				FCE4F9D7217C2966005CC423 /* praticeRecordCell.xib in Resources */,
 				FC8192C42174DF250076E137 /* QAView.xib in Resources */,
 				FCB8C87A2171FB4700898059 /* UserView.xib in Resources */,
@@ -557,7 +550,6 @@
 				FC96E8342162943B00D77780 /* RegisterStep2View.swift in Sources */,
 				FC05D202218405CA00FF2D98 /* LoadingView.swift in Sources */,
 				FC8192CA2174E1F50076E137 /* LanguageView.swift in Sources */,
-				FC57C1D0214E44AF00EEDEDE /* MusicNoteView.swift in Sources */,
 				FCEA81CC216DE99D004D6FF3 /* TabBarVC.swift in Sources */,
 				FCE4F9E1217C3DCC005CC423 /* GradesRightVC.swift in Sources */,
 				FC3BABF22142C93800E64A67 /* NoteSelectionVC.swift in Sources */,

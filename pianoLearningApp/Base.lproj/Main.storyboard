@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fpW-93-YWX">
-    <device id="ipad12_9" orientation="landscape">
+    <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,18 +15,18 @@
             <objects>
                 <viewController storyboardIdentifier="loginVC" id="fpW-93-YWX" customClass="LoginVC" customModule="pianoLearningApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="biW-Gj-rqr">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="钢琴陪练专家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDD-Fd-wIT">
-                                <rect key="frame" x="488" y="80" width="390" height="247"/>
+                                <rect key="frame" x="317" y="80" width="390" height="418"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="65"/>
                                 <color key="textColor" red="0.47450980392156861" green="0.33333333333333331" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9h-6X-r2x">
-                                <rect key="frame" x="475.5" y="596" width="415" height="55"/>
+                                <rect key="frame" x="304.5" y="767" width="415" height="55"/>
                                 <color key="backgroundColor" red="0.47450980392156861" green="0.33333333333333331" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="5Gw-dQ-QSX"/>
@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rc-zp-sE0">
-                                <rect key="frame" x="475.5" y="452" width="415" height="120"/>
+                                <rect key="frame" x="304.5" y="623" width="415" height="120"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pu0-E3-J5k">
                                         <rect key="frame" x="0.0" y="0.0" width="415" height="59.5"/>
@@ -72,7 +72,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32D-6z-jRv">
-                                <rect key="frame" x="611.5" y="661" width="143" height="22"/>
+                                <rect key="frame" x="440.5" y="832" width="143" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="lwA-z8-hry"/>
                                 </constraints>
@@ -85,7 +85,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqg-0n-YAY">
-                                <rect key="frame" x="674.5" y="698" width="17.5" height="20"/>
+                                <rect key="frame" x="503.5" y="869" width="17.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="HbS-O4-ANC"/>
                                 </constraints>
@@ -94,7 +94,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAV-8Y-amd">
-                                <rect key="frame" x="475.5" y="738" width="415" height="55"/>
+                                <rect key="frame" x="304.5" y="909" width="415" height="55"/>
                                 <color key="backgroundColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="8cj-ru-YWb"/>
@@ -414,18 +414,42 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6FQ-Ir-3Px">
                                         <rect key="frame" x="70" y="63" width="884" height="443"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HT0-OF-efz">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HT0-OF-efz">
                                                 <rect key="frame" x="0.0" y="0.0" width="884" height="443"/>
                                                 <subviews>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPf-gZ-Jai">
+                                                        <rect key="frame" x="0.0" y="-40" width="884" height="40"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="CQr-np-Xkv"/>
+                                                        </constraints>
+                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yq5-db-SBL" customClass="MusicScoreView" customModule="pianoLearningApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="884" height="219"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Yq5-db-SBL" secondAttribute="height" multiplier="2:1" id="TBg-gX-fPZ"/>
+                                                        </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGx-B0-871" customClass="MusicScoreView" customModule="pianoLearningApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="224" width="884" height="219"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flD-zu-1Nn">
+                                                        <rect key="frame" x="0.0" y="443" width="884" height="40"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="nOh-YP-9Ko"/>
+                                                        </constraints>
                                                     </view>
                                                 </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Yq5-db-SBL" firstAttribute="centerX" secondItem="HT0-OF-efz" secondAttribute="centerX" id="8GJ-hO-137"/>
+                                                    <constraint firstItem="sGx-B0-871" firstAttribute="height" secondItem="Yq5-db-SBL" secondAttribute="height" id="crO-z1-hVv"/>
+                                                    <constraint firstItem="sGx-B0-871" firstAttribute="width" secondItem="Yq5-db-SBL" secondAttribute="width" id="qIw-Mp-oLN"/>
+                                                    <constraint firstItem="sGx-B0-871" firstAttribute="centerX" secondItem="HT0-OF-efz" secondAttribute="centerX" id="vWe-AQ-xxr"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -498,6 +522,8 @@
                         <outlet property="progressSlider" destination="xkN-Ad-7zj" id="uV6-eI-eo5"/>
                         <outlet property="scoreView" destination="Yq5-db-SBL" id="7tg-yc-fPJ"/>
                         <outlet property="scoreView2" destination="sGx-B0-871" id="eNa-LP-SXC"/>
+                        <outlet property="spaceView_1" destination="aPf-gZ-Jai" id="Obh-nN-wKh"/>
+                        <outlet property="spaceView_2" destination="flD-zu-1Nn" id="fZP-3x-e4U"/>
                         <outlet property="stackView" destination="HT0-OF-efz" id="Lif-Nt-jVZ"/>
                     </connections>
                 </viewController>
@@ -510,7 +536,7 @@
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="GuU-sr-7pU" customClass="midiListenerVC" customModule="pianoLearningApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aXe-D4-dFd">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Xly-ZW-sLa"/>
@@ -525,7 +551,7 @@
             <objects>
                 <viewController id="OdP-tJ-daz" customClass="ViewController" customModule="pianoLearningApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EbN-am-y3h">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJk-0k-3HJ">
@@ -572,11 +598,11 @@
             <objects>
                 <viewController id="b27-7z-uJw" customClass="RegisterStep1VC" customModule="pianoLearningApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iq8-Wh-WJe">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="建立帐号第一步" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB5-Pw-uew">
-                                <rect key="frame" x="514.5" y="363" width="337.5" height="21"/>
+                                <rect key="frame" x="343.5" y="705" width="337.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="7ib-Yn-s61"/>
                                 </constraints>
@@ -585,7 +611,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjo-CO-Hhk">
-                                <rect key="frame" x="525.5" y="469" width="315" height="150"/>
+                                <rect key="frame" x="354.5" y="811" width="315" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="HN7-ed-GDY">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="150"/>
@@ -625,7 +651,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SxN-G9-670" customClass="CheckBox" customModule="pianoLearningApp" customModuleProvider="target">
-                                <rect key="frame" x="525.5" y="646" width="15" height="15"/>
+                                <rect key="frame" x="354.5" y="988" width="15" height="15"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="8gj-Ae-xea"/>
@@ -634,7 +660,7 @@
                                 <state key="normal" image="checked_checkbox"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xi-6O-w7U">
-                                <rect key="frame" x="525.5" y="677" width="315" height="42"/>
+                                <rect key="frame" x="354.5" y="1019" width="315" height="42"/>
                                 <color key="backgroundColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="foo-M0-25D"/>
@@ -648,7 +674,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iX-zg-kmS">
-                                <rect key="frame" x="550.5" y="646" width="184" height="15"/>
+                                <rect key="frame" x="379.5" y="988" width="184" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="你已同意本公司之隐私权用户协议">
                                     <color key="titleColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -1505,27 +1531,27 @@ I</string>
             <objects>
                 <viewController storyboardIdentifier="TabBarVC" id="9Aj-jy-etg" customClass="TabBarVC" customModule="pianoLearningApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YNP-eA-vbg">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdY-DU-iv6">
-                                <rect key="frame" x="0.0" y="20" width="1366" height="69.5"/>
+                                <rect key="frame" x="0.0" y="20" width="1024" height="93"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rl7-ge-vc4">
-                                        <rect key="frame" x="42.5" y="0.0" width="1281" height="69.5"/>
+                                        <rect key="frame" x="31.5" y="0.0" width="961" height="93"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sst-1e-dZh">
-                                                <rect key="frame" x="0.0" y="0.0" width="85.5" height="69.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="64.5" height="93"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLa-tv-JFd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="85.5" height="69.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="64.5" height="93"/>
                                                         <state key="normal" image="main_nav_player"/>
                                                         <connections>
                                                             <action selector="didTapTabBar:" destination="9Aj-jy-etg" eventType="touchUpInside" id="7xb-yD-Eiv"/>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaM-FY-h3v">
-                                                        <rect key="frame" x="0.0" y="63.5" width="85.5" height="6"/>
+                                                        <rect key="frame" x="0.0" y="84.5" width="64.5" height="8.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
@@ -1542,17 +1568,17 @@ I</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cB3-RY-krG">
-                                                <rect key="frame" x="85.5" y="0.0" width="86" height="69.5"/>
+                                                <rect key="frame" x="64.5" y="0.0" width="64.5" height="93"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qjh-0L-kOL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86" height="69.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="64.5" height="93"/>
                                                         <state key="normal" image="main_nav_sheets"/>
                                                         <connections>
                                                             <action selector="didTapTabBar:" destination="9Aj-jy-etg" eventType="touchUpInside" id="zf6-DH-mbm"/>
                                                         </connections>
                                                     </button>
                                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZP-vE-0Nd">
-                                                        <rect key="frame" x="0.0" y="63.5" width="86" height="6"/>
+                                                        <rect key="frame" x="0.0" y="84.5" width="64.5" height="8.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
@@ -1569,20 +1595,20 @@ I</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level I ~ Minuet In G Major" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ob7-Eg-AUB">
-                                                <rect key="frame" x="171.5" y="0.0" width="938" height="69.5"/>
+                                                <rect key="frame" x="129" y="0.0" width="703" height="93"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yQf-Vn-W4F">
-                                                <rect key="frame" x="1109.5" y="0.0" width="86" height="69.5"/>
+                                                <rect key="frame" x="832" y="0.0" width="64.5" height="93"/>
                                                 <subviews>
                                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpg-g6-8Va">
-                                                        <rect key="frame" x="0.0" y="63.5" width="86" height="6"/>
+                                                        <rect key="frame" x="0.0" y="84.5" width="64.5" height="8.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqh-vB-0Ef">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86" height="69.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="64.5" height="93"/>
                                                         <state key="normal" image="main_nav_grades"/>
                                                         <connections>
                                                             <action selector="didTapTabBar:" destination="9Aj-jy-etg" eventType="touchUpInside" id="7ru-EP-vjI"/>
@@ -1602,17 +1628,17 @@ I</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKK-kz-YnF">
-                                                <rect key="frame" x="1195.5" y="0.0" width="85.5" height="69.5"/>
+                                                <rect key="frame" x="896.5" y="0.0" width="64.5" height="93"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zo8-CN-VRe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="85.5" height="69.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="64.5" height="93"/>
                                                         <state key="normal" image="main_nav_account"/>
                                                         <connections>
                                                             <action selector="didTapTabBar:" destination="9Aj-jy-etg" eventType="touchUpInside" id="kIC-bO-5ai"/>
                                                         </connections>
                                                     </button>
                                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nW2-kx-f6q">
-                                                        <rect key="frame" x="0.0" y="63.5" width="85.5" height="6"/>
+                                                        <rect key="frame" x="0.0" y="84.5" width="64.5" height="8.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
@@ -1647,7 +1673,7 @@ I</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGH-N2-mH9">
-                                <rect key="frame" x="0.0" y="89.5" width="1366" height="934.5"/>
+                                <rect key="frame" x="0.0" y="113" width="1024" height="1253"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>

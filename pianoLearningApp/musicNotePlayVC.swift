@@ -38,6 +38,8 @@ class musicNotePlayVC: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var scoreView: MusicScoreView!
     @IBOutlet weak var scoreView2: MusicScoreView!
+    @IBOutlet weak var spaceView_1: UIView!
+    @IBOutlet weak var spaceView_2: UIView!
     
     var pianoBackground: CustomPianoView!
     var selectionView: SelectionView!
@@ -68,33 +70,40 @@ class musicNotePlayVC: UIViewController {
     var shouldNoteIndex = 0
     // 現在五線譜跑到第幾小節
     var nowBarIndex = 0
-    // 跑到第幾個scoreView
+    // 跑到哪一個scoreView(0: 上面 1:下面)
     var nowScoreIndex = 0
+    // 跑到第幾個scoreView
+    var nowScoreView = 0
+    // 所有scoreView數量
+    var allScoreViewCount = 0
     
     // scoreView判斷用
-    var pianoIsVisible = false
-    var didBegin = false
-    var order = 0
-    var n = 0
-    var allSegs = 0
+    var pianoIsVisible = false  // 是否有鋼琴
+    var didBegin = false        // 是否有準備播放的譜
+    var order = 0   // 開始小節
+    var view_1_Segs = 0       // 目前score1呈現到第n小節
+    var view_2_Segs = 0       // 目前score2呈現到第n小節
+    var allSegs = 0 // 所有小節數
     
     //录音
     let session = AVAudioSession.sharedInstance()
 //    var audioRecorder: AVAudioRecorder?
 //    var audioPlayer: AVAudioPlayer?
-    let audioURL = URL(fileURLWithPath: NSTemporaryDirectory() + "audio.ima4")
-    var midiPlayer: AVMIDIPlayer?
+//    let audioURL = URL(fileURLWithPath: NSTemporaryDirectory() + "audio.ima4")
+//    var midiPlayer: AVMIDIPlayer?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        spaceView_1.isHidden = true
+        spaceView_2.isHidden = true
         setPianoView()
         let imageGif = UIImage(named: "main_playstart")
         main_playstart_Btn.setImage(imageGif, for: .normal)
         setSubNavMenu()
         self.setMidiInput()
-        setPageController()
+        self.setPageIndex()
         
         // 若之前無讀取樂譜之情況
         if UserDefaultsKeys.LAST_NOTE_NAME == "" {
@@ -110,7 +119,6 @@ class musicNotePlayVC: UIViewController {
         if UserDefaultsKeys.LAST_NOTE_NAME != "" {
             self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME)
         }
-       
     }
     
     // 左边slider
@@ -120,7 +128,9 @@ class musicNotePlayVC: UIViewController {
     
     @IBAction func didFinishDragSlider(_ sender: UISlider) {
         print(Int(sender.value))
-        self.didFinishPlay(scoreOrder: 0)
+        view_1_Segs = 0
+        view_2_Segs = 0
+        self.didFinishPlay()
     }
     
     func setMidiInput() {
@@ -175,17 +185,19 @@ class musicNotePlayVC: UIViewController {
         self.view.addSubview(self.actionMenu)
     }
     
-    func setPageController() {
-        pageControl.numberOfPages = 0
-        pageControl.currentPage = 0
-        self.view.bringSubview(toFront: pageControl)
+    func setPageIndex() {
+        if !pianoIsVisible {
+            self.pageControl.numberOfPages = self.allScoreViewCount / 2 + self.allScoreViewCount % 2
+            self.pageControl.currentPage = self.nowScoreView / 2 + self.nowScoreView % 2
+        }else {
+            self.pageControl.numberOfPages = self.allScoreViewCount
+            self.pageControl.currentPage = self.nowScoreView
+        }
+        
     }
-
-    
 
     // 寫死兩個sroreView
     func showScoreView(file: String) {
-//        scoreView2.isHidden = true
         scoreView.setBeat(setBeat: bmpSlider.value / 60)
         scoreView2.setBeat(setBeat: bmpSlider.value / 60)
         // 讀取 JSON 字串資料
@@ -198,33 +210,29 @@ class musicNotePlayVC: UIViewController {
             scoreView.setConfig(in: 3, n2: 4, n3: 3, n4: 4)
             scoreView.delegate = self
 
-//            // 載入樂譜有幾列, 需要幾個 ScoreView
-//            let lines = scoreView.getScoreViewCount(in: jsonArray)
-//            print("scoreview count = \(lines)")
+            // 載入樂譜有幾列, 需要幾個 ScoreView
+            let lines = scoreView.getScoreViewCount(in: jsonArray)
+            self.allScoreViewCount = lines
+            self.setPageIndex()
+            
             if  order != 0 {
                 order += 1
             }
-            if  n != 0 {
-                n += 1
+            if  view_2_Segs != 0 {
+                view_2_Segs += 1
             }
-            let scoreViewN = scoreView.setScore(in: jsonArray, start: n, order: order, isFirst: n == 0, isLast: n>=allSegs-1)
-            n = scoreView.setScore(in: jsonArray, start: n, order: order, isFirst: n == 0, isLast: scoreViewN>=allSegs-1)
+            let scoreViewN = scoreView.setScore(in: jsonArray, start: view_2_Segs, order: order, isFirst: view_2_Segs == 0, isLast: view_2_Segs>=allSegs-1)
+            view_1_Segs = scoreView.setScore(in: jsonArray, start: view_2_Segs, order: order, isFirst: view_2_Segs == 0, isLast: scoreViewN>=allSegs-1)
 
-            if n<allSegs-1 {
+            if view_1_Segs<allSegs-1 {
                 order += 1
-                scoreView.setNextScoreView(in: scoreView2)
                 scoreView2.isHidden = false
                 scoreView2.setConfig(in: 3, n2: 4, n3: 3, n4: 4)
-                let score2ViewN = scoreView2.setScore(in: jsonArray, start:n+1, order: order, isFirst: false, isLast: n>=allSegs-1)
-                n = scoreView2.setScore(in: jsonArray, start:n+1, order: order, isFirst: false, isLast: score2ViewN>=allSegs-1)
+                let score2ViewN = scoreView2.setScore(in: jsonArray, start:view_1_Segs+1, order: order, isFirst: false, isLast: view_1_Segs>=allSegs-1)
+                view_2_Segs = scoreView2.setScore(in: jsonArray, start:view_1_Segs+1, order: order, isFirst: false, isLast: score2ViewN>=allSegs-1)
                 scoreView2.delegate = self
-                if n<allSegs-1 {
-                    scoreView2.setNextScoreView(in: scoreView)
-                }else {
-                    scoreView2.setNextScoreView(in: nil)
-                }
             }else {
-                scoreView.setNextScoreView(in: nil)
+                view_2_Segs = view_1_Segs
             }
             didBegin = true
 
@@ -286,7 +294,6 @@ class musicNotePlayVC: UIViewController {
         }else {
             self.main_justplay_Btn.setImage(UIImage(named: "main_justplay"), for: .normal)
             self.isJustplay = false
-//            let imageGif = UIImage.gifImageWithName("playing")
             let imageGif = UIImage(named: "main_playstart")
             main_playstart_Btn.setImage(imageGif, for: .normal)
         }
@@ -355,7 +362,6 @@ class musicNotePlayVC: UIViewController {
         if isPlaying {
             self.onClick_main_playstart_Btn(self)
         }
-//        self.clearScoreNotes()
         if self.nowScoreIndex == 0 {
             scoreView.isHidden = false
         }else {
@@ -363,19 +369,24 @@ class musicNotePlayVC: UIViewController {
         }
         if !pianoIsVisible {
             pianoIsVisible = true
-//            self.musicNoteView.layoutIfNeeded()
+            spaceView_1.isHidden = false
+            spaceView_2.isHidden = false
             self.musicNoteView.frame.size.height -= 165
             self.musicNoteViewBottom.constant += 165
             UIView.animate(withDuration: 0.3, animations: {
                 self.musicNoteView.layoutIfNeeded()
+                
             })
         }else {
             pianoIsVisible = false
+            spaceView_1.isHidden = true
+            spaceView_2.isHidden = true
             self.musicNoteView.layoutIfNeeded()
             self.musicNoteViewBottom.constant -= 165
             self.musicNoteView.frame.size.height += 165
             UIView.animate(withDuration: 0.3, animations: {
                 self.musicNoteView.layoutIfNeeded()
+                
             })
         }
         if pianoIsVisible{
@@ -390,6 +401,7 @@ class musicNotePlayVC: UIViewController {
             self.scoreView.isHidden = false
             self.scoreView2.isHidden = false
         }
+        self.setPageIndex()
     }
     
     @IBAction func onClick_main_sub_nav_open_Btn(_ sender: UIButton) {
@@ -437,9 +449,24 @@ extension musicNotePlayVC: AKMIDIListener {
 //MARK: - MusicScoreViewDelegate
 
 extension musicNotePlayVC: MusicScoreViewDelegate {
+    func shouldPlayNext() {
+        self.pianoBackground.pianoView.deselectAll()
+        guard let song = self.currentSongName else { return }
+        print("view_2_Segs: \(view_2_Segs), allSegs: \(allSegs)")
+        if view_2_Segs<allSegs-1 {
+            if nowScoreIndex != 1 {
+                self.scoreView2.startBar()
+            }else {
+                self.showScoreView(file: song)
+                self.scoreView.startBar()
+            }
+        }
+        
+    }
+    
 
     // scoreIndex：score, Pith：音名, time：拍子, barIndex：小節, NoteIndex：第幾個音符
-    func noteShouldPlay(scoreIndex: Int, pitch: UInt8, time: Float, barIndex: Int, NoteIndex: Int) {
+    func noteShouldPlay(scoreIndex: Int, pitch: Int, time: Float, barIndex: Int, NoteIndex: Int) {
         if NoteIndex != self.shouldNoteIndex || self.nowBarIndex != barIndex{
             self.pianoBackground.pianoView.deselectAll()
         }
@@ -447,6 +474,8 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
         self.nowBarIndex = barIndex
         self.shouldNoteIndex = NoteIndex
         self.nowScoreIndex = scoreIndex % 2
+        self.nowScoreView = scoreIndex
+        self.pageControl.currentPage = scoreIndex
         if scoreIndex % 2 != 0 {
             if pianoIsVisible {
                 self.scoreView.isHidden = true
@@ -460,23 +489,26 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
             }
         }
         print("nowScoreIndex: \(nowScoreIndex)")
-        let note = Pitch(midiNote: Int(pitch))
+        self.setPageIndex()
+        let note = Pitch(midiNote: pitch)
         self.pianoBackground.pianoView.selectNote(note: note)
     }
     
-    func didFinishPlay(scoreOrder: Int) {
-        print("didFinishPlay scoreOrder: \(scoreOrder)")
+    func didFinishPlay() {
+//        print("didFinishPlay scoreOrder: \(scoreOrder)")
         self.pianoBackground.pianoView.deselectAll()
-        guard let song = self.currentSongName else { return }
-        print("n: \(n), allSegs: \(allSegs)")
-        if n<allSegs-1 {
-            if scoreOrder % 2 != 1 {
-                self.scoreView2.startBar()
-            }else {
-//                self.clearScoreNotes()
-                self.showScoreView(file: song)
-                self.scoreView.startBar()
-            }
+        print("view_2_Segs: \(view_2_Segs), allSegs: \(allSegs)")
+        if view_2_Segs<allSegs-1 {
+//            if nowScoreIndex != 1 {
+////                self.scoreView.stopBar()
+////                self.scoreView2.initBar()
+//                self.scoreView2.startBar()
+//            }else {
+////                self.clearScoreNotes()
+////                self.scoreView2.stopBar()
+//                self.showScoreView(file: song)
+//                self.scoreView.startBar()
+//            }
         }else {
             let imageGif = UIImage(named: "main_playstart")
             main_playstart_Btn.setImage(imageGif, for: .normal)
@@ -486,11 +518,12 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
             self.nowScoreIndex = 0
             self.didBegin = false
             self.order = 0
-            self.n = 0
+            self.view_2_Segs = 0
+            self.view_1_Segs = 0
             self.allSegs = 0
 //            self.showScoreView(file: song)
-            self.scoreView.stopBar()
-            self.scoreView2.stopBar()
+//            self.scoreView.stopBar()
+//            self.scoreView2.stopBar()
         }
         
 
