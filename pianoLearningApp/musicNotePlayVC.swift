@@ -78,11 +78,11 @@ class musicNotePlayVC: UIViewController {
     var allScoreViewCount = 0
     
     // scoreView判斷用
+    var jsonArray: Array<Array<Array<Dictionary<String,String>>>>? // 譜data
     var pianoIsVisible = false  // 是否有鋼琴
     var didBegin = false        // 是否有準備播放的譜
     var order = 0   // 開始小節
-    var view_1_Segs = 0       // 目前score1呈現到第n小節
-    var view_2_Segs = 0       // 目前score2呈現到第n小節
+    var nowSegs = 0       // 目前呈現到第n小節
     var allSegs = 0 // 所有小節數
     
     //录音
@@ -128,8 +128,7 @@ class musicNotePlayVC: UIViewController {
     
     @IBAction func didFinishDragSlider(_ sender: UISlider) {
         print(Int(sender.value))
-        view_1_Segs = 0
-        view_2_Segs = 0
+        nowSegs = 0
         self.didFinishPlay()
     }
     
@@ -186,13 +185,8 @@ class musicNotePlayVC: UIViewController {
     }
     
     func setPageIndex() {
-        if !pianoIsVisible {
-            self.pageControl.numberOfPages = self.allScoreViewCount / 2 + self.allScoreViewCount % 2
-            self.pageControl.currentPage = self.nowScoreView / 2 + self.nowScoreView % 2
-        }else {
-            self.pageControl.numberOfPages = self.allScoreViewCount
-            self.pageControl.currentPage = self.nowScoreView
-        }
+        self.pageControl.numberOfPages = self.allScoreViewCount
+        self.pageControl.currentPage = self.nowScoreView
         
     }
 
@@ -206,39 +200,54 @@ class musicNotePlayVC: UIViewController {
         do {
             let data = try Data(contentsOf: url)
             let jsonArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! Array<Array<Array<Dictionary<String,String>>>>
+            self.jsonArray = jsonArray
             allSegs = jsonArray.count
             scoreView.setConfig(in: 3, n2: 4, n3: 3, n4: 4)
             scoreView.delegate = self
-
+            scoreView2.delegate = self
             // 載入樂譜有幾列, 需要幾個 ScoreView
             let lines = scoreView.getScoreViewCount(in: jsonArray)
             self.allScoreViewCount = lines
             self.setPageIndex()
-            
-            if  order != 0 {
-                order += 1
-            }
-            if  view_2_Segs != 0 {
-                view_2_Segs += 1
-            }
-            let scoreViewN = scoreView.setScore(in: jsonArray, start: view_2_Segs, order: order, isFirst: view_2_Segs == 0, isLast: view_2_Segs>=allSegs-1)
-            view_1_Segs = scoreView.setScore(in: jsonArray, start: view_2_Segs, order: order, isFirst: view_2_Segs == 0, isLast: scoreViewN>=allSegs-1)
-
-            if view_1_Segs<allSegs-1 {
-                order += 1
-                scoreView2.isHidden = false
-                scoreView2.setConfig(in: 3, n2: 4, n3: 3, n4: 4)
-                let score2ViewN = scoreView2.setScore(in: jsonArray, start:view_1_Segs+1, order: order, isFirst: false, isLast: view_1_Segs>=allSegs-1)
-                view_2_Segs = scoreView2.setScore(in: jsonArray, start:view_1_Segs+1, order: order, isFirst: false, isLast: score2ViewN>=allSegs-1)
-                scoreView2.delegate = self
-            }else {
-                view_2_Segs = view_1_Segs
-            }
             didBegin = true
-
+            self.configScoreView(tag: "both")
         }catch{
             print(error.localizedDescription)
         }
+    }
+    
+    func configScoreView(tag: String) {
+        if self.jsonArray == nil { return }
+        if  order != 0 {
+            order += 1
+        }
+        if  nowSegs != 0 {
+            nowSegs += 1
+        }
+        switch tag {
+        case "up":
+            let scoreViewN = scoreView.setScore(in: self.jsonArray!, start: nowSegs, order: order, isFirst: nowSegs == 0, isLast: nowSegs>=allSegs-1)
+            nowSegs = scoreView.setScore(in: self.jsonArray!, start: nowSegs, order: order, isFirst: nowSegs == 0, isLast: scoreViewN>=allSegs-1)
+        case "down":
+            if nowSegs<allSegs-1 {
+                order += 1
+                scoreView2.isHidden = false
+                let score2ViewN = scoreView2.setScore(in: self.jsonArray!, start:nowSegs+1, order: order, isFirst: false, isLast: nowSegs>=allSegs-1)
+                nowSegs = scoreView2.setScore(in: self.jsonArray!, start:nowSegs+1, order: order, isFirst: false, isLast: score2ViewN>=allSegs-1)
+                
+            }
+        default:
+            let scoreViewN = scoreView.setScore(in: self.jsonArray!, start: nowSegs, order: order, isFirst: nowSegs == 0, isLast: nowSegs>=allSegs-1)
+            nowSegs = scoreView.setScore(in: self.jsonArray!, start: nowSegs, order: order, isFirst: nowSegs == 0, isLast: scoreViewN>=allSegs-1)
+            if nowSegs<allSegs-1 {
+                order += 1
+                scoreView2.isHidden = false
+                let score2ViewN = scoreView2.setScore(in: self.jsonArray!, start:nowSegs+1, order: order, isFirst: false, isLast: nowSegs>=allSegs-1)
+                nowSegs = scoreView2.setScore(in: self.jsonArray!, start:nowSegs+1, order: order, isFirst: false, isLast: score2ViewN>=allSegs-1)
+                
+            }
+        }
+
     }
     
     func clearScoreNotes() {
@@ -329,6 +338,7 @@ class musicNotePlayVC: UIViewController {
             if !self.didBegin {
                 if UserDefaultsKeys.LAST_NOTE_NAME != "" {
                     self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME)
+                    return
                 }
             }
             
@@ -451,17 +461,22 @@ extension musicNotePlayVC: AKMIDIListener {
 extension musicNotePlayVC: MusicScoreViewDelegate {
     func shouldPlayNext() {
         self.pianoBackground.pianoView.deselectAll()
-        guard let song = self.currentSongName else { return }
-        print("view_2_Segs: \(view_2_Segs), allSegs: \(allSegs)")
-        if view_2_Segs<allSegs-1 {
-            if nowScoreIndex != 1 {
+        print("nowSegs: \(nowSegs), allSegs: \(allSegs)")
+        if nowScoreIndex != 1 {
+            if self.nowScoreView < self.allScoreViewCount {
                 self.scoreView2.startBar()
-            }else {
-                self.showScoreView(file: song)
+            }
+            if nowSegs<allSegs-1 {
+                self.configScoreView(tag: "up")
+            }
+        }else {
+            if self.nowScoreView < self.allScoreViewCount {
                 self.scoreView.startBar()
             }
+            if nowSegs<allSegs-1 {
+                self.configScoreView(tag: "down")
+            }
         }
-        
     }
     
 
@@ -497,8 +512,8 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
     func didFinishPlay() {
 //        print("didFinishPlay scoreOrder: \(scoreOrder)")
         self.pianoBackground.pianoView.deselectAll()
-        print("view_2_Segs: \(view_2_Segs), allSegs: \(allSegs)")
-        if view_2_Segs<allSegs-1 {
+        print("nowSegs: \(nowSegs), allSegs: \(allSegs)")
+        if nowSegs<allSegs-1{
 //            if nowScoreIndex != 1 {
 ////                self.scoreView.stopBar()
 ////                self.scoreView2.initBar()
@@ -518,12 +533,11 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
             self.nowScoreIndex = 0
             self.didBegin = false
             self.order = 0
-            self.view_2_Segs = 0
-            self.view_1_Segs = 0
+            self.nowSegs = 0
             self.allSegs = 0
 //            self.showScoreView(file: song)
-//            self.scoreView.stopBar()
-//            self.scoreView2.stopBar()
+            self.scoreView.stopBar()
+            self.scoreView2.stopBar()
         }
         
 

@@ -37,6 +37,7 @@
 		FC3BABFA2142C93800E64A67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC3BABF82142C93800E64A67 /* LaunchScreen.storyboard */; };
 		FC4450B4221B21B7002EC413 /* ActionAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4450B2221B21B7002EC413 /* ActionAlertView.swift */; };
 		FC4450B5221B2F0C002EC413 /* ActionAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC4450B3221B21B7002EC413 /* ActionAlertView.xib */; };
+		FC4450C222259813002EC413 /* MusicScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4450C122259813002EC413 /* MusicScoreView.swift */; };
 		FC45128B219075AC0029E32C /* EmptyNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC45128A219075AC0029E32C /* EmptyNoteView.xib */; };
 		FC45128D2190B08B0029E32C /* NoteSelectionListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC45128C2190B08B0029E32C /* NoteSelectionListView.xib */; };
 		FC45128F2190B09B0029E32C /* NoteSelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45128E2190B09B0029E32C /* NoteSelectionListView.swift */; };
@@ -60,7 +61,6 @@
 		FC8192CC2174E2450076E137 /* FeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8192CB2174E2450076E137 /* FeedbackView.xib */; };
 		FC8388F2214AACC900FAAA36 /* PianoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8388F1214AACC900FAAA36 /* PianoView.swift */; };
 		FC845B86218B4C5B00A9D66D /* score1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC845B85218B4AB000A9D66D /* score1.wav */; };
-		FC845B89218B661300A9D66D /* MusicScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC845B88218B661300A9D66D /* MusicScoreView.swift */; };
 		FC96E82A216272C200D77780 /* RegisterStep1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E829216272C200D77780 /* RegisterStep1VC.swift */; };
 		FC96E83021628BA000D77780 /* ContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E82F21628B9F00D77780 /* ContractView.swift */; };
 		FC96E832216293DC00D77780 /* RegisterStep2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC96E831216293DC00D77780 /* RegisterStep2View.xib */; };
@@ -121,6 +121,7 @@
 		FC3BABFB2142C93800E64A67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC4450B2221B21B7002EC413 /* ActionAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionAlertView.swift; sourceTree = "<group>"; };
 		FC4450B3221B21B7002EC413 /* ActionAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionAlertView.xib; sourceTree = "<group>"; };
+		FC4450C122259813002EC413 /* MusicScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicScoreView.swift; sourceTree = "<group>"; };
 		FC45128A219075AC0029E32C /* EmptyNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyNoteView.xib; sourceTree = "<group>"; };
 		FC45128C2190B08B0029E32C /* NoteSelectionListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteSelectionListView.xib; sourceTree = "<group>"; };
 		FC45128E2190B09B0029E32C /* NoteSelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSelectionListView.swift; sourceTree = "<group>"; };
@@ -144,7 +145,6 @@
 		FC8192CB2174E2450076E137 /* FeedbackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackView.xib; sourceTree = "<group>"; };
 		FC8388F1214AACC900FAAA36 /* PianoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoView.swift; sourceTree = "<group>"; };
 		FC845B85218B4AB000A9D66D /* score1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score1.wav; sourceTree = "<group>"; };
-		FC845B88218B661300A9D66D /* MusicScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicScoreView.swift; path = MusicTest1/MusicScoreView.swift; sourceTree = "<group>"; };
 		FC96E829216272C200D77780 /* RegisterStep1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStep1VC.swift; sourceTree = "<group>"; };
 		FC96E82F21628B9F00D77780 /* ContractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractView.swift; sourceTree = "<group>"; };
 		FC96E831216293DC00D77780 /* RegisterStep2View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterStep2View.xib; sourceTree = "<group>"; };
@@ -265,8 +265,8 @@
 		FC3BABEE2142C93800E64A67 /* pianoLearningApp */ = {
 			isa = PBXGroup;
 			children = (
-				FC845B87218B65D900A9D66D /* MusicTest1 */,
 				FC845B85218B4AB000A9D66D /* score1.wav */,
+				FC4450C122259813002EC413 /* MusicScoreView.swift */,
 				FC7C84782201DFA30081DF45 /* FakeScore.json */,
 				FC05D20B2188A25100FF2D98 /* score1.json */,
 				FC05D20A2188A25100FF2D98 /* score2.json */,
@@ -308,14 +308,6 @@
 				FC96E831216293DC00D77780 /* RegisterStep2View.xib */,
 			);
 			name = Login;
-			sourceTree = "<group>";
-		};
-		FC845B87218B65D900A9D66D /* MusicTest1 */ = {
-			isa = PBXGroup;
-			children = (
-				FC845B88218B661300A9D66D /* MusicScoreView.swift */,
-			);
-			path = MusicTest1;
 			sourceTree = "<group>";
 		};
 		FCD50338217C9B0C00D4A52E /* AccountPage */ = {
@@ -564,7 +556,6 @@
 				FC45128F2190B09B0029E32C /* NoteSelectionListView.swift in Sources */,
 				FCE4F9DF217C3DBF005CC423 /* GradesLeftVC.swift in Sources */,
 				FCE4F9DA217C39CC005CC423 /* HighScoreCell.swift in Sources */,
-				FC845B89218B661300A9D66D /* MusicScoreView.swift in Sources */,
 				FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */,
 				FCF7525F21BD6385006BD62A /* AVPlayerManager.swift in Sources */,
 				FC02494A21CFE85B00F10919 /* UserSupportView.swift in Sources */,
@@ -586,6 +577,7 @@
 				FC96E82A216272C200D77780 /* RegisterStep1VC.swift in Sources */,
 				FC96E83E2163D47A00D77780 /* AccountManagingButton.swift in Sources */,
 				FC05D2132188B50600FF2D98 /* SelectionView.swift in Sources */,
+				FC4450C222259813002EC413 /* MusicScoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
