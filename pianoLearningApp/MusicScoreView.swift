@@ -299,7 +299,7 @@ class MusicScoreView: UIView {
                 // delegate
                 delegate?.noteShouldPlay(scoreIndex: scoreOrder, pitch: mTone, time: mNote, barIndex: seg, NoteIndex: col)
             }
-            print("----")
+//            print("----")
             k = k + 1
         }
         
@@ -456,7 +456,7 @@ class MusicScoreView: UIView {
                 noteArray?[i].append(true)// 加一空直列 Bool = true
 //                print("\(i) : nDrawX = \(nDrawX)")
             }
-            print("----")
+//            print("----")
             
             if nDrawX > viewW - noteW*4 {
 //                print("========= \(viewW)")
@@ -782,7 +782,7 @@ class MusicScoreView: UIView {
     
     func clearAllNotes(){
         scoreArray = nil
-        barImageView?.removeFromSuperview()
+//        barImageView?.removeFromSuperview()
         barImageView = nil
         setNeedsDisplay()
     }

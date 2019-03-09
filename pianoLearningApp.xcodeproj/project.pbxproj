@@ -20,8 +20,6 @@
 		FC05D202218405CA00FF2D98 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D201218405CA00FF2D98 /* LoadingView.swift */; };
 		FC05D204218406A800FF2D98 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D203218406A800FF2D98 /* UserDefaultsKey.swift */; };
 		FC05D2072186043500FF2D98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D2062186043500FF2D98 /* User.swift */; };
-		FC05D20C2188A25600FF2D98 /* score1.json in Resources */ = {isa = PBXBuildFile; fileRef = FC05D20B2188A25100FF2D98 /* score1.json */; };
-		FC05D20D2188A25900FF2D98 /* score2.json in Resources */ = {isa = PBXBuildFile; fileRef = FC05D20A2188A25100FF2D98 /* score2.json */; };
 		FC05D20F2188A4C000FF2D98 /* score3.json in Resources */ = {isa = PBXBuildFile; fileRef = FC05D20E2188A47A00FF2D98 /* score3.json */; };
 		FC05D2112188B4E300FF2D98 /* SelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC05D2102188B4E300FF2D98 /* SelectionView.xib */; };
 		FC05D2132188B50600FF2D98 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D2122188B50600FF2D98 /* SelectionView.swift */; };
@@ -46,7 +44,6 @@
 		FC7AECCD21457E6C00BC0412 /* playing.gif in Resources */ = {isa = PBXBuildFile; fileRef = FC7AECCB21457E6B00BC0412 /* playing.gif */; };
 		FC7AECCE21457E6C00BC0412 /* recording.gif in Resources */ = {isa = PBXBuildFile; fileRef = FC7AECCC21457E6C00BC0412 /* recording.gif */; };
 		FC7C84792201DFA30081DF45 /* FakeScore.json in Resources */ = {isa = PBXBuildFile; fileRef = FC7C84782201DFA30081DF45 /* FakeScore.json */; };
-		FC7DE1952147FEAD0069DD5D /* midiListenerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DE1942147FEAD0069DD5D /* midiListenerVC.swift */; };
 		FC80D5922174EF1000CA8DA0 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC80D5912174EF1000CA8DA0 /* FeedbackView.swift */; };
 		FC80D5942174EFE700CA8DA0 /* VolumeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC80D5932174EFE600CA8DA0 /* VolumeView.xib */; };
 		FC80D5962174F76C00CA8DA0 /* VolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC80D5952174F76C00CA8DA0 /* VolumeView.swift */; };
@@ -61,6 +58,8 @@
 		FC8192CC2174E2450076E137 /* FeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8192CB2174E2450076E137 /* FeedbackView.xib */; };
 		FC8388F2214AACC900FAAA36 /* PianoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8388F1214AACC900FAAA36 /* PianoView.swift */; };
 		FC845B86218B4C5B00A9D66D /* score1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC845B85218B4AB000A9D66D /* score1.wav */; };
+		FC8B66C2222D7DEC00D7DD5C /* score1.json in Resources */ = {isa = PBXBuildFile; fileRef = FC8B66C1222D7DE700D7DD5C /* score1.json */; };
+		FC8B66C3222D7DF100D7DD5C /* score2.json in Resources */ = {isa = PBXBuildFile; fileRef = FC8B66C0222D7DE600D7DD5C /* score2.json */; };
 		FC96E82A216272C200D77780 /* RegisterStep1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E829216272C200D77780 /* RegisterStep1VC.swift */; };
 		FC96E83021628BA000D77780 /* ContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E82F21628B9F00D77780 /* ContractView.swift */; };
 		FC96E832216293DC00D77780 /* RegisterStep2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC96E831216293DC00D77780 /* RegisterStep2View.xib */; };
@@ -83,7 +82,6 @@
 		FCE8F86E2191CD0200E1CA15 /* NoteSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8F86C2191CD0200E1CA15 /* NoteSelectionCell.swift */; };
 		FCE8F86F2191CD0200E1CA15 /* NoteSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCE8F86D2191CD0200E1CA15 /* NoteSelectionCell.xib */; };
 		FCEA81CC216DE99D004D6FF3 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */; };
-		FCF7525F21BD6385006BD62A /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF7525E21BD6385006BD62A /* AVPlayerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,8 +100,6 @@
 		FC05D201218405CA00FF2D98 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FC05D203218406A800FF2D98 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		FC05D2062186043500FF2D98 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		FC05D20A2188A25100FF2D98 /* score2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = score2.json; sourceTree = "<group>"; };
-		FC05D20B2188A25100FF2D98 /* score1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = score1.json; sourceTree = "<group>"; };
 		FC05D20E2188A47A00FF2D98 /* score3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = score3.json; sourceTree = "<group>"; };
 		FC05D2102188B4E300FF2D98 /* SelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionView.xib; sourceTree = "<group>"; };
 		FC05D2122188B50600FF2D98 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
@@ -130,7 +126,6 @@
 		FC7AECCB21457E6B00BC0412 /* playing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = playing.gif; sourceTree = "<group>"; };
 		FC7AECCC21457E6C00BC0412 /* recording.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = recording.gif; sourceTree = "<group>"; };
 		FC7C84782201DFA30081DF45 /* FakeScore.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FakeScore.json; sourceTree = "<group>"; };
-		FC7DE1942147FEAD0069DD5D /* midiListenerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = midiListenerVC.swift; sourceTree = "<group>"; };
 		FC80D5912174EF1000CA8DA0 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		FC80D5932174EFE600CA8DA0 /* VolumeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VolumeView.xib; sourceTree = "<group>"; };
 		FC80D5952174F76C00CA8DA0 /* VolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeView.swift; sourceTree = "<group>"; };
@@ -145,6 +140,8 @@
 		FC8192CB2174E2450076E137 /* FeedbackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackView.xib; sourceTree = "<group>"; };
 		FC8388F1214AACC900FAAA36 /* PianoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoView.swift; sourceTree = "<group>"; };
 		FC845B85218B4AB000A9D66D /* score1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score1.wav; sourceTree = "<group>"; };
+		FC8B66C0222D7DE600D7DD5C /* score2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = score2.json; sourceTree = "<group>"; };
+		FC8B66C1222D7DE700D7DD5C /* score1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = score1.json; sourceTree = "<group>"; };
 		FC96E829216272C200D77780 /* RegisterStep1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStep1VC.swift; sourceTree = "<group>"; };
 		FC96E82F21628B9F00D77780 /* ContractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractView.swift; sourceTree = "<group>"; };
 		FC96E831216293DC00D77780 /* RegisterStep2View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterStep2View.xib; sourceTree = "<group>"; };
@@ -169,7 +166,6 @@
 		FCE8F86C2191CD0200E1CA15 /* NoteSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSelectionCell.swift; sourceTree = "<group>"; };
 		FCE8F86D2191CD0200E1CA15 /* NoteSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteSelectionCell.xib; sourceTree = "<group>"; };
 		FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
-		FCF7525E21BD6385006BD62A /* AVPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +202,6 @@
 			children = (
 				FC05D1F72182083000FF2D98 /* API_Url.swift */,
 				FC05D1F921820C7F00FF2D98 /* ApiManager.swift */,
-				FCF7525E21BD6385006BD62A /* AVPlayerManager.swift */,
 				FC05D203218406A800FF2D98 /* UserDefaultsKey.swift */,
 			);
 			name = Helper;
@@ -268,8 +263,8 @@
 				FC845B85218B4AB000A9D66D /* score1.wav */,
 				FC4450C122259813002EC413 /* MusicScoreView.swift */,
 				FC7C84782201DFA30081DF45 /* FakeScore.json */,
-				FC05D20B2188A25100FF2D98 /* score1.json */,
-				FC05D20A2188A25100FF2D98 /* score2.json */,
+				FC8B66C1222D7DE700D7DD5C /* score1.json */,
+				FC8B66C0222D7DE600D7DD5C /* score2.json */,
 				FC05D20E2188A47A00FF2D98 /* score3.json */,
 				FC3BABEF2142C93800E64A67 /* AppDelegate.swift */,
 				FC4450C0222271ED002EC413 /* Login */,
@@ -286,7 +281,6 @@
 				FC7AECC921457E4500BC0412 /* iOSDevCenters+GIF.swift */,
 				FC7AECCB21457E6B00BC0412 /* playing.gif */,
 				FC7AECCC21457E6C00BC0412 /* recording.gif */,
-				FC7DE1942147FEAD0069DD5D /* midiListenerVC.swift */,
 				FC0950A221981CCB00224EA6 /* View */,
 				FC05D205218603E100FF2D98 /* Model */,
 				FC05D1F6218207F600FF2D98 /* Helper */,
@@ -424,6 +418,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC8B66C2222D7DEC00D7DD5C /* score1.json in Resources */,
 				FC8192CC2174E2450076E137 /* FeedbackView.xib in Resources */,
 				FC45128B219075AC0029E32C /* EmptyNoteView.xib in Resources */,
 				FCE8F86F2191CD0200E1CA15 /* NoteSelectionCell.xib in Resources */,
@@ -443,10 +438,10 @@
 				FCB8C87A2171FB4700898059 /* UserView.xib in Resources */,
 				FC3BABF72142C93800E64A67 /* Assets.xcassets in Resources */,
 				FC7AECCD21457E6C00BC0412 /* playing.gif in Resources */,
+				FC8B66C3222D7DF100D7DD5C /* score2.json in Resources */,
 				FC7AECCE21457E6C00BC0412 /* recording.gif in Resources */,
 				FC02495121CFF20100F10919 /* QuestionView.xib in Resources */,
 				FC8192C82174E10C0076E137 /* LanguageView.xib in Resources */,
-				FC05D20D2188A25900FF2D98 /* score2.json in Resources */,
 				FC229A7021C7000D00D16D80 /* didSendFeedback.xib in Resources */,
 				FC4450B5221B2F0C002EC413 /* ActionAlertView.xib in Resources */,
 				FC3BABF52142C93800E64A67 /* Main.storyboard in Resources */,
@@ -456,7 +451,6 @@
 				FC8192BC21740BBD0076E137 /* ModifyPwdView.xib in Resources */,
 				FC05D1FE2184024100FF2D98 /* AlertView.xib in Resources */,
 				FC96E838216393D900D77780 /* PwdAlertView.xib in Resources */,
-				FC05D20C2188A25600FF2D98 /* score1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,7 +551,6 @@
 				FCE4F9DF217C3DBF005CC423 /* GradesLeftVC.swift in Sources */,
 				FCE4F9DA217C39CC005CC423 /* HighScoreCell.swift in Sources */,
 				FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */,
-				FCF7525F21BD6385006BD62A /* AVPlayerManager.swift in Sources */,
 				FC02494A21CFE85B00F10919 /* UserSupportView.swift in Sources */,
 				FC8192C22174DDF60076E137 /* AddPhoto.swift in Sources */,
 				FC7AECC42145786900BC0412 /* musicNotePlayVC.swift in Sources */,
@@ -573,7 +566,6 @@
 				FC8192BE2174D90B0076E137 /* ModifyPwdView.swift in Sources */,
 				FC229A7221C7071200D16D80 /* didSendFeedback.swift in Sources */,
 				FC80D5962174F76C00CA8DA0 /* VolumeView.swift in Sources */,
-				FC7DE1952147FEAD0069DD5D /* midiListenerVC.swift in Sources */,
 				FC96E82A216272C200D77780 /* RegisterStep1VC.swift in Sources */,
 				FC96E83E2163D47A00D77780 /* AccountManagingButton.swift in Sources */,
 				FC05D2132188B50600FF2D98 /* SelectionView.swift in Sources */,

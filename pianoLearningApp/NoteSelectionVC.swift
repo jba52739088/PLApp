@@ -38,7 +38,7 @@ class NoteSelectionVC: UIViewController {
         if sender.tag == 0 {
             notesArray = ["score1", "score2"]
         }else {
-            notesArray = ["score2"]
+            notesArray = ["score3"]
         }
         listView = Bundle.main.loadNibNamed("NoteSelectionListView", owner: self, options: nil)?.first as! NoteSelectionListView
         listView.frame = self.backGroundView.bounds
