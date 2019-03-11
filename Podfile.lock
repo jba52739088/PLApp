@@ -7,6 +7,9 @@ PODS:
   - MusicTheorySwift (1.1.0)
   - PianoView (0.0.3):
     - MusicTheorySwift
+  - SQLite.swift (0.11.4):
+    - SQLite.swift/standard (= 0.11.4)
+  - SQLite.swift/standard (0.11.4)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -16,6 +19,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (~> 6.0.4)
   - LSFloatingActionMenu (~> 1.0.0)
   - PianoView (~> 0.0.3)
+  - SQLite.swift (= 0.11.4)
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -27,6 +31,7 @@ SPEC REPOS:
     - LSFloatingActionMenu
     - MusicTheorySwift
     - PianoView
+    - SQLite.swift
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -37,8 +42,9 @@ SPEC CHECKSUMS:
   LSFloatingActionMenu: dc2d6449e817cb2eb3c3a9a751bd49c3aae416b2
   MusicTheorySwift: 555d61fc174c36c7cb1a41cf20b54628ba6b3e32
   PianoView: df6fffb38f3866ef3c80bbf3c58eaf24cc9b2164
+  SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 21b8dcc5f806fd9eedef33245c2195f815a87d45
+PODFILE CHECKSUM: cb7adcde54f572f7a11112473d9233e5a87dba87
 
 COCOAPODS: 1.5.3

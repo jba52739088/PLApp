@@ -33,6 +33,7 @@ class MusicScoreView: UIView {
     var n2: Int = 4
     var n3: Int = 4
     var n4: Int = 4
+    var allSeg: Int = 0
     let noteHeads:[Float:String] =
         [0.03125:"quarter-head", 0.0625:"quarter-head",
          0.125:"quarter-head", 0.25:"quarter-head",
@@ -149,6 +150,7 @@ class MusicScoreView: UIView {
                             let isDot = note["dot"] == "true"
                             let isSharp = note["sharp"] == "true"
                             var mRest:Float = 0.0
+                            let isError = note["play"] == "false"
                             
                             aNote["note"] = note["tone"]!
                             aNote["note"] = note["note"]!
@@ -176,11 +178,11 @@ class MusicScoreView: UIView {
                                 // 繪製音符
                                 if abs(lastTone - mTone!) == 1 {
                                     drawNote(in: context, tone: mTone!, note: Float(mNote),isNextTone: true, isSharp: isSharp, isDotted: isDot, x: pos,
-                                             seg: s, col: c)
+                                             seg: s, col: c, isError: isError)
                                 }else{
                                     drawNote(in: context, tone: mTone!, note: Float(mNote),isNextTone: false, isSharp: isSharp,
                                              isDotted:isDot, x: pos,
-                                             seg: s, col: c)
+                                             seg: s, col: c, isError: isError)
                                 }
                                 lastTone = mTone!
                             }
@@ -277,7 +279,7 @@ class MusicScoreView: UIView {
                 let isDotted = note["note"] == "true"
                 let isSharp = note["sharp"] == "true"
                 
-                print("play => \(scoreOrder): \(mTone) : \(mNote)")
+//                print("play => \(scoreOrder): \(mTone) : \(mNote)")
                 
                 if mTone >= -2 && note["note"] != "-99" {
                     playNote(note: noteNums[Float(mTone)]!, isDotted: isDotted, isSharp: isSharp)
@@ -395,6 +397,16 @@ class MusicScoreView: UIView {
         self.n3 = n3; self.n4 = n4
     }
     
+    // 傳回總小節數
+    func getSegs() -> Int {
+        return allSeg
+    }
+    
+    // 傳回總拍數
+    func getBeats() -> Int {
+        return n1 * allSeg
+    }
+    
     /*
      * jsonArray: 樂譜資料
      * start: 指定第幾小節開始
@@ -450,16 +462,19 @@ class MusicScoreView: UIView {
         for i in 0..<jsonArray.count {
             let seg = jsonArray[i]
             noteArray?.append([])  // 加一空小節陣列
+            
+            allSeg = allSeg + 1
+            
             // 每一直行
             for _ in seg {
                 nDrawX = nDrawX + noteW*4
                 noteArray?[i].append(true)// 加一空直列 Bool = true
-//                print("\(i) : nDrawX = \(nDrawX)")
+                print("\(i) : nDrawX = \(nDrawX)")
             }
-//            print("----")
+            print("----")
             
             if nDrawX > viewW - noteW*4 {
-//                print("========= \(viewW)")
+                print("========= \(viewW)")
                 // 一排結束, 尚有資料
                 count = count + 1
                 nDrawX = drawX
@@ -577,7 +592,7 @@ class MusicScoreView: UIView {
     func drawNote(in context: CGContext,
                   tone: Int, note: Float, isNextTone: Bool,
                   isSharp: Bool, isDotted: Bool, x:CGFloat,
-                  seg: Int, col: Int){
+                  seg: Int, col: Int, isError: Bool){
         var tonePos: CGFloat = 0
         var isDrawSeg: Bool = false
         var isDrawSeg2: Bool = false
@@ -619,15 +634,23 @@ class MusicScoreView: UIView {
                 context.drawPath(using: .stroke)
             }
             
-            // 繪出音符影像
-            if noteArray?[seg][col] ?? true {
-                context.draw(imgNoteHead!, in:
-                    CGRect(x:x, y:unitH*tonePos,
-                           width:noteW,height:unitH*1))
-            }else{
+            
+            if isError {
                 context.draw(imgRNoteHead!, in:
                     CGRect(x:x, y:unitH*tonePos,
                            width:noteW,height:unitH*1))
+                
+            }else{
+                // 繪出音符影像
+                if noteArray?[seg][col] ?? true {
+                    context.draw(imgNoteHead!, in:
+                        CGRect(x:x, y:unitH*tonePos,
+                               width:noteW,height:unitH*1))
+                }else{
+                    context.draw(imgRNoteHead!, in:
+                        CGRect(x:x, y:unitH*tonePos,
+                               width:noteW,height:unitH*1))
+                }
             }
             
         }else{
@@ -663,14 +686,20 @@ class MusicScoreView: UIView {
                 }
                 
                 // 繪出音符影像
-                if noteArray?[seg][col] ?? true {
-                    context.draw(imgNoteHead!, in:
-                        CGRect(x:x+noteW, y:unitH*tonePos,
-                               width:noteW,height:unitH*1))
-                }else{
+                if isError {
                     context.draw(imgRNoteHead!, in:
                         CGRect(x:x+noteW, y:unitH*tonePos,
                                width:noteW,height:unitH*1))
+                }else{
+                    if noteArray?[seg][col] ?? true {
+                        context.draw(imgNoteHead!, in:
+                            CGRect(x:x+noteW, y:unitH*tonePos,
+                                   width:noteW,height:unitH*1))
+                    }else{
+                        context.draw(imgRNoteHead!, in:
+                            CGRect(x:x+noteW, y:unitH*tonePos,
+                                   width:noteW,height:unitH*1))
+                    }
                 }
                 
             }
@@ -686,15 +715,21 @@ class MusicScoreView: UIView {
                     let rbody = rnoteBodys[note]! + "down"
                     let imgRNoteBody = UIImage(named: rbody)?.cgImage
                     
-                    if noteArray?[seg][col] ?? true {
-                        context.draw(imgNoteBody!, in:
-                            CGRect(x:x, y:unitH*(tonePos-3),
-                                   width:noteW,height:unitH*4))
-                    }else{
-                        // 彈錯變色
+                    if isError {
                         context.draw(imgRNoteBody!, in:
                             CGRect(x:x, y:unitH*(tonePos-3),
                                    width:noteW,height:unitH*4))
+                    }else {
+                        if noteArray?[seg][col] ?? true {
+                            context.draw(imgNoteBody!, in:
+                                CGRect(x:x, y:unitH*(tonePos-3),
+                                       width:noteW,height:unitH*4))
+                        }else{
+                            // 彈錯變色
+                            context.draw(imgRNoteBody!, in:
+                                CGRect(x:x, y:unitH*(tonePos-3),
+                                       width:noteW,height:unitH*4))
+                        }
                     }
                     
                     if isSharp {
@@ -720,15 +755,23 @@ class MusicScoreView: UIView {
                         xp = x + noteW/2
                     }
                     
-                    if noteArray?[seg][col] ?? true {
-                        context.draw(imgNoteBody!, in:
-                            CGRect(x:xp, y:unitH*tonePos,
-                                   width:noteW,height:unitH*4))
-                    }else{
-                        // 彈錯變色
+                    if isError {
                         context.draw(imgRNoteBody!, in:
                             CGRect(x:xp, y:unitH*tonePos,
                                    width:noteW,height:unitH*4))
+                        
+                    }else {
+                        if noteArray?[seg][col] ?? true {
+                            context.draw(imgNoteBody!, in:
+                                CGRect(x:xp, y:unitH*tonePos,
+                                       width:noteW,height:unitH*4))
+                            
+                        }else{
+                            // 彈錯變色
+                            context.draw(imgRNoteBody!, in:
+                                CGRect(x:xp, y:unitH*tonePos,
+                                       width:noteW,height:unitH*4))
+                        }
                     }
                     
                     if isSharp {

@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(exception.callStackSymbols, forKey: "ExceptionHandler")
             UserDefaults.standard.synchronize()
         }
+        
+        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last);
+
         return true
     }
 

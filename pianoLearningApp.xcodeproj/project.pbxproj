@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		248E49F622350DD9004BD15C /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E49F522350DD9004BD15C /* SQLiteManager.swift */; };
+		248E49F822350EE7004BD15C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E49F722350EE7004BD15C /* Book.swift */; };
+		248E49FA22351076004BD15C /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E49F922351076004BD15C /* Sheet.swift */; };
 		5C397AD6F46B32DA8EA2E0BB /* Pods_pianoLearningApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */; };
 		FC02494A21CFE85B00F10919 /* UserSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02494921CFE85A00F10919 /* UserSupportView.swift */; };
 		FC02494E21CFECF600F10919 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02494D21CFECF600F10919 /* QuestionView.swift */; };
@@ -86,6 +89,9 @@
 
 /* Begin PBXFileReference section */
 		0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pianoLearningApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		248E49F522350DD9004BD15C /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
+		248E49F722350EE7004BD15C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		248E49F922351076004BD15C /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
 		27CA68979E9E8C91D53D71CB /* Pods-pianoLearningApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.release.xcconfig"; sourceTree = "<group>"; };
 		BCD70C9019CB00D8DC940E1E /* Pods-pianoLearningApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FC02494821CFE78A00F10919 /* UserSupportView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSupportView.xib; sourceTree = "<group>"; };
@@ -203,6 +209,7 @@
 				FC05D1F72182083000FF2D98 /* API_Url.swift */,
 				FC05D1F921820C7F00FF2D98 /* ApiManager.swift */,
 				FC05D203218406A800FF2D98 /* UserDefaultsKey.swift */,
+				248E49F522350DD9004BD15C /* SQLiteManager.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -211,6 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				FC05D2062186043500FF2D98 /* User.swift */,
+				248E49F722350EE7004BD15C /* Book.swift */,
+				248E49F922351076004BD15C /* Sheet.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -470,6 +479,7 @@
 				"${BUILT_PRODUCTS_DIR}/LSFloatingActionMenu/LSFloatingActionMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/MusicTheorySwift/MusicTheorySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PianoView/PianoView.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -480,6 +490,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LSFloatingActionMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MusicTheorySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PianoView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +549,7 @@
 				FC8192CA2174E1F50076E137 /* LanguageView.swift in Sources */,
 				FCEA81CC216DE99D004D6FF3 /* TabBarVC.swift in Sources */,
 				FCE4F9E1217C3DCC005CC423 /* GradesRightVC.swift in Sources */,
+				248E49FA22351076004BD15C /* Sheet.swift in Sources */,
 				FC3BABF22142C93800E64A67 /* NoteSelectionVC.swift in Sources */,
 				FC96E836216393C300D77780 /* AlertView.swift in Sources */,
 				FCB8C8782171FB3100898059 /* UserView.swift in Sources */,
@@ -563,11 +575,13 @@
 				FC8388F2214AACC900FAAA36 /* PianoView.swift in Sources */,
 				FC96E83A2163AFF800D77780 /* CustomSlider.swift in Sources */,
 				FC3BABF02142C93800E64A67 /* AppDelegate.swift in Sources */,
+				248E49F822350EE7004BD15C /* Book.swift in Sources */,
 				FC8192BE2174D90B0076E137 /* ModifyPwdView.swift in Sources */,
 				FC229A7221C7071200D16D80 /* didSendFeedback.swift in Sources */,
 				FC80D5962174F76C00CA8DA0 /* VolumeView.swift in Sources */,
 				FC96E82A216272C200D77780 /* RegisterStep1VC.swift in Sources */,
 				FC96E83E2163D47A00D77780 /* AccountManagingButton.swift in Sources */,
+				248E49F622350DD9004BD15C /* SQLiteManager.swift in Sources */,
 				FC05D2132188B50600FF2D98 /* SelectionView.swift in Sources */,
 				FC4450C222259813002EC413 /* MusicScoreView.swift in Sources */,
 			);
@@ -713,6 +727,7 @@
 			baseConfigurationReference = BCD70C9019CB00D8DC940E1E /* Pods-pianoLearningApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 284Y9W6F8Y;
 				INFOPLIST_FILE = pianoLearningApp/Info.plist;
@@ -720,6 +735,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = enyu.pianoLearningApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -730,6 +746,7 @@
 			baseConfigurationReference = 27CA68979E9E8C91D53D71CB /* Pods-pianoLearningApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 284Y9W6F8Y;
 				INFOPLIST_FILE = pianoLearningApp/Info.plist;
@@ -737,6 +754,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = enyu.pianoLearningApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
