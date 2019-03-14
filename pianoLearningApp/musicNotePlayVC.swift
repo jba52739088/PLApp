@@ -21,6 +21,7 @@ class musicNotePlayVC: UIViewController {
     @IBOutlet weak var main_playstart_Btn: UIButton!
     @IBOutlet weak var main_faster_Btn: UIButton!
     @IBOutlet weak var main_tempplay_Btn: UIButton!
+    @IBOutlet weak var main_tempplay_Title: UILabel!
     @IBOutlet weak var main_follow_Btn: UIButton!
     @IBOutlet weak var main_justplay_Btn: UIButton!
     @IBOutlet weak var progressSlider: CustomMainSlider!
@@ -46,25 +47,21 @@ class musicNotePlayVC: UIViewController {
     @IBOutlet weak var segsLabel: UILabel!
     @IBOutlet weak var noteTimeLabel: UILabel!
     
-    
-    
     var pianoBackground: CustomPianoView!
     var selectionView: SelectionView!
-    var actionMenu: LSFloatingActionMenu!
     
     var alertView: AlertView!
+    var actionAlertView: ActionAlertView!
+    // AKMIDIListener
     let midi = AKMIDI()
     var i:UInt8 = 36
     let ms = 1000
+    var isMidi_on = false // midi是否插入
     // 右下角功能列
+    var actionMenu: LSFloatingActionMenu!
     var muneIsOpen = false
     // 錄音＆播放&演奏曲
     var audioPlayer: AVAudioPlayer?
-//    var audioRecorder: AVAudioRecorder!
-//    var meterTimer:Timer!
-//    var isAudioRecordingGranted: Bool!
-//    var isRecording = false
-//    var isRecordPlaying = false
     // 是否播放中
     var isPlaying = false
     // 是否為演奏模式
@@ -102,16 +99,10 @@ class musicNotePlayVC: UIViewController {
     var nowSegs = 0       // 目前呈現到第n小節
     var allSegs = 0 // 所有小節數
     
-    
-//    var hasMoreScore = false  // 後面是否還有譜
-    
-    // 播放聲音
-    let session = AVAudioSession.sharedInstance()
     // 記錄使用者彈奏
-    weak var recordTimer: Timer?
+    var userHasPlay = false
     var isRecording = false
     var recordTime: Int = 0
-    var playData: [PlayData] = []
     var userDidPlay = false
     var isReadLocal = false
     var msPerBeat: Float = 0 // 一拍幾毫秒
@@ -122,13 +113,14 @@ class musicNotePlayVC: UIViewController {
         
         spaceView_1.isHidden = true
         spaceView_2.isHidden = true
+        midi.addListener(self)
         setPianoView()
         let imageGif = UIImage(named: "main_playstart")
         main_playstart_Btn.setImage(imageGif, for: .normal)
         setSubNavMenu()
         self.setMidiInput()
         self.setPageIndex()
-        
+        self.setMain_tempplay_Btn(.OFF)
         // 若之前無讀取樂譜之情況
         if UserDefaultsKeys.LAST_NOTE_NAME == "" {
             emptyNoteView = Bundle.main.loadNibNamed("EmptyNoteView", owner: self, options: nil)?.first as! UIView
@@ -163,56 +155,24 @@ class musicNotePlayVC: UIViewController {
     }
     
     func setMidiInput() {
+        
         midi.openInput()
         let ends:[EndpointInfo] = midi.destinationInfos
         for endpoint in ends {
             print(endpoint.name + ":" + endpoint.displayName)
+            midi.openOutput(endpoint.name)
         }
-        midi.openOutput("連接埠 1")
+        if midi.inputNames.count > 0 {
+            for item in midi.inputNames {
+                if item == "KEYBOARD" {
+                    
+                }
+            }
+        }
+//        midi.openOutput("連接埠 1")
+//        midi.openOutput("Session 1")
     }
-    
-    func showAlertView(message: String) {
-        alertView = Bundle.main.loadNibNamed("AlertView", owner: self, options: nil)?.first as? AlertView
-        alertView.frame = self.view.frame
-        alertView.delegate = self
-        alertView.initAlert(message: message)
-        self.view.addSubview(alertView)
-    }
-    
-    func setPianoView() {
-        pianoBackground = CustomPianoView(frame: CGRect(x: 0, y: self.musicNoteView.frame.maxY - 185, width: self.view.frame.width, height: 185))
-        self.view.insertSubview(pianoBackground, belowSubview: musicNoteView)
-    }
-    
-    func setSubNavMenu() {
-        var mune: Array<LSFloatingActionMenuItem> = []
-        let tempoBtn = LSFloatingActionMenuItem(image: UIImage(named: "main_sub_nav_tempo"), highlightedImage: UIImage(named: "main_sub_nav_tempo_touched"))
-        tempoBtn?.itemSize = main_sub_nav_open_Btn.frame.size
-        mune.append(tempoBtn!)
-        let bgmBtn = LSFloatingActionMenuItem(image: UIImage(named: "main_sub_nav_bgm"), highlightedImage: UIImage(named: "main_sub_nav_bgm_touched"))
-        bgmBtn?.itemSize = main_sub_nav_open_Btn.frame.size
-        mune.append(bgmBtn!)
-        let rBtn = LSFloatingActionMenuItem(image: UIImage(named: "main_sub_nav_r"), highlightedImage: UIImage(named: "main_sub_nav_r_touched"))
-        rBtn?.itemSize = main_sub_nav_open_Btn.frame.size
-        mune.append(rBtn!)
-        let lBtn = LSFloatingActionMenuItem(image: UIImage(named: "main_sub_nav_l"), highlightedImage: UIImage(named: "main_sub_nav_l_touched"))
-        lBtn?.itemSize = main_sub_nav_open_Btn.frame.size
-        mune.append(lBtn!)
-        let repeatBtn = LSFloatingActionMenuItem(image: UIImage(named: "main_sub_nav_repeat"), highlightedImage: UIImage(named: "main_sub_nav_repeat_touched"))
-        repeatBtn?.itemSize = main_sub_nav_open_Btn.frame.size
-        mune.append(repeatBtn!)
-        self.actionMenu = LSFloatingActionMenu(frame: self.musicNoteView.frame, direction: LSFloatingActionMenuDirection.right, menuItems: mune, menuHandler: { (item, index) in
-            //
-        }, closeHandler: {
-            self.muneIsOpen = false
-            self.actionMenu.isHidden = true
-        })
-        self.actionMenu.itemSpacing = 12
-        self.actionMenu.startPoint = CGPoint(x: main_sub_nav_open_Btn.center.x - main_sub_nav_open_Btn.frame.width - 12, y:  self.main_sub_nav_open_Btn.center.y - 20)
-        self.actionMenu.rotateStartMenu = true
-        self.view.addSubview(self.actionMenu)
-    }
-    
+
     func setPageIndex() {
         self.pageControl.numberOfPages = self.allScoreViewCount
         self.pageControl.currentPage = self.nowScoreView
@@ -228,14 +188,15 @@ class musicNotePlayVC: UIViewController {
         nowSegs = 0 // 目前呈現的小節數
         nowScoreView = 0
         hasMoreScore = false
-        self.nowBarIndex = 0
-        self.lastBarIndex = 0
-        self.didBarIndex = 0
-        self.allNoteCount = 0
-        self.nowNoteCount = 0
-        self.segsLabel.text = "小節 0"
-        self.noteTimeLabel.text = "拍數 0"
-        self.isReadLocal = false
+        nowBarIndex = 0
+        lastBarIndex = 0
+        didBarIndex = 0
+        allNoteCount = 0
+        nowNoteCount = 0
+        segsLabel.text = "小節 0"
+        noteTimeLabel.text = "拍數 0"
+        isReadLocal = false
+        userHasPlay = false
         //
         
         scoreView.setBeat(setBeat: bmpSlider.value / 60)
@@ -293,51 +254,13 @@ class musicNotePlayVC: UIViewController {
             print(error.localizedDescription)
         }
     }
-    
-    func clearScoreNotes() {
-        scoreView.clearAllNotes()
-        scoreView2.clearAllNotes()
-    }
- 
+
     @IBAction func onClick_main_slower_Btn(_ sender: Any) {
-//        if !isPlaying{
-//            scoreView.clearAllNotes()
-//            scoreView2.clearAllNotes()
-//            showScoreView(file: "score1")
-//        }
-//
-//        DispatchQueue.main.async {
-//            let note1 = Pitch(midiNote: 60)
-//            self.pianoBackground.pianoView.highlightNote(note: note1)
-//            let note2 = Pitch(midiNote: 62)
-//            self.pianoBackground.pianoView.selectNote(note: note2)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-//                self.pianoBackground.pianoView.unhighlightNote(note: note1)
-//                self.pianoBackground.pianoView.deselectNote(note: note2)
-//            })
-//        }
-//        UserDefaults.standard.set("score1", forKey: PIANO_LAST_NOTE_NAME)
-//        UserDefaults.standard.synchronize()
+
     }
     
     @IBAction func onClick_main_faster_Btn(_ sender: Any) {
-//        if !isPlaying{
-//            scoreView.clearAllNotes()
-//            scoreView2.clearAllNotes()
-//            showScoreView(file: "score2")
-//        }
-//        DispatchQueue.main.async {
-//            let note1 = Pitch(midiNote: 61)
-//            self.pianoBackground.pianoView.highlightNote(note: note1)
-//            let note2 = Pitch(midiNote: 63)
-//            self.pianoBackground.pianoView.selectNote(note: note2)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-//                self.pianoBackground.pianoView.unhighlightNote(note: note1)
-//                self.pianoBackground.pianoView.deselectNote(note: note2)
-//            })
-//        }
-//        UserDefaults.standard.set("score2", forKey: PIANO_LAST_NOTE_NAME)
-//        UserDefaults.standard.synchronize()
+
     }
     @IBAction func onClick_main_just_play_Btn(_ sender: Any) {
         if !self.isJustplay {
@@ -358,9 +281,7 @@ class musicNotePlayVC: UIViewController {
     
     
     @IBAction func onClick_main_playstart_Btn(_ sender: Any) {
-        recordTimer?.invalidate()
         isRecording = false
-        recordTimer = nil
         if self.isJustplay {
             if !isPlaying {
                 if self.pianoIsVisible {
@@ -402,7 +323,8 @@ class musicNotePlayVC: UIViewController {
                     scoreView2.startBar()
                 }
                 self.isRecording = true
-                self.main_tempplay_Btn.setImage(UIImage(named: "main_stop"), for: .normal)
+                self.setMain_tempplay_Btn(.Recording)
+//                self.main_tempplay_Btn.setImage(UIImage(named: "main_stop"), for: .normal)
                 
             }else {
                 let imageGif = UIImage(named: "main_playstart")
@@ -414,15 +336,17 @@ class musicNotePlayVC: UIViewController {
                     scoreView2.pauseBar()
                 }
                 self.isRecording = false
-                self.main_tempplay_Btn.setImage(UIImage(named: "main_stop"), for: .normal)
+                self.setMain_tempplay_Btn(.Recording)
+//                self.main_tempplay_Btn.setImage(UIImage(named: "main_stop"), for: .normal)
             }
         }
     }
     
     @IBAction func onClick_main_tempplay_Btn(_ sender: Any) {
         if !self.isRecording {
-            
             self.showScoreView(file: self.currentSongName ?? "", isreadLocal: true)
+        }else {
+            self.showActionAlertView()
         }
     }
     
@@ -510,7 +434,7 @@ class musicNotePlayVC: UIViewController {
     }
     
     func convertNoteNum(note: String) -> String {
-        let noteNums = ["49": "-5.5", "19": "-23", "117": "34", "88": "17", "62": "2", "116": "33.5", "16": "-25", "4": "-32", "85": "15.5", "126": "39.5", "22": "-21.5", "5": "-31", "67": "5", "20": "-22.5", "44": "-8.5", "79": "12", "99": "23.5", "60": "1", "36": "-13", "77": "11", "3": "-32.5", "41": "-10", "59": "0", "108": "29", "18": "-23.5", "50": "-5", "17": "-24", "33": "-15", "120": "36", "23": "-21", "127": "40", "86": "16", "84": "15", "91": "19", "32": "-15.5", "64": "3", "112": "31", "66": "4.5", "6": "-30.5", "0": "-34", "28": "-18", "119": "35", "98": "23", "26": "-19", "30": "-16.5", "89": "18", "35": "-14", "2": "-33", "82": "13.5", "78": "11.5", "61": "1.5", "46": "-7.5", "38": "-12", "106": "27.5", "118": "34.5", "97": "22.5", "94": "20.5", "52": "-4", "24": "-20", "110": "30", "54": "-2.5", "69": "6", "72": "8", "121": "36.5", "87": "16.5", "101": "25", "125": "39", "10": "-28.5", "71": "7", "83": "14", "63": "2.5", "109": "29.5", "9": "-29", "15": "-25.5", "95": "21", "39": "-11.5", "96": "22", "7": "-30", "12": "-27", "14": "-26", "114": "32.5", "74": "9", "92": "19.5", "122": "37", "27": "-18.5", "102": "25.5", "93": "20", "47": "-7", "111": "30.5", "104": "26.5", "76": "10", "103": "26", "25": "-19.5", "65": "4", "115": "33", "57": "-1", "124": "38", "48": "-6", "45": "-8", "40": "-11", "73": "8.5", "123": "37.5", "90": "18.5", "70": "6.5", "11": "-28", "21": "-22", "68": "5.5", "51": "-4.5", "42": "-9.5", "1": "-33.5", "107": "28", "53": "-3", "113": "32", "34": "-14.5", "80": "12.5", "31": "-16", "37": "-12.5", "81": "13", "100": "24", "29": "-17", "75": "9.5", "55": "-2", "13": "-26.5", "58": "-0.5", "105": "27", "8": "-29.5", "43": "-9", "56": "-1.5"]
+        let noteNums = ["0": "-34","1": "-33.5","10": "-28.5","100": "24","101": "25","102": "25.5","103": "26","104": "26.5","105": "27","106": "27.5","107": "28","108": "29","109": "29.5","11": "-28","110": "30","111": "30.5","112": "31","113": "32","114": "32.5","115": "33","116": "33.5","117": "34","118": "34.5","119": "35","12": "-27","120": "36","121": "36.5","122": "37","123": "37.5","124": "38","125": "39","126": "39.5","127": "40","13": "-26.5","14": "-26","15": "-25.5","16": "-25","17": "-24","18": "-23.5","19": "-23","2": "-33","20": "-22.5","21": "-22","22": "-21.5","23": "-21","24": "-20","25": "-19.5","26": "-19","27": "-18.5","28": "-18","29": "-17","3": "-32.5","30": "-16.5","31": "-16","32": "-15.5","33": "-15","34": "-14.5","35": "-14","36": "-13","37": "-12.5","38": "-12","39": "-11.5","4": "-32","40": "-11","41": "-10","42": "-9.5","43": "-9","44": "-8.5","45": "-8","46": "-7.5","47": "-7","48": "-6","5": "-31","50": "-5","51": "-4.5","52": "-4","53": "-3","54": "-2.5","55": "-2","56": "-1.5","57": "-1","58": "-0.5","59": "0","6": "-30.5","60": "1","61": "1.5","62": "2","63": "2.5","64": "3","65": "4","66": "4.5","67": "5","68": "5.5","69": "6","7": "-30","70": "6.5","71": "7","72": "8","73": "8.5","74": "9","75": "9.5","76": "10","77": "11","78": "11.5","79": "12","8": "-29.5","80": "12.5","81": "13","82": "13.5","83": "14","84": "15","85": "15.5","86": "16","87": "16.5","88": "17","89": "18","9": "-29","90": "18.5","91": "19","92": "19.5","93": "20","94": "20.5","95": "21","96": "22","97": "22.5","98": "23","99": "23.5","49":"-5.5"]
         return noteNums[note] ?? ""
     }
     
@@ -520,10 +444,19 @@ class musicNotePlayVC: UIViewController {
 //MARK: - 監聽鍵盤點擊
 extension musicNotePlayVC: AKMIDIListener {
     func receivedMIDISetupChange() {
-        if (self.midi.inputNames.count == 2) || (self.midi.inputNames.count == 1 && self.midi.inputNames[0] == "KEYBOARD") {
-            self.showAlertView(message: "MIDI连接成功！！")
-            self.setMidiInput()
+        if (self.midi.inputNames.count > 0) {
+            for item in self.midi.inputNames {
+                if item == "KEYBOARD" {
+                    self.showAlertView(message: "MIDI连接成功！！")
+                    self.isMidi_on = true
+                    self.setMidiInput()
+                    self.setMain_tempplay_Btn(.ON)
+                    return
+                }
+            }
         }
+        self.isMidi_on = false
+        self.setMain_tempplay_Btn(.OFF)
     }
     
     func receivedMIDINoteOn(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
@@ -667,7 +600,6 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
                     self.scoreView.startBar()
                 }
             }else {
-                self.recordTimer?.invalidate()
                 if self.isRecording{
                     if !userDidPlay && self.didBarIndex > 0 && isRecording && !self.isReadLocal{
                         // 若最後一個沒彈也要記錄
@@ -678,9 +610,9 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
                     }
                     self.storeUserPlayedData()
                     self.isRecording = false
-                    self.main_tempplay_Btn.setImage(UIImage(named: "main_tempplay"), for: .normal)
+//                    self.main_tempplay_Btn.setImage(UIImage(named: "main_tempplay"), for: .normal)
+                    self.setMain_tempplay_Btn(.Recorded)
                 }
-                self.recordTimer = nil
                 self.shouldCleanNotes()
                 self.scoreView.stopBar()
                 self.scoreView2.stopBar()
@@ -792,15 +724,21 @@ extension musicNotePlayVC: alertViewDelegate {
     }
 }
 
-class PlayData: NSObject {
-    var index: Int!
-    var note: Int!
-    var starTime: Int!
-    var endTime: Int!
-    init(index: Int, note: Int, starTime: Int, endTime: Int) {
-        self.index = index
-        self.note = note
-        self.starTime = starTime
-        self.endTime = endTime
+extension musicNotePlayVC: actionAlertViewDelegate {
+    func didTapLeftBtn() {
+        if self.actionAlertView != nil {
+            self.actionAlertView.removeFromSuperview()
+        }
     }
+    
+    func didTapRightBtn() {
+        if self.actionAlertView != nil {
+            self.actionAlertView.removeFromSuperview()
+        }
+    }
+    
+    
+    
+    
 }
+

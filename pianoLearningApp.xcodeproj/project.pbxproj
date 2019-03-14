@@ -10,6 +10,7 @@
 		248E49F622350DD9004BD15C /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E49F522350DD9004BD15C /* SQLiteManager.swift */; };
 		248E49F822350EE7004BD15C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E49F722350EE7004BD15C /* Book.swift */; };
 		248E49FA22351076004BD15C /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E49F922351076004BD15C /* Sheet.swift */; };
+		24D989432238FAB100891497 /* musicNotePlayVC_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D989422238FAB100891497 /* musicNotePlayVC_view.swift */; };
 		5C397AD6F46B32DA8EA2E0BB /* Pods_pianoLearningApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */; };
 		FC02494A21CFE85B00F10919 /* UserSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02494921CFE85A00F10919 /* UserSupportView.swift */; };
 		FC02494E21CFECF600F10919 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02494D21CFECF600F10919 /* QuestionView.swift */; };
@@ -92,6 +93,7 @@
 		248E49F522350DD9004BD15C /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		248E49F722350EE7004BD15C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		248E49F922351076004BD15C /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
+		24D989422238FAB100891497 /* musicNotePlayVC_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = musicNotePlayVC_view.swift; sourceTree = "<group>"; };
 		27CA68979E9E8C91D53D71CB /* Pods-pianoLearningApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.release.xcconfig"; sourceTree = "<group>"; };
 		BCD70C9019CB00D8DC940E1E /* Pods-pianoLearningApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FC02494821CFE78A00F10919 /* UserSupportView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSupportView.xib; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				FC4450C0222271ED002EC413 /* Login */,
 				FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */,
 				FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */,
+				24D989422238FAB100891497 /* musicNotePlayVC_view.swift */,
 				FC45128A219075AC0029E32C /* EmptyNoteView.xib */,
 				FC3BABF12142C93800E64A67 /* NoteSelectionVC.swift */,
 				FC3BABF32142C93800E64A67 /* Main.storyboard */,
@@ -551,6 +554,7 @@
 				FCE4F9E1217C3DCC005CC423 /* GradesRightVC.swift in Sources */,
 				248E49FA22351076004BD15C /* Sheet.swift in Sources */,
 				FC3BABF22142C93800E64A67 /* NoteSelectionVC.swift in Sources */,
+				24D989432238FAB100891497 /* musicNotePlayVC_view.swift in Sources */,
 				FC96E836216393C300D77780 /* AlertView.swift in Sources */,
 				FCB8C8782171FB3100898059 /* UserView.swift in Sources */,
 				FCE8F86E2191CD0200E1CA15 /* NoteSelectionCell.swift in Sources */,
