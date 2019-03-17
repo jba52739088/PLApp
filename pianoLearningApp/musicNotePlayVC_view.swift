@@ -18,6 +18,11 @@ enum RECORD_TYPE: String {
     case RecordedPlaying = "RecordedPlaying"
 }
 
+enum ACTION_ALERT_TYPE: String {
+    case PLAY_FINISHED = "playFinished"
+    case PLAY_PAUSED = "playPaused"
+}
+
 extension musicNotePlayVC {
     
     // 设定播放暂存按钮
@@ -117,17 +122,28 @@ extension musicNotePlayVC {
         self.view.addSubview(alertView)
     }
     
-    func showActionAlertView() {
+    func showActionAlertView(_ status: ACTION_ALERT_TYPE) {
         actionAlertView = Bundle.main.loadNibNamed("ActionAlertView", owner: self, options: nil)?.first as? ActionAlertView
         actionAlertView.frame = self.view.frame
         actionAlertView.delegate = self
         actionAlertView.initAlert()
-        actionAlertView.firstlabel.text = "这首曲子"
-        actionAlertView.secondlabel.text = "尚未练习完毕，你确定要退出吗？"
-        actionAlertView.thirdlabel.text = " "
-        actionAlertView.fourthlabel.text = "注意：直接退出将不会储存成绩记录"
-        actionAlertView.leftBtn.setTitle("继续", for: .normal)
-        actionAlertView.rightBtn.setTitle("退出", for: .normal)
+        self.alertType = status
+        switch status {
+        case .PLAY_FINISHED:
+            actionAlertView.firstlabel.text = "太棒了！！"
+            actionAlertView.secondlabel.text = "已完成一首曲子的练习！"
+            actionAlertView.thirdlabel.text = "请再接再厉"
+            actionAlertView.fourthlabel.text = " "
+            actionAlertView.leftBtn.setTitle("储存成绩", for: .normal)
+            actionAlertView.rightBtn.setTitle("不储存", for: .normal)
+        case .PLAY_PAUSED:
+            actionAlertView.firstlabel.text = "这首曲子"
+            actionAlertView.secondlabel.text = "尚未练习完毕，你确定要退出吗？"
+            actionAlertView.thirdlabel.text = " "
+            actionAlertView.fourthlabel.text = "注意：直接退出将不会储存成绩记录"
+            actionAlertView.leftBtn.setTitle("继续", for: .normal)
+            actionAlertView.rightBtn.setTitle("退出", for: .normal)
+        }
         self.view.addSubview(actionAlertView)
     }
 }

@@ -52,6 +52,7 @@ class musicNotePlayVC: UIViewController {
     
     var alertView: AlertView!
     var actionAlertView: ActionAlertView!
+    var alertType: ACTION_ALERT_TYPE!
     // AKMIDIListener
     let midi = AKMIDI()
     var i:UInt8 = 36
@@ -106,8 +107,8 @@ class musicNotePlayVC: UIViewController {
     var userDidPlay = false
     var isReadLocal = false
     var msPerBeat: Float = 0 // 一拍幾毫秒
-    var deviation: Float = 0 // 誤差值
     
+    var deviation: TimeInterval = 0.2 // 誤差值
     var userDidPlayNote: String = ""
     var userDidPlayTime: TimeInterval = 0
     
@@ -355,10 +356,12 @@ class musicNotePlayVC: UIViewController {
     }
     
     @IBAction func onClick_main_tempplay_Btn(_ sender: Any) {
+        self.setMain_tempplay_Btn(.RecordedPlaying)
         if !self.isRecording {
             self.showScoreView(file: self.currentSongName ?? "", isreadLocal: true)
         }else {
-            self.showActionAlertView()
+            self.onClick_main_playstart_Btn(self)
+            self.showActionAlertView(.PLAY_PAUSED)
         }
     }
     
@@ -490,13 +493,6 @@ extension musicNotePlayVC: AKMIDIListener {
                     self.setMain_tempplay_Btn(.Recording)
                 }
                 self.userDidPlay = true
-//                let convertedNote = self.convertNoteNum(note: "\(noteNumber)")
-//                print("convertedNote: \(convertedNote)")
-//                let shouldNote = self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"]
-//                if convertedNote != shouldNote {
-//                    self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"] = convertedNote
-//                    self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["play"] = "false"
-//                }
                 self.userDidPlayNote = "\(noteNumber)"
                 self.userDidPlayTime = Date().timeIntervalSince1970
             }else {
@@ -504,10 +500,6 @@ extension musicNotePlayVC: AKMIDIListener {
             }
             
         }
-//        print("\(self.jsonArray?[self.didBarIndex-1][shouldNoteIndex][0])")
-        
-        
-        
     }
     
     func receivedMIDINoteOff(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
@@ -602,15 +594,8 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
         self.setPageIndex()
         let note = Pitch(midiNote: pitch)
         self.pianoBackground.pianoView.selectNote(note: note)
-        print("self.jsonArray?[\(self.didBarIndex-1)][\(shouldNoteIndex)]")
-        print("\(self.jsonArray?[self.didBarIndex-1][shouldNoteIndex][0])")
-//        if !userDidPlay && self.didBarIndex > 0 && isRecording && !self.isReadLocal{
-//            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"] = "1"
-//            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["note"] = "-99"
-//            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["rest"] = "4"
-//            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["play"] = "false"
-//        }
-//        userDidPlay = false
+//        print("self.jsonArray?[\(self.didBarIndex-1)][\(shouldNoteIndex)]")
+//        print("\(self.jsonArray?[self.didBarIndex-1][shouldNoteIndex][0])")
         if isRecording {
             let thisDidBarIndex = self.didBarIndex-1
             let thisShouldNoteIndex = shouldNoteIndex
@@ -620,7 +605,7 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
                 let convertedNote = self.convertNoteNum(note: self.userDidPlayNote)
                 print("convertedNote: \(convertedNote)")
                 
-                if self.userDidPlayTime >= thisTime-0.2 && self.userDidPlayTime <= thisTime+0.2 {
+                if self.userDidPlayTime >= thisTime - self.deviation && self.userDidPlayTime <= thisTime + self.deviation {
                     let shouldNote = self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"]
                     if convertedNote != shouldNote {
                         self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = convertedNote
@@ -651,17 +636,10 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
                 }
             }else {
                 if self.isRecording{
-//                    if !userDidPlay && self.didBarIndex > 0 && isRecording && !self.isReadLocal{
-//                        // 若最後一個沒彈也要記錄
-//                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"] = "1"
-//                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["note"] = "-99"
-//                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["rest"] = "4"
-//                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["play"] = "false"
-//                    }
                     self.storeUserPlayedData()
                     self.isRecording = false
-//                    self.main_tempplay_Btn.setImage(UIImage(named: "main_tempplay"), for: .normal)
                     self.setMain_tempplay_Btn(.Recorded)
+                    self.showActionAlertView(.PLAY_FINISHED)
                 }
                 self.shouldCleanNotes()
                 self.scoreView.stopBar()
@@ -776,14 +754,44 @@ extension musicNotePlayVC: alertViewDelegate {
 
 extension musicNotePlayVC: actionAlertViewDelegate {
     func didTapLeftBtn() {
+        if self.alertType == nil { return }
         if self.actionAlertView != nil {
+            switch self.alertType {
+            case .PLAY_FINISHED?:
+                print("储存成绩")
+            case .PLAY_PAUSED?:
+                print("继续")
+            default:
+                print("error")
+            }
             self.actionAlertView.removeFromSuperview()
+            self.alertType = nil
         }
     }
     
     func didTapRightBtn() {
+        if self.alertType == nil { return }
         if self.actionAlertView != nil {
+            switch self.alertType {
+            case .PLAY_FINISHED?:
+                print("不储存")
+                self.shouldCleanNotes()
+                self.scoreView.stopBar()
+                self.scoreView2.stopBar()
+                self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME, isreadLocal: false)
+                self.setMain_tempplay_Btn(.ON)
+            case .PLAY_PAUSED?:
+                print("退出")
+                self.shouldCleanNotes()
+                self.scoreView.stopBar()
+                self.scoreView2.stopBar()
+                self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME, isreadLocal: false)
+                self.setMain_tempplay_Btn(.ON)
+            default:
+                print("error")
+            }
             self.actionAlertView.removeFromSuperview()
+            self.alertType = nil
         }
     }
     
