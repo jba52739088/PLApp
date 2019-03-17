@@ -106,6 +106,10 @@ class musicNotePlayVC: UIViewController {
     var userDidPlay = false
     var isReadLocal = false
     var msPerBeat: Float = 0 // 一拍幾毫秒
+    var deviation: Float = 0 // 誤差值
+    
+    var userDidPlayNote: String = ""
+    var userDidPlayTime: TimeInterval = 0
     
     
     override func viewDidLoad() {
@@ -197,6 +201,7 @@ class musicNotePlayVC: UIViewController {
         noteTimeLabel.text = "拍數 0"
         isReadLocal = false
         userHasPlay = false
+        isRecording = false
         //
         
         scoreView.setBeat(setBeat: bmpSlider.value / 60)
@@ -323,8 +328,11 @@ class musicNotePlayVC: UIViewController {
                     scoreView2.startBar()
                 }
                 self.isRecording = true
-                self.setMain_tempplay_Btn(.Recording)
-//                self.main_tempplay_Btn.setImage(UIImage(named: "main_stop"), for: .normal)
+                if userHasPlay {
+                    self.setMain_tempplay_Btn(.Recording)
+                }else {
+                    self.setMain_tempplay_Btn(.ON)
+                }
                 
             }else {
                 let imageGif = UIImage(named: "main_playstart")
@@ -336,8 +344,12 @@ class musicNotePlayVC: UIViewController {
                     scoreView2.pauseBar()
                 }
                 self.isRecording = false
-                self.setMain_tempplay_Btn(.Recording)
-//                self.main_tempplay_Btn.setImage(UIImage(named: "main_stop"), for: .normal)
+                if userHasPlay {
+                    self.setMain_tempplay_Btn(.Recording)
+                }else {
+                    self.setMain_tempplay_Btn(.ON)
+                }
+                
             }
         }
     }
@@ -444,13 +456,22 @@ class musicNotePlayVC: UIViewController {
 //MARK: - 監聽鍵盤點擊
 extension musicNotePlayVC: AKMIDIListener {
     func receivedMIDISetupChange() {
+        if isPlaying {
+            self.onClick_main_playstart_Btn(self)
+        }
         if (self.midi.inputNames.count > 0) {
             for item in self.midi.inputNames {
                 if item == "KEYBOARD" {
                     self.showAlertView(message: "MIDI连接成功！！")
                     self.isMidi_on = true
                     self.setMidiInput()
-                    self.setMain_tempplay_Btn(.ON)
+                    if isPlaying {
+                        self.setMain_tempplay_Btn(.Recording)
+                    }else {
+                        self.setMain_tempplay_Btn(.ON)
+                    }
+                    
+                    
                     return
                 }
             }
@@ -464,14 +485,20 @@ extension musicNotePlayVC: AKMIDIListener {
             let note = Pitch(midiNote: Int(noteNumber))
             self.pianoBackground.pianoView.highlightNote(note: note)
             if self.isRecording {
-                let convertedNote = self.convertNoteNum(note: "\(noteNumber)")
-                self.userDidPlay = true
-                print("convertedNote: \(convertedNote)")
-                let shouldNote = self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"]
-                if convertedNote != shouldNote {
-                    self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"] = convertedNote
-                    self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["play"] = "false"
+                if !self.userHasPlay {
+                    self.userHasPlay = true
+                    self.setMain_tempplay_Btn(.Recording)
                 }
+                self.userDidPlay = true
+//                let convertedNote = self.convertNoteNum(note: "\(noteNumber)")
+//                print("convertedNote: \(convertedNote)")
+//                let shouldNote = self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"]
+//                if convertedNote != shouldNote {
+//                    self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"] = convertedNote
+//                    self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["play"] = "false"
+//                }
+                self.userDidPlayNote = "\(noteNumber)"
+                self.userDidPlayTime = Date().timeIntervalSince1970
             }else {
                  self.userDidPlay = true
             }
@@ -542,13 +569,6 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
         if NoteIndex != self.shouldNoteIndex || self.nowBarIndex != barIndex{
             self.pianoBackground.pianoView.deselectAll()
         }
-        if !userDidPlay && self.didBarIndex > 0 && isRecording && !self.isReadLocal{
-            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"] = "1"
-            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["note"] = "-99"
-            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["rest"] = "4"
-            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["play"] = "false"
-        }
-        userDidPlay = false
         self.lastBarIndex = self.nowBarIndex
         self.segsLabel.text = "小節 \(barIndex)"
         self.noteTimeLabel.text = "拍數 \(Int(time))"
@@ -584,6 +604,36 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
         self.pianoBackground.pianoView.selectNote(note: note)
         print("self.jsonArray?[\(self.didBarIndex-1)][\(shouldNoteIndex)]")
         print("\(self.jsonArray?[self.didBarIndex-1][shouldNoteIndex][0])")
+//        if !userDidPlay && self.didBarIndex > 0 && isRecording && !self.isReadLocal{
+//            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"] = "1"
+//            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["note"] = "-99"
+//            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["rest"] = "4"
+//            self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["play"] = "false"
+//        }
+//        userDidPlay = false
+        if isRecording {
+            let thisDidBarIndex = self.didBarIndex-1
+            let thisShouldNoteIndex = shouldNoteIndex
+            let thisTime = Date().timeIntervalSince1970
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) {
+                self.userDidPlay = false
+                let convertedNote = self.convertNoteNum(note: self.userDidPlayNote)
+                print("convertedNote: \(convertedNote)")
+                
+                if self.userDidPlayTime >= thisTime-0.2 && self.userDidPlayTime <= thisTime+0.2 {
+                    let shouldNote = self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"]
+                    if convertedNote != shouldNote {
+                        self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = convertedNote
+                        self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["play"] = "false"
+                    }
+                }else {
+                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = "1"
+                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["note"] = "-99"
+                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["rest"] = "4"
+                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["play"] = "false"
+                }
+            }
+        }
     }
     
     func didFinishPlay() {
@@ -601,13 +651,13 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
                 }
             }else {
                 if self.isRecording{
-                    if !userDidPlay && self.didBarIndex > 0 && isRecording && !self.isReadLocal{
-                        // 若最後一個沒彈也要記錄
-                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"] = "1"
-                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["note"] = "-99"
-                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["rest"] = "4"
-                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["play"] = "false"
-                    }
+//                    if !userDidPlay && self.didBarIndex > 0 && isRecording && !self.isReadLocal{
+//                        // 若最後一個沒彈也要記錄
+//                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["tone"] = "1"
+//                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["note"] = "-99"
+//                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["rest"] = "4"
+//                        self.jsonArray![self.didBarIndex-1][self.shouldNoteIndex][0]["play"] = "false"
+//                    }
                     self.storeUserPlayedData()
                     self.isRecording = false
 //                    self.main_tempplay_Btn.setImage(UIImage(named: "main_tempplay"), for: .normal)
