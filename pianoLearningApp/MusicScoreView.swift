@@ -299,7 +299,8 @@ class MusicScoreView: UIView {
                 NotificationCenter.default.post(name: Notification.Name("nowNote"),
                                                 object:(scoreOrder, mTone, noteNums[mNote], seg, col, isDotted, isSharp, meter))
                 // delegate
-                delegate?.noteShouldPlay(scoreIndex: scoreOrder, pitch: mTone, time: mNote, barIndex: seg, NoteIndex: col)
+//                print("play => \(scoreOrder): \(mTone) : \(mNote)")
+                delegate?.noteShouldPlay(scoreIndex: scoreOrder, pitch: Int(noteNums[Float(mTone)] ?? 0), time: mNote, barIndex: seg, NoteIndex: col)
             }
 //            print("----")
             k = k + 1

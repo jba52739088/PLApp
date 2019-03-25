@@ -328,13 +328,14 @@ class musicNotePlayVC: UIViewController {
                 }else {
                     scoreView2.startBar()
                 }
-                self.isRecording = true
-                if userHasPlay {
-                    self.setMain_tempplay_Btn(.Recording)
-                }else {
-                    self.setMain_tempplay_Btn(.ON)
+                if isMidi_on {
+                    if userHasPlay {
+                        self.setMain_tempplay_Btn(.Recording)
+                        self.isRecording = true
+                    }else {
+                        self.setMain_tempplay_Btn(.ON)
+                    }
                 }
-                
             }else {
                 let imageGif = UIImage(named: "main_playstart")
                 main_playstart_Btn.setImage(imageGif, for: .normal)
@@ -345,12 +346,13 @@ class musicNotePlayVC: UIViewController {
                     scoreView2.pauseBar()
                 }
                 self.isRecording = false
-                if userHasPlay {
-                    self.setMain_tempplay_Btn(.Recording)
-                }else {
-                    self.setMain_tempplay_Btn(.ON)
-                }
-                
+                if isMidi_on {
+                    if userHasPlay {
+                        self.setMain_tempplay_Btn(.Recording)
+                    }else {
+                        self.setMain_tempplay_Btn(.ON)
+                    }
+                }                
             }
         }
     }
@@ -558,7 +560,7 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
 
     // scoreIndex：score, Pith：音名, time：拍子, barIndex：小節, NoteIndex：第幾個音符
     func noteShouldPlay(scoreIndex: Int, pitch: Int, time: Float, barIndex: Int, NoteIndex: Int) {
-        if NoteIndex != self.shouldNoteIndex || self.nowBarIndex != barIndex{
+        if NoteIndex != self.shouldNoteIndex || self.nowBarIndex != barIndex || NoteIndex == 0{
             self.pianoBackground.pianoView.deselectAll()
         }
         self.lastBarIndex = self.nowBarIndex
