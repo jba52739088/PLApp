@@ -827,6 +827,9 @@
                                 <state key="normal" title="     下载乐谱" backgroundImage="sheets_download">
                                     <color key="titleColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapBookDownload:" destination="sGb-mT-c6Y" eventType="touchUpInside" id="QTi-5v-WLT"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3R-st-v0c">
                                 <rect key="frame" x="442" y="636" width="140" height="60"/>
@@ -1302,7 +1305,7 @@ I</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4p-jK-rGA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1694.5827232796485" y="542.87109375"/>
+            <point key="canvasLocation" x="1447" y="543"/>
         </scene>
         <!--AccountVC-->
         <scene sceneID="a0s-Au-jig">
@@ -1980,7 +1983,7 @@ V</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9W-yY-nr8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198.6822840409955" y="542.87109375"/>
+            <point key="canvasLocation" x="797" y="543"/>
         </scene>
         <!--Music Note PlayVC back-->
         <scene sceneID="L3N-To-UzQ">
@@ -2373,7 +2376,7 @@ V</string>
         <image name="sheets_level1" width="97" height="151"/>
         <image name="sheets_level2" width="97" height="151"/>
         <image name="sheets_level3" width="97" height="151"/>
-        <image name="sheets_level4" width="104" height="151"/>
+        <image name="sheets_level4" width="105" height="151"/>
         <image name="sheets_level5" width="111" height="151"/>
         <image name="sheets_search" width="96" height="24"/>
         <image name="sheets_upload" width="24" height="17"/>

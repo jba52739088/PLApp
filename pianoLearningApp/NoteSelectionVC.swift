@@ -21,6 +21,7 @@ class NoteSelectionVC: UIViewController {
     var TabBar: TabBarVC!
     var listView: NoteSelectionListView!
     var notesArray: [String] = []
+    var downloadView: BookDownloadView!
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,14 @@ class NoteSelectionVC: UIViewController {
         }
     }
     
+    @IBAction func didTapBookDownload(_ sender: UIButton) {
+        downloadView = Bundle.main.loadNibNamed("BookDownloadView", owner: self, options: nil)?.first as? BookDownloadView
+        downloadView.frame = self.view.frame
+        downloadView.delegate = self
+        downloadView.initView(level: "学阶II :book1-3")
+        self.view.addSubview(downloadView)
+    }
+    
 }
 
 extension NoteSelectionVC: UITableViewDelegate, UITableViewDataSource {
@@ -89,6 +98,16 @@ extension NoteSelectionVC: UITableViewDelegate, UITableViewDataSource {
         UserDefaults.standard.synchronize()
         self.didTapBackToBookBtn(self)
         self.TabBar.jumpToViewControllerBy(tag: 0)
+    }
+    
+    
+}
+
+extension NoteSelectionVC: BookDownloadDelegate {
+    func didTapButton() {
+        if self.downloadView != nil {
+            self.downloadView.removeFromSuperview()
+        }
     }
     
     
