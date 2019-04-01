@@ -22,6 +22,7 @@ class NoteSelectionVC: UIViewController {
     var listView: NoteSelectionListView!
     var notesArray: [String] = []
     var downloadView: BookDownloadView!
+    var searchView: SearchView!
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,13 @@ class NoteSelectionVC: UIViewController {
         self.view.addSubview(downloadView)
     }
     
+    @IBAction func didTapSearchBtn(_ sender: UIButton) {
+        searchView = Bundle.main.loadNibNamed("SearchView", owner: self, options: nil)?.first as? SearchView
+        searchView.frame = self.view.frame
+//        searchView.delegate = self
+//        downloadView.initView(level: "学阶II :book1-3")
+        self.view.addSubview(searchView)
+    }
 }
 
 extension NoteSelectionVC: UITableViewDelegate, UITableViewDataSource {

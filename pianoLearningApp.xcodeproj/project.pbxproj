@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		243CAD18224A4DC5005C22B6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243CAD17224A4DC5005C22B6 /* SearchView.swift */; };
+		245B26222249D6C200C587D7 /* BookDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245B26212249D6C200C587D7 /* BookDownloadView.swift */; };
+		245B26252249E11900C587D7 /* BookDownloadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 245B26242249E11900C587D7 /* BookDownloadView.xib */; };
 		248E49F622350DD9004BD15C /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E49F522350DD9004BD15C /* SQLiteManager.swift */; };
 		248E49F822350EE7004BD15C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E49F722350EE7004BD15C /* Book.swift */; };
 		248E49FA22351076004BD15C /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E49F922351076004BD15C /* Sheet.swift */; };
 		24D989432238FAB100891497 /* musicNotePlayVC_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D989422238FAB100891497 /* musicNotePlayVC_view.swift */; };
+		24ECF0B9224A298A00B1F597 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24ECF0B8224A298A00B1F597 /* SearchView.xib */; };
 		5C397AD6F46B32DA8EA2E0BB /* Pods_pianoLearningApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */; };
 		FC02494A21CFE85B00F10919 /* UserSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02494921CFE85A00F10919 /* UserSupportView.swift */; };
 		FC02494E21CFECF600F10919 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02494D21CFECF600F10919 /* QuestionView.swift */; };
@@ -90,10 +94,14 @@
 
 /* Begin PBXFileReference section */
 		0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pianoLearningApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		243CAD17224A4DC5005C22B6 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		245B26212249D6C200C587D7 /* BookDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDownloadView.swift; sourceTree = "<group>"; };
+		245B26242249E11900C587D7 /* BookDownloadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDownloadView.xib; sourceTree = "<group>"; };
 		248E49F522350DD9004BD15C /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		248E49F722350EE7004BD15C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		248E49F922351076004BD15C /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
 		24D989422238FAB100891497 /* musicNotePlayVC_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = musicNotePlayVC_view.swift; sourceTree = "<group>"; };
+		24ECF0B8224A298A00B1F597 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		27CA68979E9E8C91D53D71CB /* Pods-pianoLearningApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.release.xcconfig"; sourceTree = "<group>"; };
 		BCD70C9019CB00D8DC940E1E /* Pods-pianoLearningApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FC02494821CFE78A00F10919 /* UserSupportView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSupportView.xib; sourceTree = "<group>"; };
@@ -246,6 +254,10 @@
 				FC45128E2190B09B0029E32C /* NoteSelectionListView.swift */,
 				FCE8F86D2191CD0200E1CA15 /* NoteSelectionCell.xib */,
 				FCE8F86C2191CD0200E1CA15 /* NoteSelectionCell.swift */,
+				245B26242249E11900C587D7 /* BookDownloadView.xib */,
+				245B26212249D6C200C587D7 /* BookDownloadView.swift */,
+				24ECF0B8224A298A00B1F597 /* SearchView.xib */,
+				243CAD17224A4DC5005C22B6 /* SearchView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -431,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC8B66C2222D7DEC00D7DD5C /* score1.json in Resources */,
+				24ECF0B9224A298A00B1F597 /* SearchView.xib in Resources */,
 				FC8192CC2174E2450076E137 /* FeedbackView.xib in Resources */,
 				FC45128B219075AC0029E32C /* EmptyNoteView.xib in Resources */,
 				FCE8F86F2191CD0200E1CA15 /* NoteSelectionCell.xib in Resources */,
@@ -448,6 +461,7 @@
 				FCE4F9D7217C2966005CC423 /* praticeRecordCell.xib in Resources */,
 				FC8192C42174DF250076E137 /* QAView.xib in Resources */,
 				FCB8C87A2171FB4700898059 /* UserView.xib in Resources */,
+				245B26252249E11900C587D7 /* BookDownloadView.xib in Resources */,
 				FC3BABF72142C93800E64A67 /* Assets.xcassets in Resources */,
 				FC7AECCD21457E6C00BC0412 /* playing.gif in Resources */,
 				FC8B66C3222D7DF100D7DD5C /* score2.json in Resources */,
@@ -482,6 +496,7 @@
 				"${BUILT_PRODUCTS_DIR}/LSFloatingActionMenu/LSFloatingActionMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/MusicTheorySwift/MusicTheorySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PianoView/PianoView.framework",
+				"${BUILT_PRODUCTS_DIR}/SHSearchBar/SHSearchBar.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -493,6 +508,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LSFloatingActionMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MusicTheorySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PianoView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SHSearchBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -562,6 +578,7 @@
 				FCB8C8762171F69600898059 /* AccountVC.swift in Sources */,
 				FC05D204218406A800FF2D98 /* UserDefaultsKey.swift in Sources */,
 				FC05D1FA21820C7F00FF2D98 /* ApiManager.swift in Sources */,
+				243CAD18224A4DC5005C22B6 /* SearchView.swift in Sources */,
 				FCE4F9D6217C2966005CC423 /* praticeRecordCell.swift in Sources */,
 				FC45128F2190B09B0029E32C /* NoteSelectionListView.swift in Sources */,
 				FCE4F9DF217C3DBF005CC423 /* GradesLeftVC.swift in Sources */,
@@ -580,6 +597,7 @@
 				FC96E83A2163AFF800D77780 /* CustomSlider.swift in Sources */,
 				FC3BABF02142C93800E64A67 /* AppDelegate.swift in Sources */,
 				248E49F822350EE7004BD15C /* Book.swift in Sources */,
+				245B26222249D6C200C587D7 /* BookDownloadView.swift in Sources */,
 				FC8192BE2174D90B0076E137 /* ModifyPwdView.swift in Sources */,
 				FC229A7221C7071200D16D80 /* didSendFeedback.swift in Sources */,
 				FC80D5962174F76C00CA8DA0 /* VolumeView.swift in Sources */,

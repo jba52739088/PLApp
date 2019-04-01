@@ -816,6 +816,9 @@
                                 <state key="normal" title="     搜寻乐曲" backgroundImage="sheets_search">
                                     <color key="titleColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapSearchBtn:" destination="sGb-mT-c6Y" eventType="touchUpInside" id="X90-br-gnt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hw7-de-gRz">
                                 <rect key="frame" x="920" y="30" width="96" height="25"/>
