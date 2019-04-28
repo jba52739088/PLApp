@@ -213,6 +213,9 @@ class musicNotePlayVC: UIViewController {
         
         // 讀取 JSON 字串資料
         var thisUrl = Bundle.main.url(forResource: file, withExtension: "json")
+        if thisUrl == nil {
+            thisUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(file).json")
+        }
         self.currentSongName = file
         if isreadLocal {
             self.isReadLocal = true

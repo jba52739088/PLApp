@@ -97,7 +97,7 @@
 		243CAD17224A4DC5005C22B6 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		245B26212249D6C200C587D7 /* BookDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDownloadView.swift; sourceTree = "<group>"; };
 		245B26242249E11900C587D7 /* BookDownloadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDownloadView.xib; sourceTree = "<group>"; };
-		248E49F522350DD9004BD15C /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
+		248E49F522350DD9004BD15C /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		248E49F722350EE7004BD15C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		248E49F922351076004BD15C /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
 		24D989422238FAB100891497 /* musicNotePlayVC_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = musicNotePlayVC_view.swift; sourceTree = "<group>"; };
@@ -137,6 +137,7 @@
 		FC45128A219075AC0029E32C /* EmptyNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyNoteView.xib; sourceTree = "<group>"; };
 		FC45128C2190B08B0029E32C /* NoteSelectionListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteSelectionListView.xib; sourceTree = "<group>"; };
 		FC45128E2190B09B0029E32C /* NoteSelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSelectionListView.swift; sourceTree = "<group>"; };
+		FC4714972270C5B9004E03AD /* swiftStdLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = swiftStdLib; sourceTree = "<group>"; };
 		FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = musicNotePlayVC.swift; sourceTree = "<group>"; };
 		FC7AECC921457E4500BC0412 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		FC7AECCB21457E6B00BC0412 /* playing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = playing.gif; sourceTree = "<group>"; };
@@ -265,6 +266,7 @@
 		FC3BABE32142C93700E64A67 = {
 			isa = PBXGroup;
 			children = (
+				FC4714972270C5B9004E03AD /* swiftStdLib */,
 				FC3BABEE2142C93800E64A67 /* pianoLearningApp */,
 				70444C663759487654F87B4B /* Pods */,
 				2D132B8D60F169C3032CB405 /* Frameworks */,
@@ -496,7 +498,6 @@
 				"${BUILT_PRODUCTS_DIR}/LSFloatingActionMenu/LSFloatingActionMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/MusicTheorySwift/MusicTheorySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PianoView/PianoView.framework",
-				"${BUILT_PRODUCTS_DIR}/SHSearchBar/SHSearchBar.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -508,7 +509,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LSFloatingActionMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MusicTheorySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PianoView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SHSearchBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);

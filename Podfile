@@ -12,7 +12,6 @@ pod 'Alamofire', '~> 4.5', :inhibit_warnings => true
 pod 'AVAudioSessionSetCategorySwift', :inhibit_warnings => true
 pod 'SwiftyJSON', '~> 4.0', :inhibit_warnings => true
 pod 'SQLite.swift', '0.11.4', :inhibit_warnings => true
-pod "SHSearchBar"
 end
 
 post_install do |installer|

@@ -214,4 +214,73 @@ class APIManager {
                 }
         }
     }
+    
+    func getSongDataOnline(completionHandler: @escaping (_ status: Bool, _ names: [String]?) -> Void) {
+        Alamofire.request(URL_FETCHSONG, method: .post, parameters: nil, encoding: URLEncoding.httpBody)
+            .responseJSON { response in
+                if let JSON = response.result.value as? [String:AnyObject] {
+                    if let result = JSON["result"] as? String{
+                        if result == "0" {
+                            if let datas = JSON["data"] as? [[String : AnyObject]]{
+                                var didSaveNames: [String] = []
+                                for data in datas {
+                                    if let id = data["id"] as? Int,
+                                        let scoreid = data["scoreid"] as? Int,
+                                        let songname = data["songname"] as? String,
+                                        let songfile = data["songfile"] as? String,
+                                        let scorefile = data["scorefile"] as? String{
+                                        if self.saveBase64StringToPNG(fileName: "\(id)_\(scoreid)_\(songname).png", base64: scorefile)
+                                            && self.saveStringToJSON(fileName: "\(id)_\(scoreid)_\(songname).json", text: songfile) {
+                                            didSaveNames.append("\(id)_\(scoreid)_\(songname)")
+                                        }
+                                    }else {
+                                        print("getSongDataOnline data error")
+                                    }
+                                }
+                                completionHandler(true, didSaveNames)
+                                return
+                            }
+                        }else {
+                            print("API: getSongDataOnline error")
+                        }
+                    }
+                }else {
+                    print("getSongDataOnline: get JSON error")
+                }
+                completionHandler(false, nil)
+        }
+    }
+    
+    func saveBase64StringToPNG(fileName: String, base64: String) -> Bool {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let dataDecoded : Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
+        if let decodedimage = UIImage(data: dataDecoded) {
+            do {
+                let fileURL = documentsURL.appendingPathComponent(fileName)
+                if let pngImageData = UIImagePNGRepresentation(decodedimage) {
+                    try pngImageData.write(to: fileURL, options: .atomic)
+                    return true
+                }
+            } catch {
+                print("sava image error")
+            }
+        }else {
+            print("convert image to data error")
+        }
+        return false
+    }
+    
+    func saveStringToJSON(fileName: String, text: String) -> Bool {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        do {
+            let fileURL = documentsURL.appendingPathComponent(fileName)
+            do {
+                try text.write(to: fileURL, atomically: false, encoding: .utf8)
+                return true
+            }
+        } catch let error {
+            print(error)
+        }
+        return false
+    }
 }

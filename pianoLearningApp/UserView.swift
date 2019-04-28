@@ -15,6 +15,7 @@ class UserView: UIView {
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var modifyButton: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet var iconSet: [UIImageView]!
     
     let iconNames = ["accounts_info_birth", "accounts_info_phone", "accounts_info_address", "accounts_info_edit"]
@@ -41,6 +42,12 @@ class UserView: UIView {
             self.editingView()
         }
     }
+    
+    @IBAction func doLogOut(_ sender: Any) {
+        My = nil
+        self.delegate?.doLogOut()
+    }
+    
     
     func initView() {
         switch UserDefaultsKeys.USER_PHOTO_TAG {

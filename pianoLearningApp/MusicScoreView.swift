@@ -126,7 +126,7 @@ class MusicScoreView: UIView {
             // 讀取 scoreArray 來畫出音符
             var pos = drawX + noteW   // 初始 x 位置
             if (scoreArray != nil){
-                print("a score")
+//                print("a score")
                 steps = []
                 noteData = []
                 // 每一小節
@@ -171,7 +171,7 @@ class MusicScoreView: UIView {
                                         nMaxNote = Float(note["note"]!)!
                                     }else{
                                         nMaxNote = Float(note["note"]!)! * 1.5
-                                        print("isDot:\(nMaxNote)")
+//                                        print("isDot:\(nMaxNote)")
                                     }
                                 }
                                 
@@ -194,7 +194,7 @@ class MusicScoreView: UIView {
                         let num = Int(4/nMaxNote/0.015625/beat)
                         let dist = noteW*2/CGFloat(num)
                         let delay = Float(num) * Float(dist)
-                        print("\(s):\(c) => \(nMaxNote) => \(delay)")
+//                        print("\(s):\(c) => \(nMaxNote) => \(delay)")
                         for i in 1...num {
                             if i == 1 {
                                 steps.append(dist * -1) // 用來判斷抵達下一col
@@ -457,7 +457,7 @@ class MusicScoreView: UIView {
     func getScoreViewCount(in jsonArray: Array<Array<Array<Dictionary<String,String>>>>) -> Int {
         var count = 1
         var nDrawX = drawX
-        print("drawX = \(drawX)")
+//        print("drawX = \(drawX)")
         noteArray = []
         // 每一小節
         for i in 0..<jsonArray.count {
@@ -470,12 +470,12 @@ class MusicScoreView: UIView {
             for _ in seg {
                 nDrawX = nDrawX + noteW*4
                 noteArray?[i].append(true)// 加一空直列 Bool = true
-                print("\(i) : nDrawX = \(nDrawX)")
+//                print("\(i) : nDrawX = \(nDrawX)")
             }
-            print("----")
+//            print("----")
             
             if nDrawX > viewW - noteW*4 {
-                print("========= \(viewW)")
+//                print("========= \(viewW)")
                 // 一排結束, 尚有資料
                 count = count + 1
                 nDrawX = drawX

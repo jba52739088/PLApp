@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,22 +23,41 @@
                         <constraint firstAttribute="width" constant="110" id="FIN-uR-nt0"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvq-8T-Txh">
-                    <rect key="frame" x="362" y="380" width="95" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="95" id="5H9-rw-0Vw"/>
-                        <constraint firstAttribute="height" constant="25" id="vfC-np-4v1"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="     修改資料" backgroundImage="accout_info_edit_buton">
-                        <color key="titleColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="doModify:" destination="iN0-l3-epB" eventType="touchUpInside" id="mvu-pQ-WYX"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="WT4-sU-guK">
+                    <rect key="frame" x="306" y="380" width="207" height="25"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvq-8T-Txh">
+                            <rect key="frame" x="0.0" y="0.0" width="95" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="95" id="5H9-rw-0Vw"/>
+                                <constraint firstAttribute="height" constant="25" id="vfC-np-4v1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="     修改資料" backgroundImage="accout_info_edit_buton">
+                                <color key="titleColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="doModify:" destination="iN0-l3-epB" eventType="touchUpInside" id="mvu-pQ-WYX"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOb-Ud-MuI">
+                            <rect key="frame" x="112" y="0.0" width="95" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="XYE-lQ-Xmj"/>
+                                <constraint firstAttribute="width" constant="95" id="XfG-Q2-zbR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="  登出" backgroundImage="accout_info_edit_buton">
+                                <color key="titleColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="doLogOut:" destination="iN0-l3-epB" eventType="touchUpInside" id="tPS-Mc-p11"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hmV-TR-SLI">
-                    <rect key="frame" x="304.5" y="210" width="504.5" height="140"/>
+                    <rect key="frame" x="304.5" y="212" width="504.5" height="140"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1997/1/1" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vgv-cE-6WB">
                             <rect key="frame" x="0.0" y="0.0" width="504.5" height="28"/>
@@ -69,7 +88,7 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hom-Vd-vBd">
-                    <rect key="frame" x="252.5" y="210" width="40" height="140"/>
+                    <rect key="frame" x="252.5" y="212" width="40" height="140"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_info_birth" translatesAutoresizingMaskIntoConstraints="NO" id="PqX-JX-fey">
                             <rect key="frame" x="6" y="0.0" width="28" height="28"/>
@@ -98,7 +117,7 @@
                     </constraints>
                 </stackView>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="eason0941@gmail.com" textAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="p1x-so-iJQ">
-                    <rect key="frame" x="318" y="161" width="183" height="19"/>
+                    <rect key="frame" x="318" y="161" width="183" height="21"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
@@ -109,8 +128,8 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tvq-8T-Txh" secondAttribute="bottom" constant="40" id="7mc-m8-Ieu"/>
                 <constraint firstItem="Y8y-CY-2K3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.44" id="Hbr-Of-fc0"/>
+                <constraint firstItem="WT4-sU-guK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="M0X-O7-MlR"/>
                 <constraint firstAttribute="trailing" secondItem="hmV-TR-SLI" secondAttribute="trailing" constant="10" id="OPB-bD-JVk"/>
                 <constraint firstItem="p1x-so-iJQ" firstAttribute="centerX" secondItem="Y8y-CY-2K3" secondAttribute="centerX" id="Uee-Rs-JKm"/>
                 <constraint firstItem="hom-Vd-vBd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.665" id="XfU-VM-OG7"/>
@@ -122,10 +141,9 @@
                 <constraint firstItem="hom-Vd-vBd" firstAttribute="top" secondItem="hmV-TR-SLI" secondAttribute="top" id="k9L-I4-aa8"/>
                 <constraint firstItem="b4b-vc-V1E" firstAttribute="centerX" secondItem="Y8y-CY-2K3" secondAttribute="centerX" id="lAi-3B-Z49"/>
                 <constraint firstItem="b4b-vc-V1E" firstAttribute="width" secondItem="Y8y-CY-2K3" secondAttribute="width" id="liu-Y5-iMM"/>
-                <constraint firstItem="tvq-8T-Txh" firstAttribute="top" secondItem="hmV-TR-SLI" secondAttribute="bottom" constant="30" id="rMl-Rp-9U3"/>
                 <constraint firstItem="hmV-TR-SLI" firstAttribute="top" secondItem="p1x-so-iJQ" secondAttribute="bottom" constant="30" id="tSd-ak-7hJ"/>
                 <constraint firstItem="b4b-vc-V1E" firstAttribute="height" secondItem="Y8y-CY-2K3" secondAttribute="height" id="xDw-BM-8f9"/>
-                <constraint firstItem="tvq-8T-Txh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="y31-PH-wrD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WT4-sU-guK" secondAttribute="bottom" constant="40" id="y9J-Vp-Lsy"/>
                 <constraint firstItem="hmV-TR-SLI" firstAttribute="leading" secondItem="hom-Vd-vBd" secondAttribute="trailing" constant="12" id="ybk-67-DF9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -134,6 +152,7 @@
                 <outlet property="accountTextField" destination="p1x-so-iJQ" id="ZGC-XM-U47"/>
                 <outlet property="addressTextField" destination="pzU-t4-3QQ" id="LK6-da-sS6"/>
                 <outlet property="birthTextField" destination="vgv-cE-6WB" id="sGg-p9-2mN"/>
+                <outlet property="logOutButton" destination="IOb-Ud-MuI" id="OM7-8D-0jY"/>
                 <outlet property="modifyButton" destination="tvq-8T-Txh" id="Bjr-Ge-IRJ"/>
                 <outlet property="phoneTextField" destination="DGS-F9-UWY" id="TLU-Oi-66o"/>
                 <outlet property="userPhoto" destination="Y8y-CY-2K3" id="oVW-tP-Zpb"/>

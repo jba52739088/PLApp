@@ -16,11 +16,13 @@ class NoteSelectionVC: UIViewController {
     
     @IBOutlet weak var backGroundView: UIView!
     @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var btnBook1: UIButton!
     
     var delegate: NoteSelectionDelegate!
     var TabBar: TabBarVC!
     var listView: NoteSelectionListView!
     var notesArray: [String] = []
+    var downloadedNotesArray: [String] = []
     var downloadView: BookDownloadView!
     var searchView: SearchView!
    
@@ -38,9 +40,9 @@ class NoteSelectionVC: UIViewController {
     
     @IBAction func delectSelectBook(_ sender: UIButton) {
         if sender.tag == 0 {
-            notesArray = ["score1", "score2"]
+            notesArray = ["score1", "score2", "score3"]
         }else {
-            notesArray = ["score3"]
+            notesArray = downloadedNotesArray
         }
         listView = Bundle.main.loadNibNamed("NoteSelectionListView", owner: self, options: nil)?.first as! NoteSelectionListView
         listView.frame = self.backGroundView.bounds
@@ -115,6 +117,14 @@ extension NoteSelectionVC: BookDownloadDelegate {
     func didTapButton() {
         if self.downloadView != nil {
             self.downloadView.removeFromSuperview()
+            APIManager.shared.getSongDataOnline { (bool, scoreNames) in
+                if (bool && scoreNames != nil) {
+                    self.downloadedNotesArray = scoreNames!
+                    let fileUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(scoreNames![0]).png")
+                    let image    = UIImage(contentsOfFile: fileUrl.path)
+                    self.btnBook1.setImage(image, for: .normal)
+                }
+            }
         }
     }
     

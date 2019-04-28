@@ -11,6 +11,7 @@ protocol AccountPageDelegat {
     func didModifyPassword(password: String, completionHandler:@escaping (Bool) -> Void)
     func selectImageFromImagePicker()
     func sendFeedback(message: String, completionHandler:@escaping (Bool) -> Void)
+    func doLogOut()
 }
 
 class AccountVC: UIViewController {
@@ -80,6 +81,15 @@ class AccountVC: UIViewController {
 }
 
 extension AccountVC: AccountPageDelegat {
+    
+    func doLogOut() {
+        UserDefaults.standard.set("", forKey: PIANO_ACCOUNT)
+        UserDefaults.standard.set("", forKey: PIANO_PASSWORD)
+        UserDefaults.standard.synchronize()
+        let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! LoginVC
+        self.present(loginVC, animated: true, completion: nil)
+    }
+    
     func sendFeedback(message: String, completionHandler: @escaping (Bool) -> Void) {
         APIManager.shared.uploadUserfeedBack(content: message) { (isSucceed) in
             if isSucceed {

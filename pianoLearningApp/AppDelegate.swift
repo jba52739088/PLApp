@@ -25,8 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(exception.callStackSymbols, forKey: "ExceptionHandler")
             UserDefaults.standard.synchronize()
         }
-        
+        if SQLiteManager.shared.createDatebase() {
+            print("createDatebase")
+        }else {
+            print("createDatebase error")
+        }
         print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last);
+        
+        // 關閉Layout log
+        UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
 
         return true
     }

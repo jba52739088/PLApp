@@ -152,13 +152,13 @@ class LoginVC: UIViewController {
     }
     
     func configMyUser(data: [String : AnyObject]) {
-        if let id = data["id"] as? Int,
-            let name = data["name"] as? String,
-            let account = data["account"] as? String,
-            let passwd = data["passwd"] as? String,
-            let birth = data["birth"] as? String,
-            let mobile = data["mobile"] as? String,
-            let addr = data["addr"] as? String{
+        if let id = data["id"] as? Int ?? 0 as? Int,
+            let name = data["name"] as? String ?? "" as? String,
+            let account = data["account"] as? String ?? "" as? String,
+            let passwd = data["passwd"] as? String ?? "" as? String,
+            let birth = data["birth"] as? String ?? "" as? String,
+            let mobile = data["mobile"] as? String ?? "" as? String,
+            let addr = data["addr"] as? String ?? "" as? String{
             My = User(id: id, name: name, account: account, passwd: passwd, birth: birth, mobile: mobile, addr: addr, image64: data["icon"] as? String ?? "")
             print("config My data succeed")
         }else {

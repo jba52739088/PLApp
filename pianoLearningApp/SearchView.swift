@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SHSearchBar
 
 class SearchView: UIView {
 
@@ -15,16 +14,16 @@ class SearchView: UIView {
     @IBOutlet weak var searchBarView: UIView!
     @IBOutlet weak var resultsView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    var searchBar: SHSearchBar!
+//    var searchBar: SHSearchBar!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let searchBarConfig = SHSearchBarConfig()
-        searchBar = SHSearchBar(config: searchBarConfig)
-        searchBar.frame = searchBarView.frame
-        searchBarView.addSubview(searchBar)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeSearchView))
-        self.backGround.addGestureRecognizer(tapGesture)
+//        let searchBarConfig = SHSearchBarConfig()
+//        searchBar = SHSearchBar(config: searchBarConfig)
+//        searchBar.frame = searchBarView.frame
+//        searchBarView.addSubview(searchBar)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeSearchView))
+//        self.backGround.addGestureRecognizer(tapGesture)
     }
 
     @objc func closeSearchView() {

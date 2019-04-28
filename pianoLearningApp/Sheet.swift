@@ -12,20 +12,26 @@ class Sheet: NSObject {
     
     var name = ""
     var level = ""
+    var book = ""
     var isDownloaded = false
     var completion = 0
+    var recorded = ""
     
-    init(name: String, level: String, isDownloaded: Bool, completion: Int) {
+    init(name: String, level: String, book: String, isDownloaded: Bool, completion: Int, recorded: String) {
         self.name = name
         self.level = level
+        self.book = book
         self.isDownloaded = isDownloaded
         self.completion = completion
+        self.recorded = recorded
     }
     
-    func equals (compareTo:Book) -> Bool {
+    func equals (compareTo:Sheet) -> Bool {
         return (self.name == compareTo.name
             && self.level == compareTo.level
+            && self.book == compareTo.book
             && self.isDownloaded == compareTo.isDownloaded
-            && self.completion == compareTo.completion)
+            && self.completion == compareTo.completion
+            && self.recorded == compareTo.recorded)
     }
 }
