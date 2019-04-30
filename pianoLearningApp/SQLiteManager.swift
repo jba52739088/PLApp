@@ -92,7 +92,7 @@ class SQLiteManager {
                 table.column(sheet_book, defaultValue: "")
                 table.column(sheet_downloaded, defaultValue: false)
                 table.column(sheet_recorded, defaultValue: "")
-                table.column(book_completion, defaultValue: 0)
+                table.column(sheet_completion, defaultValue: 0)
             })
             //            print("create user Table succeed")
             createSucceed = true
@@ -117,6 +117,25 @@ class SQLiteManager {
             print("Insert Book error: \(error.localizedDescription)")
         }
         return false
+    }
+    
+    func loadBooks(level: String, completionHandler: (_ books: [Book]) -> Void) {
+        let select = bookTable.filter(book_level == level)
+        var allBooks = [Book]()
+        do {
+            for aBook in try db!.prepare(select) {
+                let book = Book(name: aBook[book_name],
+                                level: aBook[book_level],
+                                isDownloaded: aBook[book_downloaded],
+                                completion: aBook[book_completion],
+                                sheetCount: aBook[book_sheetCount])
+                allBooks.append(book)
+            }
+            
+        }catch {
+            print("loadBooks failed")
+        }
+        completionHandler(allBooks)
     }
     
     func insertSheetInfo(_ sheet: Sheet) -> Bool {
@@ -151,9 +170,23 @@ class SQLiteManager {
             }
             
         }catch {
-            print("loadFavoriteInfo failed")
+            print("loadSheets failed")
         }
         completionHandler(allSheets)
+    }
+    
+    func updateSheetInfo(level: String, bookLevel: String, name: String, completion: Int, recorded: String) -> Bool {
+        do {
+            let sheetInTable = sheetTable.filter(sheet_level == level && sheet_book == bookLevel && sheet_name == name)
+            let update = sheetInTable.update([sheet_completion <- completion,
+                                           sheet_recorded <- recorded])
+            if try db!.run(update) > 0 {
+                return true
+            }
+        } catch {
+            print("update Sheet Info error: \(error.localizedDescription)")
+        }
+        return false
     }
     
     

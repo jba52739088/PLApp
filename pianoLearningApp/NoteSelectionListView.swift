@@ -13,6 +13,8 @@ class NoteSelectionListView: UIView {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toTopBtn: UIButton!
     
+    
+    
 }
 
 

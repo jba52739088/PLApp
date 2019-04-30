@@ -107,6 +107,8 @@ class musicNotePlayVC: UIViewController {
     var userDidPlay = false
     var isReadLocal = false
     var msPerBeat: Float = 0 // 一拍幾毫秒
+    var allCount = 0 // 全部音符
+    var failedCount = 0 // 錯誤音符
     
     var deviation: TimeInterval = 0.2 // 誤差值
     var userDidPlayNote: String = ""
@@ -483,15 +485,18 @@ extension musicNotePlayVC: AKMIDIListener {
                     return
                 }
             }
+        }else {
+            self.isMidi_on = false
+            self.setMain_tempplay_Btn(.OFF)
         }
-        self.isMidi_on = false
-        self.setMain_tempplay_Btn(.OFF)
+        
     }
     
     func receivedMIDINoteOn(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
         DispatchQueue.main.async {
             let note = Pitch(midiNote: Int(noteNumber))
             self.pianoBackground.pianoView.highlightNote(note: note)
+            self.isRecording = self.isMidi_on
             if self.isRecording {
                 if !self.userHasPlay {
                     self.userHasPlay = true
@@ -614,7 +619,7 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
                     let shouldNote = self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"]
                     if convertedNote != shouldNote {
                         self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = convertedNote
-                        self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["play"] = "false"
+                        
                     }
                 }else {
                     self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = "1"
@@ -645,6 +650,18 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
                     self.isRecording = false
                     self.setMain_tempplay_Btn(.Recorded)
                     self.showActionAlertView(.PLAY_FINISHED)
+                    var allCount = 0
+                    var failedCount = 0
+                    for bars in self.jsonArray! {
+                        for bar in bars {
+                            allCount += 1
+                            if bar[0]["play"] == "false" {
+                                failedCount += 1
+                            }
+                        }
+                    }
+                    self.allCount = allCount
+                    self.failedCount = failedCount
                 }
                 self.shouldCleanNotes()
                 self.scoreView.stopBar()
@@ -764,6 +781,16 @@ extension musicNotePlayVC: actionAlertViewDelegate {
             switch self.alertType {
             case .PLAY_FINISHED?:
                 print("储存成绩")
+                print("allCount: \(self.allCount), self.failedCount: \(self.failedCount)")
+                let scoreNameArray = self.currentSongName!.components(separatedBy: "_")
+                let completion = 100 * Float(self.allCount - self.failedCount) / Float(self.allCount)
+                if SQLiteManager.shared.updateSheetInfo(level: scoreNameArray[0],
+                                                     bookLevel: scoreNameArray[1],
+                                                     name: scoreNameArray[2],
+                                                     completion: Int(completion),
+                                                     recorded: "\(self.currentSongName ?? "")_userPlayedData") {
+                    print("level: \(scoreNameArray[0]), bookLevel: \(scoreNameArray[1]), name: \(scoreNameArray[2]), completion: \(Int(completion)), recorded: \("\(self.currentSongName ?? "")_userPlayedData")")
+                }
             case .PLAY_PAUSED?:
                 print("继续")
             default:
