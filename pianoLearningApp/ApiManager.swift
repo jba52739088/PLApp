@@ -215,6 +215,29 @@ class APIManager {
         }
     }
     
+    /// 常見問題
+    func getFAQ(completionHandler: @escaping (_ resault: String) -> Void){
+        let parameters = ["cmd": "all"] as [String : Any]
+        Alamofire.request(URL_FAQ, method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
+            .responseJSON { response in
+                if let JSON = response.result.value as? [String:AnyObject] {
+                    if let result = JSON["result"] as? String{
+                        if result == "0" {
+                            if let data = JSON["data"] as? String{
+                                completionHandler(data)
+                            }
+                        }else {
+                            print("API: getFAQ failed")
+                            completionHandler("")
+                        }
+                    }
+                }else {
+                    print("getFAQ: get JSON error")
+                    completionHandler("")
+                }
+        }
+    }
+    
     func getSongDataOnline(completionHandler: @escaping (_ status: Bool, _ names: [String]?) -> Void) {
         Alamofire.request(URL_FETCHSONG, method: .post, parameters: nil, encoding: URLEncoding.httpBody)
             .responseJSON { response in
