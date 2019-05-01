@@ -248,24 +248,42 @@ class APIManager {
                                 var didSaveNames: [String] = []
                                 for data in datas {
                                     if let id = data["id"] as? Int,
-                                        let scoreid = data["scoreid"] as? Int,
-                                        let songname = data["songname"] as? String,
-                                        let songfile = data["songfile"] as? String,
-                                        let scorefile = data["scorefile"] as? String{
-                                        if self.saveBase64StringToPNG(fileName: "\(id)_\(scoreid)_\(songname).png", base64: scorefile)
-                                            && self.saveStringToJSON(fileName: "\(id)_\(scoreid)_\(songname).json", text: songfile) {
-                                            didSaveNames.append("\(id)_\(scoreid)_\(songname)")
+                                        let name = data["name"] as? String,   // 學階名稱
+                                        let description = data["description"] as? String,
+                                        let books = data["book"] as? [[String : AnyObject]] {
+                                        var bookCount = 0
+                                        for book in books {
+                                            bookCount += 1
+                                            if  let sid = book["sid"] as? Int,  // 學階id
+                                                let bname = book["bname"] as? String, // 書名
+                                                let img = book["img"] as? String, // 書圖片
+                                                let songs = book["song"] as? [[String : AnyObject]] // 譜s
+                                            {
+                                                for song in songs {
+                                                    if let sname = song["sname"] as? String, // 譜名
+                                                        // let smp3 = song["smp3"] as? String, // mp3
+                                                        let sjson = song["sjson"] as? String // 譜json
+                                                    {
+                                                        if self.saveBase64StringToPNG(fileName: "\(sid)_\(bookCount)_\(sname).png", base64: img)
+                                                            && self.saveStringToJSON(fileName: "\(sid)_\(bookCount)_\(sname).json", text: sjson) {
+                                                            didSaveNames.append("\(sid)_\(bookCount)_\(sname)")
+                                                        }
+                                                        
+                                                    }
+                                                }
+                                            }else {
+                                                print("getSongDataOnline book songs data error")
+                                            }
                                         }
                                     }else {
-                                        print("getSongDataOnline data error")
+                                        print("getSongDataOnline book data error")
                                     }
                                 }
-                                completionHandler(true, didSaveNames)
-                                return
+                            }else {
+                                print("getSongDataOnline data error")
                             }
-                        }else {
-                            print("API: getSongDataOnline error")
                         }
+                        return
                     }
                 }else {
                     print("getSongDataOnline: get JSON error")
@@ -276,7 +294,7 @@ class APIManager {
     
     func saveBase64StringToPNG(fileName: String, base64: String) -> Bool {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let dataDecoded : Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters)!
+        guard let dataDecoded : Data = Data(base64Encoded: base64, options: .ignoreUnknownCharacters) else { print("convert data to image error"); return false }
         if let decodedimage = UIImage(data: dataDecoded) {
             do {
                 let fileURL = documentsURL.appendingPathComponent(fileName)
