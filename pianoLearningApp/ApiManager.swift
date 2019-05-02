@@ -238,38 +238,43 @@ class APIManager {
         }
     }
     
-    func getSongDataOnline(completionHandler: @escaping (_ status: Bool, _ names: [String]?) -> Void) {
+    func getSongDataOnline() -> Bool {
         Alamofire.request(URL_FETCHSONG, method: .post, parameters: nil, encoding: URLEncoding.httpBody)
             .responseJSON { response in
                 if let JSON = response.result.value as? [String:AnyObject] {
                     if let result = JSON["result"] as? String{
                         if result == "0" {
                             if let datas = JSON["data"] as? [[String : AnyObject]]{
-                                var didSaveNames: [String] = []
                                 for data in datas {
-                                    if let id = data["id"] as? Int,
-                                        let name = data["name"] as? String,   // 學階名稱
-                                        let description = data["description"] as? String,
+                                    if let id = data["id"] as? Int,                                         // 學階
+                                        let name = data["name"] as? String,                                 // 學階名稱
+                                        let description = data["description"] as? String,                   // 學階敘述
                                         let books = data["book"] as? [[String : AnyObject]] {
-                                        var bookCount = 0
+                                        var bookNo = 0
                                         for book in books {
-                                            bookCount += 1
-                                            if  let sid = book["sid"] as? Int,  // 學階id
-                                                let bname = book["bname"] as? String, // 書名
-                                                let img = book["img"] as? String, // 書圖片
-                                                let songs = book["song"] as? [[String : AnyObject]] // 譜s
+                                            bookNo += 1
+                                            if  let sid = book["sid"] as? Int,                              // 學階id
+                                                let bname = book["bname"] as? String,                       // 書名
+                                                let img = book["img"] as? String,                           // 書圖片
+                                                let songs = book["song"] as? [[String : AnyObject]]         // 譜s
                                             {
                                                 for song in songs {
-                                                    if let sname = song["sname"] as? String, // 譜名
+                                                    if let sname = song["sname"] as? String,                // 譜名
                                                         // let smp3 = song["smp3"] as? String, // mp3
-                                                        let sjson = song["sjson"] as? String // 譜json
+                                                        let sjson = song["sjson"] as? String                // 譜json
                                                     {
-                                                        if self.saveBase64StringToPNG(fileName: "\(sid)_\(bookCount)_\(sname).png", base64: img)
-                                                            && self.saveStringToJSON(fileName: "\(sid)_\(bookCount)_\(sname).json", text: sjson) {
-                                                            didSaveNames.append("\(sid)_\(bookCount)_\(sname)")
+                                                        let sheetDownload = self.saveStringToJSON(fileName: "\(sid)_\(bookNo)_\(sname).json", text: sjson)
+                                                        let aSheet = Sheet(name: sname, level: "\(id)", book: "\(bookNo)", isDownloaded: sheetDownload, completion: 0, recorded: "")
+                                                        if !SQLiteManager.shared.insertSheetInfo(aSheet) {
+                                                            print("insert sheet '\(sname)' to db error")
                                                         }
                                                         
                                                     }
+                                                }
+                                                let imgDownloaded = self.saveBase64StringToPNG(fileName: "\(bname).png", base64: img)
+                                                let aBook = Book(name: bname, level: id, bookLevel: bookNo, isImgDownloaded: imgDownloaded, completion: 0, sheetCount: songs.count)
+                                                if !SQLiteManager.shared.insertBookInfo(aBook) {
+                                                    print("insert book '\(bname)' to db error")
                                                 }
                                             }else {
                                                 print("getSongDataOnline book songs data error")
@@ -283,13 +288,12 @@ class APIManager {
                                 print("getSongDataOnline data error")
                             }
                         }
-                        return
                     }
                 }else {
                     print("getSongDataOnline: get JSON error")
                 }
-                completionHandler(false, nil)
         }
+        return true
     }
     
     func saveBase64StringToPNG(fileName: String, base64: String) -> Bool {

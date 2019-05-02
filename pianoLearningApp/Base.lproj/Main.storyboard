@@ -1013,12 +1013,16 @@ I</string>
                     <connections>
                         <outlet property="backBtn" destination="Sxk-nc-yUV" id="D4f-X8-o8T"/>
                         <outlet property="backGroundView" destination="42t-CJ-Y6e" id="Ydn-n3-oWm"/>
-                        <outlet property="btnBook1" destination="bjB-9n-wYZ" id="F38-WH-Hfu"/>
                         <outletCollection property="btnLevels" destination="gFP-oh-SpA" collectionClass="NSMutableArray" id="f6C-BM-GKP"/>
                         <outletCollection property="btnLevels" destination="qbf-LE-tTT" collectionClass="NSMutableArray" id="hP1-ch-W7z"/>
                         <outletCollection property="btnLevels" destination="3pO-U7-6zY" collectionClass="NSMutableArray" id="3Fo-2O-D3A"/>
                         <outletCollection property="btnLevels" destination="2bY-jL-aFv" collectionClass="NSMutableArray" id="ocg-Nx-GJF"/>
                         <outletCollection property="btnLevels" destination="EWc-um-Xwt" collectionClass="NSMutableArray" id="2Dg-MJ-s7I"/>
+                        <outletCollection property="btnBooks" destination="fqB-6e-cjc" collectionClass="NSMutableArray" id="a4w-4a-OEA"/>
+                        <outletCollection property="btnBooks" destination="bjB-9n-wYZ" collectionClass="NSMutableArray" id="hQW-zZ-FQq"/>
+                        <outletCollection property="btnBooks" destination="u4v-4B-yd8" collectionClass="NSMutableArray" id="Wqb-v9-b8h"/>
+                        <outletCollection property="btnBooks" destination="dKD-uj-g37" collectionClass="NSMutableArray" id="hgw-VB-924"/>
+                        <outletCollection property="btnBooks" destination="fYq-gd-hcc" collectionClass="NSMutableArray" id="qkd-Vw-EqD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CCz-vk-68y" sceneMemberID="firstResponder"/>

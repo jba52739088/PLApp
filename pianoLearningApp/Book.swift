@@ -11,15 +11,17 @@ import Foundation
 class Book: NSObject {
     
     var name = ""
-    var level = ""
-    var isDownloaded = false
+    var level = 0
+    var bookLevel = 0
+    var isImgDownloaded = false
     var completion = 0
     var sheetCount = 0
     
-    init(name: String, level: String, isDownloaded: Bool, completion: Int, sheetCount: Int) {
+    init(name: String, level: Int, bookLevel: Int, isImgDownloaded: Bool, completion: Int, sheetCount: Int) {
         self.name = name
         self.level = level
-        self.isDownloaded = isDownloaded
+        self.bookLevel = bookLevel
+        self.isImgDownloaded = isImgDownloaded
         self.completion = completion
         self.sheetCount = sheetCount
     }
@@ -27,7 +29,8 @@ class Book: NSObject {
     func equals (compareTo:Book) -> Bool {
         return (self.name == compareTo.name
             && self.level == compareTo.level
-            && self.isDownloaded == compareTo.isDownloaded
+            && self.bookLevel == compareTo.bookLevel
+            && self.isImgDownloaded == compareTo.isImgDownloaded
             && self.completion == compareTo.completion
             && self.sheetCount == compareTo.sheetCount)
     }

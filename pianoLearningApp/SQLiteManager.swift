@@ -26,7 +26,8 @@ class SQLiteManager {
     private let sheetTable = Table("Sheet")
     
     private let book_name = Expression<String>("BookName")
-    private let book_level = Expression<String>("Book_Level")
+    private let book_level = Expression<Int>("Book_Level")
+    private let book_no = Expression<Int>("book_no")
     private let book_downloaded = Expression<Bool>("BookDownloaded")
     private let book_completion = Expression<Int>("BookCompletion")
     private let book_sheetCount = Expression<Int>("BookSheetCount")
@@ -69,7 +70,8 @@ class SQLiteManager {
         do{
             try db!.run(bookTable.create(ifNotExists: true) { table in
                 table.column(book_name, primaryKey: true)
-                table.column(book_level, defaultValue: "")
+                table.column(book_level, defaultValue: 0)
+                table.column(book_no, defaultValue: 0)
                 table.column(book_downloaded, defaultValue: false)
                 table.column(book_completion, defaultValue: 0)
                 table.column(book_sheetCount, defaultValue: 0)
@@ -107,7 +109,8 @@ class SQLiteManager {
         do {
             let insert = bookTable.insert(book_name <- book.name,
                                           book_level <- book.level,
-                                          book_downloaded <- book.isDownloaded,
+                                          book_no <- book.bookLevel,
+                                          book_downloaded <- book.isImgDownloaded,
                                           book_completion <- book.completion,
                                           book_sheetCount <- book.sheetCount)
             if try db!.run(insert) > 0 {
@@ -119,14 +122,15 @@ class SQLiteManager {
         return false
     }
     
-    func loadBooks(level: String, completionHandler: (_ books: [Book]) -> Void) {
+    func loadBooks(level: Int, completionHandler: (_ books: [Book]) -> Void) {
         let select = bookTable.filter(book_level == level)
         var allBooks = [Book]()
         do {
             for aBook in try db!.prepare(select) {
                 let book = Book(name: aBook[book_name],
                                 level: aBook[book_level],
-                                isDownloaded: aBook[book_downloaded],
+                                bookLevel: aBook[book_no],
+                                isImgDownloaded: aBook[book_downloaded],
                                 completion: aBook[book_completion],
                                 sheetCount: aBook[book_sheetCount])
                 allBooks.append(book)

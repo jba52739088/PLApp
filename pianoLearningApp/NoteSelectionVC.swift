@@ -17,7 +17,7 @@ class NoteSelectionVC: UIViewController {
     @IBOutlet weak var backGroundView: UIView!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet var btnLevels: [UIButton]!
-    @IBOutlet weak var btnBook1: UIButton!
+    @IBOutlet var btnBooks: [UIButton]!
     
     var delegate: NoteSelectionDelegate!
     var TabBar: TabBarVC!
@@ -32,26 +32,42 @@ class NoteSelectionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        self.reloadLevelData()
         backBtn.isUserInteractionEnabled = false
         backBtn.isHidden = true
     }
     
-    func readBookData() {
-        
-    }
-    
     @IBAction func didSelectLevel(_ sender: UIButton) {
         self.didSelectLevel = sender.tag
+        self.reloadLevelData()
     }
     
     
     @IBAction func delectSelectBook(_ sender: UIButton) {
         self.didSelectBook = sender.tag
+        self.reloadBookData()
+    }
+    
+    func reloadLevelData() {
+        SQLiteManager.shared.loadBooks(level: self.didSelectLevel) { (books) in
+            for book in books {
+                if (book.bookLevel >= self.btnBooks.count) { return }
+                if (book.isImgDownloaded) {
+                    let fileUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(book.name).png")
+                    let image    = UIImage(contentsOfFile: fileUrl.path)
+                    btnBooks[book.bookLevel].setImage(image, for: .normal)
+                    btnBooks[book.bookLevel].imageView?.contentMode = .scaleAspectFill
+                }
+                btnBooks[book.bookLevel].setTitle(book.name, for: .normal)
+            }
+        }
+    }
+    
+    func reloadBookData() {
         if (self.didSelectLevel == 1 && self.didSelectBook == 0) {
             notesArray = ["score1", "score2", "score3"]
         }else {
-//            notesArray = downloadedNotesArray
+            //            notesArray = downloadedNotesArray
             notesArray = []
             SQLiteManager.shared.loadSheets(level: "\(self.didSelectLevel)", book: "\(self.didSelectBook)") { (sheets) in
                 for sheet in sheets {
@@ -133,26 +149,10 @@ extension NoteSelectionVC: BookDownloadDelegate {
     func didTapButton() {
         if self.downloadView != nil {
             self.downloadView.removeFromSuperview()
-            APIManager.shared.getSongDataOnline { (bool, scoreNames) in
-                if (bool && scoreNames != nil) {
-//                    self.downloadedNotesArray = scoreNames!
-                    let fileUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(scoreNames![0]).png")
-                    let image    = UIImage(contentsOfFile: fileUrl.path)
-                    self.btnBook1.setImage(image, for: .normal)
-                    for scoreName in scoreNames! {
-                        let score = scoreName.components(separatedBy: "_")
-                        let sheet = Sheet(name: score[2],
-                                          level: score[0],
-                                          book: score[1],
-                                          isDownloaded: true,
-                                          completion: 0,
-                                          recorded: "")
-                        if !SQLiteManager.shared.insertSheetInfo(sheet) {
-                            print("insertSheetInfo: \(scoreName) faild")
-                        }
-                    }
-                    
-                }
+            if self.listView != nil {
+                self.reloadLevelData()
+            }else {
+                self.reloadLevelData()
             }
         }
     }
