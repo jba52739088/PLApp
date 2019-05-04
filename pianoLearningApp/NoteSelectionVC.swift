@@ -149,10 +149,12 @@ extension NoteSelectionVC: BookDownloadDelegate {
     func didTapButton() {
         if self.downloadView != nil {
             self.downloadView.removeFromSuperview()
-            if self.listView != nil {
-                self.reloadLevelData()
-            }else {
-                self.reloadLevelData()
+            if APIManager.shared.getSongDataOnline() {
+                if self.listView != nil {
+                    self.reloadLevelData()
+                }else {
+                    self.reloadLevelData()
+                }
             }
         }
     }

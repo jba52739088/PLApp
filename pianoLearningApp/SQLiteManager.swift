@@ -159,6 +159,26 @@ class SQLiteManager {
         return false
     }
     
+    func loadSheets(level: String, completionHandler: (_ sheets: [Sheet]) -> Void) {
+        let select = sheetTable.filter(sheet_level == level)
+        var allSheets = [Sheet]()
+        do {
+            for aSheet in try db!.prepare(select) {
+                let sheet = Sheet(name: aSheet[sheet_name],
+                                  level: aSheet[sheet_level],
+                                  book: aSheet[sheet_book],
+                                  isDownloaded: aSheet[sheet_downloaded],
+                                  completion: aSheet[sheet_completion],
+                                  recorded: aSheet[sheet_recorded])
+                allSheets.append(sheet)
+            }
+            
+        }catch {
+            print("loadSheets by level failed")
+        }
+        completionHandler(allSheets)
+    }
+    
     func loadSheets(level: String, book: String, completionHandler: (_ sheets: [Sheet]) -> Void) {
         let select = sheetTable.filter(sheet_level == level && sheet_book == book)
         var allSheets = [Sheet]()

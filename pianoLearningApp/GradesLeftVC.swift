@@ -16,7 +16,7 @@ class GradesLeftVC: UIViewController {
     var parentVC: GradesVC!
     var didSelectButton = 0
     var allScore: Dictionary<String, Int> = [:]
-    var allSong: [String] = []
+    var thisLevelSongs: [Sheet] = []
     var thisLevel = ""
     var recentDates = ""
     var recentPlays = ""
@@ -39,6 +39,7 @@ class GradesLeftVC: UIViewController {
     func setTableView() {
         tableView.register(UINib(nibName: "HighScoreCell", bundle: nil), forCellReuseIdentifier: "HighScoreCell")
         tableView.layoutSubviews()
+        tableView.tableFooterView = UIView()
         let gradient = CAGradientLayer()
         gradient.frame = tableView.superview?.bounds ?? .null
         gradient.colors = [UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor, UIColor.clear.cgColor]
@@ -60,33 +61,45 @@ class GradesLeftVC: UIViewController {
             self.parentVC._recentPlays != nil,
             self.parentVC._recentDates != nil
             else { return }
+        var level = ""
         switch self.didSelectButton {
         case 0:
             self.thisLevel = "Level I"
+            level = "1"
         case 1:
             self.thisLevel = "Level II"
+            level = "2"
         case 2:
             self.thisLevel = "Level III"
+            level = "3"
         case 3:
             self.thisLevel = "Level IV"
+            level = "4"
         case 4:
             self.thisLevel = "Level V"
+            level = "5"
         default:
             self.thisLevel = "Level I"
+            level = "1"
         }
-        self.recentPlays = self.parentVC._recentPlays[self.thisLevel] ?? ""
-        self.allScore = self.parentVC._allScore[self.thisLevel] ?? [:]
-        self.recentScore = self.allScore[self.recentPlays] ?? 0
-        self.recentDates = self.parentVC._recentDates[self.thisLevel] ?? ""
-        self.allSong = self.allScore.keys.sorted()
-        self.tableView.reloadData()
-        self.dateLabel.text = self.recentDates
-        self.nameLabel.text = self.thisLevel + " ~ " + self.recentPlays
-        var score = 0
-        for s in self.allScore.values.sorted() {
-            score += s
+        
+        SQLiteManager.shared.loadSheets(level: level) { (sheets) in
+            thisLevelSongs = sheets
+            self.tableView.reloadData()
         }
-        self.progressLabel.text = "\(score / self.allSong.count) %"
+//        self.recentPlays = self.parentVC._recentPlays[self.thisLevel] ?? ""
+//        self.allScore = self.parentVC._allScore[self.thisLevel] ?? [:]
+//        self.recentScore = self.allScore[self.recentPlays] ?? 0
+//        self.recentDates = self.parentVC._recentDates[self.thisLevel] ?? ""
+//        self.allSong = self.allScore.keys.sorted()
+//        self.tableView.reloadData()
+//        self.dateLabel.text = self.recentDates
+//        self.nameLabel.text = self.thisLevel + " ~ " + self.recentPlays
+//        var score = 0
+//        for s in self.allScore.values.sorted() {
+//            score += s
+//        }
+//        self.progressLabel.text = "\(score / self.allSong.count) %"
     }
     
 }
@@ -94,7 +107,7 @@ class GradesLeftVC: UIViewController {
 //MARK: - UITableView
 extension GradesLeftVC:UITableViewDataSource,UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.allSong.count
+        return self.thisLevelSongs.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,8 +119,8 @@ extension GradesLeftVC:UITableViewDataSource,UITableViewDelegate{
         let cell:HighScoreCell = tableView.dequeueReusableCell(withIdentifier: "HighScoreCell", for: indexPath) as! HighScoreCell
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
-        cell.title.text = self.thisLevel + " ~ " + self.allSong[indexPath.section]
-        cell.progress.text = "\(self.allScore[self.allSong[indexPath.section]] ?? 0) %"
+        cell.title.text = self.thisLevel + " ~ " + self.thisLevelSongs[indexPath.section].name
+        cell.progress.text = "\(self.thisLevelSongs[indexPath.section].completion) %"
         return cell
         
     }
