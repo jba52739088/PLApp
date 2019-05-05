@@ -238,6 +238,7 @@ class APIManager {
         }
     }
     
+    // 取得所有譜
     func getSongDataOnline() -> Bool {
         Alamofire.request(URL_FETCHSONG, method: .post, parameters: nil, encoding: URLEncoding.httpBody)
             .responseJSON { response in
@@ -254,6 +255,7 @@ class APIManager {
                                         for book in books {
                                             bookNo += 1
                                             if  let sid = book["sid"] as? Int,                              // 學階id
+                                                let bid = book["id"] as? Int,                               // 書id
                                                 let bname = book["bname"] as? String,                       // 書名
                                                 let img = book["img"] as? String,                           // 書圖片
                                                 let songs = book["song"] as? [[String : AnyObject]]         // 譜s
@@ -272,13 +274,48 @@ class APIManager {
                                                     }
                                                 }
                                                 let imgDownloaded = self.saveBase64StringToPNG(fileName: "\(bname).png", base64: img)
-                                                let aBook = Book(name: bname, level: id, bookLevel: bookNo, isImgDownloaded: imgDownloaded, completion: 0, sheetCount: songs.count)
+                                                let aBook = Book(name: bname, level: id, bookLevel: bookNo, bid: bid, isImgDownloaded: imgDownloaded, completion: 0, sheetCount: songs.count)
                                                 if !SQLiteManager.shared.insertBookInfo(aBook) {
                                                     print("insert book '\(bname)' to db error")
                                                 }
                                             }else {
                                                 print("getSongDataOnline book songs data error")
                                             }
+                                        }
+                                    }else {
+                                        print("getSongDataOnline book data error")
+                                    }
+                                }
+                            }else {
+                                print("getSongDataOnline data error")
+                            }
+                        }
+                    }
+                }else {
+                    print("getSongDataOnline: get JSON error")
+                }
+        }
+        return true
+    }
+    
+    // 取得書圖片
+    func getBookImage(level: Int, bookName: String) -> Bool {
+        let parameters = ["level": level, "bname": bookName] as [String : Any]
+        Alamofire.request(URL_FETCH_BOOK_IMG, method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
+            .responseJSON { response in
+                if let JSON = response.result.value as? [String:AnyObject] {
+                    if let result = JSON["result"] as? String{
+                        if result == "0" {
+                            if let books = JSON["data"] as? [[String : AnyObject]]{
+                                for book in books {
+                                    if  let sid = book["sid"] as? Int,                              // 學階id
+                                        let bid = book["id"] as? Int,                               // 書id
+                                        let bname = book["bname"] as? String,                       // 書名
+                                        let img = book["img"] as? String{
+                                        let imgDownloaded = self.saveBase64StringToPNG(fileName: "\(bname).png", base64: img)
+                                        let aBook = Book(name: bname, level: sid, bookLevel: -1, bid: bid, isImgDownloaded: imgDownloaded, completion: 0, sheetCount: -1)
+                                        if !SQLiteManager.shared.updateBookInfo(aBook) {
+                                            print("update book '\(bname)' to db error")
                                         }
                                     }else {
                                         print("getSongDataOnline book data error")

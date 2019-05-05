@@ -57,6 +57,15 @@ class NoteSelectionVC: UIViewController {
                     let image    = UIImage(contentsOfFile: fileUrl.path)
                     btnBooks[book.bookLevel].setImage(image, for: .normal)
                     btnBooks[book.bookLevel].imageView?.contentMode = .scaleAspectFill
+                }else {
+                    if APIManager.shared.getBookImage(level: book.level, bookName: book.name) {
+                        SQLiteManager.shared.loadBookInfo(level: book.level, bookNo: book.bookLevel, completionHandler: { (aBook) in
+                            let fileUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(aBook.name).png")
+                            let image    = UIImage(contentsOfFile: fileUrl.path)
+                            btnBooks[aBook.bookLevel].setImage(image, for: .normal)
+                            btnBooks[aBook.bookLevel].imageView?.contentMode = .scaleAspectFill
+                        })
+                    }
                 }
                 btnBooks[book.bookLevel].setTitle(book.name, for: .normal)
             }

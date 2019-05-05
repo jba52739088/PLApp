@@ -13,14 +13,16 @@ class Book: NSObject {
     var name = ""
     var level = 0
     var bookLevel = 0
+    var bid = 0
     var isImgDownloaded = false
     var completion = 0
     var sheetCount = 0
     
-    init(name: String, level: Int, bookLevel: Int, isImgDownloaded: Bool, completion: Int, sheetCount: Int) {
+    init(name: String, level: Int, bookLevel: Int, bid: Int, isImgDownloaded: Bool, completion: Int, sheetCount: Int) {
         self.name = name
         self.level = level
         self.bookLevel = bookLevel
+        self.bid = bid
         self.isImgDownloaded = isImgDownloaded
         self.completion = completion
         self.sheetCount = sheetCount
@@ -30,6 +32,7 @@ class Book: NSObject {
         return (self.name == compareTo.name
             && self.level == compareTo.level
             && self.bookLevel == compareTo.bookLevel
+            && self.bid == compareTo.bid
             && self.isImgDownloaded == compareTo.isImgDownloaded
             && self.completion == compareTo.completion
             && self.sheetCount == compareTo.sheetCount)

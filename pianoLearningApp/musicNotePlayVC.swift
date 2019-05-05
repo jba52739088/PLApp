@@ -791,6 +791,15 @@ extension musicNotePlayVC: actionAlertViewDelegate {
                                                      recorded: "\(self.currentSongName ?? "")_userPlayedData") {
                     print("level: \(scoreNameArray[0]), bookLevel: \(scoreNameArray[1]), name: \(scoreNameArray[2]), completion: \(Int(completion)), recorded: \("\(self.currentSongName ?? "")_userPlayedData")")
                 }
+                let date = Date()
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd/MM/yyyy"
+                let result = formatter.string(from: date)
+                if !SQLiteManager.shared.insertRecentData(level: Int(scoreNameArray[0]) ?? 0, date: result, sheetName: scoreNameArray[2], Completion: Int(completion)) {
+                    if !SQLiteManager.shared.updateRecentData(level: Int(scoreNameArray[0]) ?? 0, date: result, sheetName: scoreNameArray[2], Completion: Int(completion)) {
+                        print("insert and update recent info error")
+                    }
+                }
             case .PLAY_PAUSED?:
                 print("继续")
             default:
