@@ -1289,6 +1289,14 @@ I</string>
                                     <outlet property="delegate" destination="eGg-gX-mxd" id="b0f-MR-F3M"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gY-Va-Acb">
+                                <rect key="frame" x="0.0" y="440.5" width="511" height="43"/>
+                                <string key="text">这里还是空的呦！！
+快选一首喜欢的曲目，快快开始练习吧！！</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1301,9 +1309,12 @@ I</string>
                             <constraint firstItem="6QB-xi-Jhq" firstAttribute="centerY" secondItem="MmP-3N-gh5" secondAttribute="centerY" id="JEH-MV-8Ar"/>
                             <constraint firstItem="fHR-ax-Jox" firstAttribute="top" secondItem="Jgz-6Y-3WQ" secondAttribute="top" id="JPh-Pu-hP7"/>
                             <constraint firstItem="P1h-57-Usx" firstAttribute="trailing" secondItem="ebi-3q-Zwe" secondAttribute="trailing" constant="60" id="NCX-ls-fIc"/>
+                            <constraint firstItem="6gY-Va-Acb" firstAttribute="top" secondItem="qXJ-t2-lsV" secondAttribute="bottom" constant="30" id="NuK-w1-LJF"/>
                             <constraint firstItem="MmP-3N-gh5" firstAttribute="top" secondItem="Jgz-6Y-3WQ" secondAttribute="bottom" constant="28" id="To1-2v-NbL"/>
+                            <constraint firstItem="6gY-Va-Acb" firstAttribute="leading" secondItem="P1h-57-Usx" secondAttribute="leading" id="XJr-ym-bFR"/>
                             <constraint firstItem="OgD-jy-YA3" firstAttribute="leading" secondItem="fHR-ax-Jox" secondAttribute="leading" id="Yyq-zq-iYb"/>
                             <constraint firstItem="qXJ-t2-lsV" firstAttribute="leading" secondItem="Jgz-6Y-3WQ" secondAttribute="leading" id="bO6-Hl-ard"/>
+                            <constraint firstItem="JVY-U1-Jo0" firstAttribute="leading" secondItem="6gY-Va-Acb" secondAttribute="trailing" id="bzz-Lw-meE"/>
                             <constraint firstItem="Umj-nc-9R6" firstAttribute="leading" secondItem="JVY-U1-Jo0" secondAttribute="trailing" constant="20" id="cDF-xU-Uco"/>
                             <constraint firstItem="JVY-U1-Jo0" firstAttribute="centerX" secondItem="9ng-bd-jau" secondAttribute="centerX" id="clH-wm-Wzl"/>
                             <constraint firstItem="Umj-nc-9R6" firstAttribute="centerY" secondItem="Jgz-6Y-3WQ" secondAttribute="centerY" id="gwa-6P-xiN"/>
@@ -1321,10 +1332,14 @@ I</string>
                     </view>
                     <size key="freeformSize" width="1024" height="673"/>
                     <connections>
+                        <outlet property="alertLabel" destination="6gY-Va-Acb" id="CK7-Ab-m3D"/>
                         <outlet property="dateLabel" destination="fHR-ax-Jox" id="tuw-yd-yaf"/>
                         <outlet property="nameLabel" destination="6QB-xi-Jhq" id="KMm-3W-8mz"/>
                         <outlet property="progressLabel" destination="OgD-jy-YA3" id="qkK-b9-Whu"/>
                         <outlet property="tableView" destination="ebi-3q-Zwe" id="0Zg-4p-saQ"/>
+                        <outlet property="titleLabel_1" destination="Jgz-6Y-3WQ" id="HyO-mu-MRc"/>
+                        <outlet property="titleLabel_2" destination="MmP-3N-gh5" id="9iQ-g0-xL4"/>
+                        <outlet property="titleLabel_3" destination="qXJ-t2-lsV" id="XUf-ws-I1e"/>
                         <outletCollection property="buttons" destination="vv6-IF-Lcq" collectionClass="NSMutableArray" id="OBJ-Vd-UTN"/>
                         <outletCollection property="buttons" destination="llJ-fM-mR2" collectionClass="NSMutableArray" id="XJc-dl-MfK"/>
                         <outletCollection property="buttons" destination="rIR-ZO-6J5" collectionClass="NSMutableArray" id="pW6-qW-5qH"/>

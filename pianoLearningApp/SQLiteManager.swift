@@ -330,6 +330,19 @@ class SQLiteManager {
         return false
     }
     
+    func loadRecent(level: Int, completionHandler: (_ date: String, _ sheet: String, _ completion: Int) -> Void) {
+        let select = recentTable.filter(recent_level == level)
+        do {
+            for data in try db!.prepare(select) {
+                completionHandler(data[recent_Date], data[recent_Sheet], data[recent_Completion])
+                return
+            }
+            
+        }catch {
+            print("loadSheets failed")
+        }
+        completionHandler("", "", 0)
+    }
 }
 
 

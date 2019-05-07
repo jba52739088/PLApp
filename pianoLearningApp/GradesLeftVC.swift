@@ -12,6 +12,10 @@ class GradesLeftVC: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var alertLabel: UILabel!
+    @IBOutlet weak var titleLabel_1: UILabel!
+    @IBOutlet weak var titleLabel_2: UILabel!
+    @IBOutlet weak var titleLabel_3: UILabel!
     
     var parentVC: GradesVC!
     var didSelectButton = 0
@@ -87,19 +91,29 @@ class GradesLeftVC: UIViewController {
             thisLevelSongs = sheets
             self.tableView.reloadData()
         }
-//        self.recentPlays = self.parentVC._recentPlays[self.thisLevel] ?? ""
-//        self.allScore = self.parentVC._allScore[self.thisLevel] ?? [:]
-//        self.recentScore = self.allScore[self.recentPlays] ?? 0
-//        self.recentDates = self.parentVC._recentDates[self.thisLevel] ?? ""
-//        self.allSong = self.allScore.keys.sorted()
-//        self.tableView.reloadData()
-//        self.dateLabel.text = self.recentDates
-//        self.nameLabel.text = self.thisLevel + " ~ " + self.recentPlays
-//        var score = 0
-//        for s in self.allScore.values.sorted() {
-//            score += s
-//        }
-//        self.progressLabel.text = "\(score / self.allSong.count) %"
+        
+        SQLiteManager.shared.loadRecent(level: Int(level) ?? 0) { (date, sheet, completion) in
+            if date != "" {
+                self.dateLabel.text = date
+                self.nameLabel.text =  self.thisLevel + "~" + sheet
+                self.progressLabel.text = "\(completion) %"
+                self.dateLabel.isHidden = false
+                self.nameLabel.isHidden = false
+                self.progressLabel.isHidden = false
+                self.alertLabel.isHidden = true
+                self.titleLabel_1.isHidden = false
+                self.titleLabel_2.isHidden = false
+                self.titleLabel_3.isHidden = false
+            }else {
+                self.dateLabel.isHidden = true
+                self.nameLabel.isHidden = true
+                self.progressLabel.isHidden = true
+                self.alertLabel.isHidden = false
+                self.titleLabel_1.isHidden = true
+                self.titleLabel_2.isHidden = true
+                self.titleLabel_3.isHidden = true
+            }
+        }
     }
     
 }
