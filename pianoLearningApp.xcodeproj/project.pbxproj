@@ -90,6 +90,8 @@
 		FCE8F86E2191CD0200E1CA15 /* NoteSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8F86C2191CD0200E1CA15 /* NoteSelectionCell.swift */; };
 		FCE8F86F2191CD0200E1CA15 /* NoteSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCE8F86D2191CD0200E1CA15 /* NoteSelectionCell.xib */; };
 		FCEA81CC216DE99D004D6FF3 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */; };
+		FCF323F3228833D600637BB0 /* ASheetRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF323F1228833D600637BB0 /* ASheetRecordCell.swift */; };
+		FCF323F4228833D600637BB0 /* ASheetRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF323F2228833D600637BB0 /* ASheetRecordCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -183,6 +185,8 @@
 		FCE8F86C2191CD0200E1CA15 /* NoteSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSelectionCell.swift; sourceTree = "<group>"; };
 		FCE8F86D2191CD0200E1CA15 /* NoteSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteSelectionCell.xib; sourceTree = "<group>"; };
 		FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		FCF323F1228833D600637BB0 /* ASheetRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASheetRecordCell.swift; sourceTree = "<group>"; };
+		FCF323F2228833D600637BB0 /* ASheetRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASheetRecordCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +380,8 @@
 				FCE4F9DE217C3DBF005CC423 /* GradesLeftVC.swift */,
 				FCE4F9D4217C2966005CC423 /* praticeRecordCell.swift */,
 				FCE4F9D5217C2966005CC423 /* praticeRecordCell.xib */,
+				FCF323F1228833D600637BB0 /* ASheetRecordCell.swift */,
+				FCF323F2228833D600637BB0 /* ASheetRecordCell.xib */,
 				FCE4F9D8217C39CC005CC423 /* HighScoreCell.swift */,
 				FCE4F9D9217C39CC005CC423 /* HighScoreCell.xib */,
 			);
@@ -478,6 +484,7 @@
 				FC02495021CFF1FE00F10919 /* UserSupportView.xib in Resources */,
 				FC8192BC21740BBD0076E137 /* ModifyPwdView.xib in Resources */,
 				FC05D1FE2184024100FF2D98 /* AlertView.xib in Resources */,
+				FCF323F4228833D600637BB0 /* ASheetRecordCell.xib in Resources */,
 				FC96E838216393D900D77780 /* PwdAlertView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,6 +576,7 @@
 				FCEA81CC216DE99D004D6FF3 /* TabBarVC.swift in Sources */,
 				FCE4F9E1217C3DCC005CC423 /* GradesRightVC.swift in Sources */,
 				248E49FA22351076004BD15C /* Sheet.swift in Sources */,
+				FCF323F3228833D600637BB0 /* ASheetRecordCell.swift in Sources */,
 				FC3BABF22142C93800E64A67 /* NoteSelectionVC.swift in Sources */,
 				24D989432238FAB100891497 /* musicNotePlayVC_view.swift in Sources */,
 				FC96E836216393C300D77780 /* AlertView.swift in Sources */,

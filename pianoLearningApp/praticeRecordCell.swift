@@ -7,8 +7,9 @@
 import UIKit
 
 protocol praticeRecordCellDelegate {
-    func didTapRecordBtn(songName: String?)
-    func didTapDeleteBtn(songName: String?)
+    func didTapTitleBtn(sheet: Sheet)
+    func didTapRecordBtn(sheet: Sheet)
+    func didTapDeleteBtn(sheet: Sheet, songName: String?)
 }
 
 class praticeRecordCell: UITableViewCell {
@@ -16,6 +17,7 @@ class praticeRecordCell: UITableViewCell {
     @IBOutlet weak var titleBtn: UIButton!
     @IBOutlet weak var recordBtn: UIButton!
     @IBOutlet weak var deleteBtn: UIButton!
+    weak var thisSheet: Sheet!
     
     var delegate: praticeRecordCellDelegate!
 
@@ -24,12 +26,15 @@ class praticeRecordCell: UITableViewCell {
         // Initialization code
     }
     
-
+    @IBAction func tapTitleBtn(_ sender: Any) {
+        self.delegate.didTapTitleBtn(sheet: thisSheet)
+    }
+    
     @IBAction func tapRecordBtn(_ sender: UIButton) {
-        self.delegate.didTapRecordBtn(songName: titleBtn.titleLabel?.text)
+        self.delegate.didTapRecordBtn(sheet: thisSheet)
     }
     
     @IBAction func tapDeleteBtn(_ sender: UIButton) {
-        self.delegate.didTapDeleteBtn(songName: titleBtn.titleLabel?.text)
+        self.delegate.didTapDeleteBtn(sheet: thisSheet, songName: titleBtn.titleLabel?.text)
     }
 }

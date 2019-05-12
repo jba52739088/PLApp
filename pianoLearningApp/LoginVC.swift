@@ -30,8 +30,8 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        accountField.text = "test2"
-        passwordField.text = "test1"
+//        accountField.text = "test2"
+//        passwordField.text = "test1"
         
         initView()
         showLoadingView()

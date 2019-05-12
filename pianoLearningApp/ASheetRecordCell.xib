@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="ASheetRecordCell" customModule="pianoLearningApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="909" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="909" height="49.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGf-MG-rV7">
+                        <rect key="frame" x="829" y="2.5" width="45" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="Wwv-3I-jDW"/>
+                            <constraint firstAttribute="height" constant="45" id="qyM-kv-l1z"/>
+                        </constraints>
+                        <state key="normal" image="grades_practice_detail_musicdelete"/>
+                        <connections>
+                            <action selector="clickRemoveBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pNq-eZ-11x"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxW-vv-1f3">
+                        <rect key="frame" x="629" y="2.5" width="155" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="155" id="eVF-0W-Stk"/>
+                            <constraint firstAttribute="height" constant="45" id="lAJ-cI-MSS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <state key="normal" title="错误练习模式" backgroundImage="practice_detail_practice_button">
+                            <color key="titleColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="clickPraticeBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UUl-Us-1mH"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUU-t2-sMW">
+                        <rect key="frame" x="469" y="2.5" width="155" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="D8e-vR-cZb"/>
+                            <constraint firstAttribute="width" constant="155" id="jDE-cp-KrX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <state key="normal" title="跟随练习检视" backgroundImage="practice_detail_practice_button">
+                            <color key="titleColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="clickFollowBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CQf-Nn-kK1"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.   09/12/2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDm-WG-uup">
+                        <rect key="frame" x="170" y="14" width="294" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="nxW-vv-1f3" firstAttribute="leading" secondItem="hUU-t2-sMW" secondAttribute="trailing" constant="5" id="8cX-oc-WOR"/>
+                    <constraint firstItem="MGf-MG-rV7" firstAttribute="leading" secondItem="nxW-vv-1f3" secondAttribute="trailing" constant="45" id="FcY-PH-uj0"/>
+                    <constraint firstAttribute="trailing" secondItem="MGf-MG-rV7" secondAttribute="trailing" constant="35" id="LZk-a1-SGr"/>
+                    <constraint firstItem="hUU-t2-sMW" firstAttribute="centerY" secondItem="nxW-vv-1f3" secondAttribute="centerY" id="UNw-Ix-Bt5"/>
+                    <constraint firstItem="nxW-vv-1f3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="WN1-Jh-nlO"/>
+                    <constraint firstItem="hUU-t2-sMW" firstAttribute="leading" secondItem="ZDm-WG-uup" secondAttribute="trailing" constant="5" id="Zys-l8-Fae"/>
+                    <constraint firstItem="ZDm-WG-uup" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="150" id="pHt-7C-4F7"/>
+                    <constraint firstItem="ZDm-WG-uup" firstAttribute="centerY" secondItem="hUU-t2-sMW" secondAttribute="centerY" id="v9C-dC-HbR"/>
+                    <constraint firstItem="MGf-MG-rV7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yJe-bW-Q8f"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="ZDm-WG-uup" id="Y6k-7D-mAk"/>
+                <outlet property="followBtn" destination="hUU-t2-sMW" id="fhd-vB-cVU"/>
+                <outlet property="praticeBtn" destination="nxW-vv-1f3" id="du0-XR-MPB"/>
+                <outlet property="removeBtn" destination="MGf-MG-rV7" id="p1A-mx-oYt"/>
+            </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="48.575712143928037"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="grades_practice_detail_musicdelete" width="31" height="32"/>
+        <image name="practice_detail_practice_button" width="140" height="37"/>
+    </resources>
+</document>

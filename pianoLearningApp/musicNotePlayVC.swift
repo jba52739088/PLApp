@@ -91,6 +91,8 @@ class musicNotePlayVC: UIViewController {
     var nowNoteCount = 0
     // 是否有下一個五線譜
     var hasMoreScore = false
+    // 播放暫存時間
+    var lastRecordDate = ""
     
     // scoreView判斷用
     var jsonArray: Array<Array<Array<Dictionary<String,String>>>>? // 譜data
@@ -219,12 +221,12 @@ class musicNotePlayVC: UIViewController {
             thisUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(file).json")
         }
         self.currentSongName = file
-        if isreadLocal {
-            self.isReadLocal = true
-            thisUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                .appendingPathComponent("\(self.currentSongName ?? "")_userPlayedData.json")
-            self.currentSongName = "\(self.currentSongName ?? "")_userPlayedData.json"
-        }
+//        if isreadLocal {
+//            self.isReadLocal = true
+//            thisUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//                .appendingPathComponent("\(self.currentSongName ?? "")_userPlayedData.json")
+//            self.currentSongName = "\(self.currentSongName ?? "")_userPlayedData.json"
+//        }
         guard let url = thisUrl else { return }
         
         do {
@@ -365,7 +367,7 @@ class musicNotePlayVC: UIViewController {
     @IBAction func onClick_main_tempplay_Btn(_ sender: Any) {
         self.setMain_tempplay_Btn(.RecordedPlaying)
         if !self.isRecording {
-            self.showScoreView(file: self.currentSongName ?? "", isreadLocal: true)
+            self.showScoreView(file: (self.currentSongName ?? "") + "_" + self.lastRecordDate, isreadLocal: true)
         }else {
             self.onClick_main_playstart_Btn(self)
             self.showActionAlertView(.PLAY_PAUSED)
@@ -445,11 +447,11 @@ class musicNotePlayVC: UIViewController {
         self.receivedMIDINoteOn(noteNumber: 60, velocity: 1, channel: 1)
     }
     
-    func storeUserPlayedData() {
+    func storeUserPlayedData(date: String) {
         if let paramsJSON = JSON(self.jsonArray) as? JSON {
             if let data = try? paramsJSON.rawData() {
                 let fileUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                    .appendingPathComponent("\(self.currentSongName ?? "")_userPlayedData.json") // Your json file name
+                    .appendingPathComponent("\(self.currentSongName ?? "")_\(date).json") // Your json file name
                 try? data.write(to: fileUrl)
             }
         }
@@ -528,7 +530,7 @@ extension musicNotePlayVC: AKMIDIListener {
 extension musicNotePlayVC: MusicScoreViewDelegate {
     func shouldPlayNext() {
         self.pianoBackground.pianoView.deselectAll()
-        print("nowSegs: \(nowSegs), allSegs: \(allSegs)")
+//        print("nowSegs: \(nowSegs), allSegs: \(allSegs)")
         if nowScoreView % 2 == 0 {
             // 播放下面樂譜
             if hasMoreScore{
@@ -634,7 +636,7 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
     func didFinishPlay() {
 //        print("didFinishPlay scoreOrder: \(scoreOrder)")
         self.pianoBackground.pianoView.deselectAll()
-        print("nowSegs: \(nowSegs), allSegs: \(allSegs)")
+//        print("nowSegs: \(nowSegs), allSegs: \(allSegs)")
         if (nowSegs<allSegs-1){
             
         }else{
@@ -646,7 +648,7 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
                 }
             }else {
                 if self.isRecording{
-                    self.storeUserPlayedData()
+                    
                     self.isRecording = false
                     self.setMain_tempplay_Btn(.Recorded)
                     self.showActionAlertView(.PLAY_FINISHED)
@@ -783,18 +785,20 @@ extension musicNotePlayVC: actionAlertViewDelegate {
                 print("储存成绩")
                 print("allCount: \(self.allCount), self.failedCount: \(self.failedCount)")
                 let scoreNameArray = self.currentSongName!.components(separatedBy: "_")
+                let date = Date()
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd-MM-yyyy"
+                let result = formatter.string(from: date)
+                self.storeUserPlayedData(date: result)
+                self.lastRecordDate = result
                 let completion = 100 * Float(self.allCount - self.failedCount) / Float(self.allCount)
                 if SQLiteManager.shared.updateSheetInfo(level: scoreNameArray[0],
                                                      bookLevel: scoreNameArray[1],
                                                      name: scoreNameArray[2],
                                                      completion: Int(completion),
-                                                     recorded: "\(self.currentSongName ?? "")_userPlayedData") {
-                    print("level: \(scoreNameArray[0]), bookLevel: \(scoreNameArray[1]), name: \(scoreNameArray[2]), completion: \(Int(completion)), recorded: \("\(self.currentSongName ?? "")_userPlayedData")")
+                                                     recorded: "\(self.currentSongName ?? "")_\(result)") {
+//                    print("level: \(scoreNameArray[0]), bookLevel: \(scoreNameArray[1]), name: \(scoreNameArray[2]), completion: \(Int(completion)), recorded: \("\(self.currentSongName ?? "")_userPlayedData")")
                 }
-                let date = Date()
-                let formatter = DateFormatter()
-                formatter.dateFormat = "dd/MM/yyyy"
-                let result = formatter.string(from: date)
                 if !SQLiteManager.shared.insertRecentData(level: Int(scoreNameArray[0]) ?? 0, date: result, sheetName: scoreNameArray[2], Completion: Int(completion)) {
                     if !SQLiteManager.shared.updateRecentData(level: Int(scoreNameArray[0]) ?? 0, date: result, sheetName: scoreNameArray[2], Completion: Int(completion)) {
                         print("insert and update recent info error")

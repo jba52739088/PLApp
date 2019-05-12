@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +25,7 @@
                             <constraint firstAttribute="width" secondItem="6Vc-QL-FIC" secondAttribute="height" multiplier="1:1" id="q1c-3C-b1Q"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pN3-Mc-wIi">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pN3-Mc-wIi">
                         <rect key="frame" x="49.5" y="3" width="325" height="43.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="325" id="VY8-TN-TX0"/>
@@ -34,6 +34,9 @@
                         <state key="normal" title="Level I ~ Minuet In G Major" backgroundImage="grades_practice_music">
                             <color key="titleColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="tapTitleBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ni3-lk-HGE"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmv-tq-Tdm">
                         <rect key="frame" x="809" y="5" width="95" height="40"/>

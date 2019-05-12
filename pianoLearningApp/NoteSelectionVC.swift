@@ -73,19 +73,15 @@ class NoteSelectionVC: UIViewController {
     }
     
     func reloadBookData() {
-        if (self.didSelectLevel == 1 && self.didSelectBook == 0) {
-            notesArray = ["score1", "score2", "score3"]
-        }else {
-            //            notesArray = downloadedNotesArray
-            notesArray = []
-            SQLiteManager.shared.loadSheets(level: "\(self.didSelectLevel)", book: "\(self.didSelectBook)") { (sheets) in
-                for sheet in sheets {
-                    notesArray.append(sheet.name)
-                }
+        notesArray = []
+        SQLiteManager.shared.loadSheets(level: "\(self.didSelectLevel)", book: "\(self.didSelectBook)") { (sheets) in
+            for sheet in sheets {
+                notesArray.append(sheet.name)
             }
         }
         listView = Bundle.main.loadNibNamed("NoteSelectionListView", owner: self, options: nil)?.first as! NoteSelectionListView
         listView.frame = self.backGroundView.bounds
+        listView.imgView.image = self.btnBooks[self.didSelectBook].imageView?.image
         listView.tableView.delegate = self
         listView.tableView.dataSource = self
         listView.tableView.register(UINib(nibName: "NoteSelectionCell", bundle: nil), forCellReuseIdentifier: "NoteSelectionCell")
@@ -136,7 +132,7 @@ extension NoteSelectionVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:NoteSelectionCell = tableView.dequeueReusableCell(withIdentifier: "NoteSelectionCell", for: indexPath) as! NoteSelectionCell
-        cell.textLabel?.text = "\(indexPath.row).  \(self.notesArray[indexPath.row])"
+        cell.textLabel?.text = "\(indexPath.row + 1).  \(self.notesArray[indexPath.row])"
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         return cell

@@ -13,15 +13,17 @@ class TabBarVC: UIViewController {
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var buttonBottomView: [UIView]!
     
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
     var playViewController: musicNotePlayVC!
     var sheetsViewController: NoteSelectionVC!
-    var gradesViewController: UIViewController!
+    var gradesViewController: GradesVC!
     var accountViewController: UIViewController!
     var viewControllers: [UIViewController]!
     var selectedIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        appDelegate.TabBar = self
         configViewControllers()
         
     }
@@ -53,10 +55,11 @@ class TabBarVC: UIViewController {
         }
         playViewController = self.storyboard?.instantiateViewController(withIdentifier: "musicNotePlayVC") as! musicNotePlayVC
         sheetsViewController = self.storyboard?.instantiateViewController(withIdentifier: "sheetsVC") as! NoteSelectionVC
-        gradesViewController = self.storyboard?.instantiateViewController(withIdentifier: "gradesVC")
+        gradesViewController = self.storyboard?.instantiateViewController(withIdentifier: "gradesVC") as! GradesVC
         accountViewController = self.storyboard?.instantiateViewController(withIdentifier: "accountVC")
         sheetsViewController.TabBar = self
         sheetsViewController.delegate = playViewController
+        gradesViewController.delegate = playViewController
         viewControllers = [playViewController, sheetsViewController, gradesViewController, accountViewController]
         buttonBottomView[selectedIndex].isHidden = false
         didTapTabBar(buttons[selectedIndex])

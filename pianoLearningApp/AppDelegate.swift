@@ -11,6 +11,8 @@ import IQKeyboardManagerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var TabBar: TabBarVC!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -27,6 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         if SQLiteManager.shared.createDatebase() {
             print("createDatebase")
+            let freeSheets = ["score1", "score2", "score3"]
+            for sheet in freeSheets {
+                let aSheet = Sheet(name: sheet, level: "1", book: "0", isDownloaded: true, completion: 0, recorded: "")
+                if !SQLiteManager.shared.insertSheetInfo(aSheet) {
+                    print("insert sheet '\(sheet)' to db error")
+                }
+            }
         }else {
             print("createDatebase error")
         }

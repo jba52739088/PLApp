@@ -16,6 +16,7 @@ class Sheet: NSObject {
     var isDownloaded = false
     var completion = 0
     var recorded = ""
+    var hasRecord = false
     
     init(name: String, level: String, book: String, isDownloaded: Bool, completion: Int, recorded: String) {
         self.name = name
@@ -24,6 +25,7 @@ class Sheet: NSObject {
         self.isDownloaded = isDownloaded
         self.completion = completion
         self.recorded = recorded
+        self.hasRecord = (recorded != "")
     }
     
     func equals (compareTo:Sheet) -> Bool {

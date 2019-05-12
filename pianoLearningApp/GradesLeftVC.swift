@@ -17,9 +17,7 @@ class GradesLeftVC: UIViewController {
     @IBOutlet weak var titleLabel_2: UILabel!
     @IBOutlet weak var titleLabel_3: UILabel!
     
-    var parentVC: GradesVC!
     var didSelectButton = 0
-    var allScore: Dictionary<String, Int> = [:]
     var thisLevelSongs: [Sheet] = []
     var thisLevel = ""
     var recentDates = ""
@@ -30,6 +28,7 @@ class GradesLeftVC: UIViewController {
         super.viewDidLoad()
         initButtons()
         setTableView()
+        configViewData()
     }
     
     func initButtons() {
@@ -60,11 +59,6 @@ class GradesLeftVC: UIViewController {
     }
     
     func configViewData() {
-        guard self.parentVC != nil,
-            self.parentVC._allScore != nil,
-            self.parentVC._recentPlays != nil,
-            self.parentVC._recentDates != nil
-            else { return }
         var level = ""
         switch self.didSelectButton {
         case 0:
@@ -94,7 +88,7 @@ class GradesLeftVC: UIViewController {
         
         SQLiteManager.shared.loadRecent(level: Int(level) ?? 0) { (date, sheet, completion) in
             if date != "" {
-                self.dateLabel.text = date
+                self.dateLabel.text = date.replace(target:"-",withString: "/")
                 self.nameLabel.text =  self.thisLevel + "~" + sheet
                 self.progressLabel.text = "\(completion) %"
                 self.dateLabel.isHidden = false
@@ -150,5 +144,12 @@ extension GradesLeftVC:UITableViewDataSource,UITableViewDelegate{
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
         return headerView
+    }
+}
+
+extension String{
+    func replace(target: String, withString: String) -> String
+    {
+        return self.replacingOccurrences(of: target, with: withString, options: NSString.CompareOptions.literal, range: nil)
     }
 }

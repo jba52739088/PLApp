@@ -13,21 +13,22 @@ class GradesRightVC: UIViewController {
     @IBOutlet var titles: [UILabel]!
     @IBOutlet weak var tableView: UITableView!
     
-    
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
     var parentVC: GradesVC!
     var actionAlertView: ActionAlertView!
     var didSelectButton = 0
-    var allScore: [String : Int] = [:]
+    var thisLevelSongs: [Sheet] = []
     var thisLevel = ""
-    var recentDates = ""
-    var recentPlays = ""
-    var recentScore = 0
+    var thisSheet: Sheet?
+    var sheetRecordedData: [String] = []
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initButtons()
         setTableView()
-        
+        configViewData()
     }
     
     func initButtons() {
@@ -47,7 +48,9 @@ class GradesRightVC: UIViewController {
     
     func setTableView() {
         tableView.register(UINib(nibName: "praticeRecordCell", bundle: nil), forCellReuseIdentifier: "praticeRecordCell")
+        tableView.register(UINib(nibName: "ASheetRecordCell", bundle: nil), forCellReuseIdentifier: "aSheetRecordCell")
         tableView.layoutSubviews()
+        tableView.tableFooterView = UIView()
         let gradient = CAGradientLayer()
         gradient.frame = tableView.superview?.bounds ?? .null
         gradient.colors = [UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor, UIColor.clear.cgColor]
@@ -57,37 +60,47 @@ class GradesRightVC: UIViewController {
     }
     
     @IBAction func didTapButton(_ sender: UIButton) {
+        thisSheet = nil
         self.images[didSelectButton].image = UIImage(named: "grades_practice_level\(didSelectButton + 1) copy")
         self.titles[didSelectButton].textColor = UIColor.darkText.withAlphaComponent(0.2)
         didSelectButton = sender.tag
         self.images[didSelectButton].image = UIImage(named: "grades_practice_level\(didSelectButton + 1)")
         self.titles[didSelectButton].textColor = UIColor.darkText.withAlphaComponent(1)
+        configViewData()
     }
     
     func configViewData() {
-        guard self.parentVC != nil,
-            self.parentVC._allScore != nil,
-            self.parentVC._recentPlays != nil,
-            self.parentVC._recentDates != nil
-            else { return }
-        switch self.parentVC.selectedIndex {
+        var level = ""
+        switch self.didSelectButton {
         case 0:
             self.thisLevel = "Level I"
+            level = "1"
         case 1:
             self.thisLevel = "Level II"
+            level = "2"
         case 2:
             self.thisLevel = "Level III"
+            level = "3"
         case 3:
             self.thisLevel = "Level IV"
+            level = "4"
         case 4:
             self.thisLevel = "Level V"
+            level = "5"
         default:
             self.thisLevel = "Level I"
+            level = "1"
         }
-        self.recentPlays = self.parentVC._recentPlays[self.thisLevel] ?? ""
-        self.allScore = self.parentVC._allScore[self.thisLevel] ?? [:]
-        self.recentScore = self.allScore[self.recentPlays] ?? 0
-        self.recentDates = self.parentVC._recentDates[self.thisLevel] ?? ""
+        if (self.thisSheet == nil) {
+            SQLiteManager.shared.loadSheets(level: level) { (sheets) in
+                thisLevelSongs = sheets
+                self.tableView.reloadData()
+            }
+        }else {
+            self.sheetRecordedData = self.getSheetRecordedData(sheetName: "\(self.thisSheet!.level)_\(self.thisSheet!.book)_\(self.thisSheet!.name)")
+            self.tableView.reloadData()
+        }
+        
     }
     
     func showActionAlertView(songName: String) {
@@ -98,6 +111,20 @@ class GradesRightVC: UIViewController {
         actionAlertView.secondlabel.text = songName
         self.view.addSubview(actionAlertView)
     }
+    
+    func getSheetRecordedData(sheetName: String) -> [String] {
+        var sheetNames: [String] = []
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let url = URL(fileURLWithPath: documentsPath)
+        let fileManager = FileManager.default
+        let enumerator: FileManager.DirectoryEnumerator = fileManager.enumerator(atPath: url.path)!
+        for element in enumerator.allObjects {
+            if let name = element as? String, name.contains("\(sheetName)_"){
+                sheetNames.append(name.replace(target: ".json", withString: ""))
+            }
+        }
+        return sheetNames
+    }
 
 }
 
@@ -105,7 +132,12 @@ class GradesRightVC: UIViewController {
 extension GradesRightVC:UITableViewDataSource,UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 20
+        if thisSheet == nil {
+             return self.thisLevelSongs.count
+        }else {
+            return self.sheetRecordedData.count + 1
+        }
+       
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -113,13 +145,41 @@ extension GradesRightVC:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if thisSheet == nil {
+            let cell:praticeRecordCell = tableView.dequeueReusableCell(withIdentifier: "praticeRecordCell", for: indexPath) as! praticeRecordCell
+            cell.backgroundColor = UIColor.clear
+            cell.selectionStyle = .none
+            cell.delegate = self
+            let title = self.thisLevel + " ~ " + self.thisLevelSongs[indexPath.section].name
+            cell.titleBtn.titleEdgeInsets.left = 10
+            cell.titleBtn.contentHorizontalAlignment = .left
+            cell.titleBtn.setTitle(title, for: .normal)
+            cell.deleteBtn.isHidden = !(self.thisLevelSongs[indexPath.section].hasRecord)
+            cell.thisSheet = self.thisLevelSongs[indexPath.section]
+            return cell
+        }else {
+            if indexPath.section == 0 {
+                let cell:praticeRecordCell = tableView.dequeueReusableCell(withIdentifier: "praticeRecordCell", for: indexPath) as! praticeRecordCell
+                cell.backgroundColor = UIColor.clear
+                cell.selectionStyle = .none
+                cell.delegate = self
+                let title = self.thisLevel + " ~ " + thisSheet!.name
+                cell.titleBtn.titleEdgeInsets.left = 10
+                cell.titleBtn.contentHorizontalAlignment = .left
+                cell.titleBtn.setTitle(title, for: .normal)
+                cell.deleteBtn.isHidden = !(thisSheet!.hasRecord)
+                cell.thisSheet = thisSheet!
+                return cell
+            }else {
+                let cell:ASheetRecordCell = tableView.dequeueReusableCell(withIdentifier: "aSheetRecordCell", for: indexPath) as! ASheetRecordCell
+                let nameArray = self.sheetRecordedData[indexPath.section - 1].components(separatedBy: "_")
+                cell.backgroundColor = UIColor.clear
+                cell.selectionStyle = .none
+                cell.dateLabel.text =  nameArray[3].replace(target: "-", withString: "/")
+                return cell
+            }
+        }
         
-        let cell:praticeRecordCell = tableView.dequeueReusableCell(withIdentifier: "praticeRecordCell", for: indexPath) as! praticeRecordCell
-        cell.backgroundColor = UIColor.clear
-        cell.selectionStyle = .none
-        cell.delegate = self
-        return cell
-
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -137,19 +197,28 @@ extension GradesRightVC:UITableViewDataSource,UITableViewDelegate{
 }
 
 extension GradesRightVC: praticeRecordCellDelegate {
-    func didTapRecordBtn(songName: String?) {
-        //
+    func didTapTitleBtn(sheet: Sheet) {
+        self.thisSheet = sheet
+        self.configViewData()
     }
     
-    func didTapDeleteBtn(songName: String?) {
+    func didTapRecordBtn(sheet: Sheet) {
+        let sheetName = "\(sheet.level)_\(sheet.book)_\(sheet.name)"
+        self.parentVC.delegate.didSelectNote(name: sheetName)
+        UserDefaults.standard.set(sheetName, forKey: PIANO_LAST_NOTE_NAME)
+        UserDefaults.standard.synchronize()
+        self.appDelegate.TabBar.jumpToViewControllerBy(tag: 0)
+    }
+    
+    func didTapDeleteBtn(sheet: Sheet, songName: String?) {
         guard songName != nil else { return }
         self.showActionAlertView(songName: songName!)
     }
-    
-    
 }
 
 extension GradesRightVC: actionAlertViewDelegate {
+  
+    
     func didTapLeftBtn() {
         if self.actionAlertView != nil {
             self.actionAlertView.removeFromSuperview()
