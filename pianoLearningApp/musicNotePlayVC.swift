@@ -792,16 +792,18 @@ extension musicNotePlayVC: actionAlertViewDelegate {
                 self.storeUserPlayedData(date: result)
                 self.lastRecordDate = result
                 let completion = 100 * Float(self.allCount - self.failedCount) / Float(self.allCount)
-                if SQLiteManager.shared.updateSheetInfo(level: scoreNameArray[0],
-                                                     bookLevel: scoreNameArray[1],
-                                                     name: scoreNameArray[2],
-                                                     completion: Int(completion),
-                                                     recorded: "\(self.currentSongName ?? "")_\(result)") {
-//                    print("level: \(scoreNameArray[0]), bookLevel: \(scoreNameArray[1]), name: \(scoreNameArray[2]), completion: \(Int(completion)), recorded: \("\(self.currentSongName ?? "")_userPlayedData")")
-                }
-                if !SQLiteManager.shared.insertRecentData(level: Int(scoreNameArray[0]) ?? 0, date: result, sheetName: scoreNameArray[2], Completion: Int(completion)) {
-                    if !SQLiteManager.shared.updateRecentData(level: Int(scoreNameArray[0]) ?? 0, date: result, sheetName: scoreNameArray[2], Completion: Int(completion)) {
-                        print("insert and update recent info error")
+                if let thisSheet = SQLiteManager.shared.loadSheetInfo(level: scoreNameArray[0], book: scoreNameArray[1], name: scoreNameArray[2]) {
+                    if !SQLiteManager.shared.updateSheetInfo(level: scoreNameArray[0],
+                                                            bookLevel: scoreNameArray[1],
+                                                            name: scoreNameArray[2],
+                                                            completion: Int(completion),
+                                                            recorded: thisSheet.recorded + 1) {
+                        print("updateSheetInfo after playing error")
+                    }
+                    if !SQLiteManager.shared.insertRecentData(level: Int(scoreNameArray[0]) ?? 0, date: result, sheetName: scoreNameArray[2], Completion: Int(completion)) {
+                        if !SQLiteManager.shared.updateRecentData(level: Int(scoreNameArray[0]) ?? 0, date: result, sheetName: scoreNameArray[2], Completion: Int(completion)) {
+                            print("insert and update recent info error")
+                        }
                     }
                 }
             case .PLAY_PAUSED?:

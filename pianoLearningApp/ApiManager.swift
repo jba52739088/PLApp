@@ -266,7 +266,7 @@ class APIManager {
                                                         let sjson = song["sjson"] as? String                // 譜json
                                                     {
                                                         let sheetDownload = self.saveStringToJSON(fileName: "\(sid)_\(bookNo)_\(sname).json", text: sjson)
-                                                        let aSheet = Sheet(name: sname, level: "\(id)", book: "\(bookNo)", isDownloaded: sheetDownload, completion: 0, recorded: "")
+                                                        let aSheet = Sheet(name: sname, level: "\(id)", book: "\(bookNo)", isDownloaded: sheetDownload, completion: 0, recorded: 0)
                                                         if !SQLiteManager.shared.insertSheetInfo(aSheet) {
                                                             print("insert sheet '\(sname)' to db error")
                                                         }

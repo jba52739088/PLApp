@@ -125,7 +125,25 @@ class GradesRightVC: UIViewController {
         }
         return sheetNames
     }
-
+    
+    func deleteSheetRecordedData(sheetName: String) -> Bool {
+        let fileManager = FileManager.default
+        let documentsUrl =  NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let documentsPath = URL(fileURLWithPath: documentsUrl).path
+        do {
+            let fileNames = try fileManager.contentsOfDirectory(atPath: documentsPath)
+            for fileName in fileNames {
+                if (fileName.contains("\(sheetName)")){
+                    let filePathName = "\(documentsPath)/\(sheetName).json"
+                    try fileManager.removeItem(atPath: filePathName)
+                }
+            }
+        } catch {
+            print("Could not clear temp folder: \(error)")
+            return false
+        }
+        return true
+    }
 }
 
 //MARK: - UITableView
@@ -176,6 +194,9 @@ extension GradesRightVC:UITableViewDataSource,UITableViewDelegate{
                 cell.backgroundColor = UIColor.clear
                 cell.selectionStyle = .none
                 cell.dateLabel.text =  nameArray[3].replace(target: "-", withString: "/")
+                let sSheet = Sheet(name: self.sheetRecordedData[indexPath.section - 1], level: thisSheet!.level, book: thisSheet!.book, isDownloaded: thisSheet!.isDownloaded, completion: thisSheet!.completion, recorded: thisSheet!.recorded)
+                cell.delegate = self
+                cell.thisSheet = sSheet
                 return cell
             }
         }
@@ -234,4 +255,29 @@ extension GradesRightVC: actionAlertViewDelegate {
     
     
     
+}
+
+extension GradesRightVC: ASheetRecordCellDelegate {
+    func didTapFollowBtn(sheet: Sheet) {
+        print("follow: \(sheet.name) ")
+    }
+    
+    func didTapPraticeBtn(sheet: Sheet) {
+        print("pratice: \(sheet.name) ")
+    }
+    
+    func didTapRemoveBtn(sheet: Sheet) {
+        if self.deleteSheetRecordedData(sheetName: sheet.name) {
+            if let aSheet = SQLiteManager.shared.loadSheetInfo(level: thisSheet!.level, book: thisSheet!.book, name: thisSheet!.name) {
+                if SQLiteManager.shared.updateSheetInfo(level: aSheet.level,
+                                                        bookLevel: aSheet.book,
+                                                        name: aSheet.name,
+                                                        completion: aSheet.completion,
+                                                        recorded: aSheet.recorded - 1) {
+                    self.configViewData()
+                }
+            }
+            
+        }
+    }
 }

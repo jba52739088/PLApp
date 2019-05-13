@@ -38,7 +38,7 @@ class SQLiteManager {
     private let sheet_level = Expression<String>("SheetLevel")
     private let sheet_book = Expression<String>("Sheet_Book")
     private let sheet_downloaded = Expression<Bool>("SheetDownloaded")
-    private let sheet_recorded = Expression<String>("SheetRecorded")
+    private let sheet_recorded = Expression<Int>("SheetRecorded")
     private let sheet_completion = Expression<Int>("SheetCompletion")
     
     private let recent_level = Expression<Int>("RecentLevel")
@@ -125,7 +125,7 @@ class SQLiteManager {
                 table.column(sheet_level, defaultValue: "")
                 table.column(sheet_book, defaultValue: "")
                 table.column(sheet_downloaded, defaultValue: false)
-                table.column(sheet_recorded, defaultValue: "")
+                table.column(sheet_recorded, defaultValue: 0)
                 table.column(sheet_completion, defaultValue: 0)
             })
             //            print("create user Table succeed")
@@ -266,6 +266,27 @@ class SQLiteManager {
         completionHandler(allSheets)
     }
     
+    func loadSheetInfo(level: String, book: String, name: String) -> Sheet? {
+        let select = sheetTable.filter(sheet_level == level && sheet_book == book && sheet_name == name)
+        var sheet: Sheet?
+        do {
+            for aSheet in try db!.prepare(select) {
+                let thisSheet = Sheet(name: aSheet[sheet_name],
+                                      level: aSheet[sheet_level],
+                                      book: aSheet[sheet_book],
+                                      isDownloaded: aSheet[sheet_downloaded],
+                                      completion: aSheet[sheet_completion],
+                                      recorded: aSheet[sheet_recorded])
+                sheet = thisSheet
+            }
+            
+        }catch {
+            print("loadSheet info failed")
+            return nil
+        }
+        return sheet
+    }
+    
     func loadSheets(level: String, book: String, completionHandler: (_ sheets: [Sheet]) -> Void) {
         let select = sheetTable.filter(sheet_level == level && sheet_book == book)
         var allSheets = [Sheet]()
@@ -286,7 +307,7 @@ class SQLiteManager {
         completionHandler(allSheets)
     }
     
-    func updateSheetInfo(level: String, bookLevel: String, name: String, completion: Int, recorded: String) -> Bool {
+    func updateSheetInfo(level: String, bookLevel: String, name: String, completion: Int, recorded: Int) -> Bool {
         do {
             let sheetInTable = sheetTable.filter(sheet_level == level && sheet_book == bookLevel && sheet_name == name)
             let update = sheetInTable.update([sheet_completion <- completion,

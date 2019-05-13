@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("createDatebase")
             let freeSheets = ["score1", "score2", "score3"]
             for sheet in freeSheets {
-                let aSheet = Sheet(name: sheet, level: "1", book: "0", isDownloaded: true, completion: 0, recorded: "")
+                let aSheet = Sheet(name: sheet, level: "1", book: "0", isDownloaded: true, completion: 0, recorded: 0)
                 if !SQLiteManager.shared.insertSheetInfo(aSheet) {
                     print("insert sheet '\(sheet)' to db error")
                 }

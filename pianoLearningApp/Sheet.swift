@@ -15,17 +15,17 @@ class Sheet: NSObject {
     var book = ""
     var isDownloaded = false
     var completion = 0
-    var recorded = ""
+    var recorded = 0
     var hasRecord = false
     
-    init(name: String, level: String, book: String, isDownloaded: Bool, completion: Int, recorded: String) {
+    init(name: String, level: String, book: String, isDownloaded: Bool, completion: Int, recorded: Int) {
         self.name = name
         self.level = level
         self.book = book
         self.isDownloaded = isDownloaded
         self.completion = completion
         self.recorded = recorded
-        self.hasRecord = (recorded != "")
+        self.hasRecord = (recorded != 0)
     }
     
     func equals (compareTo:Sheet) -> Bool {
