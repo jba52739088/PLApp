@@ -28,7 +28,7 @@
 		FC05D202218405CA00FF2D98 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D201218405CA00FF2D98 /* LoadingView.swift */; };
 		FC05D204218406A800FF2D98 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D203218406A800FF2D98 /* UserDefaultsKey.swift */; };
 		FC05D2072186043500FF2D98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D2062186043500FF2D98 /* User.swift */; };
-		FC05D20F2188A4C000FF2D98 /* score3.json in Resources */ = {isa = PBXBuildFile; fileRef = FC05D20E2188A47A00FF2D98 /* score3.json */; };
+		FC05D20F2188A4C000FF2D98 /* 1_0_score3.json in Resources */ = {isa = PBXBuildFile; fileRef = FC05D20E2188A47A00FF2D98 /* 1_0_score3.json */; };
 		FC05D2112188B4E300FF2D98 /* SelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC05D2102188B4E300FF2D98 /* SelectionView.xib */; };
 		FC05D2132188B50600FF2D98 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D2122188B50600FF2D98 /* SelectionView.swift */; };
 		FC229A7021C7000D00D16D80 /* didSendFeedback.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC229A6F21C7000D00D16D80 /* didSendFeedback.xib */; };
@@ -65,8 +65,8 @@
 		FC8192CC2174E2450076E137 /* FeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8192CB2174E2450076E137 /* FeedbackView.xib */; };
 		FC8388F2214AACC900FAAA36 /* PianoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8388F1214AACC900FAAA36 /* PianoView.swift */; };
 		FC845B86218B4C5B00A9D66D /* score1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC845B85218B4AB000A9D66D /* score1.wav */; };
-		FC8B66C2222D7DEC00D7DD5C /* score1.json in Resources */ = {isa = PBXBuildFile; fileRef = FC8B66C1222D7DE700D7DD5C /* score1.json */; };
-		FC8B66C3222D7DF100D7DD5C /* score2.json in Resources */ = {isa = PBXBuildFile; fileRef = FC8B66C0222D7DE600D7DD5C /* score2.json */; };
+		FC8B66C2222D7DEC00D7DD5C /* 1_0_score1.json in Resources */ = {isa = PBXBuildFile; fileRef = FC8B66C1222D7DE700D7DD5C /* 1_0_score1.json */; };
+		FC8B66C3222D7DF100D7DD5C /* 1_0_score2.json in Resources */ = {isa = PBXBuildFile; fileRef = FC8B66C0222D7DE600D7DD5C /* 1_0_score2.json */; };
 		FC96E82A216272C200D77780 /* RegisterStep1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E829216272C200D77780 /* RegisterStep1VC.swift */; };
 		FC96E83021628BA000D77780 /* ContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC96E82F21628B9F00D77780 /* ContractView.swift */; };
 		FC96E832216293DC00D77780 /* RegisterStep2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC96E831216293DC00D77780 /* RegisterStep2View.xib */; };
@@ -117,7 +117,7 @@
 		FC05D201218405CA00FF2D98 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FC05D203218406A800FF2D98 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		FC05D2062186043500FF2D98 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		FC05D20E2188A47A00FF2D98 /* score3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = score3.json; sourceTree = "<group>"; };
+		FC05D20E2188A47A00FF2D98 /* 1_0_score3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1_0_score3.json; sourceTree = "<group>"; };
 		FC05D2102188B4E300FF2D98 /* SelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionView.xib; sourceTree = "<group>"; };
 		FC05D2122188B50600FF2D98 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		FC229A6F21C7000D00D16D80 /* didSendFeedback.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = didSendFeedback.xib; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 		FC8192CB2174E2450076E137 /* FeedbackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackView.xib; sourceTree = "<group>"; };
 		FC8388F1214AACC900FAAA36 /* PianoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoView.swift; sourceTree = "<group>"; };
 		FC845B85218B4AB000A9D66D /* score1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score1.wav; sourceTree = "<group>"; };
-		FC8B66C0222D7DE600D7DD5C /* score2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = score2.json; sourceTree = "<group>"; };
-		FC8B66C1222D7DE700D7DD5C /* score1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = score1.json; sourceTree = "<group>"; };
+		FC8B66C0222D7DE600D7DD5C /* 1_0_score2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1_0_score2.json; sourceTree = "<group>"; };
+		FC8B66C1222D7DE700D7DD5C /* 1_0_score1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1_0_score1.json; sourceTree = "<group>"; };
 		FC96E829216272C200D77780 /* RegisterStep1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStep1VC.swift; sourceTree = "<group>"; };
 		FC96E82F21628B9F00D77780 /* ContractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractView.swift; sourceTree = "<group>"; };
 		FC96E831216293DC00D77780 /* RegisterStep2View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterStep2View.xib; sourceTree = "<group>"; };
@@ -289,9 +289,9 @@
 			children = (
 				FC845B85218B4AB000A9D66D /* score1.wav */,
 				FC4450C122259813002EC413 /* MusicScoreView.swift */,
-				FC8B66C1222D7DE700D7DD5C /* score1.json */,
-				FC8B66C0222D7DE600D7DD5C /* score2.json */,
-				FC05D20E2188A47A00FF2D98 /* score3.json */,
+				FC8B66C1222D7DE700D7DD5C /* 1_0_score1.json */,
+				FC8B66C0222D7DE600D7DD5C /* 1_0_score2.json */,
+				FC05D20E2188A47A00FF2D98 /* 1_0_score3.json */,
 				FC3BABEF2142C93800E64A67 /* AppDelegate.swift */,
 				FC4450C0222271ED002EC413 /* Login */,
 				FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */,
@@ -447,7 +447,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC8B66C2222D7DEC00D7DD5C /* score1.json in Resources */,
+				FC8B66C2222D7DEC00D7DD5C /* 1_0_score1.json in Resources */,
 				24ECF0B9224A298A00B1F597 /* SearchView.xib in Resources */,
 				FC8192CC2174E2450076E137 /* FeedbackView.xib in Resources */,
 				FC45128B219075AC0029E32C /* EmptyNoteView.xib in Resources */,
@@ -468,7 +468,7 @@
 				245B26252249E11900C587D7 /* BookDownloadView.xib in Resources */,
 				FC3BABF72142C93800E64A67 /* Assets.xcassets in Resources */,
 				FC7AECCD21457E6C00BC0412 /* playing.gif in Resources */,
-				FC8B66C3222D7DF100D7DD5C /* score2.json in Resources */,
+				FC8B66C3222D7DF100D7DD5C /* 1_0_score2.json in Resources */,
 				FC7AECCE21457E6C00BC0412 /* recording.gif in Resources */,
 				FC02495121CFF20100F10919 /* QuestionView.xib in Resources */,
 				FC8192C82174E10C0076E137 /* LanguageView.xib in Resources */,
@@ -476,7 +476,7 @@
 				FC4450B5221B2F0C002EC413 /* ActionAlertView.xib in Resources */,
 				FC3BABF52142C93800E64A67 /* Main.storyboard in Resources */,
 				FC80D5942174EFE700CA8DA0 /* VolumeView.xib in Resources */,
-				FC05D20F2188A4C000FF2D98 /* score3.json in Resources */,
+				FC05D20F2188A4C000FF2D98 /* 1_0_score3.json in Resources */,
 				FC02495021CFF1FE00F10919 /* UserSupportView.xib in Resources */,
 				FC8192BC21740BBD0076E137 /* ModifyPwdView.xib in Resources */,
 				FC05D1FE2184024100FF2D98 /* AlertView.xib in Resources */,

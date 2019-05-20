@@ -18,12 +18,8 @@ class SearchView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        let searchBarConfig = SHSearchBarConfig()
-//        searchBar = SHSearchBar(config: searchBarConfig)
-//        searchBar.frame = searchBarView.frame
-//        searchBarView.addSubview(searchBar)
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeSearchView))
-//        self.backGround.addGestureRecognizer(tapGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeSearchView))
+        self.backGround.addGestureRecognizer(tapGesture)
     }
 
     @objc func closeSearchView() {
