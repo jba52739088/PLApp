@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="显示头像更换" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peV-JA-vdd">
-                    <rect key="frame" x="312.5" y="61" width="194" height="38.5"/>
+                    <rect key="frame" x="312.5" y="81" width="194" height="38.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                     <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -26,7 +26,7 @@
                     <rect key="frame" x="102.5" y="151.5" width="614" height="142"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v84-7q-bxv">
-                            <rect key="frame" x="0.0" y="0.0" width="142.5" height="142"/>
+                            <rect key="frame" x="0.0" y="0.0" width="142" height="142"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="v84-7q-bxv" secondAttribute="height" multiplier="1:1" id="gvk-xA-36y"/>
                             </constraints>
@@ -46,16 +46,16 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Hf-WT-5je">
-                            <rect key="frame" x="471.5" y="0.0" width="142.5" height="142"/>
+                            <rect key="frame" x="472" y="0.0" width="142" height="142"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accounts_head_custom_add" translatesAutoresizingMaskIntoConstraints="NO" id="Ehb-7D-85d">
-                                    <rect key="frame" x="0.0" y="0.0" width="142.5" height="142"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="142" height="142"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Ehb-7D-85d" secondAttribute="height" multiplier="1:1" id="DVn-eK-Xev"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOI-ep-e6F">
-                                    <rect key="frame" x="0.0" y="0.0" width="142.5" height="142"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="142" height="142"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" backgroundImage="accounts_head_custom"/>
                                     <connections>
@@ -78,6 +78,7 @@
                         </view>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="height" constant="142" id="8dW-Qo-e0q"/>
                         <constraint firstItem="v84-7q-bxv" firstAttribute="height" secondItem="3Bc-Xo-9Sk" secondAttribute="height" id="OWO-gi-Xyp"/>
                         <constraint firstItem="hiK-qA-Lgz" firstAttribute="height" secondItem="3Bc-Xo-9Sk" secondAttribute="height" id="b2h-In-nbo"/>
                         <constraint firstItem="0Hf-WT-5je" firstAttribute="height" secondItem="3Bc-Xo-9Sk" secondAttribute="height" id="nh6-iw-ny8"/>
@@ -96,7 +97,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bD-OG-rRu">
-                    <rect key="frame" x="610.5" y="313.5" width="69.5" height="20.5"/>
+                    <rect key="frame" x="611" y="313.5" width="69.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -110,7 +111,6 @@
                 <constraint firstItem="3Bc-Xo-9Sk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SUP-WE-BxR"/>
                 <constraint firstItem="peV-JA-vdd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aJA-TJ-mmz"/>
                 <constraint firstItem="pti-7H-LXv" firstAttribute="top" secondItem="3Bc-Xo-9Sk" secondAttribute="bottom" constant="20" id="dAg-m1-zbn"/>
-                <constraint firstItem="3Bc-Xo-9Sk" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.32" id="eNS-K8-Lec"/>
                 <constraint firstItem="3Bc-Xo-9Sk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ek1-D3-sHt"/>
                 <constraint firstItem="3Bc-Xo-9Sk" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.75" id="hwh-aO-3qz"/>
                 <constraint firstItem="2bD-OG-rRu" firstAttribute="centerY" secondItem="Alp-c2-AmF" secondAttribute="centerY" id="kJ5-g6-iew"/>

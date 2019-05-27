@@ -36,21 +36,21 @@ class AddPhoto: UIView {
         if  let  imageData = Data(base64Encoded: My?.image64 ?? ""),
             let image = UIImage(data: imageData) {
             self.customImgView.image = image
-//            self.buttons[0].isUserInteractionEnabled = false
-//            self.buttons[1].isUserInteractionEnabled = false
             self.buttons[0].setBackgroundImage(UIImage(named: "accounts_head_boy_unchosen"), for: .normal)
             self.buttons[1].setBackgroundImage(UIImage(named: "accounts_head_girl_unchosen"), for: .normal)
         }else {
-            self.customImgView.image = UIImage(named: "accounts_head_custom_add")
-//            self.buttons[0].isUserInteractionEnabled = true
-//            self.buttons[1].isUserInteractionEnabled = true
+            if let image = self.getSavedImage(named: "userCustomPhoto.png") {
+                self.customImgView.image = image
+            }else {
+                self.customImgView.image = UIImage(named: "accounts_head_custom_add")
+            }
             self.buttons[0].setBackgroundImage(UIImage(named: "accounts_info_boy"), for: .normal)
             self.buttons[1].setBackgroundImage(UIImage(named: "accounts_head_girl_unchosen"), for: .normal)
             
         }
         self.customImgView.contentMode = .scaleToFill
         self.customImgView.clipsToBounds = true
-        self.customImgView.layer.cornerRadius = self.customImgView.frame.width / 2
+        self.customImgView.layer.cornerRadius = 71
         self.customImgView.layer.masksToBounds = true
         self.changeDefaultImage(tag: UserDefaultsKeys.USER_PHOTO_TAG)
         
@@ -80,6 +80,15 @@ class AddPhoto: UIView {
             print("didSelectImage error")
         }
     }
+    
+    // 取 user照片
+    func getSavedImage(named: String) -> UIImage? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        }
+        return nil
+    }
+
 
 }
 

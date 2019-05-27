@@ -37,6 +37,13 @@ class NoteSelectionVC: UIViewController {
         backBtn.isHidden = true
     }
     
+//    override func viewDidLayoutSubviews() {
+//        if searchView != nil {
+//            searchView.tableView.frame = CGRect(x: searchView.tableView.frame.origin.x, y: searchView.tableView.frame.origin.y, width: searchView.tableView.frame.size.width, height: searchView.tableView.contentSize.height)
+//            searchView.tableView.reloadData()
+//        }
+//    }
+    
     @IBAction func didSelectLevel(_ sender: UIButton) {
         self.didSelectLevel = sender.tag
         self.reloadLevelData()
@@ -86,6 +93,10 @@ class NoteSelectionVC: UIViewController {
         listView.tableView.dataSource = self
         listView.tableView.register(UINib(nibName: "NoteSelectionCell", bundle: nil), forCellReuseIdentifier: "NoteSelectionCell")
         listView.tableView.layoutSubviews()
+        if self.didSelectBook != 0 {
+            listView.label.text = "Book \(self.didSelectBook)"
+        }
+        
         let gradient = CAGradientLayer()
         gradient.frame = listView.tableView.superview?.bounds ?? .null
         gradient.colors = [UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor, UIColor.clear.cgColor]
@@ -119,8 +130,7 @@ class NoteSelectionVC: UIViewController {
     @IBAction func didTapSearchBtn(_ sender: UIButton) {
         searchView = Bundle.main.loadNibNamed("SearchView", owner: self, options: nil)?.first as? SearchView
         searchView.frame = self.view.frame
-//        searchView.delegate = self
-//        downloadView.initView(level: "学阶II :book1-3")
+        searchView.parent = self
         self.view.addSubview(searchView)
     }
 }
@@ -166,3 +176,4 @@ extension NoteSelectionVC: BookDownloadDelegate {
     
     
 }
+

@@ -142,9 +142,11 @@ extension AccountVC: UINavigationControllerDelegate, UIImagePickerControllerDele
             APIManager.shared.uploadUserImage(id: "\(My?.id ?? 0)", icon: imageData?.base64EncodedString() ?? "") { (isSucceed) in
                 if isSucceed {
                     print("!!!!!!")
-                    self.AddPhoto?.customImgView.image = image
-                    self.AddPhoto?.buttons[0].setBackgroundImage(UIImage(named: "accounts_head_boy_unchosen"), for: .normal)
-                    self.AddPhoto?.buttons[1].setBackgroundImage(UIImage(named: "accounts_head_girl_unchosen"), for: .normal)
+                    if self.saveImage(image: image) {
+                        self.AddPhoto?.customImgView.image = image
+                        self.AddPhoto?.buttons[0].setBackgroundImage(UIImage(named: "accounts_head_boy_unchosen"), for: .normal)
+                        self.AddPhoto?.buttons[1].setBackgroundImage(UIImage(named: "accounts_head_girl_unchosen"), for: .normal)
+                    }
                 }
             }
         }
@@ -152,5 +154,22 @@ extension AccountVC: UINavigationControllerDelegate, UIImagePickerControllerDele
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
+    }
+    
+    // 存user 照片
+    func saveImage(image: UIImage) -> Bool {
+        guard let data = UIImageJPEGRepresentation(image, 1) ?? UIImagePNGRepresentation(image) else {
+            return false
+        }
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+            return false
+        }
+        do {
+            try data.write(to: directory.appendingPathComponent("userCustomPhoto.png")!)
+            return true
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
     }
 }

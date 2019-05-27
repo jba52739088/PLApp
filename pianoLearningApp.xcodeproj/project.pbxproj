@@ -47,6 +47,8 @@
 		FC45128B219075AC0029E32C /* EmptyNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC45128A219075AC0029E32C /* EmptyNoteView.xib */; };
 		FC45128D2190B08B0029E32C /* NoteSelectionListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC45128C2190B08B0029E32C /* NoteSelectionListView.xib */; };
 		FC45128F2190B09B0029E32C /* NoteSelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45128E2190B09B0029E32C /* NoteSelectionListView.swift */; };
+		FC63B900229C3A2F005F1622 /* SearchNothingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC63B8FE229C3A2F005F1622 /* SearchNothingCell.swift */; };
+		FC63B901229C3A2F005F1622 /* SearchNothingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC63B8FF229C3A2F005F1622 /* SearchNothingCell.xib */; };
 		FC7AECC42145786900BC0412 /* musicNotePlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */; };
 		FC7AECCA21457E4500BC0412 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AECC921457E4500BC0412 /* iOSDevCenters+GIF.swift */; };
 		FC7AECCD21457E6C00BC0412 /* playing.gif in Resources */ = {isa = PBXBuildFile; fileRef = FC7AECCB21457E6B00BC0412 /* playing.gif */; };
@@ -89,6 +91,10 @@
 		FCE8F86E2191CD0200E1CA15 /* NoteSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE8F86C2191CD0200E1CA15 /* NoteSelectionCell.swift */; };
 		FCE8F86F2191CD0200E1CA15 /* NoteSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCE8F86D2191CD0200E1CA15 /* NoteSelectionCell.xib */; };
 		FCEA81CC216DE99D004D6FF3 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */; };
+		FCEC920722929EC40087E86E /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEC920522929EC30087E86E /* SearchCell.swift */; };
+		FCEC920822929EC40087E86E /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEC920622929EC40087E86E /* SearchCell.xib */; };
+		FCEC920B22929EEA0087E86E /* SearchHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEC920922929EEA0087E86E /* SearchHeaderCell.swift */; };
+		FCEC920C22929EEA0087E86E /* SearchHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEC920A22929EEA0087E86E /* SearchHeaderCell.xib */; };
 		FCF323F3228833D600637BB0 /* ASheetRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF323F1228833D600637BB0 /* ASheetRecordCell.swift */; };
 		FCF323F4228833D600637BB0 /* ASheetRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF323F2228833D600637BB0 /* ASheetRecordCell.xib */; };
 /* End PBXBuildFile section */
@@ -139,6 +145,8 @@
 		FC45128C2190B08B0029E32C /* NoteSelectionListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteSelectionListView.xib; sourceTree = "<group>"; };
 		FC45128E2190B09B0029E32C /* NoteSelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSelectionListView.swift; sourceTree = "<group>"; };
 		FC4714972270C5B9004E03AD /* swiftStdLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = swiftStdLib; sourceTree = "<group>"; };
+		FC63B8FE229C3A2F005F1622 /* SearchNothingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNothingCell.swift; sourceTree = "<group>"; };
+		FC63B8FF229C3A2F005F1622 /* SearchNothingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchNothingCell.xib; sourceTree = "<group>"; };
 		FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = musicNotePlayVC.swift; sourceTree = "<group>"; };
 		FC7AECC921457E4500BC0412 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		FC7AECCB21457E6B00BC0412 /* playing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = playing.gif; sourceTree = "<group>"; };
@@ -183,6 +191,10 @@
 		FCE8F86C2191CD0200E1CA15 /* NoteSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSelectionCell.swift; sourceTree = "<group>"; };
 		FCE8F86D2191CD0200E1CA15 /* NoteSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteSelectionCell.xib; sourceTree = "<group>"; };
 		FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		FCEC920522929EC30087E86E /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		FCEC920622929EC40087E86E /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		FCEC920922929EEA0087E86E /* SearchHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderCell.swift; sourceTree = "<group>"; };
+		FCEC920A22929EEA0087E86E /* SearchHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHeaderCell.xib; sourceTree = "<group>"; };
 		FCF323F1228833D600637BB0 /* ASheetRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASheetRecordCell.swift; sourceTree = "<group>"; };
 		FCF323F2228833D600637BB0 /* ASheetRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASheetRecordCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,6 +273,12 @@
 				245B26212249D6C200C587D7 /* BookDownloadView.swift */,
 				24ECF0B8224A298A00B1F597 /* SearchView.xib */,
 				243CAD17224A4DC5005C22B6 /* SearchView.swift */,
+				FCEC920922929EEA0087E86E /* SearchHeaderCell.swift */,
+				FCEC920A22929EEA0087E86E /* SearchHeaderCell.xib */,
+				FCEC920522929EC30087E86E /* SearchCell.swift */,
+				FCEC920622929EC40087E86E /* SearchCell.xib */,
+				FC63B8FE229C3A2F005F1622 /* SearchNothingCell.swift */,
+				FC63B8FF229C3A2F005F1622 /* SearchNothingCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -456,6 +474,7 @@
 				FC845B86218B4C5B00A9D66D /* score1.wav in Resources */,
 				FC96E8402163D48900D77780 /* AccountManagingButton.xib in Resources */,
 				FC2AF13A2158DF8A00A0A554 /* ContractView.xib in Resources */,
+				FCEC920C22929EEA0087E86E /* SearchHeaderCell.xib in Resources */,
 				FC05D2112188B4E300FF2D98 /* SelectionView.xib in Resources */,
 				FC45128D2190B08B0029E32C /* NoteSelectionListView.xib in Resources */,
 				FC3BABFA2142C93800E64A67 /* LaunchScreen.storyboard in Resources */,
@@ -473,6 +492,7 @@
 				FC02495121CFF20100F10919 /* QuestionView.xib in Resources */,
 				FC8192C82174E10C0076E137 /* LanguageView.xib in Resources */,
 				FC229A7021C7000D00D16D80 /* didSendFeedback.xib in Resources */,
+				FC63B901229C3A2F005F1622 /* SearchNothingCell.xib in Resources */,
 				FC4450B5221B2F0C002EC413 /* ActionAlertView.xib in Resources */,
 				FC3BABF52142C93800E64A67 /* Main.storyboard in Resources */,
 				FC80D5942174EFE700CA8DA0 /* VolumeView.xib in Resources */,
@@ -480,6 +500,7 @@
 				FC02495021CFF1FE00F10919 /* UserSupportView.xib in Resources */,
 				FC8192BC21740BBD0076E137 /* ModifyPwdView.xib in Resources */,
 				FC05D1FE2184024100FF2D98 /* AlertView.xib in Resources */,
+				FCEC920822929EC40087E86E /* SearchCell.xib in Resources */,
 				FCF323F4228833D600637BB0 /* ASheetRecordCell.xib in Resources */,
 				FC96E838216393D900D77780 /* PwdAlertView.xib in Resources */,
 			);
@@ -566,6 +587,7 @@
 				FC96E83021628BA000D77780 /* ContractView.swift in Sources */,
 				FC2C07DA2161917D006FA78C /* LoginVC.swift in Sources */,
 				FC8192C62174E06A0076E137 /* QAView.swift in Sources */,
+				FC63B900229C3A2F005F1622 /* SearchNothingCell.swift in Sources */,
 				FC96E8342162943B00D77780 /* RegisterStep2View.swift in Sources */,
 				FC05D202218405CA00FF2D98 /* LoadingView.swift in Sources */,
 				FC8192CA2174E1F50076E137 /* LanguageView.swift in Sources */,
@@ -579,6 +601,7 @@
 				FCB8C8782171FB3100898059 /* UserView.swift in Sources */,
 				FCE8F86E2191CD0200E1CA15 /* NoteSelectionCell.swift in Sources */,
 				FC7AECCA21457E4500BC0412 /* iOSDevCenters+GIF.swift in Sources */,
+				FCEC920722929EC40087E86E /* SearchCell.swift in Sources */,
 				FCB8C8762171F69600898059 /* AccountVC.swift in Sources */,
 				FC05D204218406A800FF2D98 /* UserDefaultsKey.swift in Sources */,
 				FC05D1FA21820C7F00FF2D98 /* ApiManager.swift in Sources */,
@@ -603,6 +626,7 @@
 				248E49F822350EE7004BD15C /* Book.swift in Sources */,
 				245B26222249D6C200C587D7 /* BookDownloadView.swift in Sources */,
 				FC8192BE2174D90B0076E137 /* ModifyPwdView.swift in Sources */,
+				FCEC920B22929EEA0087E86E /* SearchHeaderCell.swift in Sources */,
 				FC229A7221C7071200D16D80 /* didSendFeedback.swift in Sources */,
 				FC80D5962174F76C00CA8DA0 /* VolumeView.swift in Sources */,
 				FC96E82A216272C200D77780 /* RegisterStep1VC.swift in Sources */,

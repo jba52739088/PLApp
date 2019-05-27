@@ -364,6 +364,27 @@ class SQLiteManager {
         }
         completionHandler("", "", 0)
     }
+    
+    func searchSheet(keyword: String, completionHandler: (_ sheets: [Sheet]) -> Void) {
+        let select = sheetTable.filter(sheet_name != "")
+        var allSheets = [Sheet]()
+        do {
+            for aSheet in try db!.prepare(select) {
+                let sheet = Sheet(name: aSheet[sheet_name],
+                                  level: aSheet[sheet_level],
+                                  book: aSheet[sheet_book],
+                                  isDownloaded: aSheet[sheet_downloaded],
+                                  completion: aSheet[sheet_completion],
+                                  recorded: aSheet[sheet_recorded])
+                if sheet.name.lowercased().contains(keyword.lowercased()) {
+                    allSheets.append(sheet)
+                }
+            }
+        }catch {
+            print("searchSheet by keyword failed")
+        }
+        completionHandler(allSheets)
+    }
 }
 
 
