@@ -70,6 +70,7 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if self.searchText != "" && self.levelData.count == 0 {
             let cell:SearchNothingCell = tableView.dequeueReusableCell(withIdentifier: "nothingCell", for: indexPath) as! SearchNothingCell
+            cell.selectionStyle = .none
             return cell
         }
         if indexPath.row == 0 {
@@ -89,6 +90,9 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.searchText != "" && self.levelData.count == 0 {
+            return
+        }
         let thisSheet = tableFilterData[levelData[indexPath.section]]![indexPath.row - 1]
         let sheetName = "\(thisSheet.level)_\(thisSheet.book)_\(thisSheet.name)"
         self.parent.delegate.didSelectNote(name: sheetName)
