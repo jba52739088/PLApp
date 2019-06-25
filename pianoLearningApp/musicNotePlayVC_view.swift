@@ -79,8 +79,9 @@ extension musicNotePlayVC {
     
     // 設定鋼琴畫面
     func setPianoView() {
-        pianoBackground = CustomPianoView(frame: CGRect(x: 0, y: self.musicNoteView.frame.maxY - 185, width: self.view.frame.width, height: 185))
-        self.view.insertSubview(pianoBackground, belowSubview: musicNoteView)
+        keyboardView = Bundle.main.loadNibNamed("KeyboardView", owner: self, options: nil)?.first as? KeyboardView
+        keyboardView.frame = self.view.frame
+        self.view.insertSubview(keyboardView, belowSubview: playControllerView)
     }
     
     // 設定右下角滑出之功能列
@@ -145,6 +146,33 @@ extension musicNotePlayVC {
             actionAlertView.rightBtn.setTitle("退出", for: .normal)
         }
         self.view.addSubview(actionAlertView)
+    }
+    
+    func resetScoreViewHeight(completionHandler: @escaping () -> Void) {
+        if !pianoIsVisible {
+            pianoIsVisible = true
+            spaceView_1.isHidden = false
+            spaceView_2.isHidden = false
+            self.musicNoteView.frame.size.height -= self.keyboardView.getKeyboardHeight()
+            self.musicNoteViewBottom.constant += self.keyboardView.getKeyboardHeight()
+            UIView.animate(withDuration:  0.3, animations: {
+                self.musicNoteView.layoutIfNeeded()
+            }) { (_) in
+                completionHandler()
+            }
+        }else {
+            pianoIsVisible = false
+            spaceView_1.isHidden = true
+            spaceView_2.isHidden = true
+            self.musicNoteView.layoutIfNeeded()
+            self.musicNoteViewBottom.constant -= self.keyboardView.getKeyboardHeight()
+            self.musicNoteView.frame.size.height += self.keyboardView.getKeyboardHeight()
+            UIView.animate(withDuration:  0.3, animations: {
+                self.musicNoteView.layoutIfNeeded()
+            }) { (_) in
+                completionHandler()
+            }
+        }
     }
 }
 

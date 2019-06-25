@@ -163,12 +163,16 @@ extension NoteSelectionVC: UITableViewDelegate, UITableViewDataSource {
 extension NoteSelectionVC: BookDownloadDelegate {
     func didTapButton() {
         if self.downloadView != nil {
-            self.downloadView.removeFromSuperview()
-            if APIManager.shared.getSongDataOnline() {
-                if self.listView != nil {
-                    self.reloadLevelData()
-                }else {
-                    self.reloadLevelData()
+            if self.downloadView.textField.text != "12345678" {
+                self.downloadView.sendWrongDownloadCode()
+            }else {
+                self.downloadView.removeFromSuperview()
+                if APIManager.shared.getSongDataOnline() {
+                    if self.listView != nil {
+                        self.reloadLevelData()
+                    }else {
+                        self.reloadLevelData()
+                    }
                 }
             }
         }

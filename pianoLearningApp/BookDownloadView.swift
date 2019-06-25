@@ -36,6 +36,12 @@ class BookDownloadView: UIView {
         levellabel.text = level
     }
     
+    func sendWrongDownloadCode() {
+        textField.text = ""
+        textField.placeholder = "重新输入序号"
+        textField.layer.borderColor = UIColor.red.cgColor
+    }
+    
     @IBAction func tapButton(_ sender: Any) {
         self.delegate.didTapButton()
     }

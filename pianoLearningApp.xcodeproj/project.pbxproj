@@ -31,6 +31,8 @@
 		FC05D20F2188A4C000FF2D98 /* 1_0_score3.json in Resources */ = {isa = PBXBuildFile; fileRef = FC05D20E2188A47A00FF2D98 /* 1_0_score3.json */; };
 		FC05D2112188B4E300FF2D98 /* SelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC05D2102188B4E300FF2D98 /* SelectionView.xib */; };
 		FC05D2132188B50600FF2D98 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D2122188B50600FF2D98 /* SelectionView.swift */; };
+		FC21598422C260E000F0084E /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC21598322C260E000F0084E /* KeyboardView.swift */; };
+		FC21598622C260ED00F0084E /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC21598522C260ED00F0084E /* KeyboardView.xib */; };
 		FC229A7021C7000D00D16D80 /* didSendFeedback.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC229A6F21C7000D00D16D80 /* didSendFeedback.xib */; };
 		FC229A7221C7071200D16D80 /* didSendFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC229A7121C7071200D16D80 /* didSendFeedback.swift */; };
 		FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2AF1372158D61000A0A554 /* checkBox.swift */; };
@@ -65,7 +67,6 @@
 		FC8192C82174E10C0076E137 /* LanguageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8192C72174E10C0076E137 /* LanguageView.xib */; };
 		FC8192CA2174E1F50076E137 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8192C92174E1F50076E137 /* LanguageView.swift */; };
 		FC8192CC2174E2450076E137 /* FeedbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8192CB2174E2450076E137 /* FeedbackView.xib */; };
-		FC8388F2214AACC900FAAA36 /* PianoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8388F1214AACC900FAAA36 /* PianoView.swift */; };
 		FC845B86218B4C5B00A9D66D /* score1.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC845B85218B4AB000A9D66D /* score1.wav */; };
 		FC8B66C2222D7DEC00D7DD5C /* 1_0_score1.json in Resources */ = {isa = PBXBuildFile; fileRef = FC8B66C1222D7DE700D7DD5C /* 1_0_score1.json */; };
 		FC8B66C3222D7DF100D7DD5C /* 1_0_score2.json in Resources */ = {isa = PBXBuildFile; fileRef = FC8B66C0222D7DE600D7DD5C /* 1_0_score2.json */; };
@@ -126,6 +127,8 @@
 		FC05D20E2188A47A00FF2D98 /* 1_0_score3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1_0_score3.json; sourceTree = "<group>"; };
 		FC05D2102188B4E300FF2D98 /* SelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionView.xib; sourceTree = "<group>"; };
 		FC05D2122188B50600FF2D98 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		FC21598322C260E000F0084E /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		FC21598522C260ED00F0084E /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
 		FC229A6F21C7000D00D16D80 /* didSendFeedback.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = didSendFeedback.xib; sourceTree = "<group>"; };
 		FC229A7121C7071200D16D80 /* didSendFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = didSendFeedback.swift; sourceTree = "<group>"; };
 		FC2AF1372158D61000A0A554 /* checkBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkBox.swift; sourceTree = "<group>"; };
@@ -163,7 +166,6 @@
 		FC8192C72174E10C0076E137 /* LanguageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageView.xib; sourceTree = "<group>"; };
 		FC8192C92174E1F50076E137 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		FC8192CB2174E2450076E137 /* FeedbackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackView.xib; sourceTree = "<group>"; };
-		FC8388F1214AACC900FAAA36 /* PianoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoView.swift; sourceTree = "<group>"; };
 		FC845B85218B4AB000A9D66D /* score1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score1.wav; sourceTree = "<group>"; };
 		FC8B66C0222D7DE600D7DD5C /* 1_0_score2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1_0_score2.json; sourceTree = "<group>"; };
 		FC8B66C1222D7DE700D7DD5C /* 1_0_score1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 1_0_score1.json; sourceTree = "<group>"; };
@@ -279,6 +281,8 @@
 				FCEC920622929EC40087E86E /* SearchCell.xib */,
 				FC63B8FE229C3A2F005F1622 /* SearchNothingCell.swift */,
 				FC63B8FF229C3A2F005F1622 /* SearchNothingCell.xib */,
+				FC21598322C260E000F0084E /* KeyboardView.swift */,
+				FC21598522C260ED00F0084E /* KeyboardView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -319,7 +323,6 @@
 				FC3BABF12142C93800E64A67 /* NoteSelectionVC.swift */,
 				FC3BABF32142C93800E64A67 /* Main.storyboard */,
 				FC2AF1372158D61000A0A554 /* checkBox.swift */,
-				FC8388F1214AACC900FAAA36 /* PianoView.swift */,
 				FC3BABF62142C93800E64A67 /* Assets.xcassets */,
 				FC3BABF82142C93800E64A67 /* LaunchScreen.storyboard */,
 				FC3BABFB2142C93800E64A67 /* Info.plist */,
@@ -500,6 +503,7 @@
 				FC02495021CFF1FE00F10919 /* UserSupportView.xib in Resources */,
 				FC8192BC21740BBD0076E137 /* ModifyPwdView.xib in Resources */,
 				FC05D1FE2184024100FF2D98 /* AlertView.xib in Resources */,
+				FC21598622C260ED00F0084E /* KeyboardView.xib in Resources */,
 				FCEC920822929EC40087E86E /* SearchCell.xib in Resources */,
 				FCF323F4228833D600637BB0 /* ASheetRecordCell.xib in Resources */,
 				FC96E838216393D900D77780 /* PwdAlertView.xib in Resources */,
@@ -520,8 +524,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/LSFloatingActionMenu/LSFloatingActionMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/MusicTheorySwift/MusicTheorySwift.framework",
-				"${BUILT_PRODUCTS_DIR}/PianoView/PianoView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -531,8 +533,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LSFloatingActionMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MusicTheorySwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PianoView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -584,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCE4F9DD217C3DA6005CC423 /* GradesVC.swift in Sources */,
+				FC21598422C260E000F0084E /* KeyboardView.swift in Sources */,
 				FC96E83021628BA000D77780 /* ContractView.swift in Sources */,
 				FC2C07DA2161917D006FA78C /* LoginVC.swift in Sources */,
 				FC8192C62174E06A0076E137 /* QAView.swift in Sources */,
@@ -620,7 +621,6 @@
 				FC02494E21CFECF600F10919 /* QuestionView.swift in Sources */,
 				FC05D1F82182083000FF2D98 /* API_Url.swift in Sources */,
 				FC4450B4221B21B7002EC413 /* ActionAlertView.swift in Sources */,
-				FC8388F2214AACC900FAAA36 /* PianoView.swift in Sources */,
 				FC96E83A2163AFF800D77780 /* CustomSlider.swift in Sources */,
 				FC3BABF02142C93800E64A67 /* AppDelegate.swift in Sources */,
 				248E49F822350EE7004BD15C /* Book.swift in Sources */,

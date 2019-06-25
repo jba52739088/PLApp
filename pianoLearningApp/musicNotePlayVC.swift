@@ -6,8 +6,6 @@
 
 import UIKit
 import LSFloatingActionMenu
-import PianoView
-import MusicTheorySwift
 import AudioKit
 import AVFoundation
 import AVAudioSessionSetCategorySwift
@@ -47,7 +45,7 @@ class musicNotePlayVC: UIViewController {
     @IBOutlet weak var segsLabel: UILabel!
     @IBOutlet weak var noteTimeLabel: UILabel!
     
-    var pianoBackground: CustomPianoView!
+    var keyboardView: KeyboardView!
     var selectionView: SelectionView!
     
     var alertView: AlertView!
@@ -385,41 +383,21 @@ class musicNotePlayVC: UIViewController {
         }else {
             scoreView2.isHidden = true
         }
-        if !pianoIsVisible {
-            pianoIsVisible = true
-            spaceView_1.isHidden = false
-            spaceView_2.isHidden = false
-            self.musicNoteView.frame.size.height -= 165
-            self.musicNoteViewBottom.constant += 165
-            UIView.animate(withDuration: 0.3, animations: {
-                self.musicNoteView.layoutIfNeeded()
-                
-            })
-        }else {
-            pianoIsVisible = false
-            spaceView_1.isHidden = true
-            spaceView_2.isHidden = true
-            self.musicNoteView.layoutIfNeeded()
-            self.musicNoteViewBottom.constant -= 165
-            self.musicNoteView.frame.size.height += 165
-            UIView.animate(withDuration: 0.3, animations: {
-                self.musicNoteView.layoutIfNeeded()
-                
-            })
-        }
-        if pianoIsVisible{
-            if self.nowScoreIndex % 2 != 0 {
-                self.scoreView.isHidden = true
-                self.scoreView2.isHidden = false
+        self.resetScoreViewHeight {
+            if self.pianoIsVisible{
+                if self.nowScoreIndex % 2 != 0 {
+                    self.scoreView.isHidden = true
+                    self.scoreView2.isHidden = false
+                }else {
+                    self.scoreView.isHidden = false
+                    self.scoreView2.isHidden = true
+                }
             }else {
                 self.scoreView.isHidden = false
-                self.scoreView2.isHidden = true
+                self.scoreView2.isHidden = false
             }
-        }else {
-            self.scoreView.isHidden = false
-            self.scoreView2.isHidden = false
+            self.setPageIndex()
         }
-        self.setPageIndex()
     }
     
     @IBAction func onClick_main_sub_nav_open_Btn(_ sender: UIButton) {
@@ -496,8 +474,7 @@ extension musicNotePlayVC: AKMIDIListener {
     
     func receivedMIDINoteOn(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
         DispatchQueue.main.async {
-            let note = Pitch(midiNote: Int(noteNumber))
-            self.pianoBackground.pianoView.highlightNote(note: note)
+            self.keyboardView.userDidPlay(note: Int(noteNumber))
             self.isRecording = self.isMidi_on
             if self.isRecording {
                 if !self.userHasPlay {
@@ -516,8 +493,7 @@ extension musicNotePlayVC: AKMIDIListener {
     
     func receivedMIDINoteOff(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
         DispatchQueue.main.async {
-            let note = Pitch(midiNote: Int(noteNumber))
-            self.pianoBackground.pianoView.unhighlightNote(note: note)
+            self.keyboardView.userDidFinishPlay(note: Int(noteNumber))
             if self.isRecording {
                 print("noteNumber: \(noteNumber)")
             }
@@ -529,7 +505,7 @@ extension musicNotePlayVC: AKMIDIListener {
 
 extension musicNotePlayVC: MusicScoreViewDelegate {
     func shouldPlayNext() {
-        self.pianoBackground.pianoView.deselectAll()
+        self.keyboardView.deselectAll()
 //        print("nowSegs: \(nowSegs), allSegs: \(allSegs)")
         if nowScoreView % 2 == 0 {
             // 播放下面樂譜
@@ -571,7 +547,7 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
     // scoreIndex：score, Pith：音名, time：拍子, barIndex：小節, NoteIndex：第幾個音符
     func noteShouldPlay(scoreIndex: Int, pitch: Int, time: Float, barIndex: Int, NoteIndex: Int) {
         if NoteIndex != self.shouldNoteIndex || self.nowBarIndex != barIndex || NoteIndex == 0{
-            self.pianoBackground.pianoView.deselectAll()
+            self.keyboardView.deselectAll()
         }
         self.lastBarIndex = self.nowBarIndex
         self.segsLabel.text = "小節 \(barIndex)"
@@ -604,8 +580,7 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
         }
 //        print("nowScoreIndex: \(nowScoreIndex)")
         self.setPageIndex()
-        let note = Pitch(midiNote: pitch)
-        self.pianoBackground.pianoView.selectNote(note: note)
+        self.keyboardView.userShouldPlay(note: pitch)
 //        print("self.jsonArray?[\(self.didBarIndex-1)][\(shouldNoteIndex)]")
 //        print("\(self.jsonArray?[self.didBarIndex-1][shouldNoteIndex][0])")
         if isRecording {
@@ -635,7 +610,7 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
     
     func didFinishPlay() {
 //        print("didFinishPlay scoreOrder: \(scoreOrder)")
-        self.pianoBackground.pianoView.deselectAll()
+        self.keyboardView.deselectAll()
 //        print("nowSegs: \(nowSegs), allSegs: \(allSegs)")
         if (nowSegs<allSegs-1){
             

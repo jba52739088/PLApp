@@ -835,7 +835,7 @@
                                     <action selector="didTapSearchBtn:" destination="sGb-mT-c6Y" eventType="touchUpInside" id="X90-br-gnt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hw7-de-gRz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hw7-de-gRz">
                                 <rect key="frame" x="920" y="30" width="96" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="Ncc-sb-kLC"/>
