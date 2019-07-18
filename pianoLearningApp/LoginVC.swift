@@ -6,10 +6,10 @@
 
 import UIKit
 
-let btnAttributes : [NSAttributedStringKey: Any] = [
-    NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12),
-    NSAttributedStringKey.foregroundColor : UIColor(red: 121/255, green: 85/255, blue: 72/255, alpha: 1),
-    NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue]
+let btnAttributes : [NSAttributedString.Key: Any] = [
+    NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12),
+    NSAttributedString.Key.foregroundColor : UIColor(red: 121/255, green: 85/255, blue: 72/255, alpha: 1),
+    NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue]
 
 class LoginVC: UIViewController {
     

@@ -1,22 +1,22 @@
 PODS:
-  - Alamofire (4.7.3)
-  - AudioKit/Core (4.4.0)
+  - Alamofire (4.8.2)
+  - AudioKit/Core (4.7.2)
   - AVAudioSessionSetCategorySwift (1.0.0)
-  - IQKeyboardManagerSwift (6.0.5)
+  - IQKeyboardManagerSwift (6.4.0)
   - LSFloatingActionMenu (1.0.0)
-  - SQLite.swift (0.11.4):
-    - SQLite.swift/standard (= 0.11.4)
-  - SQLite.swift/standard (0.11.4)
-  - SwiftyJSON (4.2.0)
+  - SQLite.swift (0.12.2):
+    - SQLite.swift/standard (= 0.12.2)
+  - SQLite.swift/standard (0.12.2)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.5)
-  - AudioKit/Core (~> 4.4.0)
+  - Alamofire
+  - AudioKit/Core
   - AVAudioSessionSetCategorySwift
-  - IQKeyboardManagerSwift (~> 6.0.4)
-  - LSFloatingActionMenu (~> 1.0.0)
-  - SQLite.swift (= 0.11.4)
-  - SwiftyJSON (~> 4.0)
+  - IQKeyboardManagerSwift
+  - LSFloatingActionMenu
+  - SQLite.swift
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -29,14 +29,14 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  AudioKit: 79c2b23cd00beb656938aa0b81b614391f17eaa3
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AudioKit: ee4ab79e2fffe42e52b8fd8d214eaaea968c368e
   AVAudioSessionSetCategorySwift: ec124e48dd653134ac6be1ef12cf9a90a6a32e73
-  IQKeyboardManagerSwift: c14eca30f6001457d6ddf25e313f23fb6578c41c
+  IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
   LSFloatingActionMenu: dc2d6449e817cb2eb3c3a9a751bd49c3aae416b2
-  SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 81a63dbcfa9baa91b356fe1943f90ad98db6f5f4
+PODFILE CHECKSUM: f0a77c78ddd8daa034cb3cb750104c9b876cae05
 
 COCOAPODS: 1.5.3

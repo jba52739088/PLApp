@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fpW-93-YWX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fpW-93-YWX">
     <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -162,7 +162,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLC-WL-fkl">
-                                        <rect key="frame" x="80" y="19" width="66.5" height="66.5"/>
+                                        <rect key="frame" x="80" y="18.5" width="66.5" height="66.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="main_playstart"/>
                                         <connections>
@@ -177,13 +177,13 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lci-PT-dE4">
-                                        <rect key="frame" x="219" y="18.5" width="48" height="67.5"/>
+                                        <rect key="frame" x="219" y="18" width="48" height="67.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mmx-nu-B9B">
                                                 <rect key="frame" x="0.0" y="0.0" width="48" height="67.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g55-Vh-Eh5">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="main_tempplay_lock"/>
                                                         <connections>
@@ -191,7 +191,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="播放暫存" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gko-fy-zMC">
-                                                        <rect key="frame" x="0.0" y="48" width="48" height="19.5"/>
+                                                        <rect key="frame" x="0.0" y="48.5" width="48" height="19"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                         <color key="textColor" red="0.47450980392156861" green="0.33333333333333331" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -215,19 +215,19 @@
                                         <rect key="frame" x="409.5" y="0.0" width="205" height="104"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="XnA-n1-B8g">
-                                                <rect key="frame" x="15.5" y="16" width="174" height="72.5"/>
+                                                <rect key="frame" x="15.5" y="15.5" width="174" height="72.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wLN-7U-k82">
-                                                        <rect key="frame" x="0.0" y="0.0" width="174" height="23"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="174" height="23.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小節  0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8l1-en-unr">
-                                                                <rect key="frame" x="0.0" y="0.0" width="87" height="23"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="87" height="23.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拍數  0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TC8-2P-stT">
-                                                                <rect key="frame" x="87" y="0.0" width="87" height="23"/>
+                                                                <rect key="frame" x="87" y="0.0" width="87" height="23.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -235,10 +235,10 @@
                                                         </subviews>
                                                     </stackView>
                                                     <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xkN-Ad-7zj" customClass="CustomMainSlider" customModule="pianoLearningApp" customModuleProvider="target">
-                                                        <rect key="frame" x="-2" y="23" width="178" height="35"/>
+                                                        <rect key="frame" x="-2" y="23.5" width="178" height="35"/>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhv-xC-bwj">
-                                                        <rect key="frame" x="0.0" y="57" width="174" height="15.5"/>
+                                                        <rect key="frame" x="0.0" y="57.5" width="174" height="15"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -255,18 +255,18 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ey-Yf-OHI">
-                                        <rect key="frame" x="863.5" y="18.5" width="48.5" height="67.5"/>
+                                        <rect key="frame" x="863.5" y="18" width="48.5" height="67.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DBe-zC-VXR">
                                                 <rect key="frame" x="0.0" y="0.0" width="48.5" height="67.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fA2-bN-5jY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="48"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="48.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="main_follow_lock"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="跟隨模式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebf-bY-Nqb">
-                                                        <rect key="frame" x="0.0" y="48" width="48.5" height="19.5"/>
+                                                        <rect key="frame" x="0.0" y="48.5" width="48.5" height="19"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                         <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -287,13 +287,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WrV-PX-LYD">
-                                        <rect key="frame" x="944" y="18.5" width="48" height="67.5"/>
+                                        <rect key="frame" x="944" y="18" width="48" height="67.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fk5-hB-hJO">
                                                 <rect key="frame" x="0.0" y="0.0" width="48" height="67.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bb4-5f-q3W">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="main_justplay"/>
                                                         <connections>
@@ -301,7 +301,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="演奏模式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSs-MS-JEw">
-                                                        <rect key="frame" x="0.0" y="48" width="48" height="19.5"/>
+                                                        <rect key="frame" x="0.0" y="48.5" width="48" height="19"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                         <color key="textColor" red="0.47450980390000003" green="0.33333333329999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2393,11 +2393,11 @@ V</string>
         <image name="accounts_volume" width="77" height="77"/>
         <image name="checked_checkbox" width="128" height="128"/>
         <image name="grades_bottom_br" width="1024" height="56"/>
-        <image name="grades_practice_level1" width="41" height="40"/>
-        <image name="grades_practice_level2" width="66" height="51"/>
-        <image name="grades_practice_level3" width="91" height="51"/>
-        <image name="grades_practice_level4" width="101" height="68"/>
-        <image name="grades_practice_level5" width="111" height="68"/>
+        <image name="grades_practice_level1" width="41" height="40.5"/>
+        <image name="grades_practice_level2" width="66.5" height="51.5"/>
+        <image name="grades_practice_level3" width="91.5" height="51.5"/>
+        <image name="grades_practice_level4" width="101.5" height="68.5"/>
+        <image name="grades_practice_level5" width="111" height="68.5"/>
         <image name="main_faster" width="40" height="40"/>
         <image name="main_follow" width="48" height="48"/>
         <image name="main_follow_lock" width="48" height="48"/>
@@ -2411,19 +2411,19 @@ V</string>
         <image name="main_rocket" width="32" height="32"/>
         <image name="main_slower" width="40" height="40"/>
         <image name="main_sub_nav_open" width="36" height="36"/>
-        <image name="main_tempplay" width="39" height="39"/>
-        <image name="main_tempplay_lock" width="39" height="39"/>
+        <image name="main_tempplay" width="39.5" height="39.5"/>
+        <image name="main_tempplay_lock" width="39.5" height="39.5"/>
         <image name="sheets_book" width="86" height="122"/>
         <image name="sheets_book_lay" width="122" height="86"/>
         <image name="sheets_book_lay_lock" width="122" height="86"/>
         <image name="sheets_book_lock" width="86" height="122"/>
         <image name="sheets_download" width="96" height="24"/>
-        <image name="sheets_level1" width="97" height="151"/>
-        <image name="sheets_level2" width="97" height="151"/>
-        <image name="sheets_level3" width="97" height="151"/>
-        <image name="sheets_level4" width="104" height="151"/>
+        <image name="sheets_level1" width="97.5" height="151"/>
+        <image name="sheets_level2" width="97.5" height="151"/>
+        <image name="sheets_level3" width="97.5" height="151"/>
+        <image name="sheets_level4" width="105" height="151"/>
         <image name="sheets_level5" width="111" height="151"/>
         <image name="sheets_search" width="96" height="24"/>
-        <image name="sheets_upload" width="24" height="17"/>
+        <image name="sheets_upload" width="24" height="17.5"/>
     </resources>
 </document>

@@ -167,7 +167,7 @@ class musicNotePlayVC: UIViewController {
         let ends:[EndpointInfo] = midi.destinationInfos
         for endpoint in ends {
             print(endpoint.name + ":" + endpoint.displayName)
-            midi.openOutput(endpoint.name)
+            midi.openOutput(name: endpoint.name)
         }
         if midi.inputNames.count > 0 {
             for item in midi.inputNames {
@@ -176,8 +176,6 @@ class musicNotePlayVC: UIViewController {
                 }
             }
         }
-//        midi.openOutput("連接埠 1")
-//        midi.openOutput("Session 1")
     }
 
     func setPageIndex() {
@@ -219,12 +217,6 @@ class musicNotePlayVC: UIViewController {
             thisUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(file).json")
         }
         self.currentSongName = file
-//        if isreadLocal {
-//            self.isReadLocal = true
-//            thisUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//                .appendingPathComponent("\(self.currentSongName ?? "")_userPlayedData.json")
-//            self.currentSongName = "\(self.currentSongName ?? "")_userPlayedData.json"
-//        }
         guard let url = thisUrl else { return }
         
         do {
@@ -267,12 +259,13 @@ class musicNotePlayVC: UIViewController {
     }
 
     @IBAction func onClick_main_slower_Btn(_ sender: Any) {
-
+        Metronome.shared.playBy(speed: Double(Int(self.bmpSlider.value)))
     }
     
     @IBAction func onClick_main_faster_Btn(_ sender: Any) {
-
+        Metronome.shared.stop()
     }
+    
     @IBAction func onClick_main_just_play_Btn(_ sender: Any) {
         if !self.isJustplay {
             selectionView = Bundle.main.loadNibNamed("SelectionView", owner: self, options: nil)?.first as? SelectionView

@@ -155,14 +155,14 @@ extension UIImage {
     
     // 縮小圖片至1KB
     func resizedTo1KB() -> UIImage? {
-        guard let imageData = UIImagePNGRepresentation(self) else { return nil }
+        guard let imageData = self.pngData() else { return nil }
         
         var resizingImage = self
         var imageSizeKB = Double(imageData.count) / 1024.0
         
         while imageSizeKB > 100.0 {
             guard let resizedImage = resizingImage.resized(withPercentage: 0.9),
-                let imageData = UIImagePNGRepresentation(resizedImage)
+                let imageData = resizedImage.pngData()
                 else { return nil }
             
             resizingImage = resizedImage

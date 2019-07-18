@@ -38,14 +38,14 @@ class TabBarVC: UIViewController {
         buttonBottomView[previousIndex].isHidden = true
         buttonBottomView[selectedIndex].isHidden = false
         let previousVC = viewControllers[previousIndex]
-        previousVC.willMove(toParentViewController: nil)
+        previousVC.willMove(toParent: nil)
         previousVC.view.removeFromSuperview()
-        previousVC.removeFromParentViewController()
+        previousVC.removeFromParent()
         let vc = viewControllers[selectedIndex]
-        addChildViewController(vc)
+        addChild(vc)
         vc.view.frame = contentView.bounds
         contentView.addSubview(vc.view)
-        vc.didMove(toParentViewController: self)
+        vc.didMove(toParent: self)
     }
     
     

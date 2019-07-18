@@ -225,18 +225,25 @@ class MusicScoreView: UIView {
         setNeedsDisplay()
     }
     
+    
+    var didSet = false
+    
     // 初始化進度條, 以及播放輸出
     func initBar(){
-        AudioKit.output = bank
-        bank.attackDuration = 0.05
-        bank.decayDuration = 0.1
-        bank.releaseDuration = 0.15
-        bank.rampDuration = 1
-        bank.vibratoRate = 0
-        bank.vibratoDepth = 0
+        if !didSet && isFirstSeg {
+            AudioKit.output = bank
+            bank.attackDuration = 0.05
+            bank.decayDuration = 0.1
+            bank.releaseDuration = 0.15
+            bank.rampDuration = 1
+            bank.vibratoRate = 0
+            bank.vibratoDepth = 0
+            
+            let table = AKTable(.triangle, phase: 0, count:1024)
+            bank.waveform = table
+            didSet = true
+        }
         
-        let table = AKTable(.triangle, phase: 0, count:1024)
-        bank.waveform = table
         
         do{
             try AudioKit.start()
@@ -267,7 +274,6 @@ class MusicScoreView: UIView {
     // 設定目前播放進度位置
     @objc func setBarPos(){
         if isPause {return}
-        
         if steps[i] < 0 {
             // 抵達下一個 col
             let (seg,col) = noteData[k]

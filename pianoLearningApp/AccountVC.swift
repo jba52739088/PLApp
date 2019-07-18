@@ -133,12 +133,12 @@ extension AccountVC: AccountPageDelegat {
 }
 
 extension AccountVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true)
         //        self.popWindowsDidRemove()
-        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
+        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage,
             let image = selectedImage.fixOrientation(){
-            let imageData = UIImageJPEGRepresentation(image, 0.2)
+            let imageData = image.jpegData(compressionQuality: 0.2)
             APIManager.shared.uploadUserImage(id: "\(My?.id ?? 0)", icon: imageData?.base64EncodedString() ?? "") { (isSucceed) in
                 if isSucceed {
                     print("!!!!!!")
@@ -158,7 +158,7 @@ extension AccountVC: UINavigationControllerDelegate, UIImagePickerControllerDele
     
     // 存user 照片
     func saveImage(image: UIImage) -> Bool {
-        guard let data = UIImageJPEGRepresentation(image, 1) ?? UIImagePNGRepresentation(image) else {
+        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
             return false
         }
         guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {

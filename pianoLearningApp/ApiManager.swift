@@ -109,7 +109,7 @@ class APIManager {
         }
     }
     
-    /// 忘记帐号
+    ///  帐号
     func forgetPwd(account: String, completionHandler: @escaping (_ status: Bool) -> Void){
         let parameters = ["cmd": "forgetPasswd", "account": account] as [String : Any]
         Alamofire.request(URL_MEMBER, method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
@@ -339,7 +339,7 @@ class APIManager {
         if let decodedimage = UIImage(data: dataDecoded) {
             do {
                 let fileURL = documentsURL.appendingPathComponent(fileName)
-                if let pngImageData = UIImagePNGRepresentation(decodedimage) {
+                if let pngImageData = decodedimage.pngData() {
                     try pngImageData.write(to: fileURL, options: .atomic)
                     return true
                 }

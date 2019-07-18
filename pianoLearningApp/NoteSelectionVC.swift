@@ -104,7 +104,7 @@ class NoteSelectionVC: UIViewController {
         listView.tableView.superview?.layer.mask = gradient
         listView.tableView.backgroundColor = .clear
         self.backGroundView.addSubview(listView)
-        self.view.bringSubview(toFront: self.backGroundView)
+        self.view.bringSubviewToFront(self.backGroundView)
         backBtn.isUserInteractionEnabled = true
         backBtn.isHidden = false
     }
@@ -115,7 +115,7 @@ class NoteSelectionVC: UIViewController {
             listView = nil
             backBtn.isUserInteractionEnabled = false
             backBtn.isHidden = true
-            self.view.sendSubview(toBack: self.backGroundView)
+            self.view.sendSubviewToBack(self.backGroundView)
         }
     }
     

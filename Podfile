@@ -4,13 +4,13 @@ target 'pianoLearningApp' do
 use_frameworks!
 
 
-pod 'AudioKit/Core', '~> 4.4.0', :inhibit_warnings => true
-pod 'LSFloatingActionMenu', '~> 1.0.0', :inhibit_warnings => true
-pod 'IQKeyboardManagerSwift', '~> 6.0.4', :inhibit_warnings => true
-pod 'Alamofire', '~> 4.5', :inhibit_warnings => true
+pod 'AudioKit/Core',  :inhibit_warnings => true
+pod 'LSFloatingActionMenu', :inhibit_warnings => true
+pod 'IQKeyboardManagerSwift', :inhibit_warnings => true
+pod 'Alamofire', :inhibit_warnings => true
 pod 'AVAudioSessionSetCategorySwift', :inhibit_warnings => true
-pod 'SwiftyJSON', '~> 4.0', :inhibit_warnings => true
-pod 'SQLite.swift', '0.11.4', :inhibit_warnings => true
+pod 'SwiftyJSON', :inhibit_warnings => true
+pod 'SQLite.swift', :inhibit_warnings => true
 end
 
 post_install do |installer|
