@@ -8,7 +8,8 @@
 
 import Foundation
 import UIKit
-import LSFloatingActionMenu
+//import LSFloatingActionMenu
+//import HHFloatingView
 
 enum RECORD_TYPE: String {
     case OFF = "off"
@@ -86,32 +87,11 @@ extension musicNotePlayVC {
     
     // 設定右下角滑出之功能列
     func setSubNavMenu() {
-        var mune: Array<LSFloatingActionMenuItem> = []
-        let tempoBtn = LSFloatingActionMenuItem(image: UIImage(named: "main_sub_nav_tempo"), highlightedImage: UIImage(named: "main_sub_nav_tempo_touched"))
-        tempoBtn?.itemSize = main_sub_nav_open_Btn.frame.size
-        mune.append(tempoBtn!)
-        let bgmBtn = LSFloatingActionMenuItem(image: UIImage(named: "main_sub_nav_bgm"), highlightedImage: UIImage(named: "main_sub_nav_bgm_touched"))
-        bgmBtn?.itemSize = main_sub_nav_open_Btn.frame.size
-        mune.append(bgmBtn!)
-        let rBtn = LSFloatingActionMenuItem(image: UIImage(named: "main_sub_nav_r"), highlightedImage: UIImage(named: "main_sub_nav_r_touched"))
-        rBtn?.itemSize = main_sub_nav_open_Btn.frame.size
-        mune.append(rBtn!)
-        let lBtn = LSFloatingActionMenuItem(image: UIImage(named: "main_sub_nav_l"), highlightedImage: UIImage(named: "main_sub_nav_l_touched"))
-        lBtn?.itemSize = main_sub_nav_open_Btn.frame.size
-        mune.append(lBtn!)
-        let repeatBtn = LSFloatingActionMenuItem(image: UIImage(named: "main_sub_nav_repeat"), highlightedImage: UIImage(named: "main_sub_nav_repeat_touched"))
-        repeatBtn?.itemSize = main_sub_nav_open_Btn.frame.size
-        mune.append(repeatBtn!)
-        self.actionMenu = LSFloatingActionMenu(frame: self.musicNoteView.frame, direction: LSFloatingActionMenuDirection.right, menuItems: mune, menuHandler: { (item, index) in
-            //
-        }, closeHandler: {
-            self.muneIsOpen = false
-            self.actionMenu.isHidden = true
-        })
-        self.actionMenu.itemSpacing = 12
-        self.actionMenu.startPoint = CGPoint(x: main_sub_nav_open_Btn.center.x - main_sub_nav_open_Btn.frame.width - 12, y:  self.main_sub_nav_open_Btn.center.y - 20)
-        self.actionMenu.rotateStartMenu = true
+        self.actionMenu = HHFloatingView(frame: CGRect(origin: CGPoint(x: self.view.frame.maxX - 25 - self.main_keyboard_Btn.frame.width, y: self.view.frame.maxY - 25 - self.main_keyboard_Btn.frame.height), size: self.main_keyboard_Btn.frame.size))
+        self.actionMenu.delegate = self
+        self.actionMenu.datasource = self
         self.view.addSubview(self.actionMenu)
+        self.actionMenu.reload()
     }
     
     // 顯示alert
@@ -176,3 +156,62 @@ extension musicNotePlayVC {
     }
 }
 
+extension musicNotePlayVC: HHFloatingViewDatasource {
+    func floatingViewConfiguration(floatingView: HHFloatingView) -> HHFloatingViewConfiguration {
+        let configure = HHFloatingViewConfiguration.init()
+        configure.animationTimerDuration = 0.1
+        configure.optionsDisplayDirection = .left
+        configure.numberOfOptions = 5
+        configure.handlerSize = self.main_keyboard_Btn.frame.size
+        configure.optionsSize = self.main_keyboard_Btn.frame.size
+        configure.initialMargin = 12
+        configure.internalMargin = 12
+        configure.handlerImage = UIImage(named: "main_sub_nav_open")!
+        configure.handlerCloseImage = UIImage(named: "main_sub_nav_close")!
+        configure.handlerColor = UIColor.clear
+        configure.optionImages = self.floatingViewOptionImgs()
+        configure.optionColors = [UIColor.clear,
+                                  UIColor.clear,
+                                  UIColor.clear,
+                                  UIColor.clear,
+                                  UIColor.clear]
+        configure.isDraggable = false
+        return configure
+    }
+}
+
+//MARK: HHFloatingViewDelegate
+extension musicNotePlayVC: HHFloatingViewDelegate {
+    
+    func floatingViewOptionImgs() -> [UIImage] {
+        var options: [UIImage] = []
+        for i in 0 ..< self.floatBtnMode.count {
+            if !floatBtnMode[i] {
+                options.append(UIImage(named: self.floatBtnImgNames[i])!)
+            }else {
+                options.append(UIImage(named: self.floatBtnImgNames[i] + "_touched")!)
+            }
+        }
+        return options
+    }
+    
+    func floatingView(floatingView: HHFloatingView, didTapHandler isOpening: Bool) {
+        if isOpening {
+            floatingView.configurations?.optionImages = floatingViewOptionImgs()
+        }
+        floatingView.reload()
+    }
+    
+    func floatingView(floatingView: HHFloatingView, didShowOption index: Int) {
+
+    }
+    
+    func floatingView(floatingView: HHFloatingView, didSelectOption index: Int) {
+        print("HHFloatingView: Button Selected: \(index)")
+//        floatingView.close()
+        let mode = self.floatBtnMode[index - 1]
+        self.floatBtnMode[index - 1] = !mode
+        floatingView.configurations?.optionImages = floatingViewOptionImgs()
+        floatingView.reload()
+    }
+}

@@ -16,6 +16,9 @@
 		24D989432238FAB100891497 /* musicNotePlayVC_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D989422238FAB100891497 /* musicNotePlayVC_view.swift */; };
 		24ECF0B9224A298A00B1F597 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24ECF0B8224A298A00B1F597 /* SearchView.xib */; };
 		5C397AD6F46B32DA8EA2E0BB /* Pods_pianoLearningApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE106ED0A59FE503E45BBB1 /* Pods_pianoLearningApp.framework */; };
+		FC01E3C122E4964E003B42CF /* HHFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01E3BE22E49649003B42CF /* HHFloatingView.swift */; };
+		FC01E3C222E49651003B42CF /* HHFloatingViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01E3C022E49649003B42CF /* HHFloatingViewButton.swift */; };
+		FC01E3C322E49653003B42CF /* HHFloatingViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01E3BF22E49649003B42CF /* HHFloatingViewConfiguration.swift */; };
 		FC02494A21CFE85B00F10919 /* UserSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02494921CFE85A00F10919 /* UserSupportView.swift */; };
 		FC02494E21CFECF600F10919 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02494D21CFECF600F10919 /* QuestionView.swift */; };
 		FC02495021CFF1FE00F10919 /* UserSupportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02494821CFE78A00F10919 /* UserSupportView.xib */; };
@@ -115,6 +118,9 @@
 		24ECF0B8224A298A00B1F597 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		27CA68979E9E8C91D53D71CB /* Pods-pianoLearningApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.release.xcconfig"; sourceTree = "<group>"; };
 		BCD70C9019CB00D8DC940E1E /* Pods-pianoLearningApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pianoLearningApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pianoLearningApp/Pods-pianoLearningApp.debug.xcconfig"; sourceTree = "<group>"; };
+		FC01E3BE22E49649003B42CF /* HHFloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HHFloatingView.swift; sourceTree = "<group>"; };
+		FC01E3BF22E49649003B42CF /* HHFloatingViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HHFloatingViewConfiguration.swift; sourceTree = "<group>"; };
+		FC01E3C022E49649003B42CF /* HHFloatingViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HHFloatingViewButton.swift; sourceTree = "<group>"; };
 		FC02494821CFE78A00F10919 /* UserSupportView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSupportView.xib; sourceTree = "<group>"; };
 		FC02494921CFE85A00F10919 /* UserSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSupportView.swift; sourceTree = "<group>"; };
 		FC02494D21CFECF600F10919 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
@@ -235,6 +241,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FC01E3BD22E49630003B42CF /* HHFloatingView */ = {
+			isa = PBXGroup;
+			children = (
+				FC01E3BE22E49649003B42CF /* HHFloatingView.swift */,
+				FC01E3C022E49649003B42CF /* HHFloatingViewButton.swift */,
+				FC01E3BF22E49649003B42CF /* HHFloatingViewConfiguration.swift */,
+			);
+			path = HHFloatingView;
+			sourceTree = "<group>";
+		};
 		FC05D1F6218207F600FF2D98 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +357,7 @@
 				FC05D1F6218207F600FF2D98 /* Helper */,
 				FCE4F9E2217C4C58005CC423 /* GradesPage */,
 				FCD50338217C9B0C00D4A52E /* AccountPage */,
+				FC01E3BD22E49630003B42CF /* HHFloatingView */,
 				FC3BABED2142C93800E64A67 /* Products */,
 			);
 			path = pianoLearningApp;
@@ -532,7 +549,6 @@
 				"${BUILT_PRODUCTS_DIR}/AVAudioSessionSetCategorySwift/AVAudioSessionSetCategorySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/LSFloatingActionMenu/LSFloatingActionMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -541,7 +557,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVAudioSessionSetCategorySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LSFloatingActionMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -594,6 +609,7 @@
 			files = (
 				FCE4F9DD217C3DA6005CC423 /* GradesVC.swift in Sources */,
 				FC21598422C260E000F0084E /* KeyboardView.swift in Sources */,
+				FC01E3C322E49653003B42CF /* HHFloatingViewConfiguration.swift in Sources */,
 				FC96E83021628BA000D77780 /* ContractView.swift in Sources */,
 				FC2C07DA2161917D006FA78C /* LoginVC.swift in Sources */,
 				FCCA6C6022E0D40D00C6E6E0 /* Metronome.swift in Sources */,
@@ -602,6 +618,7 @@
 				FC96E8342162943B00D77780 /* RegisterStep2View.swift in Sources */,
 				FC05D202218405CA00FF2D98 /* LoadingView.swift in Sources */,
 				FC8192CA2174E1F50076E137 /* LanguageView.swift in Sources */,
+				FC01E3C222E49651003B42CF /* HHFloatingViewButton.swift in Sources */,
 				FCEA81CC216DE99D004D6FF3 /* TabBarVC.swift in Sources */,
 				FCE4F9E1217C3DCC005CC423 /* GradesRightVC.swift in Sources */,
 				248E49FA22351076004BD15C /* Sheet.swift in Sources */,
@@ -633,6 +650,7 @@
 				FC4450B4221B21B7002EC413 /* ActionAlertView.swift in Sources */,
 				FC96E83A2163AFF800D77780 /* CustomSlider.swift in Sources */,
 				FC3BABF02142C93800E64A67 /* AppDelegate.swift in Sources */,
+				FC01E3C122E4964E003B42CF /* HHFloatingView.swift in Sources */,
 				248E49F822350EE7004BD15C /* Book.swift in Sources */,
 				245B26222249D6C200C587D7 /* BookDownloadView.swift in Sources */,
 				FC8192BE2174D90B0076E137 /* ModifyPwdView.swift in Sources */,

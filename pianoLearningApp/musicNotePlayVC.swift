@@ -5,11 +5,12 @@
 
 
 import UIKit
-import LSFloatingActionMenu
+//import LSFloatingActionMenu
 import AudioKit
 import AVFoundation
 import AVAudioSessionSetCategorySwift
 import SwiftyJSON
+//import HHFloatingView
 
 class musicNotePlayVC: UIViewController {
     
@@ -31,7 +32,6 @@ class musicNotePlayVC: UIViewController {
     @IBOutlet weak var bmpSlider: CustomSubSlider!                  // 彈奏速度Slider
     @IBOutlet weak var bmpLabel: UILabel!                           // 彈奏速度Label
     @IBOutlet weak var main_keyboard_Btn: UIButton!                 // 開啟鍵盤
-    @IBOutlet weak var main_sub_nav_open_Btn: UIButton!             // 右下功能鍵
     @IBOutlet weak var noteBackground: UIView!                      // 五線譜區
     
     // 預設scoreView
@@ -57,8 +57,10 @@ class musicNotePlayVC: UIViewController {
     let ms = 1000
     var isMidi_on = false // midi是否插入
     // 右下角功能列
-    var actionMenu: LSFloatingActionMenu!
+    var actionMenu: HHFloatingView! // 右下功能鍵
     var muneIsOpen = false
+    var floatBtnMode = [false, false, false, false, false]  // 0: isTempo, 1: isBgm, 2: isNavR, 3: isNavL, 4: isRepeat
+    let floatBtnImgNames = ["main_sub_nav_tempo", "main_sub_nav_bgm", "main_sub_nav_r", "main_sub_nav_l", "main_sub_nav_repeat"]
     // 錄音＆播放&演奏曲
     var audioPlayer: AVAudioPlayer?
     // 是否播放中
@@ -124,7 +126,7 @@ class musicNotePlayVC: UIViewController {
         setPianoView()
         let imageGif = UIImage(named: "main_playstart")
         main_playstart_Btn.setImage(imageGif, for: .normal)
-        setSubNavMenu()
+        
         self.setMidiInput()
         self.setPageIndex()
         self.setMain_tempplay_Btn(.OFF)
@@ -144,6 +146,7 @@ class musicNotePlayVC: UIViewController {
             self.shouldCleanNotes()
             self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME, isreadLocal: false)
         }
+        setSubNavMenu()
     }
     
     // 左边slider
@@ -292,10 +295,11 @@ class musicNotePlayVC: UIViewController {
                     self.onClick_main_keyboard_Btn(self.main_keyboard_Btn)
                 }
                 if muneIsOpen {
-                    self.onClick_main_sub_nav_open_Btn(self.main_sub_nav_open_Btn)
+                    self.actionMenu.close()
+                    muneIsOpen = false
                 }
                 self.main_keyboard_Btn.isUserInteractionEnabled = false
-                 self.main_sub_nav_open_Btn.isUserInteractionEnabled = false
+                 self.actionMenu.isUserInteractionEnabled = false
                 let imageGif = UIImage(named: "main_playstart copy")
                 main_playstart_Btn.setImage(imageGif, for: .normal)
                 isPlaying = !isPlaying
@@ -303,7 +307,7 @@ class musicNotePlayVC: UIViewController {
             }else {
                 self.audioPlayer?.pause()
                 self.main_keyboard_Btn.isUserInteractionEnabled = true
-                self.main_sub_nav_open_Btn.isUserInteractionEnabled = true
+                self.actionMenu.isUserInteractionEnabled = true
                 let imageGif = UIImage(named: "main_playstart")
                 main_playstart_Btn.setImage(imageGif, for: .normal)
                 isPlaying = !isPlaying
@@ -394,16 +398,16 @@ class musicNotePlayVC: UIViewController {
     }
     
     @IBAction func onClick_main_sub_nav_open_Btn(_ sender: UIButton) {
-        self.actionMenu.startPoint = CGPoint(x: self.main_sub_nav_open_Btn.center.x - self.main_sub_nav_open_Btn.frame.width - 12, y:  self.main_sub_nav_open_Btn.center.y - 20)
-        if !muneIsOpen{
-            self.actionMenu.isHidden = false
-            self.actionMenu.open()
-            muneIsOpen = !muneIsOpen
-        }else{
-            self.actionMenu.close()
-            self.actionMenu.isHidden = true
-            muneIsOpen = !muneIsOpen
-        }
+//        self.actionMenu.startPoint = CGPoint(x: self.main_sub_nav_open_Btn.center.x - self.main_sub_nav_open_Btn.frame.width - 12, y:  self.main_sub_nav_open_Btn.center.y - 20)
+//        if !muneIsOpen{
+//            self.actionMenu.isHidden = false
+//            self.actionMenu.open()
+//            muneIsOpen = !muneIsOpen
+//        }else{
+//            self.actionMenu.close()
+//            self.actionMenu.isHidden = true
+//            muneIsOpen = !muneIsOpen
+//        }
 
         
         
@@ -731,7 +735,7 @@ extension musicNotePlayVC: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         print("play end")
         self.main_keyboard_Btn.isUserInteractionEnabled = true
-        self.main_sub_nav_open_Btn.isUserInteractionEnabled = true
+        self.actionMenu.isUserInteractionEnabled = true
         self.isPlaying = false
     }
 }

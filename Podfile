@@ -5,7 +5,7 @@ use_frameworks!
 
 
 pod 'AudioKit/Core',  :inhibit_warnings => true
-pod 'LSFloatingActionMenu', :inhibit_warnings => true
+# pod 'HHFloatingView', :inhibit_warnings => true
 pod 'IQKeyboardManagerSwift', :inhibit_warnings => true
 pod 'Alamofire', :inhibit_warnings => true
 pod 'AVAudioSessionSetCategorySwift', :inhibit_warnings => true

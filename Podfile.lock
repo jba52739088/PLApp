@@ -3,7 +3,6 @@ PODS:
   - AudioKit/Core (4.7.2)
   - AVAudioSessionSetCategorySwift (1.0.0)
   - IQKeyboardManagerSwift (6.4.0)
-  - LSFloatingActionMenu (1.0.0)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -14,7 +13,6 @@ DEPENDENCIES:
   - AudioKit/Core
   - AVAudioSessionSetCategorySwift
   - IQKeyboardManagerSwift
-  - LSFloatingActionMenu
   - SQLite.swift
   - SwiftyJSON
 
@@ -24,7 +22,6 @@ SPEC REPOS:
     - AudioKit
     - AVAudioSessionSetCategorySwift
     - IQKeyboardManagerSwift
-    - LSFloatingActionMenu
     - SQLite.swift
     - SwiftyJSON
 
@@ -33,10 +30,9 @@ SPEC CHECKSUMS:
   AudioKit: ee4ab79e2fffe42e52b8fd8d214eaaea968c368e
   AVAudioSessionSetCategorySwift: ec124e48dd653134ac6be1ef12cf9a90a6a32e73
   IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
-  LSFloatingActionMenu: dc2d6449e817cb2eb3c3a9a751bd49c3aae416b2
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: f0a77c78ddd8daa034cb3cb750104c9b876cae05
+PODFILE CHECKSUM: 2dda7d0c2a36cd216c8d6256425963a7c24e147c
 
 COCOAPODS: 1.5.3
