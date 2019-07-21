@@ -11,49 +11,56 @@ import AVFoundation
 
 class Metronome {
     
-    var timer: Timer!
-    var audioPlayer = AVAudioPlayer()
-    var isPlaying = false
+    var audioPlayerNode:AVAudioPlayerNode
+    var audioFile:AVAudioFile
+    var audioEngine:AVAudioEngine
     
     static private var _shared: Metronome?
     
     static var shared: Metronome! {
         if _shared == nil {
-            _shared = Metronome()
-            _shared?.getAudioFile()
+            let url = Bundle.main.url(forResource: "001", withExtension: "mp3")!
+            _shared = Metronome(fileURL: url)
         }
         return _shared
     }
     
-    public func playBy(speed: Double) {
-        if isPlaying{
-            isPlaying = false
-            timer.invalidate()
-            timer = nil
-        }else{
-            isPlaying = true
-            timer = Timer.scheduledTimer(timeInterval: 60/speed, target: self, selector: #selector(play), userInfo: nil, repeats: true)
-        }
+    init (fileURL: URL) {
+        
+        audioFile = try! AVAudioFile(forReading: fileURL)
+        
+        audioPlayerNode = AVAudioPlayerNode()
+        
+        audioEngine = AVAudioEngine()
+        audioEngine.attach(self.audioPlayerNode)
+        
+        audioEngine.connect(audioPlayerNode, to: audioEngine.mainMixerNode, format: audioFile.processingFormat)
+        try! audioEngine.start()
+        
     }
     
-    public func stop() {
-        isPlaying = false
-        timer.invalidate()
-        timer = nil
+    func generateBuffer(forBpm bpm: Int) -> AVAudioPCMBuffer {
+        audioFile.framePosition = 0
+        let periodLength = AVAudioFrameCount(audioFile.processingFormat.sampleRate * 60 / Double(bpm))
+        let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat, frameCapacity: periodLength)
+        try! audioFile.read(into: buffer!)
+        buffer?.frameLength = periodLength
+        return buffer!
     }
     
-    private func getAudioFile() {
-        let url:NSURL = Bundle.main.url(forResource: "001", withExtension: "mp3")! as NSURL
-        do{
-            audioPlayer = try AVAudioPlayer(contentsOf: url as URL, fileTypeHint: nil)
-            
-        }catch let error as NSError {
-            print(error.description)
-            
-        }
+    func play(bpm: Int, completionHandler: (() -> Void)?) {
+        
+        let buffer = generateBuffer(forBpm: bpm)
+        
+        self.audioPlayerNode.play()
+        
+        self.audioPlayerNode.scheduleBuffer(buffer, at: nil, options: .loops, completionHandler: nil)
+        
     }
     
-    @objc private func play() {
-        audioPlayer.play()
+    func stop() {
+        audioPlayerNode.stop()
+        
     }
+    
 }

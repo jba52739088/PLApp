@@ -262,11 +262,11 @@ class musicNotePlayVC: UIViewController {
     }
 
     @IBAction func onClick_main_slower_Btn(_ sender: Any) {
-        Metronome.shared.playBy(speed: Double(Int(self.bmpSlider.value)))
+//        Metronome.shared.playBy(speed: Double(Int(self.bmpSlider.value)))
     }
     
     @IBAction func onClick_main_faster_Btn(_ sender: Any) {
-        Metronome.shared.stop()
+//        Metronome.shared.stop()
     }
     
     @IBAction func onClick_main_just_play_Btn(_ sender: Any) {
@@ -324,12 +324,26 @@ class musicNotePlayVC: UIViewController {
                 let imageGif = UIImage(named: "main_playstart copy")
                 main_playstart_Btn.setImage(imageGif, for: .normal)
                 isPlaying = !isPlaying
-                 self.bmpSlider.isUserInteractionEnabled = false
-                if self.nowScoreIndex == 0 {
-                    scoreView.startBar()
+                self.bmpSlider.isUserInteractionEnabled = false
+                if self.floatBtnMode[0] {
+                    Metronome.shared.play(bpm: Int(self.bmpSlider.value), completionHandler: nil)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + (7 / 3) * (60 / self.bmpSlider.value)) {
+                        if self.nowScoreIndex == 0 {
+                            self.scoreView.startBar()
+                        }else {
+                            self.scoreView2.startBar()
+                        }
+
+                    }
                 }else {
-                    scoreView2.startBar()
+                    if self.nowScoreIndex == 0 {
+                        self.scoreView.startBar()
+                    }else {
+                        self.scoreView2.startBar()
+                    }
+
                 }
+                
                 if isMidi_on {
                     if userHasPlay {
                         self.setMain_tempplay_Btn(.Recording)
@@ -395,22 +409,6 @@ class musicNotePlayVC: UIViewController {
             }
             self.setPageIndex()
         }
-    }
-    
-    @IBAction func onClick_main_sub_nav_open_Btn(_ sender: UIButton) {
-//        self.actionMenu.startPoint = CGPoint(x: self.main_sub_nav_open_Btn.center.x - self.main_sub_nav_open_Btn.frame.width - 12, y:  self.main_sub_nav_open_Btn.center.y - 20)
-//        if !muneIsOpen{
-//            self.actionMenu.isHidden = false
-//            self.actionMenu.open()
-//            muneIsOpen = !muneIsOpen
-//        }else{
-//            self.actionMenu.close()
-//            self.actionMenu.isHidden = true
-//            muneIsOpen = !muneIsOpen
-//        }
-
-        
-        
     }
     
     @IBAction func testTouchDown(_ sender: Any) {
@@ -640,6 +638,7 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
                 self.shouldCleanNotes()
                 self.scoreView.stopBar()
                 self.scoreView2.stopBar()
+                Metronome.shared.stop()
             }
         }
     }

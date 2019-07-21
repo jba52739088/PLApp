@@ -199,6 +199,7 @@ extension musicNotePlayVC: HHFloatingViewDelegate {
         if isOpening {
             floatingView.configurations?.optionImages = floatingViewOptionImgs()
         }
+        muneIsOpen = isOpening
         floatingView.reload()
     }
     
