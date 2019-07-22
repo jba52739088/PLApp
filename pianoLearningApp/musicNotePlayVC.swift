@@ -60,7 +60,7 @@ class musicNotePlayVC: UIViewController {
     var actionMenu: HHFloatingView! // 右下功能鍵
     var muneIsOpen = false
     var floatBtnMode = [false, false, false, false, false]  // 0: isTempo, 1: isBgm, 2: isNavR, 3: isNavL, 4: isRepeat
-    let floatBtnImgNames = ["main_sub_nav_tempo", "main_sub_nav_bgm", "main_sub_nav_r", "main_sub_nav_l", "main_sub_nav_repeat"]
+    let floatBtnImgNames = ["main_sub_nav_tempo", "main_sub_nav_bgm", "main_sub_nav_l", "main_sub_nav_r", "main_sub_nav_repeat"]
     // 錄音＆播放&演奏曲
     var audioPlayer: AVAudioPlayer?
     // 是否播放中
@@ -207,6 +207,15 @@ class musicNotePlayVC: UIViewController {
         userHasPlay = false
         isRecording = false
         //
+        scoreView.setPlayMode(mode: 0)
+        scoreView2.setPlayMode(mode: 0)
+        if self.floatBtnMode[2] {
+            scoreView.setPlayMode(mode: 2)
+            scoreView2.setPlayMode(mode: 2)
+        }else if self.floatBtnMode[3] {
+            scoreView.setPlayMode(mode: 1)
+            scoreView2.setPlayMode(mode: 1)
+        }
         
         scoreView.setBeat(setBeat: bmpSlider.value / 60)
         scoreView2.setBeat(setBeat: bmpSlider.value / 60)

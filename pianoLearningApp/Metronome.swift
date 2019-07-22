@@ -19,7 +19,7 @@ class Metronome {
     
     static var shared: Metronome! {
         if _shared == nil {
-            let url = Bundle.main.url(forResource: "001", withExtension: "mp3")!
+            let url = Bundle.main.url(forResource: "click", withExtension: "wav")!
             _shared = Metronome(fileURL: url)
         }
         return _shared

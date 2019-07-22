@@ -209,9 +209,16 @@ extension musicNotePlayVC: HHFloatingViewDelegate {
     
     func floatingView(floatingView: HHFloatingView, didSelectOption index: Int) {
         print("HHFloatingView: Button Selected: \(index)")
-//        floatingView.close()
-        let mode = self.floatBtnMode[index - 1]
-        self.floatBtnMode[index - 1] = !mode
+        self.floatBtnMode[index - 1] = !self.floatBtnMode[index - 1]
+        if (index - 1 == 2) {
+            if (self.floatBtnMode[index - 1]) {
+                self.floatBtnMode[3] = false
+            }
+        }else if (index - 1 == 3) {
+            if (self.floatBtnMode[index - 1]) {
+                self.floatBtnMode[2] = false
+            }
+        }
         floatingView.configurations?.optionImages = floatingViewOptionImgs()
         floatingView.reload()
     }

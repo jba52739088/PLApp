@@ -19,6 +19,7 @@
 		FC01E3C122E4964E003B42CF /* HHFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01E3BE22E49649003B42CF /* HHFloatingView.swift */; };
 		FC01E3C222E49651003B42CF /* HHFloatingViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01E3C022E49649003B42CF /* HHFloatingViewButton.swift */; };
 		FC01E3C322E49653003B42CF /* HHFloatingViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC01E3BF22E49649003B42CF /* HHFloatingViewConfiguration.swift */; };
+		FC01E3C522E5E154003B42CF /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC01E3C422E5E153003B42CF /* click.wav */; };
 		FC02494A21CFE85B00F10919 /* UserSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02494921CFE85A00F10919 /* UserSupportView.swift */; };
 		FC02494E21CFECF600F10919 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02494D21CFECF600F10919 /* QuestionView.swift */; };
 		FC02495021CFF1FE00F10919 /* UserSupportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC02494821CFE78A00F10919 /* UserSupportView.xib */; };
@@ -121,6 +122,7 @@
 		FC01E3BE22E49649003B42CF /* HHFloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HHFloatingView.swift; sourceTree = "<group>"; };
 		FC01E3BF22E49649003B42CF /* HHFloatingViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HHFloatingViewConfiguration.swift; sourceTree = "<group>"; };
 		FC01E3C022E49649003B42CF /* HHFloatingViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HHFloatingViewButton.swift; sourceTree = "<group>"; };
+		FC01E3C422E5E153003B42CF /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.wav; sourceTree = "<group>"; };
 		FC02494821CFE78A00F10919 /* UserSupportView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSupportView.xib; sourceTree = "<group>"; };
 		FC02494921CFE85A00F10919 /* UserSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSupportView.swift; sourceTree = "<group>"; };
 		FC02494D21CFECF600F10919 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				FC845B85218B4AB000A9D66D /* score1.wav */,
+				FC01E3C422E5E153003B42CF /* click.wav */,
 				FCCA6C6322E0D92A00C6E6E0 /* 001.mp3 */,
 				FC4450C122259813002EC413 /* MusicScoreView.swift */,
 				FC8B66C1222D7DE700D7DD5C /* 1_0_score1.json */,
@@ -507,6 +510,7 @@
 				FC45128D2190B08B0029E32C /* NoteSelectionListView.xib in Resources */,
 				FC3BABFA2142C93800E64A67 /* LaunchScreen.storyboard in Resources */,
 				FC96E832216293DC00D77780 /* RegisterStep2View.xib in Resources */,
+				FC01E3C522E5E154003B42CF /* click.wav in Resources */,
 				FC05D2002184049300FF2D98 /* LoadingView.xib in Resources */,
 				FC8192C02174D9B80076E137 /* AddPhoto.xib in Resources */,
 				FCE4F9D7217C2966005CC423 /* praticeRecordCell.xib in Resources */,

@@ -103,6 +103,7 @@ class MusicScoreView: UIView {
     ]
     
     var scoreOrder:Int = 0
+    var playMode = 0    // 0: 兩手; 1:左手; 2:右手
     
     override func draw(_ rect: CGRect) {
         if let context = UIGraphicsGetCurrentContext() {
@@ -287,7 +288,7 @@ class MusicScoreView: UIView {
                 
 //                print("play => \(scoreOrder): \(mTone) : \(mNote)")
                 
-                if mTone >= -2 && note["note"] != "-99" {
+                if note["note"] != "-99" {
                     playNote(note: noteNums[Float(mTone)]!, isDotted: isDotted, isSharp: isSharp)
                 }
                 
@@ -325,8 +326,23 @@ class MusicScoreView: UIView {
         }
     }
     
+    
+    
+    func setPlayMode(mode: Int){
+        playMode = mode
+    }
     func playNote(note: MIDINoteNumber, isDotted: Bool, isSharp: Bool){
         var pnote = note
+        
+        // right hand mode
+        if note < 56 && playMode == 2 {
+            return
+        }
+        // left hand mode
+        if note >= 56 && playMode == 1 {
+            return
+        }
+        
         let q1 = DispatchQueue(label:"play")
         q1.async {
             if isSharp {
@@ -608,7 +624,7 @@ class MusicScoreView: UIView {
         if Int(tonePos*10) % 10 != 0 {
             isDrawSeg = true
         }
-        if tone <= -1 {
+        if tone <= -1 && tone >= -3{
             // 畫兩條
             isDrawSeg2 = true
         }
