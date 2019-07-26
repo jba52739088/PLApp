@@ -87,7 +87,6 @@
 		FCB8C8782171FB3100898059 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8C8772171FB3100898059 /* UserView.swift */; };
 		FCB8C87A2171FB4700898059 /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB8C8792171FB4700898059 /* UserView.xib */; };
 		FCCA6C6022E0D40D00C6E6E0 /* Metronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA6C5E22E0D40C00C6E6E0 /* Metronome.swift */; };
-		FCCA6C6222E0D49000C6E6E0 /* swiftStdLib in Resources */ = {isa = PBXBuildFile; fileRef = FC4714972270C5B9004E03AD /* swiftStdLib */; };
 		FCCA6C6422E0D92A00C6E6E0 /* 001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FCCA6C6322E0D92A00C6E6E0 /* 001.mp3 */; };
 		FCE4F9D6217C2966005CC423 /* praticeRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE4F9D4217C2966005CC423 /* praticeRecordCell.swift */; };
 		FCE4F9D7217C2966005CC423 /* praticeRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCE4F9D5217C2966005CC423 /* praticeRecordCell.xib */; };
@@ -158,7 +157,6 @@
 		FC45128A219075AC0029E32C /* EmptyNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyNoteView.xib; sourceTree = "<group>"; };
 		FC45128C2190B08B0029E32C /* NoteSelectionListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteSelectionListView.xib; sourceTree = "<group>"; };
 		FC45128E2190B09B0029E32C /* NoteSelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSelectionListView.swift; sourceTree = "<group>"; };
-		FC4714972270C5B9004E03AD /* swiftStdLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = swiftStdLib; sourceTree = "<group>"; };
 		FC63B8FE229C3A2F005F1622 /* SearchNothingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNothingCell.swift; sourceTree = "<group>"; };
 		FC63B8FF229C3A2F005F1622 /* SearchNothingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchNothingCell.xib; sourceTree = "<group>"; };
 		FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = musicNotePlayVC.swift; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 		FC3BABE32142C93700E64A67 = {
 			isa = PBXGroup;
 			children = (
-				FC4714972270C5B9004E03AD /* swiftStdLib */,
 				FC3BABEE2142C93800E64A67 /* pianoLearningApp */,
 				70444C663759487654F87B4B /* Pods */,
 				2D132B8D60F169C3032CB405 /* Frameworks */,
@@ -495,7 +492,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCCA6C6222E0D49000C6E6E0 /* swiftStdLib in Resources */,
 				FC8B66C2222D7DEC00D7DD5C /* 1_0_score1.json in Resources */,
 				24ECF0B9224A298A00B1F597 /* SearchView.xib in Resources */,
 				FC8192CC2174E2450076E137 /* FeedbackView.xib in Resources */,

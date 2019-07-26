@@ -362,6 +362,7 @@ class musicNotePlayVC: UIViewController {
                     }
                 }
             }else {
+                Metronome.shared.stop()
                 let imageGif = UIImage(named: "main_playstart")
                 main_playstart_Btn.setImage(imageGif, for: .normal)
                 isPlaying = !isPlaying
