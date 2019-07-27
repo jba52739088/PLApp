@@ -61,6 +61,7 @@ class musicNotePlayVC: UIViewController {
     var muneIsOpen = false
     var floatBtnMode = [false, false, false, false, false]  // 0: isTempo, 1: isBgm, 2: isNavR, 3: isNavL, 4: isRepeat
     let floatBtnImgNames = ["main_sub_nav_tempo", "main_sub_nav_bgm", "main_sub_nav_l", "main_sub_nav_r", "main_sub_nav_repeat"]
+    var constraintBottom: NSLayoutConstraint!
     // 錄音＆播放&演奏曲
     var audioPlayer: AVAudioPlayer?
     // 是否播放中
@@ -172,12 +173,13 @@ class musicNotePlayVC: UIViewController {
             print(endpoint.name + ":" + endpoint.displayName)
             midi.openOutput(name: endpoint.name)
         }
-        if midi.inputNames.count > 0 {
-            for item in midi.inputNames {
-                if item == "KEYBOARD" {
-                    
-                }
-            }
+        if midi.inputNames.count > 1 {
+            self.showAlertView(message: "MIDI连接成功！！")
+//            for item in midi.inputNames {
+//                if item == "KEYBOARD" {
+//
+//                }
+//            }
         }
     }
 
@@ -455,21 +457,21 @@ extension musicNotePlayVC: AKMIDIListener {
             self.onClick_main_playstart_Btn(self)
         }
         if (self.midi.inputNames.count > 0) {
-            for item in self.midi.inputNames {
-                if item == "KEYBOARD" {
-                    self.showAlertView(message: "MIDI连接成功！！")
-                    self.isMidi_on = true
-                    self.setMidiInput()
-                    if isPlaying {
-                        self.setMain_tempplay_Btn(.Recording)
-                    }else {
-                        self.setMain_tempplay_Btn(.ON)
-                    }
-                    
-                    
-                    return
-                }
+//            for item in self.midi.inputNames {
+//                if item == "KEYBOARD" {
+            
+            self.isMidi_on = true
+            self.setMidiInput()
+            if isPlaying {
+                self.setMain_tempplay_Btn(.Recording)
+            }else {
+                self.setMain_tempplay_Btn(.ON)
             }
+            
+            
+//                    return
+//                }
+//            }
         }else {
             self.isMidi_on = false
             self.setMain_tempplay_Btn(.OFF)

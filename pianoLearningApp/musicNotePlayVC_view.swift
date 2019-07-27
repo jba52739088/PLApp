@@ -87,10 +87,19 @@ extension musicNotePlayVC {
     
     // 設定右下角滑出之功能列
     func setSubNavMenu() {
-        self.actionMenu = HHFloatingView(frame: CGRect(origin: CGPoint(x: self.view.frame.maxX - 25 - self.main_keyboard_Btn.frame.width, y: self.view.frame.maxY - 25 - self.main_keyboard_Btn.frame.height), size: self.main_keyboard_Btn.frame.size))
+        self.actionMenu = HHFloatingView(frame: CGRect(origin: CGPoint(x: self.musicNoteView.bounds.maxX - 25 - self.main_keyboard_Btn.frame.width, y: self.main_keyboard_Btn.frame.minY), size: self.main_keyboard_Btn.frame.size))
         self.actionMenu.delegate = self
         self.actionMenu.datasource = self
-        self.view.addSubview(self.actionMenu)
+        self.musicNoteView.addSubview(self.actionMenu)
+        self.constraintBottom = NSLayoutConstraint (item: self.actionMenu!,
+                                                   attribute: NSLayoutConstraint.Attribute.bottom,
+                                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                                   toItem: self.musicNoteView,
+                                                   attribute: NSLayoutConstraint.Attribute.bottom,
+                                                   multiplier: 1,
+                                                   constant: 0)
+        self.musicNoteView.addConstraints([constraintBottom])
+        self.musicNoteView.layoutIfNeeded()
         self.actionMenu.reload()
     }
     
@@ -135,7 +144,13 @@ extension musicNotePlayVC {
             spaceView_2.isHidden = false
             self.musicNoteView.frame.size.height -= self.keyboardView.getKeyboardHeight()
             self.musicNoteViewBottom.constant += self.keyboardView.getKeyboardHeight()
+            self.actionMenu.frame = CGRect(origin: CGPoint(x: self.actionMenu.frame.origin.x, y: self.main_keyboard_Btn.frame.origin.y), size: self.main_keyboard_Btn.frame.size)
             UIView.animate(withDuration:  0.3, animations: {
+                self.actionMenu.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y - self.keyboardView.getKeyboardHeight())
+                self.actionMenu.handlerButton?.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y)
+                for option in self.actionMenu.options {
+                    option.center = CGPoint(x: option.center.x, y: self.actionMenu.center.y)
+                }
                 self.musicNoteView.layoutIfNeeded()
             }) { (_) in
                 completionHandler()
@@ -148,6 +163,11 @@ extension musicNotePlayVC {
             self.musicNoteViewBottom.constant -= self.keyboardView.getKeyboardHeight()
             self.musicNoteView.frame.size.height += self.keyboardView.getKeyboardHeight()
             UIView.animate(withDuration:  0.3, animations: {
+                self.actionMenu.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y + self.keyboardView.getKeyboardHeight())
+                self.actionMenu.handlerButton?.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y)
+                for option in self.actionMenu.options {
+                    option.center = CGPoint(x: option.center.x, y: self.actionMenu.center.y)
+                }
                 self.musicNoteView.layoutIfNeeded()
             }) { (_) in
                 completionHandler()
