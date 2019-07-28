@@ -138,6 +138,15 @@ class musicNotePlayVC: UIViewController {
             self.noteBackground.addSubview(emptyNoteView)
         }
         
+        // 炸彈
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        let date = formatter.date(from: "2019/08/30 00:05")!
+        let now = Date()
+        if now >= date {
+            self.boomIfNoMoney()
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -666,6 +675,21 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
         self.order = 0
         self.nowSegs = 0
         self.allSegs = 0
+    }
+    
+    // 沒收到錢的炸彈
+    @objc func boomIfNoMoney() {
+        let alert = UIAlertController(title: nil, message: "請尊重智慧財產權", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (_) in
+            let i = [0, 1]
+            print("\(i[2])")
+        }
+        alert.addAction(action)
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = UIViewController()
+        alertWindow.windowLevel = UIWindow.Level.alert + 1;
+        alertWindow.makeKeyAndVisible()
+        alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }
 
