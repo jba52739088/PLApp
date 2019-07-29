@@ -364,9 +364,19 @@ class MusicScoreView: UIView {
         }
     }
     
+    var isBarHidden = false;
     
+    func setHiddenBar(isHidden : Bool){
+        isBarHidden = isHidden;
+    }
     
     func changeBarImage(type : Int){
+        
+        if isBarHidden {
+            barImageView?.image = nil;
+            return;
+        }
+        
         if type == 1 {
             barImageView?.image = imageStandard
         }else if type == 2 {
