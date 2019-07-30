@@ -35,11 +35,11 @@ class musicNotePlayVC: UIViewController {
     @IBOutlet weak var noteBackground: UIView!                      // 五線譜區
     
     // 預設scoreView
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var scoreView: MusicScoreView!
-    @IBOutlet weak var scoreView2: MusicScoreView!
-    @IBOutlet weak var spaceView_1: UIView!
-    @IBOutlet weak var spaceView_2: UIView!
+//    @IBOutlet weak var stackView: UIStackView!
+//    @IBOutlet weak var scoreView: MusicScoreView!
+//    @IBOutlet weak var scoreView2: MusicScoreView!
+//    @IBOutlet weak var spaceView_1: UIView!
+//    @IBOutlet weak var spaceView_2: UIView!
     
     // 其他顯示
     @IBOutlet weak var segsLabel: UILabel!
@@ -75,23 +75,23 @@ class musicNotePlayVC: UIViewController {
     // 現在五線譜跑到目前小節中第n個音符
     var shouldNoteIndex = 0
     // 現在五線譜跑到當下第幾小節
-    var nowBarIndex = 0
+//    var nowBarIndex = 0
     // 剛剛五線譜跑到當下第幾小節
-    var lastBarIndex = 0
+//    var lastBarIndex = 0
     // 五線譜跑到全部第幾小節
-    var didBarIndex = 0
+//    var didBarIndex = 0
     // 跑到哪一個scoreView(0: 上面 1:下面)
     var nowScoreIndex = 0
-    // 跑到第幾個scoreView
-    var nowScoreView = 0
-    // 所有scoreView數量
-    var allScoreViewCount = 0
-    // 所有音符數
-    var allNoteCount = 0
-    // 目前音符數
-    var nowNoteCount = 0
+//     // 跑到第幾個scoreView
+//    var nowScoreView = 0
+//    // 所有scoreView數量
+//    var allScoreViewCount = 0
+//    // 所有音符數
+//    var allNoteCount = 0
+//    // 目前音符數
+//    var nowNoteCount = 0
     // 是否有下一個五線譜
-    var hasMoreScore = false
+//    var hasMoreScore = false
     // 播放暫存時間
     var lastRecordDate = ""
     
@@ -100,8 +100,8 @@ class musicNotePlayVC: UIViewController {
     var pianoIsVisible = false  // 是否有鋼琴
     var didBegin = false        // 是否有準備播放的譜
     var order = 0   // 開始小節
-    var nowSegs = 0       // 目前呈現到第n小節
-    var allSegs = 0 // 所有小節數
+//    var nowSegs = 0       // 目前呈現到第n小節
+//    var allSegs = 0 // 所有小節數
     
     // 記錄使用者彈奏
     var userHasPlay = false
@@ -118,11 +118,15 @@ class musicNotePlayVC: UIViewController {
     var userDidPlayTime: TimeInterval = 0
     
     
+    
+    private var _scoreView: ScoreView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        spaceView_1.isHidden = true
-        spaceView_2.isHidden = true
+//        spaceView_1.isHidden = true
+//        spaceView_2.isHidden = true
         midi.addListener(self)
         setPianoView()
         let imageGif = UIImage(named: "main_playstart")
@@ -151,6 +155,18 @@ class musicNotePlayVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if self._scoreView == nil {
+            if let scoreView = Bundle.main.loadNibNamed("ScoreView", owner: self, options: nil)?.first as? ScoreView {
+                self._scoreView = scoreView
+                self._scoreView.frame = self.noteBackground.bounds
+                self.noteBackground.addSubview(self._scoreView)
+            }
+            
+        }
+        
+        
+        
         self.bmpLabel.text = "\(Int(self.bmpSlider.value)) bmp"
         if UserDefaultsKeys.LAST_NOTE_NAME != "" {
             self.shouldCleanNotes()
@@ -193,91 +209,30 @@ class musicNotePlayVC: UIViewController {
     }
 
     func setPageIndex() {
-        self.pageControl.numberOfPages = self.allScoreViewCount
-        self.pageControl.currentPage = self.nowScoreView
+        self.pageControl.numberOfPages = self._scoreView.getAllScoreViewCount()
+        self.pageControl.currentPage = self._scoreView.getCurrentScoreView()
         
     }
 
     // 寫死兩個sroreView
     func showScoreView(file: String, isreadLocal: Bool) {
-        
-        //
-        allScoreViewCount = 1   // 共需要幾條
-        allSegs = 0 // 計算出所有小節
-        nowSegs = 0 // 目前呈現的小節數
-        nowScoreView = 0
-        hasMoreScore = false
-        nowBarIndex = 0
-        lastBarIndex = 0
-        didBarIndex = 0
-        allNoteCount = 0
-        nowNoteCount = 0
-        segsLabel.text = "小節 0"
-        noteTimeLabel.text = "拍數 0"
-        isReadLocal = false
-        userHasPlay = false
-        isRecording = false
-        //
-        scoreView.setPlayMode(mode: 0)
-        scoreView2.setPlayMode(mode: 0)
+        var playMode = 0
         if self.floatBtnMode[2] {
-            scoreView.setPlayMode(mode: 2)
-            scoreView2.setPlayMode(mode: 2)
+            playMode = 3
         }else if self.floatBtnMode[3] {
-            scoreView.setPlayMode(mode: 1)
-            scoreView2.setPlayMode(mode: 1)
+            playMode = 1
         }
         
-        scoreView.setBeat(setBeat: bmpSlider.value / 60)
-        scoreView2.setBeat(setBeat: bmpSlider.value / 60)
-        
-        self.msPerBeat = (bmpSlider.value / 60) * 1000
-        print("msPerBeat: \(self.msPerBeat)")
-        
-        // 讀取 JSON 字串資料
-        var thisUrl = Bundle.main.url(forResource: file, withExtension: "json")
-        if thisUrl == nil {
-            thisUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(file).json")
-        }
-        self.currentSongName = file
-        guard let url = thisUrl else { return }
-        
-        do {
-            let data = try Data(contentsOf: url)
-            let jsonArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! Array<Array<Array<Dictionary<String,String>>>>
-            
-            // 計算共幾個小節
-            self.jsonArray = jsonArray
-            allSegs = jsonArray.count
-            // 計算共幾個音符
-            for items in jsonArray {
-                for item in items {
-                    self.allNoteCount += item.count
-                }
-            }
-            scoreView.setConfig(in: 3, n2: 4, n3: 3, n4: 4)
-            scoreView.delegate = self
-            scoreView2.delegate = self
-            // 載入樂譜有幾列, 需要幾個 ScoreView
-            let lines = scoreView.getScoreViewCount(in: jsonArray)
-            self.allScoreViewCount = lines
-            self.setPageIndex()
+        self._scoreView.showScoreView(file: file, playMode: playMode, bmp: bmpSlider.value) { (isSucceed) in
+            if !isSucceed { return }
+            segsLabel.text = "小節 0"
+            noteTimeLabel.text = "拍數 0"
+            isReadLocal = false
+            userHasPlay = false
+            isRecording = false
+            self.currentSongName = file
             didBegin = true
-            // 載入第一條
-            let scoreViewN = scoreView.setScore(in: jsonArray, start: nowSegs, order: 0, isFirst: true, isLast: nowSegs>=allSegs-1)
-            nowSegs = scoreView.setScore(in: jsonArray, start: nowSegs, order: 0, isFirst: true, isLast: scoreViewN>=allSegs-1)
-            
-            // 載入第二條
-            if nowSegs < allSegs - 1 {
-                hasMoreScore = true
-                scoreView2.isHidden = false
-                // 載入樂譜
-                let score2ViewN = scoreView2.setScore(in: jsonArray, start:nowSegs+1, order: 1, isFirst: false, isLast: nowSegs>=allSegs-1)
-                nowSegs = scoreView2.setScore(in: jsonArray, start:nowSegs+1, order: 1, isFirst: false, isLast: score2ViewN>=allSegs-1)
-            }
-            //
-        }catch{
-            print(error.localizedDescription)
+            self.setPageIndex()
         }
     }
 

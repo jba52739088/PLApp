@@ -53,6 +53,8 @@
 		FC45128B219075AC0029E32C /* EmptyNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC45128A219075AC0029E32C /* EmptyNoteView.xib */; };
 		FC45128D2190B08B0029E32C /* NoteSelectionListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC45128C2190B08B0029E32C /* NoteSelectionListView.xib */; };
 		FC45128F2190B09B0029E32C /* NoteSelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45128E2190B09B0029E32C /* NoteSelectionListView.swift */; };
+		FC4ACFDF22EF3DC900D3EE7F /* ScoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC4ACFDE22EF3DC900D3EE7F /* ScoreView.xib */; };
+		FC4ACFE122EF40EC00D3EE7F /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4ACFE022EF40EC00D3EE7F /* ScoreView.swift */; };
 		FC63B900229C3A2F005F1622 /* SearchNothingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC63B8FE229C3A2F005F1622 /* SearchNothingCell.swift */; };
 		FC63B901229C3A2F005F1622 /* SearchNothingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC63B8FF229C3A2F005F1622 /* SearchNothingCell.xib */; };
 		FC7AECC42145786900BC0412 /* musicNotePlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */; };
@@ -157,6 +159,8 @@
 		FC45128A219075AC0029E32C /* EmptyNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyNoteView.xib; sourceTree = "<group>"; };
 		FC45128C2190B08B0029E32C /* NoteSelectionListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteSelectionListView.xib; sourceTree = "<group>"; };
 		FC45128E2190B09B0029E32C /* NoteSelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSelectionListView.swift; sourceTree = "<group>"; };
+		FC4ACFDE22EF3DC900D3EE7F /* ScoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreView.xib; sourceTree = "<group>"; };
+		FC4ACFE022EF40EC00D3EE7F /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		FC63B8FE229C3A2F005F1622 /* SearchNothingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNothingCell.swift; sourceTree = "<group>"; };
 		FC63B8FF229C3A2F005F1622 /* SearchNothingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchNothingCell.xib; sourceTree = "<group>"; };
 		FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = musicNotePlayVC.swift; sourceTree = "<group>"; };
@@ -345,6 +349,8 @@
 				FC45128A219075AC0029E32C /* EmptyNoteView.xib */,
 				FC3BABF12142C93800E64A67 /* NoteSelectionVC.swift */,
 				FC3BABF32142C93800E64A67 /* Main.storyboard */,
+				FC4ACFE022EF40EC00D3EE7F /* ScoreView.swift */,
+				FC4ACFDE22EF3DC900D3EE7F /* ScoreView.xib */,
 				FC2AF1372158D61000A0A554 /* checkBox.swift */,
 				FC3BABF62142C93800E64A67 /* Assets.xcassets */,
 				FC3BABF82142C93800E64A67 /* LaunchScreen.storyboard */,
@@ -533,6 +539,7 @@
 				FCEC920822929EC40087E86E /* SearchCell.xib in Resources */,
 				FCF323F4228833D600637BB0 /* ASheetRecordCell.xib in Resources */,
 				FC96E838216393D900D77780 /* PwdAlertView.xib in Resources */,
+				FC4ACFDF22EF3DC900D3EE7F /* ScoreView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +643,7 @@
 				243CAD18224A4DC5005C22B6 /* SearchView.swift in Sources */,
 				FCE4F9D6217C2966005CC423 /* praticeRecordCell.swift in Sources */,
 				FC45128F2190B09B0029E32C /* NoteSelectionListView.swift in Sources */,
+				FC4ACFE122EF40EC00D3EE7F /* ScoreView.swift in Sources */,
 				FCE4F9DF217C3DBF005CC423 /* GradesLeftVC.swift in Sources */,
 				FCE4F9DA217C39CC005CC423 /* HighScoreCell.swift in Sources */,
 				FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */,

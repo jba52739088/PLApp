@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="ipad12_9" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="w4x-Zk-OHA" customClass="ScoreView" customModule="pianoLearningApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="884" height="443"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UWx-DS-pWW">
+                    <rect key="frame" x="0.0" y="0.0" width="884" height="443"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uq7-sa-Dfd">
+                            <rect key="frame" x="0.0" y="0.0" width="884" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="haN-x8-sjd"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfj-X9-HQx" customClass="MusicScoreView" customModule="pianoLearningApp" customModuleProvider="target">
+                            <rect key="frame" x="268" y="45" width="348" height="174"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="tfj-X9-HQx" secondAttribute="height" multiplier="2:1" id="IZF-dR-9LN"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rwn-qH-Uuc" customClass="MusicScoreView" customModule="pianoLearningApp" customModuleProvider="target">
+                            <rect key="frame" x="268" y="224" width="348" height="174"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UgZ-ht-jIz">
+                            <rect key="frame" x="0.0" y="403" width="884" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="q2b-Ns-fjI"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Rwn-qH-Uuc" firstAttribute="width" secondItem="tfj-X9-HQx" secondAttribute="width" id="3T7-ap-HVj"/>
+                        <constraint firstItem="Rwn-qH-Uuc" firstAttribute="centerX" secondItem="UWx-DS-pWW" secondAttribute="centerX" id="a3a-DW-4WB"/>
+                        <constraint firstItem="Rwn-qH-Uuc" firstAttribute="height" secondItem="tfj-X9-HQx" secondAttribute="height" id="fTg-St-ujc"/>
+                        <constraint firstItem="tfj-X9-HQx" firstAttribute="centerX" secondItem="UWx-DS-pWW" secondAttribute="centerX" id="gWN-uw-oHZ"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="UWx-DS-pWW" secondAttribute="bottom" id="RXZ-wr-n2J"/>
+                <constraint firstItem="UWx-DS-pWW" firstAttribute="top" secondItem="w4x-Zk-OHA" secondAttribute="top" id="RrG-iz-UuQ"/>
+                <constraint firstAttribute="trailing" secondItem="UWx-DS-pWW" secondAttribute="trailing" id="jlb-jv-Y3H"/>
+                <constraint firstItem="UWx-DS-pWW" firstAttribute="leading" secondItem="w4x-Zk-OHA" secondAttribute="leading" id="xI0-Uf-eCd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bottomSpaceView" destination="UgZ-ht-jIz" id="K1d-h4-BbQ"/>
+                <outlet property="musicScoreViewA" destination="tfj-X9-HQx" id="EPA-CZ-gBd"/>
+                <outlet property="musicScoreViewB" destination="Rwn-qH-Uuc" id="Ygn-xj-1ee"/>
+                <outlet property="stackView" destination="UWx-DS-pWW" id="fWB-v5-nKG"/>
+                <outlet property="topSpaceView" destination="Uq7-sa-Dfd" id="Fuw-o2-ddm"/>
+            </connections>
+        </view>
+    </objects>
+</document>
