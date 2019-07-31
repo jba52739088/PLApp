@@ -16,6 +16,8 @@ class ScoreView: UIView {
     @IBOutlet weak var musicScoreViewB: MusicScoreView!
     @IBOutlet weak var bottomSpaceView: UIView!
     
+    
+    private var _isPlaying = false
     private var jsonArray: Array<Array<Array<Dictionary<String,String>>>>? // 譜data
     private var allScoreViewCount = 0 // 需要的MusicScoreView量
     private var allSegs = 0 // 所有小節數
@@ -27,6 +29,7 @@ class ScoreView: UIView {
     private var didBarIndex = 0 // 五線譜跑到全部小節中第幾小節
     private var allNoteCount = 0 // 所有音符數
     private var nowNoteCount = 0 // 目前彈到音符數
+    private var nowScoreIndex = 0 // 跑到哪一個scoreView(0: 上面 1:下面)
 //    private
 //    private
     
@@ -34,6 +37,30 @@ class ScoreView: UIView {
     func hide() {
         self.musicScoreViewA.isHidden = true
         self.musicScoreViewB.isHidden = true
+    }
+    
+    func isPlaying() -> Bool {
+        return self._isPlaying
+    }
+    
+    func play() {
+        if self.nowScoreIndex == 0 {
+            self.musicScoreViewA.startBar()
+        }else {
+            self.musicScoreViewB.startBar()
+        }
+    }
+    
+    func stop() {
+        if self.nowScoreIndex == 0 {
+            self.musicScoreViewA.pauseBar()
+        }else {
+            self.musicScoreViewB.pauseBar()
+        }
+    }
+    
+    func shouldResizeScoreView(completeHandler: () -> Void) {
+        completeHandler()
     }
     
     // 顯示sroreView

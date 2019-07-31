@@ -65,9 +65,10 @@ class musicNotePlayVC: UIViewController {
     // 錄音＆播放&演奏曲
     var audioPlayer: AVAudioPlayer?
     // 是否播放中
-    var isPlaying = false
+//    var isPlaying = false
     // 是否為演奏模式
     var isJustplay = false
+    var isMusicPlaying = false
     // 當前曲目名稱
     var currentSongName: String?
     // empty NOTE VIEW
@@ -265,7 +266,8 @@ class musicNotePlayVC: UIViewController {
     @IBAction func onClick_main_playstart_Btn(_ sender: Any) {
         isRecording = false
         if self.isJustplay {
-            if !isPlaying {
+            self._scoreView.stop()
+            if !self.isMusicPlaying {
                 if self.pianoIsVisible {
                     self.onClick_main_keyboard_Btn(self.main_keyboard_Btn)
                 }
@@ -277,7 +279,7 @@ class musicNotePlayVC: UIViewController {
                  self.actionMenu.isUserInteractionEnabled = false
                 let imageGif = UIImage(named: "main_playstart copy")
                 main_playstart_Btn.setImage(imageGif, for: .normal)
-                isPlaying = !isPlaying
+                isMusicPlaying = true
                 self.audioPlayer?.play()
             }else {
                 self.audioPlayer?.pause()
@@ -285,7 +287,7 @@ class musicNotePlayVC: UIViewController {
                 self.actionMenu.isUserInteractionEnabled = true
                 let imageGif = UIImage(named: "main_playstart")
                 main_playstart_Btn.setImage(imageGif, for: .normal)
-                isPlaying = !isPlaying
+                isMusicPlaying = false
             }
         }else {
             if !self.didBegin {
@@ -295,28 +297,17 @@ class musicNotePlayVC: UIViewController {
                 }
             }
             
-            if !isPlaying {
+            if !self._scoreView.isPlaying() {
                 let imageGif = UIImage(named: "main_playstart copy")
                 main_playstart_Btn.setImage(imageGif, for: .normal)
-                isPlaying = !isPlaying
                 self.bmpSlider.isUserInteractionEnabled = false
                 if self.floatBtnMode[0] {
                     Metronome.shared.play(bpm: Int(self.bmpSlider.value), completionHandler: nil)
                     DispatchQueue.main.asyncAfter(deadline: .now() + (7 / 3) * (60 / self.bmpSlider.value)) {
-                        if self.nowScoreIndex == 0 {
-                            self.scoreView.startBar()
-                        }else {
-                            self.scoreView2.startBar()
-                        }
-
+                        self._scoreView.play()
                     }
                 }else {
-                    if self.nowScoreIndex == 0 {
-                        self.scoreView.startBar()
-                    }else {
-                        self.scoreView2.startBar()
-                    }
-
+                    self._scoreView.play()
                 }
                 
                 if isMidi_on {
@@ -331,12 +322,7 @@ class musicNotePlayVC: UIViewController {
                 Metronome.shared.stop()
                 let imageGif = UIImage(named: "main_playstart")
                 main_playstart_Btn.setImage(imageGif, for: .normal)
-                isPlaying = !isPlaying
-                if self.nowScoreIndex == 0 {
-                    scoreView.pauseBar()
-                }else {
-                    scoreView2.pauseBar()
-                }
+                self._scoreView.stop()
                 self.isRecording = false
                 if isMidi_on {
                     if userHasPlay {
@@ -362,29 +348,32 @@ class musicNotePlayVC: UIViewController {
     //MARK: - 點擊鍵盤按鈕
     /// 點擊鍵盤按鈕
     @IBAction func onClick_main_keyboard_Btn(_ sender: Any) {
-        if isPlaying {
+        if self._scoreView.isPlaying() {
             self.onClick_main_playstart_Btn(self)
         }
-        if self.nowScoreIndex == 0 {
-            scoreView.isHidden = false
-        }else {
-            scoreView2.isHidden = true
-        }
-        self.resetScoreViewHeight {
-            if self.pianoIsVisible{
-                if self.nowScoreIndex % 2 != 0 {
-                    self.scoreView.isHidden = true
-                    self.scoreView2.isHidden = false
-                }else {
-                    self.scoreView.isHidden = false
-                    self.scoreView2.isHidden = true
-                }
-            }else {
-                self.scoreView.isHidden = false
-                self.scoreView2.isHidden = false
-            }
+        self._scoreView.shouldResizeScoreView {
             self.setPageIndex()
         }
+//        if self.nowScoreIndex == 0 {
+//            scoreView.isHidden = false
+//        }else {
+//            scoreView2.isHidden = true
+//        }
+//        self.resetScoreViewHeight {
+//            if self.pianoIsVisible{
+//                if self.nowScoreIndex % 2 != 0 {
+//                    self.scoreView.isHidden = true
+//                    self.scoreView2.isHidden = false
+//                }else {
+//                    self.scoreView.isHidden = false
+//                    self.scoreView2.isHidden = true
+//                }
+//            }else {
+//                self.scoreView.isHidden = false
+//                self.scoreView2.isHidden = false
+//            }
+//            self.setPageIndex()
+//        }
     }
     
     @IBAction func testTouchDown(_ sender: Any) {
@@ -417,7 +406,7 @@ class musicNotePlayVC: UIViewController {
 //MARK: - 監聽鍵盤點擊
 extension musicNotePlayVC: AKMIDIListener {
     func receivedMIDISetupChange() {
-        if isPlaying {
+        if self._scoreView.isPlaying() {
             self.onClick_main_playstart_Btn(self)
         }
         if (self.midi.inputNames.count > 0) {
@@ -426,7 +415,7 @@ extension musicNotePlayVC: AKMIDIListener {
             
             self.isMidi_on = true
             self.setMidiInput()
-            if isPlaying {
+            if self._scoreView.isPlaying() {
                 self.setMain_tempplay_Btn(.Recording)
             }else {
                 self.setMain_tempplay_Btn(.ON)
