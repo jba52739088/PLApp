@@ -73,8 +73,8 @@ class musicNotePlayVC: UIViewController {
     var currentSongName: String?
     // empty NOTE VIEW
     var emptyNoteView: UIView!
-    // 現在五線譜跑到目前小節中第n個音符
-    var shouldNoteIndex = 0
+//    // 現在五線譜跑到目前小節中第n個音符
+//    var shouldNoteIndex = 0
     // 現在五線譜跑到當下第幾小節
 //    var nowBarIndex = 0
     // 剛剛五線譜跑到當下第幾小節
@@ -100,7 +100,7 @@ class musicNotePlayVC: UIViewController {
     var jsonArray: Array<Array<Array<Dictionary<String,String>>>>? // 譜data
     var pianoIsVisible = false  // 是否有鋼琴
     var didBegin = false        // 是否有準備播放的譜
-    var order = 0   // 開始小節
+//    var order = 0   // 開始小節
 //    var nowSegs = 0       // 目前呈現到第n小節
 //    var allSegs = 0 // 所有小節數
     
@@ -126,8 +126,6 @@ class musicNotePlayVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        spaceView_1.isHidden = true
-//        spaceView_2.isHidden = true
         midi.addListener(self)
         setPianoView()
         let imageGif = UIImage(named: "main_playstart")
@@ -138,9 +136,10 @@ class musicNotePlayVC: UIViewController {
         self.setMain_tempplay_Btn(.OFF)
         // 若之前無讀取樂譜之情況
         if UserDefaultsKeys.LAST_NOTE_NAME == "" {
-            emptyNoteView = Bundle.main.loadNibNamed("EmptyNoteView", owner: self, options: nil)?.first as! UIView
+            guard let _emptyNoteView = Bundle.main.loadNibNamed("EmptyNoteView", owner: self, options: nil)!.first as? UIView else { return }
+            emptyNoteView = _emptyNoteView
             emptyNoteView.frame = self.noteBackground.bounds
-            self.noteBackground.addSubview(emptyNoteView)
+            self.noteBackground.addSubview(emptyNoteView ?? UIView())
         }
         
         // 炸彈
@@ -169,10 +168,10 @@ class musicNotePlayVC: UIViewController {
         
         
         self.bmpLabel.text = "\(Int(self.bmpSlider.value)) bmp"
-        if UserDefaultsKeys.LAST_NOTE_NAME != "" {
-            self.shouldCleanNotes()
-            self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME, isreadLocal: false)
-        }
+//        if UserDefaultsKeys.LAST_NOTE_NAME != "" {
+//            self.shouldCleanNotes()
+//            self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME, isreadLocal: false)
+//        }
         setSubNavMenu()
     }
     
@@ -183,8 +182,7 @@ class musicNotePlayVC: UIViewController {
     
     @IBAction func didFinishDragSlider(_ sender: UISlider) {
         print(Int(sender.value))
-        nowSegs = 0
-//        self.didFinishPlay()
+//        nowSegs = 0
         if UserDefaultsKeys.LAST_NOTE_NAME != "" {
             self.shouldCleanNotes()
             self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME, isreadLocal: false)
@@ -210,9 +208,10 @@ class musicNotePlayVC: UIViewController {
     }
 
     func setPageIndex() {
-        self.pageControl.numberOfPages = self._scoreView.getAllScoreViewCount()
-        self.pageControl.currentPage = self._scoreView.getCurrentScoreView()
-        
+        if self._scoreView != nil {
+            self.pageControl.numberOfPages = self._scoreView.getAllScoreViewCount()
+            self.pageControl.currentPage = self._scoreView.getCurrentScoreView()
+        }
     }
 
     // 寫死兩個sroreView
@@ -466,159 +465,98 @@ extension musicNotePlayVC: AKMIDIListener {
 extension musicNotePlayVC: MusicScoreViewDelegate {
     func shouldPlayNext() {
         self.keyboardView.deselectAll()
-//        print("nowSegs: \(nowSegs), allSegs: \(allSegs)")
-        if nowScoreView % 2 == 0 {
-            // 播放下面樂譜
-            if hasMoreScore{
-                scoreView2.startBar()
-            }
-            
-            // 載入下一條的樂譜
-            if nowSegs < allSegs - 1 {
-                hasMoreScore = true
-                // 載入樂譜
-                let scoreViewN = scoreView.setScore(in: jsonArray!, start:nowSegs+1, order:nowScoreView+2, isFirst:false, isLast: false)
-                nowSegs = scoreView.setScore(in: jsonArray!, start:nowSegs+1, order:nowScoreView+2, isFirst:false, isLast: scoreViewN>=allSegs-1)
-                
-                
-            }else{
-                hasMoreScore = false
-            }
-        }else {
-            // 播放上面樂譜
-            if hasMoreScore {
-                scoreView.startBar()
-            }
-            
-            // 載入下一條的樂譜
-            if nowSegs < allSegs - 1 {
-                hasMoreScore = true
-                // 載入樂譜
-                let score2ViewN = scoreView2.setScore(in: jsonArray!, start:nowSegs+1, order:nowScoreView+2, isFirst:false, isLast: false)
-                nowSegs = scoreView2.setScore(in: jsonArray!, start:nowSegs+1, order:nowScoreView+2, isFirst:false, isLast: score2ViewN>=allSegs-1)
-            }else{
-                hasMoreScore = false
-            }
-        }
-        nowScoreView = nowScoreView + 1
     }
     
 
     // scoreIndex：score, Pith：音名, time：拍子, barIndex：小節, NoteIndex：第幾個音符
     func noteShouldPlay(scoreIndex: Int, pitch: Int, time: Float, barIndex: Int, NoteIndex: Int) {
-        if NoteIndex != self.shouldNoteIndex || self.nowBarIndex != barIndex || NoteIndex == 0{
-            self.keyboardView.deselectAll()
-        }
-        self.lastBarIndex = self.nowBarIndex
+//        if NoteIndex != self.shouldNoteIndex || self.nowBarIndex != barIndex || NoteIndex == 0{
+//            self.keyboardView.deselectAll()
+//        }
         self.segsLabel.text = "小節 \(barIndex)"
         self.noteTimeLabel.text = "拍數 \(Int(time))"
-        self.nowBarIndex = barIndex + 1
-        if (self.nowBarIndex == 1 && self.lastBarIndex != 1){
-            self.didBarIndex += 1
-        }else {
-            self.didBarIndex += (self.nowBarIndex - self.lastBarIndex)
-        }
-        self.nowNoteCount += 1
-        self.progressSlider.value = Float(self.nowNoteCount) / Float(self.allNoteCount)
-        self.shouldNoteIndex = NoteIndex
-        self.nowScoreIndex = scoreIndex % 2
-        self.nowScoreView = scoreIndex
+
+//        self.progressSlider.value = Float(self.nowNoteCount) / Float(self.allNoteCount)
+
         self.pageControl.currentPage = scoreIndex
-        self.segsLabel.text = "小節 \(self.didBarIndex)"
+//        self.segsLabel.text = "小節 \(self.didBarIndex)"
         self.noteTimeLabel.text = "拍數 \(Int(time))"
-        if scoreIndex % 2 != 0 {
-            if pianoIsVisible {
-                self.scoreView.isHidden = true
-                self.scoreView2.isHidden = false
-            }
-        }else {
-//            self.showScoreView(file: song)
-            if pianoIsVisible {
-                self.scoreView.isHidden = false
-                self.scoreView2.isHidden = true
-            }
-        }
-//        print("nowScoreIndex: \(nowScoreIndex)")
-        self.setPageIndex()
-        self.keyboardView.userShouldPlay(note: pitch)
-//        print("self.jsonArray?[\(self.didBarIndex-1)][\(shouldNoteIndex)]")
-//        print("\(self.jsonArray?[self.didBarIndex-1][shouldNoteIndex][0])")
-        if isRecording {
-            let thisDidBarIndex = self.didBarIndex-1
-            let thisShouldNoteIndex = shouldNoteIndex
-            let thisTime = Date().timeIntervalSince1970
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) {
-                self.userDidPlay = false
-                let convertedNote = self.convertNoteNum(note: self.userDidPlayNote)
-                print("convertedNote: \(convertedNote)")
-                
-                if self.userDidPlayTime >= thisTime - self.deviation && self.userDidPlayTime <= thisTime + self.deviation {
-                    let shouldNote = self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"]
-                    if convertedNote != shouldNote {
-                        self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = convertedNote
-                        
-                    }
-                }else {
-                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = "1"
-                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["note"] = "-99"
-                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["rest"] = "4"
-                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["play"] = "false"
-                }
-            }
-        }
+        
+//        if scoreIndex % 2 != 0 {
+//            if pianoIsVisible {
+//                self.scoreView.isHidden = true
+//                self.scoreView2.isHidden = false
+//            }
+//        }else {
+//            if pianoIsVisible {
+//                self.scoreView.isHidden = false
+//                self.scoreView2.isHidden = true
+//            }
+//        }
+//        self.setPageIndex()
+//        self.keyboardView.userShouldPlay(note: pitch)
+//        if isRecording {
+//            let thisDidBarIndex = self.didBarIndex-1
+//            let thisShouldNoteIndex = shouldNoteIndex
+//            let thisTime = Date().timeIntervalSince1970
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) {
+//                self.userDidPlay = false
+//                let convertedNote = self.convertNoteNum(note: self.userDidPlayNote)
+//                print("convertedNote: \(convertedNote)")
+//
+//                if self.userDidPlayTime >= thisTime - self.deviation && self.userDidPlayTime <= thisTime + self.deviation {
+//                    let shouldNote = self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"]
+//                    if convertedNote != shouldNote {
+//                        self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = convertedNote
+//
+//                    }
+//                }else {
+//                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = "1"
+//                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["note"] = "-99"
+//                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["rest"] = "4"
+//                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["play"] = "false"
+//                }
+//            }
+//        }
     }
     
     func didFinishPlay() {
-//        print("didFinishPlay scoreOrder: \(scoreOrder)")
-        self.keyboardView.deselectAll()
-//        print("nowSegs: \(nowSegs), allSegs: \(allSegs)")
-        if (nowSegs<allSegs-1){
-            
-        }else{
-            if self.nowScoreView < self.allScoreViewCount {
-                if nowScoreIndex != 1 {
-                    self.scoreView2.startBar()
-                }else {
-                    self.scoreView.startBar()
-                }
-            }else {
-                if self.isRecording{
-                    
-                    self.isRecording = false
-                    self.setMain_tempplay_Btn(.Recorded)
-                    self.showActionAlertView(.PLAY_FINISHED)
-                    var allCount = 0
-                    var failedCount = 0
-                    for bars in self.jsonArray! {
-                        for bar in bars {
-                            allCount += 1
-                            if bar[0]["play"] == "false" {
-                                failedCount += 1
-                            }
-                        }
-                    }
-                    self.allCount = allCount
-                    self.failedCount = failedCount
-                }
-                self.shouldCleanNotes()
-                self.scoreView.stopBar()
-                self.scoreView2.stopBar()
-                Metronome.shared.stop()
-            }
-        }
+//        self.keyboardView.deselectAll()
+//        if (nowSegs<allSegs-1){
+//
+//        }else{
+//            if self.nowScoreView < self.allScoreViewCount {
+//
+//            }else {
+//                if self.isRecording{
+//
+//                    self.isRecording = false
+//                    self.setMain_tempplay_Btn(.Recorded)
+//                    self.showActionAlertView(.PLAY_FINISHED)
+//                    var allCount = 0
+//                    var failedCount = 0
+//                    for bars in self.jsonArray! {
+//                        for bar in bars {
+//                            allCount += 1
+//                            if bar[0]["play"] == "false" {
+//                                failedCount += 1
+//                            }
+//                        }
+//                    }
+//                    self.allCount = allCount
+//                    self.failedCount = failedCount
+//                }
+//                self.shouldCleanNotes()
+//                Metronome.shared.stop()
+//            }
+//        }
     }
     
     func shouldCleanNotes() {
         let imageGif = UIImage(named: "main_playstart")
         main_playstart_Btn.setImage(imageGif, for: .normal)
-        self.isPlaying = false
         self.bmpSlider.isUserInteractionEnabled = true
-        self.allScoreViewCount = 1
-        self.nowScoreIndex = 0
         self.didBegin = false
-        self.order = 0
-        self.nowSegs = 0
-        self.allSegs = 0
     }
     
     // 沒收到錢的炸彈
@@ -715,7 +653,7 @@ extension musicNotePlayVC: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
         print("play end")
         self.main_keyboard_Btn.isUserInteractionEnabled = true
         self.actionMenu.isUserInteractionEnabled = true
-        self.isPlaying = false
+//        self.isPlaying = false
     }
 }
 
@@ -774,15 +712,13 @@ extension musicNotePlayVC: actionAlertViewDelegate {
             case .PLAY_FINISHED?:
                 print("不储存")
                 self.shouldCleanNotes()
-                self.scoreView.stopBar()
-                self.scoreView2.stopBar()
+                self._scoreView.stop()
                 self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME, isreadLocal: false)
                 self.setMain_tempplay_Btn(.ON)
             case .PLAY_PAUSED?:
                 print("退出")
                 self.shouldCleanNotes()
-                self.scoreView.stopBar()
-                self.scoreView2.stopBar()
+                self._scoreView.stop()
                 self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME, isreadLocal: false)
                 self.setMain_tempplay_Btn(.ON)
             default:

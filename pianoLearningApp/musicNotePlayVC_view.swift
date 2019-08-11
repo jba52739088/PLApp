@@ -138,41 +138,41 @@ extension musicNotePlayVC {
     }
     
     func resetScoreViewHeight(completionHandler: @escaping () -> Void) {
-        if !pianoIsVisible {
-            pianoIsVisible = true
-            spaceView_1.isHidden = false
-            spaceView_2.isHidden = false
-            self.musicNoteView.frame.size.height -= self.keyboardView.getKeyboardHeight()
-            self.musicNoteViewBottom.constant += self.keyboardView.getKeyboardHeight()
-            self.actionMenu.frame = CGRect(origin: CGPoint(x: self.actionMenu.frame.origin.x, y: self.main_keyboard_Btn.frame.origin.y), size: self.main_keyboard_Btn.frame.size)
-            UIView.animate(withDuration:  0.3, animations: {
-                self.actionMenu.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y - self.keyboardView.getKeyboardHeight())
-                self.actionMenu.handlerButton?.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y)
-                for option in self.actionMenu.options {
-                    option.center = CGPoint(x: option.center.x, y: self.actionMenu.center.y)
-                }
-                self.musicNoteView.layoutIfNeeded()
-            }) { (_) in
-                completionHandler()
-            }
-        }else {
-            pianoIsVisible = false
-            spaceView_1.isHidden = true
-            spaceView_2.isHidden = true
-            self.musicNoteView.layoutIfNeeded()
-            self.musicNoteViewBottom.constant -= self.keyboardView.getKeyboardHeight()
-            self.musicNoteView.frame.size.height += self.keyboardView.getKeyboardHeight()
-            UIView.animate(withDuration:  0.3, animations: {
-                self.actionMenu.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y + self.keyboardView.getKeyboardHeight())
-                self.actionMenu.handlerButton?.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y)
-                for option in self.actionMenu.options {
-                    option.center = CGPoint(x: option.center.x, y: self.actionMenu.center.y)
-                }
-                self.musicNoteView.layoutIfNeeded()
-            }) { (_) in
-                completionHandler()
-            }
-        }
+//        if !pianoIsVisible {
+//            pianoIsVisible = true
+//            spaceView_1.isHidden = false
+//            spaceView_2.isHidden = false
+//            self.musicNoteView.frame.size.height -= self.keyboardView.getKeyboardHeight()
+//            self.musicNoteViewBottom.constant += self.keyboardView.getKeyboardHeight()
+//            self.actionMenu.frame = CGRect(origin: CGPoint(x: self.actionMenu.frame.origin.x, y: self.main_keyboard_Btn.frame.origin.y), size: self.main_keyboard_Btn.frame.size)
+//            UIView.animate(withDuration:  0.3, animations: {
+//                self.actionMenu.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y - self.keyboardView.getKeyboardHeight())
+//                self.actionMenu.handlerButton?.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y)
+//                for option in self.actionMenu.options {
+//                    option.center = CGPoint(x: option.center.x, y: self.actionMenu.center.y)
+//                }
+//                self.musicNoteView.layoutIfNeeded()
+//            }) { (_) in
+//                completionHandler()
+//            }
+//        }else {
+//            pianoIsVisible = false
+//            spaceView_1.isHidden = true
+//            spaceView_2.isHidden = true
+//            self.musicNoteView.layoutIfNeeded()
+//            self.musicNoteViewBottom.constant -= self.keyboardView.getKeyboardHeight()
+//            self.musicNoteView.frame.size.height += self.keyboardView.getKeyboardHeight()
+//            UIView.animate(withDuration:  0.3, animations: {
+//                self.actionMenu.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y + self.keyboardView.getKeyboardHeight())
+//                self.actionMenu.handlerButton?.center = CGPoint(x: self.actionMenu.center.x, y: self.actionMenu.center.y)
+//                for option in self.actionMenu.options {
+//                    option.center = CGPoint(x: option.center.x, y: self.actionMenu.center.y)
+//                }
+//                self.musicNoteView.layoutIfNeeded()
+//            }) { (_) in
+//                completionHandler()
+//            }
+//        }
     }
 }
 

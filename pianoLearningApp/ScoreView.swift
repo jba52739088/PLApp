@@ -8,6 +8,13 @@
 
 import UIKit
 
+protocol ScoreViewDelegate {
+    func unClickAllPianoKey()
+    func getProgress(value: Float)
+    func lightPianoKey(note: Int)
+    func didFinishWholeSheet()
+}
+
 class ScoreView: UIView {
 
     @IBOutlet weak var stackView: UIStackView!
@@ -16,7 +23,7 @@ class ScoreView: UIView {
     @IBOutlet weak var musicScoreViewB: MusicScoreView!
     @IBOutlet weak var bottomSpaceView: UIView!
     
-    
+    var delegate: ScoreViewDelegate!
     private var _isPlaying = false
     private var jsonArray: Array<Array<Array<Dictionary<String,String>>>>? // 譜data
     private var allScoreViewCount = 0 // 需要的MusicScoreView量
@@ -30,6 +37,8 @@ class ScoreView: UIView {
     private var allNoteCount = 0 // 所有音符數
     private var nowNoteCount = 0 // 目前彈到音符數
     private var nowScoreIndex = 0 // 跑到哪一個scoreView(0: 上面 1:下面)
+    private var shouldNoteIndex = 0 // 現在五線譜跑到目前小節中第n個音符 (判斷目前要亮的按鍵)
+    private var order = 0   // scroeViews下一次產生時起始小節
 //    private
 //    private
     
@@ -51,12 +60,17 @@ class ScoreView: UIView {
         }
     }
     
-    func stop() {
+    func pause() {
         if self.nowScoreIndex == 0 {
             self.musicScoreViewA.pauseBar()
         }else {
             self.musicScoreViewB.pauseBar()
         }
+    }
+    
+    func stop() {
+        self.musicScoreViewA.stopBar()
+        self.musicScoreViewB.stopBar()
     }
     
     func shouldResizeScoreView(completeHandler: () -> Void) {
@@ -138,15 +152,105 @@ class ScoreView: UIView {
 
 extension ScoreView: MusicScoreViewDelegate {
     func didFinishPlay() {
-        
+        self.delegate.unClickAllPianoKey()
+        if (nowSegs >= allSegs-1) {
+            if self.nowScoreView < self.allScoreViewCount {
+                if nowScoreIndex != 1 {
+                    self.musicScoreViewB.startBar()
+                }else {
+                    self.musicScoreViewA.startBar()
+                }
+            }else {
+//                if self.isRecording{
+//
+//                    self.isRecording = false
+//                    self.setMain_tempplay_Btn(.Recorded)
+//                    self.showActionAlertView(.PLAY_FINISHED)
+//                    var allCount = 0
+//                    var failedCount = 0
+//                    for bars in self.jsonArray! {
+//                        for bar in bars {
+//                            allCount += 1
+//                            if bar[0]["play"] == "false" {
+//                                failedCount += 1
+//                            }
+//                        }
+//                    }
+//                    self.allCount = allCount
+//                    self.failedCount = failedCount
+//                }
+                self._isPlaying = false
+                self.allScoreViewCount = 1
+                self.nowScoreIndex = 0
+                self.order = 0
+                self.nowSegs = 0
+                self.allSegs = 0
+                self.musicScoreViewA.stopBar()
+                self.musicScoreViewB.stopBar()
+                Metronome.shared.stop()
+            }
+        }
     }
     
     func shouldPlayNext() {
-        
+        self.delegate.unClickAllPianoKey()
+        if nowScoreView % 2 == 0 {
+            // 播放下面樂譜
+            if hasMoreScore{
+                musicScoreViewB.startBar()
+            }
+            
+            // 載入下一條的樂譜
+            if nowSegs < allSegs - 1 {
+                hasMoreScore = true
+                // 載入樂譜
+                let scoreViewN = musicScoreViewA.setScore(in: jsonArray!, start:nowSegs+1, order:nowScoreView+2, isFirst:false, isLast: false)
+                nowSegs = musicScoreViewA.setScore(in: jsonArray!, start:nowSegs+1, order:nowScoreView+2, isFirst:false, isLast: scoreViewN>=allSegs-1)
+                
+                
+            }else{
+                hasMoreScore = false
+            }
+        }else {
+            // 播放上面樂譜
+            if hasMoreScore {
+                musicScoreViewA.startBar()
+            }
+            
+            // 載入下一條的樂譜
+            if nowSegs < allSegs - 1 {
+                hasMoreScore = true
+                // 載入樂譜
+                let score2ViewN = musicScoreViewB.setScore(in: jsonArray!, start:nowSegs+1, order:nowScoreView+2, isFirst:false, isLast: false)
+                nowSegs = musicScoreViewB.setScore(in: jsonArray!, start:nowSegs+1, order:nowScoreView+2, isFirst:false, isLast: score2ViewN>=allSegs-1)
+            }else{
+                hasMoreScore = false
+            }
+        }
+        nowScoreView = nowScoreView + 1
     }
     
     func noteShouldPlay(scoreIndex: Int, pitch: Int, time: Float, barIndex: Int, NoteIndex: Int) {
-        
+        if NoteIndex != self.shouldNoteIndex || self.nowBarIndex != barIndex || NoteIndex == 0{
+            self.delegate.unClickAllPianoKey()
+            // 記錄上一個小節
+            self.lastBarIndex = self.nowBarIndex
+            // 更新目前小節
+            self.nowBarIndex = barIndex + 1
+            // 記錄已跑全部小節中第幾小節
+            if (self.nowBarIndex == 1 && self.lastBarIndex != 1){
+                self.didBarIndex += 1
+            }else {
+                self.didBarIndex += (self.nowBarIndex - self.lastBarIndex)
+            }
+            // 記錄已跑多少音符並送出
+            self.nowNoteCount += 1
+            self.delegate.getProgress(value: Float(self.nowNoteCount) / Float(self.allNoteCount))
+            self.shouldNoteIndex = NoteIndex
+            self.nowScoreIndex = scoreIndex % 2
+            self.nowScoreView = scoreIndex
+            self.delegate.lightPianoKey(note: pitch)
+        }
     }
     
     
