@@ -47,7 +47,7 @@ class LoginVC: UIViewController {
                 self.textFieldBackground.backgroundColor = UIColor.red
                 textFieldBackground.layer.borderColor = UIColor.red.cgColor
             }
-            APIManager.shared.login(account: acc, password: pwd) { [weak self] (status, data) in
+            APIManager.shared.loginWithReTry(account: acc, password: pwd) { [weak self] (status, data) in
                 if status {
                     // 成功登入
                     UserDefaults.standard.set(acc, forKey: PIANO_ACCOUNT)
@@ -97,7 +97,7 @@ class LoginVC: UIViewController {
         self.view.addSubview(loadingView)
         if AutoLoginTime == nil {
             if UserDefaultsKeys.ACCOUNT != ""{
-                APIManager.shared.login(account: UserDefaultsKeys.ACCOUNT, password: UserDefaultsKeys.PASSWORD) {  [weak self] (status, data)  in
+                APIManager.shared.loginWithReTry(account: UserDefaultsKeys.ACCOUNT, password: UserDefaultsKeys.PASSWORD) {  [weak self] (status, data)  in
                     if status {
                         self?.loginSucceed = true
                         self?.configMyUser(data: data!)

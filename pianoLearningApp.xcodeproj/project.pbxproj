@@ -59,6 +59,7 @@
 		FC7AECCA21457E4500BC0412 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AECC921457E4500BC0412 /* iOSDevCenters+GIF.swift */; };
 		FC7AECCD21457E6C00BC0412 /* playing.gif in Resources */ = {isa = PBXBuildFile; fileRef = FC7AECCB21457E6B00BC0412 /* playing.gif */; };
 		FC7AECCE21457E6C00BC0412 /* recording.gif in Resources */ = {isa = PBXBuildFile; fileRef = FC7AECCC21457E6C00BC0412 /* recording.gif */; };
+		FC7AEE2D232B413D00568793 /* musicNotePlay+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7AEE2C232B413D00568793 /* musicNotePlay+Keyboard.swift */; };
 		FC80D5922174EF1000CA8DA0 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC80D5912174EF1000CA8DA0 /* FeedbackView.swift */; };
 		FC80D5942174EFE700CA8DA0 /* VolumeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC80D5932174EFE600CA8DA0 /* VolumeView.xib */; };
 		FC80D5962174F76C00CA8DA0 /* VolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC80D5952174F76C00CA8DA0 /* VolumeView.swift */; };
@@ -163,6 +164,7 @@
 		FC7AECC921457E4500BC0412 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		FC7AECCB21457E6B00BC0412 /* playing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = playing.gif; sourceTree = "<group>"; };
 		FC7AECCC21457E6C00BC0412 /* recording.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = recording.gif; sourceTree = "<group>"; };
+		FC7AEE2C232B413D00568793 /* musicNotePlay+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "musicNotePlay+Keyboard.swift"; sourceTree = "<group>"; };
 		FC80D5912174EF1000CA8DA0 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		FC80D5932174EFE600CA8DA0 /* VolumeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VolumeView.xib; sourceTree = "<group>"; };
 		FC80D5952174F76C00CA8DA0 /* VolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeView.swift; sourceTree = "<group>"; };
@@ -340,8 +342,7 @@
 				FC3BABEF2142C93800E64A67 /* AppDelegate.swift */,
 				FC4450C0222271ED002EC413 /* Login */,
 				FCEA81CB216DE99D004D6FF3 /* TabBarVC.swift */,
-				FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */,
-				24D989422238FAB100891497 /* musicNotePlayVC_view.swift */,
+				FC7AEE2B232B40FE00568793 /* mainNotePlayPage */,
 				FC45128A219075AC0029E32C /* EmptyNoteView.xib */,
 				FC3BABF12142C93800E64A67 /* NoteSelectionVC.swift */,
 				FC3BABF32142C93800E64A67 /* Main.storyboard */,
@@ -374,6 +375,16 @@
 				FC96E831216293DC00D77780 /* RegisterStep2View.xib */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		FC7AEE2B232B40FE00568793 /* mainNotePlayPage */ = {
+			isa = PBXGroup;
+			children = (
+				FC7AECC32145786800BC0412 /* musicNotePlayVC.swift */,
+				FC7AEE2C232B413D00568793 /* musicNotePlay+Keyboard.swift */,
+				24D989422238FAB100891497 /* musicNotePlayVC_view.swift */,
+			);
+			path = mainNotePlayPage;
 			sourceTree = "<group>";
 		};
 		FCD50338217C9B0C00D4A52E /* AccountPage */ = {
@@ -623,6 +634,7 @@
 				FCE4F9E1217C3DCC005CC423 /* GradesRightVC.swift in Sources */,
 				248E49FA22351076004BD15C /* Sheet.swift in Sources */,
 				FCF323F3228833D600637BB0 /* ASheetRecordCell.swift in Sources */,
+				FC7AEE2D232B413D00568793 /* musicNotePlay+Keyboard.swift in Sources */,
 				FC3BABF22142C93800E64A67 /* NoteSelectionVC.swift in Sources */,
 				24D989432238FAB100891497 /* musicNotePlayVC_view.swift in Sources */,
 				FC96E836216393C300D77780 /* AlertView.swift in Sources */,

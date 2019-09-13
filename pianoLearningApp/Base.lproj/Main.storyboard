@@ -1733,7 +1733,7 @@ I</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfL-JV-ZTR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872" y="-684"/>
+            <point key="canvasLocation" x="871.875" y="-684.33382137628109"/>
         </scene>
         <!--Grades RightVC-->
         <scene sceneID="7Ja-zO-iSL">

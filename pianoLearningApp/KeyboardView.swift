@@ -55,7 +55,7 @@ class KeyboardView: UIView {
             for layer in subLayers {
                 if layer.name == "true" {
                     layer.removeFromSuperlayer()
-                    if let index = didPlayArray.index(of: note) {
+                    if let index = didPlayArray.firstIndex(of: note) {
                         didPlayArray.remove(at: index)
                     }
                 }
@@ -72,7 +72,7 @@ class KeyboardView: UIView {
                 for layer in subLayers {
                     if layer.name == "false" {
                         layer.removeFromSuperlayer()
-                        if let index = shouldPlayArray.index(of: item) {
+                        if let index = shouldPlayArray.firstIndex(of: item) {
                             shouldPlayArray.remove(at: index)
                         }
                     }

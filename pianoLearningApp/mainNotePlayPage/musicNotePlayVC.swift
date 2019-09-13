@@ -5,12 +5,10 @@
 
 
 import UIKit
-//import LSFloatingActionMenu
 import AudioKit
 import AVFoundation
 import AVAudioSessionSetCategorySwift
 import SwiftyJSON
-//import HHFloatingView
 
 class musicNotePlayVC: UIViewController {
     
@@ -123,7 +121,7 @@ class musicNotePlayVC: UIViewController {
         
         spaceView_1.isHidden = true
         spaceView_2.isHidden = true
-        midi.addListener(self)
+        midi.addListener(self)   
         setPianoView()
         let imageGif = UIImage(named: "main_playstart")
         main_playstart_Btn.setImage(imageGif, for: .normal)
@@ -134,14 +132,14 @@ class musicNotePlayVC: UIViewController {
         // 若之前無讀取樂譜之情況
         if UserDefaultsKeys.LAST_NOTE_NAME == "" {
             emptyNoteView = Bundle.main.loadNibNamed("EmptyNoteView", owner: self, options: nil)?.first as! UIView
-            emptyNoteView.frame = self.noteBackground.bounds
+            emptyNoteView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height: self.view.frame.height * 0.7))
             self.noteBackground.addSubview(emptyNoteView)
         }
         
         // 炸彈
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        let date = formatter.date(from: "2019/08/30 00:05")!
+        let date = formatter.date(from: "2019/09/15 00:05")!
         let now = Date()
         if now >= date {
             self.boomIfNoMoney()
@@ -174,23 +172,7 @@ class musicNotePlayVC: UIViewController {
         }
     }
     
-    func setMidiInput() {
-        
-        midi.openInput()
-        let ends:[EndpointInfo] = midi.destinationInfos
-        for endpoint in ends {
-            print(endpoint.name + ":" + endpoint.displayName)
-            midi.openOutput(name: endpoint.name)
-        }
-        if midi.inputNames.count > 1 {
-            self.showAlertView(message: "MIDI连接成功！！")
-//            for item in midi.inputNames {
-//                if item == "KEYBOARD" {
-//
-//                }
-//            }
-        }
-    }
+    
 
     func setPageIndex() {
         self.pageControl.numberOfPages = self.allScoreViewCount
@@ -459,63 +441,7 @@ class musicNotePlayVC: UIViewController {
     
 }
 
-//MARK: - 監聽鍵盤點擊
-extension musicNotePlayVC: AKMIDIListener {
-    func receivedMIDISetupChange() {
-        if isPlaying {
-            self.onClick_main_playstart_Btn(self)
-        }
-        if (self.midi.inputNames.count > 0) {
-//            for item in self.midi.inputNames {
-//                if item == "KEYBOARD" {
-            
-            self.isMidi_on = true
-            self.setMidiInput()
-            if isPlaying {
-                self.setMain_tempplay_Btn(.Recording)
-            }else {
-                self.setMain_tempplay_Btn(.ON)
-            }
-            
-            
-//                    return
-//                }
-//            }
-        }else {
-            self.isMidi_on = false
-            self.setMain_tempplay_Btn(.OFF)
-        }
-        
-    }
-    
-    func receivedMIDINoteOn(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
-        DispatchQueue.main.async {
-            self.keyboardView.userDidPlay(note: Int(noteNumber))
-            self.isRecording = self.isMidi_on
-            if self.isRecording {
-                if !self.userHasPlay {
-                    self.userHasPlay = true
-                    self.setMain_tempplay_Btn(.Recording)
-                }
-                self.userDidPlay = true
-                self.userDidPlayNote = "\(noteNumber)"
-                self.userDidPlayTime = Date().timeIntervalSince1970
-            }else {
-                 self.userDidPlay = true
-            }
-            
-        }
-    }
-    
-    func receivedMIDINoteOff(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
-        DispatchQueue.main.async {
-            self.keyboardView.userDidFinishPlay(note: Int(noteNumber))
-            if self.isRecording {
-                print("noteNumber: \(noteNumber)")
-            }
-        }
-    }
-}
+
 
 //MARK: - MusicScoreViewDelegate
 

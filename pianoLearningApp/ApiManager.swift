@@ -22,6 +22,26 @@ class APIManager {
     }
     
     /// 登入
+    func loginWithReTry(account: String, password: String, completionHandler: @escaping (_ status: Bool, _ data: [String : AnyObject]?) -> Void){
+        var retryTimes = 0
+        func retry () {
+            retryTimes += 1
+            print("retryTimes: \(retryTimes)")
+            self.login(account: account, password: password) { (isSucceed, data) in
+                if isSucceed {
+                    completionHandler(isSucceed, data)
+                }else {
+                    if retryTimes > 3 {
+                        completionHandler(false, data)
+                    }else {
+                        retry ()
+                    }
+                }
+            }
+        }
+        retry ()
+    }
+    
     func login(account: String, password: String, completionHandler: @escaping (_ status: Bool, _ data: [String : AnyObject]?) -> Void){
         let parameters = ["cmd": "login", "account": account, "passwd": password] as [String : Any]
         Alamofire.request(URL_MEMBER, method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
