@@ -22,6 +22,7 @@ extension musicNotePlayVC {
         }
         if midi.inputNames.count > 1 {
             self.showAlertView(message: "MIDI连接成功！！")
+            isMidi_on = true
         }
     }
 }

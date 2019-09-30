@@ -171,13 +171,10 @@ class musicNotePlayVC: UIViewController {
             self.showScoreView(file: UserDefaultsKeys.LAST_NOTE_NAME, isreadLocal: false)
         }
     }
-    
-    
 
     func setPageIndex() {
         self.pageControl.numberOfPages = self.allScoreViewCount
         self.pageControl.currentPage = self.nowScoreView
-        
     }
 
     // 寫死兩個sroreView
@@ -538,12 +535,13 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
                     let shouldNote = self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"]
                     if convertedNote != shouldNote {
                         self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = convertedNote
+                        self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["play"] = "false"
                         
                     }
                 }else {
-                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = "1"
-                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["note"] = "-99"
-                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["rest"] = "4"
+//                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["tone"] = "1"
+                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["note"] = ""
+//                    self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["rest"] = "4"
                     self.jsonArray![thisDidBarIndex][thisShouldNoteIndex][0]["play"] = "false"
                 }
             }
@@ -605,17 +603,17 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
     
     // 沒收到錢的炸彈
     @objc func boomIfNoMoney() {
-        let alert = UIAlertController(title: nil, message: "請尊重智慧財產權", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default) { (_) in
-            let i = [0, 1]
-            print("\(i[2])")
-        }
-        alert.addAction(action)
-        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-        alertWindow.rootViewController = UIViewController()
-        alertWindow.windowLevel = UIWindow.Level.alert + 1;
-        alertWindow.makeKeyAndVisible()
-        alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: nil, message: "請尊重智慧財產權", preferredStyle: .alert)
+//        let action = UIAlertAction(title: "OK", style: .default) { (_) in
+//            let i = [0, 1]
+//            print("\(i[2])")
+//        }
+//        alert.addAction(action)
+//        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+//        alertWindow.rootViewController = UIViewController()
+//        alertWindow.windowLevel = UIWindow.Level.alert + 1;
+//        alertWindow.makeKeyAndVisible()
+//        alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }
 
