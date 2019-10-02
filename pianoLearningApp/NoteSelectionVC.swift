@@ -10,6 +10,7 @@ import UIKit
 
 protocol NoteSelectionDelegate {
     func didSelectNote(name: String)
+    func didSelectDebugNote(name: String)
 }
 
 class NoteSelectionVC: UIViewController {

@@ -126,6 +126,7 @@ class MusicScoreView: UIView {
             barX = drawX
             // 讀取 scoreArray 來畫出音符
             var pos = drawX + noteW   // 初始 x 位置
+            var spos = pos;
             if (scoreArray != nil){
 //                print("a score")
                 steps = []
@@ -205,6 +206,15 @@ class MusicScoreView: UIView {
                         }
                         pos = pos + noteW*4
                     }
+                    
+                    
+                    // Dictonary 列 -> [Set小節s]
+                    if errorSegs.keys.contains(scoreOrder) {
+                        if (errorSegs[scoreOrder]?.contains(s))!{
+                            drawErrorSegment(in: context, x1: spos/2, x2: pos/2)
+                        }
+                    }
+                    spos = pos
                     
                     // 每個 scoreView 的最後一小節, 不用再畫分隔線, 其他都要畫
                     if s < (scoreArray?.count)!-1 {
@@ -871,4 +881,86 @@ class MusicScoreView: UIView {
         context.drawPath(using: .stroke)
     }
     
+    
+    // 顯示錯誤小節
+    func drawErrorSegment(in context: CGContext, x1: CGFloat, x2: CGFloat){
+        let pinkLayer = CALayer()
+        _ = self.frame.origin.x*9
+        
+        pinkLayer.frame = CGRect(x: x1-noteW/2, y: unitH*0, width: (x2-x1), height: unitH*10)
+        pinkLayer.backgroundColor = UIColor.red.cgColor
+        pinkLayer.opacity = 0.4
+        
+        
+        layer.addSublayer(pinkLayer)
+    }
+    
+    var errorSegs:[Int:[Int]] = [:];
+    
+    func setPlayScoreView(in jsonArray: Array<Array<Array<Dictionary<String,String>>>>) -> [Int] {
+        isFirstSeg = false
+        var count = 1
+        var nDrawX = drawX
+        print("drawX = \(drawX)")
+        
+        var wrongSegs: [Int] = []
+        
+        errorSegs = [:]
+        
+        noteArray = []
+        var ss = 0
+        // 每一小節
+        for i in 0..<jsonArray.count {
+            let seg = jsonArray[i]
+            
+            noteArray?.append([])  // 加一空小節陣列
+            if errorSegs[count-1] == nil { errorSegs[count-1] = []}
+            
+            // 每一直行
+            here: for s in 0 ..< seg.count {
+                nDrawX = nDrawX + noteW*4
+                noteArray?[i].append(true)// 加一空直列 Bool = true
+                print("\(i) : nDrawX = \(nDrawX)")
+                
+                for n in 0 ..< seg[s].count {
+                    if (seg[s][n]["play"] ?? "" == "false"){
+                        errorSegs[count-1]?.append(ss)
+                        print("\(count-1) : \(ss)")
+                        if (wrongSegs.firstIndex(where: {$0 == i}) == nil){
+                            wrongSegs.append(i)
+                        }
+                        break here;
+                    }
+                }
+                
+            }
+            
+            ss = ss + 1;
+            
+            print("----")
+            if nDrawX > viewW - noteW*4 {
+                print("========= \(viewW)")
+                // 一排結束, 尚有資料
+                count = count + 1
+                ss = 0
+                nDrawX = drawX
+            }
+        }
+        
+//        setNeedsDisplay();
+        
+//        setErrSegs(errorSegments: errorSegs);
+        
+        return wrongSegs
+    }
+    
+    func setErrSegs(errorSegments: [Int:[Int]]){
+        errorSegs = errorSegments;
+//        errorSegs = [0: [3,4], 1: [2], 2:[]]
+        setNeedsDisplay()
+    }
+    
+    func getWrongSeg() -> [Int:[Int]] {
+        return errorSegs
+    }
 }

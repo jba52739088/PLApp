@@ -264,6 +264,21 @@ extension GradesRightVC: ASheetRecordCellDelegate {
     
     func didTapPraticeBtn(sheet: Sheet) {
         print("pratice: \(sheet.name) ")
+        let sheetName = sheet.name
+        if let debugVC = UIStoryboard(name: "Debug", bundle: nil).instantiateInitialViewController() as? DebugVC {
+//            let window = UIApplication.shared.keyWindow!
+            debugVC.view.frame = self.parentVC.TabBar.view.frame
+            self.parentVC.TabBar.addChild(debugVC)
+            self.parentVC.TabBar.view.addSubview(debugVC.view)
+            debugVC.didMove(toParent: self.parentVC.TabBar)
+            debugVC.setSongName(sheetName)
+//            debugVC.showUserScoreView(file: sheetName, isreadLocal: true)
+        }
+        
+        
+        
+//        self.parentVC.delegate.didSelectDebugNote(name: sheetName)
+//        self.parentVC.TabBar.jumpToViewControllerBy(tag: 0)
     }
     
     func didTapRemoveBtn(sheet: Sheet) {

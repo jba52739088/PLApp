@@ -14,6 +14,7 @@ class GradesVC: UIViewController {
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var buttonBottomView: [UIView]!
     
+    var TabBar: TabBarVC!
     var gradesLeftViewController: GradesLeftVC!
     var gradesRightViewController: GradesRightVC!
     var viewControllers: [UIViewController]!

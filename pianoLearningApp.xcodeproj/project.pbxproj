@@ -37,6 +37,8 @@
 		FC05D2132188B50600FF2D98 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05D2122188B50600FF2D98 /* SelectionView.swift */; };
 		FC21598422C260E000F0084E /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC21598322C260E000F0084E /* KeyboardView.swift */; };
 		FC21598622C260ED00F0084E /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC21598522C260ED00F0084E /* KeyboardView.xib */; };
+		FC21F57F23437019008A9BE8 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC21F57E23437019008A9BE8 /* Debug.storyboard */; };
+		FC21F581234382D4008A9BE8 /* DebugVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC21F580234382D4008A9BE8 /* DebugVC.swift */; };
 		FC229A7021C7000D00D16D80 /* didSendFeedback.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC229A6F21C7000D00D16D80 /* didSendFeedback.xib */; };
 		FC229A7221C7071200D16D80 /* didSendFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC229A7121C7071200D16D80 /* didSendFeedback.swift */; };
 		FC2AF1382158D61100A0A554 /* checkBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2AF1372158D61000A0A554 /* checkBox.swift */; };
@@ -140,6 +142,8 @@
 		FC05D2122188B50600FF2D98 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		FC21598322C260E000F0084E /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		FC21598522C260ED00F0084E /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
+		FC21F57E23437019008A9BE8 /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
+		FC21F580234382D4008A9BE8 /* DebugVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugVC.swift; sourceTree = "<group>"; };
 		FC229A6F21C7000D00D16D80 /* didSendFeedback.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = didSendFeedback.xib; sourceTree = "<group>"; };
 		FC229A7121C7071200D16D80 /* didSendFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = didSendFeedback.swift; sourceTree = "<group>"; };
 		FC2AF1372158D61000A0A554 /* checkBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkBox.swift; sourceTree = "<group>"; };
@@ -346,6 +350,8 @@
 				FC45128A219075AC0029E32C /* EmptyNoteView.xib */,
 				FC3BABF12142C93800E64A67 /* NoteSelectionVC.swift */,
 				FC3BABF32142C93800E64A67 /* Main.storyboard */,
+				FC21F57E23437019008A9BE8 /* Debug.storyboard */,
+				FC21F580234382D4008A9BE8 /* DebugVC.swift */,
 				FC2AF1372158D61000A0A554 /* checkBox.swift */,
 				FC3BABF62142C93800E64A67 /* Assets.xcassets */,
 				FC3BABF82142C93800E64A67 /* LaunchScreen.storyboard */,
@@ -515,6 +521,7 @@
 				FCEC920C22929EEA0087E86E /* SearchHeaderCell.xib in Resources */,
 				FC05D2112188B4E300FF2D98 /* SelectionView.xib in Resources */,
 				FC45128D2190B08B0029E32C /* NoteSelectionListView.xib in Resources */,
+				FC21F57F23437019008A9BE8 /* Debug.storyboard in Resources */,
 				FC3BABFA2142C93800E64A67 /* LaunchScreen.storyboard in Resources */,
 				FC96E832216293DC00D77780 /* RegisterStep2View.xib in Resources */,
 				FC01E3C522E5E154003B42CF /* click.wav in Resources */,
@@ -627,6 +634,7 @@
 				FC8192C62174E06A0076E137 /* QAView.swift in Sources */,
 				FC63B900229C3A2F005F1622 /* SearchNothingCell.swift in Sources */,
 				FC96E8342162943B00D77780 /* RegisterStep2View.swift in Sources */,
+				FC21F581234382D4008A9BE8 /* DebugVC.swift in Sources */,
 				FC05D202218405CA00FF2D98 /* LoadingView.swift in Sources */,
 				FC8192CA2174E1F50076E137 /* LanguageView.swift in Sources */,
 				FC01E3C222E49651003B42CF /* HHFloatingViewButton.swift in Sources */,

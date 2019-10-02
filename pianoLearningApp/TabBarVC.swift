@@ -60,6 +60,7 @@ class TabBarVC: UIViewController {
         sheetsViewController.TabBar = self
         sheetsViewController.delegate = playViewController
         gradesViewController.delegate = playViewController
+        gradesViewController.TabBar = self
         viewControllers = [playViewController, sheetsViewController, gradesViewController, accountViewController]
         buttonBottomView[selectedIndex].isHidden = false
         didTapTabBar(buttons[selectedIndex])

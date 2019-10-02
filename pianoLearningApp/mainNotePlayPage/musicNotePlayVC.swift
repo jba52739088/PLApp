@@ -139,7 +139,7 @@ class musicNotePlayVC: UIViewController {
         // 炸彈
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        let date = formatter.date(from: "2019/09/15 00:05")!
+        let date = formatter.date(from: "2019/11/15 00:05")!
         let now = Date()
         if now >= date {
             self.boomIfNoMoney()
@@ -255,6 +255,44 @@ class musicNotePlayVC: UIViewController {
                 nowSegs = scoreView2.setScore(in: jsonArray, start:nowSegs+1, order: 1, isFirst: false, isLast: score2ViewN>=allSegs-1)
             }
             //
+        }catch{
+            print(error.localizedDescription)
+        }
+    }
+    
+    // 除錯
+    func showUserScoreView(file: String, isreadLocal: Bool) {
+
+        allSegs = 0 // 計算出所有小節
+        nowSegs = 0 // 目前呈現的小節數
+        // 讀取 JSON 字串資料
+        var thisUrl = Bundle.main.url(forResource: file, withExtension: "json")
+        if thisUrl == nil {
+            thisUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(file).json")
+        }
+        self.currentSongName = file
+        guard let url = thisUrl else { return }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let jsonArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! Array<Array<Array<Dictionary<String,String>>>>
+            
+            // 計算共幾個小節
+            self.jsonArray = jsonArray
+            allSegs = jsonArray.count
+            // 計算共幾個音符
+            for items in jsonArray {
+                for item in items {
+                    self.allNoteCount += item.count
+                }
+            }
+            scoreView.delegate = self
+            // 載入樂譜有幾列, 需要幾個 ScoreView
+            let _ = scoreView.setScore(in: jsonArray, start: nowSegs, order: 0, isFirst: true, isLast: nowSegs>=allSegs-1)
+            let _ = scoreView.setPlayScoreView(in: jsonArray)
+            scoreView2.alpha = 0
+
+            
         }catch{
             print(error.localizedDescription)
         }
@@ -603,17 +641,17 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
     
     // 沒收到錢的炸彈
     @objc func boomIfNoMoney() {
-//        let alert = UIAlertController(title: nil, message: "請尊重智慧財產權", preferredStyle: .alert)
-//        let action = UIAlertAction(title: "OK", style: .default) { (_) in
-//            let i = [0, 1]
-//            print("\(i[2])")
-//        }
-//        alert.addAction(action)
-//        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-//        alertWindow.rootViewController = UIViewController()
-//        alertWindow.windowLevel = UIWindow.Level.alert + 1;
-//        alertWindow.makeKeyAndVisible()
-//        alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: nil, message: "timmmmmme out", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (_) in
+            let i = [0, 1]
+            print("\(i[2])")
+        }
+        alert.addAction(action)
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = UIViewController()
+        alertWindow.windowLevel = UIWindow.Level.alert + 1;
+        alertWindow.makeKeyAndVisible()
+        alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -681,6 +719,10 @@ extension musicNotePlayVC: NoteSelectionDelegate {
             self.self.emptyNoteView = nil
         }
         self.showScoreView(file: name, isreadLocal: false)
+    }
+    
+    func didSelectDebugNote(name: String) {
+        self.showUserScoreView(file: name, isreadLocal: false)
     }
 }
 
