@@ -55,6 +55,7 @@ class LoginVC: UIViewController {
                     UserDefaults.standard.synchronize()
                     self?.configMyUser(data: data!)
                     if let mainVC = self?.storyboard?.instantiateViewController(withIdentifier: "TabBarVC") as? TabBarVC {
+                        mainVC.modalPresentationStyle = .fullScreen
                         self?.present(mainVC, animated: true, completion: nil)
                     }
                 }else {
@@ -62,7 +63,8 @@ class LoginVC: UIViewController {
                     self?.textFieldBackground.backgroundColor = UIColor.red
                     self?.textFieldBackground.layer.borderColor = UIColor.red.cgColor
                     if data != nil {
-                        self?.showMessageAlert(title: "", message: "\(data)")
+//                        self?.showMessageAlert(title: "", message: "\(data)")
+                        self?.showMessageAlert(title: "", message: "帐号或密码错误")
                     }
                 }
             }
@@ -146,6 +148,7 @@ class LoginVC: UIViewController {
         }
         if loginSucceed {
             if let mainVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarVC") as? TabBarVC {
+                mainVC.modalPresentationStyle = .fullScreen
                 self.present(mainVC, animated: true, completion: nil)
             }
         }

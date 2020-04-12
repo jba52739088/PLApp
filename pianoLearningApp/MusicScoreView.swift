@@ -104,6 +104,7 @@ class MusicScoreView: UIView {
     
     var scoreOrder:Int = 0
     var playMode = 0    // 0: 兩手; 1:左手; 2:右手
+    var errorSegs:[Int:[Int]] = [:];
     
     override func draw(_ rect: CGRect) {
         if let context = UIGraphicsGetCurrentContext() {
@@ -111,7 +112,7 @@ class MusicScoreView: UIView {
             
             let t = context.ctm.inverted()
             context.concatenate(t)
-            
+            layer.sublayers?.forEach { $0.removeFromSuperlayer() }
             viewW = self.frame.size.width * 2
             viewH = self.frame.size.height * 2
             unitH = viewH / 20 // 3 + 4 + 6 + 4 + 3
@@ -230,6 +231,16 @@ class MusicScoreView: UIView {
         }
     }
     
+    // 設定糾錯的小節資料
+    // var errorSegs:[Int:[Int]] = [:] // Dictionary Int->Set<Int>
+    // ex.
+    //     errorSegs[0] = [1,3]     //  第0列第1,3小節
+    //     errorSegs[1] = [2,4,5]   //  第1列第2,4,5小節
+    func setErrSegs(errorSegments: [Int:[Int]]){
+        errorSegs = errorSegments;
+        setNeedsDisplay()
+    }
+    
     func setBeat(setBeat: Float){
         beat = setBeat
         barImageView?.removeFromSuperview()
@@ -241,25 +252,25 @@ class MusicScoreView: UIView {
     
     // 初始化進度條, 以及播放輸出
     func initBar(){
-        if !didSet && isFirstSeg {
-            AudioKit.output = bank
-            bank.attackDuration = 0.05
-            bank.decayDuration = 0.1
-            bank.releaseDuration = 0.15
-            bank.rampDuration = 1
-            bank.vibratoRate = 0
-            bank.vibratoDepth = 0
-            
-            let table = AKTable(.triangle, phase: 0, count:1024)
-            bank.waveform = table
-            didSet = true
-        }
-        
-        
-        do{
-            try AudioKit.start()
-        }catch{}
-        
+//        if !didSet && isFirstSeg {
+//            AudioKit.output = bank
+//            bank.attackDuration = 0.05
+//            bank.decayDuration = 0.1
+//            bank.releaseDuration = 0.15
+//            bank.rampDuration = 1
+//            bank.vibratoRate = 0
+//            bank.vibratoDepth = 0
+//
+//            let table = AKTable(.triangle, phase: 0, count:1024)
+//            bank.waveform = table
+//            didSet = true
+//        }
+//
+//
+//        do{
+//            try AudioKit.start()
+//        }catch{}
+//
         // 第一個音符: (barX+noteW/2)/2
         // 第二個音符: (barX+noteW/2)/2+noteW*2
         // 所以間距為: noteW*2
@@ -358,7 +369,7 @@ class MusicScoreView: UIView {
             if isSharp {
                 pnote = pnote + UInt8(0.5)
             }
-            bank.play(noteNumber: pnote, velocity: 70)
+            bank.play(noteNumber: pnote, velocity: .max)
             usleep(40*1000)
             bank.stop(noteNumber: pnote)
         }
@@ -366,9 +377,17 @@ class MusicScoreView: UIView {
     
     // 播放指定的note, 延遲 length /1000 秒
     func playNote(note: MIDINoteNumber, length: UInt32){
+        // right hand mode
+        if note < 56 && playMode == 2 {
+            return
+        }
+        // left hand mode
+        if note >= 56 && playMode == 1 {
+            return
+        }
         let q1 = DispatchQueue(label:"play")
         q1.async {
-            bank.play(noteNumber: note, velocity: 70)
+            bank.play(noteNumber: note, velocity: .max)
             usleep(length * 1000)
             bank.stop(noteNumber: note)
         }
@@ -515,7 +534,6 @@ class MusicScoreView: UIView {
 //                print("\(i) : nDrawX = \(nDrawX)")
             }
 //            print("----")
-            
             if nDrawX > viewW - noteW*4 {
 //                print("========= \(viewW)")
                 // 一排結束, 尚有資料
@@ -525,6 +543,74 @@ class MusicScoreView: UIView {
         }
         
         return count
+    }
+    
+    func clearErrSegs(){
+        errorSegs = [:]
+        //setNeedsDisplay();
+    }
+    
+    func setPlayScoreView(in jsonArray: Array<Array<Array<Dictionary<String,String>>>>) -> [Int] {
+        var count = 1
+        var nDrawX = drawX
+//        print("drawX = \(drawX)")
+        
+        var wrongSegs: [Int] = []
+        
+        errorSegs = [:]
+        
+        noteArray = []
+        var ss = 0
+        // 每一小節
+        for i in 0..<jsonArray.count {
+            let seg = jsonArray[i]
+            
+            noteArray?.append([])  // 加一空小節陣列
+            if errorSegs[count-1] == nil { errorSegs[count-1] = []}
+            
+            // 每一直行
+            here: for s in 0 ..< seg.count {
+                nDrawX = nDrawX + noteW*4
+                noteArray?[i].append(true)// 加一空直列 Bool = true
+//                print("\(i) : nDrawX = \(nDrawX)")
+                
+                for n in 0 ..< seg[s].count {
+                    if (seg[s][n]["play"] ?? "" == "false"){
+                        errorSegs[count-1]?.append(ss)
+//                        print("\(count-1) : \(ss)")
+                        if (wrongSegs.firstIndex(where: {$0 == i}) == nil){
+                            wrongSegs.append(i)
+                        }
+                        break here;
+                    }
+                }
+                
+            }
+            
+            ss = ss + 1;
+            
+//            print("----")
+            if nDrawX >= viewW - noteW*4 {
+//                print("========= \(viewW)")
+                // 一排結束, 尚有資料
+                if let index = wrongSegs.firstIndex(where: {$0 == (ss - 1)}){
+                    errorSegs[count-1]?.remove(at: index)
+                    if errorSegs[count] == nil { errorSegs[count] = []}
+                    errorSegs[count]?.append(0)
+                    ss = 1
+                }else {
+                   ss = 0
+                }
+                count = count + 1
+                nDrawX = drawX
+            }
+        }
+        
+        //        setNeedsDisplay();
+        
+        //        setErrSegs(errorSegments: errorSegs);
+        
+        return wrongSegs
     }
     
     
@@ -644,7 +730,7 @@ class MusicScoreView: UIView {
         if Int(tonePos*10) % 10 != 0 {
             isDrawSeg = true
         }
-        if tone <= -1 && tone >= -3{
+        if tone <= -1 && tone >= -3 {
             // 畫兩條
             isDrawSeg2 = true
         }
@@ -708,14 +794,20 @@ class MusicScoreView: UIView {
                 }
                 
                 // 繪出音符影像
-                if noteArray?[seg][col] ?? true {
-                    context.draw(imgNoteHead!, in:
-                        CGRect(x:x-noteW, y:unitH*tonePos,
-                               width:noteW,height:unitH*1))
-                }else{
+                if isError {
                     context.draw(imgRNoteHead!, in:
                         CGRect(x:x-noteW, y:unitH*tonePos,
                                width:noteW,height:unitH*1))
+                }else{
+                    if noteArray?[seg][col] ?? true {
+                        context.draw(imgNoteHead!, in:
+                            CGRect(x:x-noteW, y:unitH*tonePos,
+                                   width:noteW,height:unitH*1))
+                    }else{
+                        context.draw(imgRNoteHead!, in:
+                            CGRect(x:x-noteW, y:unitH*tonePos,
+                                   width:noteW,height:unitH*1))
+                    }
                 }
                 
             }else{
@@ -869,7 +961,7 @@ class MusicScoreView: UIView {
     func clearAllNotes(){
         scoreArray = nil
 //        barImageView?.removeFromSuperview()
-        barImageView = nil
+        barImageView?.isHidden = true;
         setNeedsDisplay()
     }
     
@@ -895,70 +987,8 @@ class MusicScoreView: UIView {
         layer.addSublayer(pinkLayer)
     }
     
-    var errorSegs:[Int:[Int]] = [:];
     
-    func setPlayScoreView(in jsonArray: Array<Array<Array<Dictionary<String,String>>>>) -> [Int] {
-        isFirstSeg = false
-        var count = 1
-        var nDrawX = drawX
-        print("drawX = \(drawX)")
-        
-        var wrongSegs: [Int] = []
-        
-        errorSegs = [:]
-        
-        noteArray = []
-        var ss = 0
-        // 每一小節
-        for i in 0..<jsonArray.count {
-            let seg = jsonArray[i]
-            
-            noteArray?.append([])  // 加一空小節陣列
-            if errorSegs[count-1] == nil { errorSegs[count-1] = []}
-            
-            // 每一直行
-            here: for s in 0 ..< seg.count {
-                nDrawX = nDrawX + noteW*4
-                noteArray?[i].append(true)// 加一空直列 Bool = true
-                print("\(i) : nDrawX = \(nDrawX)")
-                
-                for n in 0 ..< seg[s].count {
-                    if (seg[s][n]["play"] ?? "" == "false"){
-                        errorSegs[count-1]?.append(ss)
-                        print("\(count-1) : \(ss)")
-                        if (wrongSegs.firstIndex(where: {$0 == i}) == nil){
-                            wrongSegs.append(i)
-                        }
-                        break here;
-                    }
-                }
-                
-            }
-            
-            ss = ss + 1;
-            
-            print("----")
-            if nDrawX > viewW - noteW*4 {
-                print("========= \(viewW)")
-                // 一排結束, 尚有資料
-                count = count + 1
-                ss = 0
-                nDrawX = drawX
-            }
-        }
-        
-//        setNeedsDisplay();
-        
-//        setErrSegs(errorSegments: errorSegs);
-        
-        return wrongSegs
-    }
     
-    func setErrSegs(errorSegments: [Int:[Int]]){
-        errorSegs = errorSegments;
-//        errorSegs = [0: [3,4], 1: [2], 2:[]]
-        setNeedsDisplay()
-    }
     
     func getWrongSeg() -> [Int:[Int]] {
         return errorSegs

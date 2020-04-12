@@ -14,6 +14,7 @@ protocol BookDownloadDelegate {
 
 class BookDownloadView: UIView {
     @IBOutlet weak var downloadView: UIView!
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var levellabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var button: UIButton!
@@ -21,6 +22,9 @@ class BookDownloadView: UIView {
     var delegate: BookDownloadDelegate!
     
     func initView(level: String) {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(removeDownLoadView))
+        self.backgroundView.addGestureRecognizer(tap)
+        self.backgroundView.isUserInteractionEnabled = true
         downloadView.layer.cornerRadius = 5
         downloadView.layer.masksToBounds = true
         downloadView.clipsToBounds = true
@@ -44,5 +48,9 @@ class BookDownloadView: UIView {
     
     @IBAction func tapButton(_ sender: Any) {
         self.delegate.didTapButton()
+    }
+    
+    @objc func removeDownLoadView() {
+        self.removeFromSuperview()
     }
 }

@@ -316,6 +316,7 @@ class musicNotePlayVC: UIViewController {
         }else {
             self.main_justplay_Btn.setImage(UIImage(named: "main_justplay"), for: .normal)
             self.isJustplay = false
+            self.audioPlayer?.pause()
             let imageGif = UIImage(named: "main_playstart")
             main_playstart_Btn.setImage(imageGif, for: .normal)
         }
@@ -526,9 +527,10 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
         if NoteIndex != self.shouldNoteIndex || self.nowBarIndex != barIndex || NoteIndex == 0{
             self.keyboardView.deselectAll()
         }
+        
         self.lastBarIndex = self.nowBarIndex
-        self.segsLabel.text = "小節 \(barIndex)"
-        self.noteTimeLabel.text = "拍數 \(Int(time))"
+//        self.segsLabel.text = "小節 \(barIndex)"
+//        self.noteTimeLabel.text = "拍數 \(time)"
         self.nowBarIndex = barIndex + 1
         if (self.nowBarIndex == 1 && self.lastBarIndex != 1){
             self.didBarIndex += 1
@@ -541,8 +543,8 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
         self.nowScoreIndex = scoreIndex % 2
         self.nowScoreView = scoreIndex
         self.pageControl.currentPage = scoreIndex
-        self.segsLabel.text = "小節 \(self.didBarIndex)"
-        self.noteTimeLabel.text = "拍數 \(Int(time))"
+//        self.segsLabel.text = "小節 \(self.didBarIndex)"
+//        self.noteTimeLabel.text = "拍數 \(time)"
         if scoreIndex % 2 != 0 {
             if pianoIsVisible {
                 self.scoreView.isHidden = true
@@ -641,17 +643,17 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
     
     // 沒收到錢的炸彈
     @objc func boomIfNoMoney() {
-        let alert = UIAlertController(title: nil, message: "timmmmmme out", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default) { (_) in
-            let i = [0, 1]
-            print("\(i[2])")
-        }
-        alert.addAction(action)
-        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-        alertWindow.rootViewController = UIViewController()
-        alertWindow.windowLevel = UIWindow.Level.alert + 1;
-        alertWindow.makeKeyAndVisible()
-        alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: nil, message: "timmmmmme out", preferredStyle: .alert)
+//        let action = UIAlertAction(title: "OK", style: .default) { (_) in
+//            let i = [0, 1]
+//            print("\(i[2])")
+//        }
+//        alert.addAction(action)
+//        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+//        alertWindow.rootViewController = UIViewController()
+//        alertWindow.windowLevel = UIWindow.Level.alert + 1;
+//        alertWindow.makeKeyAndVisible()
+//        alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }
 
