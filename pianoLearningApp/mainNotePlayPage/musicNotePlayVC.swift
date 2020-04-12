@@ -250,6 +250,7 @@ class musicNotePlayVC: UIViewController {
             if nowSegs < allSegs - 1 {
                 hasMoreScore = true
                 scoreView2.isHidden = false
+                _ = scoreView2.getScoreViewCount(in: jsonArray)
                 // 載入樂譜
                 let score2ViewN = scoreView2.setScore(in: jsonArray, start:nowSegs+1, order: 1, isFirst: false, isLast: nowSegs>=allSegs-1)
                 nowSegs = scoreView2.setScore(in: jsonArray, start:nowSegs+1, order: 1, isFirst: false, isLast: score2ViewN>=allSegs-1)
@@ -593,9 +594,9 @@ extension musicNotePlayVC: MusicScoreViewDelegate {
         self.keyboardView.deselectAll()
 //        print("nowSegs: \(nowSegs), allSegs: \(allSegs)")
         if (nowSegs<allSegs-1){
-            
+            print("......")
         }else{
-            if self.nowScoreView < self.allScoreViewCount {
+            if self.nowScoreView < self.allScoreViewCount - 1 {
                 if nowScoreIndex != 1 {
                     self.scoreView2.startBar()
                 }else {

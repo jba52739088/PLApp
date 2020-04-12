@@ -329,6 +329,12 @@ class MusicScoreView: UIView {
                 // delegate
 //                print("play => \(scoreOrder): \(mTone) : \(mNote)")
                 delegate?.noteShouldPlay(scoreIndex: scoreOrder, pitch: Int(noteNums[Float(mTone)] ?? 0), time: mNote, barIndex: seg, NoteIndex: col)
+                print("i:\(i), steps: \(steps.count)")
+                if isLastScoreView && i >= steps.count - 128 {
+                    self.delegate?.didFinishPlay()
+                    stopBar()
+                    return
+                }
             }
 //            print("----")
             k = k + 1
@@ -340,7 +346,7 @@ class MusicScoreView: UIView {
             // 播放完畢
             NotificationCenter.default.post(name: Notification.Name("stop"),
                                             object:())
-            self.delegate?.didFinishPlay()
+//            self.delegate?.didFinishPlay()
             stopBar()
         }else{
             i = i + 1
